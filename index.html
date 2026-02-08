@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MediTrack</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="lang-switch">
+      <label for="langSelect" data-i18n="language.label">Language</label>
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+
+    <header class="topbar hidden" id="topBar">
+      <div class="brand">
+        <img class="logo-img" src="Logo Meditrack.webp" alt="MediTrack logo" />
+        <div>
+          <p class="brand-title">MediTrack</p>
+          <p class="brand-sub" id="facilityName" data-i18n="header.facilityDashboard">
+            Facility Dashboard
+          </p>
+        </div>
+      </div>
+      <button id="signOutBtn" class="ghost" type="button" data-i18n="actions.signOut">
+        Sign out
+      </button>
+    </header>
+
+    <main class="app">
+      <section id="welcomeView" class="view">
+        <div class="hero">
+          <div class="hero-content">
+            <p class="eyebrow">MediTrack</p>
+            <h1 data-i18n="hero.title">Integrated healthcare facility management</h1>
+            <p class="subhead" data-i18n="hero.subtitle">
+              A secure platform to manage clinical, administrative, and operational workflows in one place.
+            </p>
+            <ul class="hero-list">
+              <li data-i18n="hero.bullet1">Patient registration, appointments, and clinical services</li>
+              <li data-i18n="hero.bullet2">Billing, insurance, and real-time reporting</li>
+              <li data-i18n="hero.bullet3">HR, inventory, procurement, and audit trails</li>
+            </ul>
+          </div>
+          <div class="hero-card">
+            <div class="tabs">
+              <button id="tabSignIn" class="tab active" type="button" data-i18n="auth.signIn">
+                Sign in
+              </button>
+              <button id="tabSignUp" class="tab" type="button" data-i18n="auth.signUp">
+                Sign up
+              </button>
+            </div>
+
+            <form id="signInForm" class="auth-form">
+              <label class="field">
+                <span data-i18n="auth.facilityCode">Facility identification code</span>
+                <input
+                  id="signInCode"
+                  type="text"
+                  placeholder="e.g., CFL-001"
+                  data-i18n-placeholder="auth.facilityCodePlaceholder"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="auth.password">Password</span>
+                <input id="signInPassword" type="password" />
+              </label>
+              <button class="primary" type="submit" data-i18n="auth.continue">
+                Continue
+              </button>
+              <p class="form-message" id="signInMessage"></p>
+            </form>
+
+            <form id="signUpForm" class="auth-form hidden">
+              <label class="field">
+                <span data-i18n="auth.facilityName">Facility name</span>
+                <input
+                  id="signUpFacility"
+                  type="text"
+                  placeholder="e.g., Clinique CFL"
+                  data-i18n-placeholder="auth.facilityNamePlaceholder"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="auth.facilityEmail">Facility email</span>
+                <input
+                  id="signUpEmail"
+                  type="email"
+                  placeholder="name@facility.tg"
+                  data-i18n-placeholder="auth.facilityEmailPlaceholder"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="auth.facilityPhone">Facility phone</span>
+                <input
+                  id="signUpPhone"
+                  type="tel"
+                  placeholder="+228..."
+                  data-i18n-placeholder="auth.facilityPhonePlaceholder"
+                />
+              </label>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="auth.facilityCity">City</span>
+                  <input id="signUpCity" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="auth.facilityCountry">Country</span>
+                  <input id="signUpCountry" type="text" />
+                </label>
+              </div>
+              <label class="field">
+                <span data-i18n="auth.authCode">Authorization code</span>
+                <input
+                  id="signUpCode"
+                  type="text"
+                  placeholder="Provided by admin"
+                  data-i18n-placeholder="auth.authCodePlaceholder"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="auth.password">Password</span>
+                <input id="signUpPassword" type="password" />
+              </label>
+              <button class="primary" type="submit" data-i18n="auth.create">
+                Create facility account
+              </button>
+              <p class="form-message" id="signUpMessage"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="modulesView" class="view hidden">
+        <div class="module-header">
+          <h2 data-i18n="modules.title">Facility Modules</h2>
+          <p class="subhead" data-i18n="modules.subtitle">
+            Choose a module to continue. Access rights are based on your role.
+          </p>
+          <p class="role-badge hidden" id="employeeRoleBadge"></p>
+        </div>
+        <div class="module-grid">
+          <article class="module-card highlight" data-roles="director,accountant,admission">
+            <h3 data-i18n="modules.billing">Billing & Payments</h3>
+            <p data-i18n="modules.billingDesc">
+              Patient admission, insurance validation, and payment processing.
+            </p>
+            <button class="ghost" type="button" data-module="billing" data-i18n="modules.open">
+              Open module
+            </button>
+          </article>
+          <article
+            class="module-card"
+            data-roles="director,accountant,admission,doctor,nurse,lab,radiology,pharmacy,other"
+          >
+            <h3 data-i18n="modules.dashboard">Role Dashboard</h3>
+            <p data-i18n="modules.dashboardDesc">Personalized indicators for your role.</p>
+            <button class="ghost" type="button" data-module="dashboard" data-i18n="modules.open">
+              Open module
+            </button>
+          </article>
+          <article class="module-card" data-roles="director,admission,doctor">
+            <h3 data-i18n="modules.patients">Patient Management</h3>
+            <p data-i18n="modules.patientsDesc">Registration, profiles, and care pathways.</p>
+            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+          </article>
+          <article class="module-card" data-roles="director,admission,doctor">
+            <h3 data-i18n="modules.appointments">Appointments</h3>
+            <p data-i18n="modules.appointmentsDesc">Scheduling, reminders, and visit tracking.</p>
+            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+          </article>
+          <article class="module-card" data-roles="director,doctor">
+            <h3 data-i18n="modules.records">Clinical Records</h3>
+            <p data-i18n="modules.recordsDesc">Secure EHR, diagnoses, and treatment history.</p>
+            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+          </article>
+          <article class="module-card" data-roles="director,lab,radiology">
+            <h3 data-i18n="modules.lab">Laboratory</h3>
+            <p data-i18n="modules.labDesc">Lab orders, samples, and results tracking.</p>
+            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+          </article>
+          <article class="module-card" data-roles="director">
+            <h3 data-i18n="modules.hr">HR & Payroll</h3>
+            <p data-i18n="modules.hrDesc">Staff profiles, shifts, and payroll export.</p>
+            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+          </article>
+          <article class="module-card" data-roles="director,lab,pharmacy">
+            <h3 data-i18n="modules.inventory">Inventory & Stock</h3>
+            <p data-i18n="modules.inventoryDesc">Medicines, alerts, and procurement requests.</p>
+            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+          </article>
+          <article class="module-card" data-roles="director">
+            <h3 data-i18n="modules.procurement">Procurement</h3>
+            <p data-i18n="modules.procurementDesc">Suppliers, purchase orders, and approvals.</p>
+            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+          </article>
+          <article class="module-card" data-roles="director,accountant">
+            <h3 data-i18n="modules.analytics">Dashboards & Reports</h3>
+            <p data-i18n="modules.analyticsDesc">KPIs, audit trails, and operational insights.</p>
+            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+          </article>
+          <article class="module-card" data-roles="director">
+            <h3 data-i18n="modules.staff">Staff & Roles</h3>
+            <p data-i18n="modules.staffDesc">Create employee profiles and assign access.</p>
+            <button class="ghost" type="button" data-module="staff" data-i18n="modules.open">
+              Open module
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section id="staffAccessView" class="view hidden">
+        <div class="module-top">
+          <button id="backToWelcome" class="ghost" type="button" data-i18n="modules.backWelcome">
+            Back
+          </button>
+          <div>
+            <h2 data-i18n="staff.accessTitle">Staff access</h2>
+            <p class="subhead" data-i18n="staff.accessSubtitle">
+              Administrators create employee profiles. Employees sign in to their role-based account.
+            </p>
+          </div>
+        </div>
+
+        <div class="staff-grid">
+          <div class="staff-card">
+            <h3 data-i18n="staff.adminSignIn">Administrator sign in</h3>
+            <form id="adminSignInForm" class="auth-form">
+              <label class="field">
+                <span data-i18n="staff.adminId">Admin ID / Email</span>
+                <input id="adminId" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="auth.password">Password</span>
+                <input id="adminPassword" type="password" />
+              </label>
+              <button class="primary" type="submit" data-i18n="staff.enterAdmin">
+                Enter admin space
+              </button>
+              <p class="form-message" id="adminSignInMessage"></p>
+            </form>
+          </div>
+          <div class="staff-card">
+            <h3 data-i18n="staff.employeeSignIn">Employee sign in</h3>
+            <form id="employeeSignInForm" class="auth-form">
+              <label class="field">
+                <span data-i18n="staff.employeeId">Employee ID / Email</span>
+                <input id="employeeId" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="auth.password">Password</span>
+                <input id="employeePassword" type="password" />
+              </label>
+              <button class="primary" type="submit" data-i18n="staff.enterEmployee">
+                Enter employee account
+              </button>
+              <p class="form-message" id="employeeSignInMessage"></p>
+            </form>
+          </div>
+        </div>
+
+        <section id="staffAdminPanel" class="module-section hidden">
+          <div class="staff-panel-header">
+            <div>
+              <h3 data-i18n="staff.manageTitle">Employee management</h3>
+              <p class="subhead" data-i18n="staff.manageSubtitle">
+                Create staff profiles and assign roles.
+              </p>
+            </div>
+            <button id="goToModules" class="ghost" type="button" data-i18n="staff.goModules">
+              Go to modules
+            </button>
+          </div>
+          <form id="staffForm" class="grid-form">
+            <label class="field">
+              <span data-i18n="staff.fullName">Full name</span>
+              <input id="staffName" type="text" />
+            </label>
+            <label class="field">
+              <span data-i18n="staff.role">Role</span>
+              <select id="staffRole">
+                <option value="" data-i18n="select.placeholder">Select...</option>
+                <option value="admission" data-i18n="staff.roleAdmission">Admission nurse</option>
+                <option value="director" data-i18n="staff.roleDirector">Director</option>
+                <option value="accountant" data-i18n="staff.roleAccountant">Accountant</option>
+                <option value="doctor" data-i18n="staff.roleDoctor">Doctor</option>
+                <option value="lab" data-i18n="staff.roleLab">Laboratory staff</option>
+                <option value="nurse" data-i18n="staff.roleNurse">Nurse</option>
+                <option value="radiology" data-i18n="staff.roleRadiology">Radiology staff</option>
+                <option value="pharmacy" data-i18n="staff.rolePharmacy">Pharmacy staff</option>
+                <option value="other" data-i18n="staff.roleOther">Other</option>
+              </select>
+            </label>
+            <label class="field">
+              <span data-i18n="staff.email">Email</span>
+              <input id="staffEmail" type="email" />
+            </label>
+            <label class="field">
+              <span data-i18n="staff.phone">Phone</span>
+              <input id="staffPhone" type="tel" />
+            </label>
+            <label class="field">
+              <span data-i18n="staff.employeeCode">Employee ID</span>
+              <input id="staffCode" type="text" />
+            </label>
+            <label class="field">
+              <span data-i18n="staff.tempPassword">Temporary password</span>
+              <input id="staffTempPassword" type="text" />
+            </label>
+            <div class="field-row" id="doctorFields">
+              <label class="field">
+                <span data-i18n="staff.doctorType">Doctor category</span>
+                <select id="doctorType">
+                  <option value="full" data-i18n="staff.doctorFull">Full time</option>
+                  <option value="locum" data-i18n="staff.doctorLocum">Locum (vacataire)</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="staff.doctorRate">Locum rate (%)</span>
+                <input id="doctorRate" type="number" min="0" max="100" step="1" />
+              </label>
+            </div>
+            <button class="primary" type="submit" data-i18n="staff.create">
+              Create employee
+            </button>
+            <p class="form-message" id="staffMessage"></p>
+          </form>
+          <div class="staff-list">
+            <h4 data-i18n="staff.listTitle">Staff list</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="staff.listName">Name</th>
+                  <th data-i18n="staff.listRole">Role</th>
+                  <th data-i18n="staff.listEmail">Email</th>
+                  <th data-i18n="staff.listCode">Employee ID</th>
+                </tr>
+              </thead>
+              <tbody id="staffListBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="moduleBillingView" class="view hidden">
+        <div class="module-top">
+          <button id="backToModules" class="ghost" type="button" data-i18n="modules.back">
+            Back to modules
+          </button>
+          <div>
+            <h2 data-i18n="billing.title">Billing & Patient Admission</h2>
+            <p class="subhead" data-i18n="billing.subtitle">
+              Register patients, validate insurance, and generate billing details.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-layout">
+          <section class="module-section">
+            <h3 data-i18n="billing.admissionTitle">Patient admission</h3>
+            <div class="pill-row">
+              <label class="pill">
+                <input type="radio" name="patientType" value="new" checked />
+                <span data-i18n="billing.newPatient">New patient</span>
+              </label>
+              <label class="pill">
+                <input type="radio" name="patientType" value="returning" />
+                <span data-i18n="billing.returningPatient">Returning patient</span>
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="billing.patientSearch">Search patient</span>
+              <input
+                id="patientSearch"
+                type="search"
+                placeholder="Search by name, ID, or phone"
+                data-i18n-placeholder="billing.patientSearchPlaceholder"
+              />
+            </label>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.fullName">Full name</span>
+                <input id="patientFullName" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="billing.sex">Sex</span>
+                <select id="patientSex">
+                  <option value="" data-i18n="select.placeholder">Select...</option>
+                  <option value="female" data-i18n="billing.sexFemale">Female</option>
+                  <option value="male" data-i18n="billing.sexMale">Male</option>
+                  <option value="other" data-i18n="billing.sexOther">Other</option>
+                </select>
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.dob">Date of birth</span>
+                <input id="patientDob" type="date" />
+              </label>
+              <label class="field">
+                <span data-i18n="billing.age">Age</span>
+                <input id="patientAge" type="number" min="0" />
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="billing.address">Address</span>
+              <input id="patientAddress" type="text" />
+            </label>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.phone">Phone number</span>
+                <input id="patientPhone" type="tel" />
+              </label>
+              <label class="field">
+                <span data-i18n="billing.emergencyPhone">Emergency contact</span>
+                <input id="patientEmergencyPhone" type="tel" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.whatsapp">WhatsApp</span>
+                <input id="patientWhatsapp" type="tel" />
+              </label>
+              <label class="field">
+                <span data-i18n="billing.profession">Profession</span>
+                <select id="patientProfession">
+                  <option value="" data-i18n="select.placeholder">Select...</option>
+                  <option value="employee" data-i18n="billing.profEmployee">Employee (public/private)</option>
+                  <option value="self" data-i18n="billing.profSelf">Self-employed</option>
+                  <option value="civil" data-i18n="billing.profCivil">Civil servant</option>
+                  <option value="student" data-i18n="billing.profStudent">Student</option>
+                  <option value="retired" data-i18n="billing.profRetired">Retired</option>
+                  <option value="unemployed" data-i18n="billing.profUnemployed">Unemployed</option>
+                  <option value="home" data-i18n="billing.profHome">Homemaker</option>
+                </select>
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="billing.education">Education level</span>
+              <select id="patientEducation">
+                <option value="" data-i18n="select.placeholder">Select...</option>
+                <option value="primary" data-i18n="billing.educationPrimary">Primary</option>
+                <option value="secondary" data-i18n="billing.educationSecondary">Secondary</option>
+                <option value="tertiary" data-i18n="billing.educationTertiary">University</option>
+                <option value="other" data-i18n="billing.educationOther">Other</option>
+              </select>
+            </label>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.assignDoctor">Assign doctor</span>
+                <select id="assignDoctor">
+                  <option value="" data-i18n="billing.doctorPlaceholder">Select doctor</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="billing.consultationCost">Consultation cost (CFL)</span>
+                <input id="consultationCost" type="number" min="0" step="1" />
+              </label>
+            </div>
+            <div class="button-row">
+              <button id="addConsultationBtn" class="ghost" type="button" data-i18n="billing.addConsultation">
+                Add consultation to billing
+              </button>
+              <button id="savePatientBtn" class="primary" type="button" data-i18n="billing.savePatient">
+                Save patient profile
+              </button>
+            </div>
+            <p class="form-message" id="patientMessage"></p>
+          </section>
+
+          <section class="module-section">
+            <h3 data-i18n="billing.insuranceTitle">Insurance & coverage</h3>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.insuranceProvider">Insurance provider</span>
+                <select id="insuranceProvider">
+                  <option value="" data-i18n="select.placeholder">Select...</option>
+                  <option>AMU</option>
+                  <option>INAM</option>
+                  <option>SUNU</option>
+                  <option>SUNU-GB</option>
+                  <option>SANLAM</option>
+                  <option>GTA</option>
+                  <option>GCA</option>
+                  <option>MSH</option>
+                  <option>ASCOMA</option>
+                  <option>OLEA</option>
+                  <option>TRANSVIE</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="billing.insuranceId">Insurance ID / dossier</span>
+                <input id="insuranceId" type="text" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.coverageRate">Coverage rate</span>
+                <select id="coverageRate">
+                  <option value="" data-i18n="select.placeholder">Select...</option>
+                  <option value="100">100%</option>
+                  <option value="95">95%</option>
+                  <option value="90">90%</option>
+                  <option value="80">80%</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="billing.patientId">Patient ID / national ID</span>
+                <input type="text" />
+              </label>
+            </div>
+          </section>
+
+          <section class="module-section">
+            <h3 data-i18n="billing.servicesTitle">Reason for visit</h3>
+            <div class="check-grid">
+              <label><input type="checkbox" /> <span data-i18n="billing.serviceConsult">Consultation</span></label>
+              <label><input type="checkbox" /> <span data-i18n="billing.serviceLab">Lab analysis</span></label>
+              <label><input type="checkbox" /> <span data-i18n="billing.serviceImaging">Medical imaging</span></label>
+              <label><input type="checkbox" /> <span data-i18n="billing.serviceHospital">Hospitalization</span></label>
+              <label><input type="checkbox" /> <span data-i18n="billing.serviceSurgery">Surgery</span></label>
+              <label><input type="checkbox" /> <span data-i18n="billing.serviceOutpatient">Outpatient care</span></label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.consultList">Consultation type</span>
+                <select multiple>
+                  <option>Consultation de médecine générale</option>
+                  <option>Consultation de cardiologie</option>
+                  <option>Consultation de neurologie</option>
+                  <option>Consultation de pneumologie</option>
+                  <option>Consultation ORL</option>
+                  <option>Consultation gynécologique/obstétrique</option>
+                  <option>Consultation pédiatrique</option>
+                  <option>Consultation de dermatologie</option>
+                  <option>Téléconsultation</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="billing.labList">Laboratory tests</span>
+                <select multiple>
+                  <option>Numération formule sanguine (NFS)</option>
+                  <option>Glycémie à jeun</option>
+                  <option>HbA1c</option>
+                  <option>Profil lipidique</option>
+                  <option>Bilan rénal</option>
+                  <option>Ionogramme sanguin</option>
+                  <option>Tests infectieux</option>
+                </select>
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="billing.imagingList">Imaging services</span>
+              <select multiple>
+                <option>Radiographie standard</option>
+                <option>Échographie</option>
+                <option>Scanner (CT-scan)</option>
+                <option>IRM</option>
+                <option>Mammographie</option>
+                <option>Doppler vasculaire</option>
+              </select>
+            </label>
+          </section>
+
+          <section class="module-section full">
+            <h3 data-i18n="billing.billingTitle">Billing items</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="billing.item">Service / Medication</th>
+                    <th data-i18n="billing.code">Code</th>
+                    <th data-i18n="billing.inamCode">Code INAM</th>
+                    <th data-i18n="billing.category">Category</th>
+                    <th data-i18n="billing.qty">Qty</th>
+                    <th data-i18n="billing.unitPrice">Unit price (CFL)</th>
+                    <th data-i18n="billing.rate">Rate</th>
+                    <th data-i18n="billing.total">Total</th>
+                    <th data-i18n="billing.insuranceShareShort">Insurance</th>
+                    <th data-i18n="billing.patientShareShort">Patient</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="billingTableBody"></tbody>
+              </table>
+            </div>
+            <button id="addBillingRow" class="ghost" type="button" data-i18n="billing.addLine">
+              Add line
+            </button>
+          </section>
+
+          <section class="module-section">
+            <h3 data-i18n="billing.summaryTitle">Billing summary</h3>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span data-i18n="billing.totalCfl">Total (CFL)</span>
+                <strong id="billingTotal">0</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="billing.insuranceShare">Insurance share</span>
+                <strong id="insuranceShare">0</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="billing.patientShare">Patient share</span>
+                <strong id="patientShare">0</strong>
+              </div>
+            </div>
+            <label class="field">
+              <span data-i18n="billing.notes">Billing notes</span>
+              <textarea rows="3"></textarea>
+            </label>
+          </section>
+
+          <section class="module-section full receipt-section">
+            <div class="receipt-actions">
+              <button id="generateReceiptBtn" class="primary" type="button" data-i18n="receipt.generate">
+                Generate receipt
+              </button>
+              <button id="printReceiptBtn" class="ghost" type="button" data-i18n="receipt.print" disabled>
+                Print receipt
+              </button>
+            </div>
+            <div id="receiptPanel" class="receipt hidden">
+              <div class="receipt-header">
+                <div class="receipt-brand">
+                  <img src="Logo Meditrack.webp" alt="MediTrack logo" />
+                  <div>
+                    <p id="receiptFacility" class="receipt-facility">Facility</p>
+                    <p class="receipt-meta" data-i18n="receipt.authorization">
+                      Authorization No: __________
+                    </p>
+                  </div>
+                </div>
+                <div class="receipt-title">
+                  <h3 data-i18n="receipt.title">Payment Receipt No</h3>
+                  <span id="receiptNumber">____</span>
+                </div>
+              </div>
+
+              <div class="receipt-row">
+                <p><strong data-i18n="receipt.cashier">Cashier:</strong> <span id="receiptCashier"></span></p>
+                <p><strong data-i18n="receipt.date">Date:</strong> <span id="receiptDate"></span></p>
+                <p><strong data-i18n="receipt.time">Time:</strong> <span id="receiptTime"></span></p>
+              </div>
+
+              <div class="receipt-patient">
+                <div>
+                  <p><strong data-i18n="receipt.clientCode">Client code:</strong> <span id="receiptClientCode"></span></p>
+                  <p><strong data-i18n="receipt.lastName">Last name:</strong> <span id="receiptLastName"></span></p>
+                  <p><strong data-i18n="receipt.firstName">First name:</strong> <span id="receiptFirstName"></span></p>
+                  <p><strong data-i18n="receipt.address">Address:</strong> <span id="receiptAddress"></span></p>
+                  <p><strong data-i18n="receipt.insurer">Insurer:</strong> <span id="receiptInsurer"></span></p>
+                </div>
+                <div>
+                  <p><strong data-i18n="receipt.sex">Sex:</strong> <span id="receiptSex"></span></p>
+                  <p><strong data-i18n="receipt.dob">Born on:</strong> <span id="receiptDob"></span></p>
+                  <p><strong data-i18n="receipt.profession">Profession:</strong> <span id="receiptProfession"></span></p>
+                  <p><strong data-i18n="receipt.phone">Phone:</strong> <span id="receiptPhone"></span></p>
+                  <p><strong data-i18n="receipt.coverage">Coverage:</strong> <span id="receiptCoverage"></span></p>
+                  <p><strong data-i18n="receipt.policy">Policy No:</strong> <span id="receiptPolicy"></span></p>
+                </div>
+              </div>
+
+              <table class="receipt-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="receipt.service">Service</th>
+                    <th data-i18n="receipt.code">Code</th>
+                    <th data-i18n="receipt.inam">Code INAM</th>
+                    <th data-i18n="receipt.qty">Qty</th>
+                    <th data-i18n="receipt.unitPrice">Unit price</th>
+                    <th data-i18n="receipt.rate">Rate</th>
+                    <th data-i18n="receipt.amount">Amount</th>
+                    <th data-i18n="receipt.insuranceShare">Insurance share</th>
+                    <th data-i18n="receipt.patientShare">Patient share</th>
+                  </tr>
+                </thead>
+                <tbody id="receiptTableBody"></tbody>
+              </table>
+
+              <div class="receipt-totals">
+                <p><strong data-i18n="receipt.totalNet">Total net to pay:</strong> <span id="receiptTotalNet"></span></p>
+                <p><strong data-i18n="receipt.totalInsurance">Total insurance:</strong> <span id="receiptTotalInsurance"></span></p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="roleDashboardView" class="view hidden">
+        <div class="module-top">
+          <button id="backToModulesFromDashboard" class="ghost" type="button" data-i18n="modules.back">
+            Back to modules
+          </button>
+          <div>
+            <h2 data-i18n="dashboard.title">Role dashboard</h2>
+            <p class="subhead" id="dashboardRoleLabel" data-i18n="dashboard.subtitle">
+              Key indicators based on your responsibilities.
+            </p>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="dash-section" data-role="admission">
+            <h3 data-i18n="dashboard.admissionTitle">Admission staff overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.totalPatients">Total patients received</p>
+                <strong id="admTotalPatients">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.visitsToday">Visits today</p>
+                <strong id="admVisitsToday">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.visitsWeek">Visits this week</p>
+                <strong id="admVisitsWeek">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.visitsMonth">Visits this month</p>
+                <strong id="admVisitsMonth">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.paidByPatients">Paid by patients</p>
+                <strong id="admPaidPatients">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.paidByInsurance">To be paid by insurance</p>
+                <strong id="admPaidInsurance">0</strong>
+              </div>
+            </div>
+            <div class="dash-table">
+              <h4 data-i18n="dashboard.byStaff">Admissions by staff</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="dashboard.staffName">Staff</th>
+                    <th data-i18n="dashboard.staffCount">Patients</th>
+                  </tr>
+                </thead>
+                <tbody id="admStaffTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="doctor">
+            <h3 data-i18n="dashboard.doctorTitle">Doctor overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.doctorPatients">Patients assigned</p>
+                <strong id="docPatientsCount">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.doctorUpcoming">Upcoming consultations</p>
+                <strong id="docUpcoming">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.doctorCompleted">Completed consultations</p>
+                <strong id="docCompleted">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.doctorRemuneration">Locum remuneration estimate</p>
+                <strong id="docRemuneration">0</strong>
+              </div>
+            </div>
+            <div class="dash-split">
+              <div>
+                <h4 data-i18n="dashboard.assignedPatients">Assigned patients</h4>
+                <ul id="docPatientList" class="dash-list"></ul>
+              </div>
+              <div>
+                <h4 data-i18n="dashboard.treatmentPlans">Diagnoses & treatment plans</h4>
+                <p class="muted" data-i18n="dashboard.placeholder">
+                  Add consultations to see structured clinical plans here.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="nurse">
+            <h3 data-i18n="dashboard.nurseTitle">Nursing overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.nursePatients">Assigned patients</p>
+                <strong id="nursePatients">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.nurseTasks">Tasks completed today</p>
+                <strong id="nurseTasks">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.nurseMonthly">Monthly activity</p>
+                <strong id="nurseMonthly">0</strong>
+              </div>
+            </div>
+            <div class="dash-table">
+              <h4 data-i18n="dashboard.doctorPayments">Doctor payments (locum)</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="dashboard.staffName">Doctor</th>
+                    <th data-i18n="dashboard.amount">Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="nurseDoctorPayments"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="lab">
+            <h3 data-i18n="dashboard.labTitle">Laboratory overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.labPending">Tests pending</p>
+                <strong id="labPending">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.labInProgress">In progress</p>
+                <strong id="labInProgress">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.labCompleted">Completed</p>
+                <strong id="labCompleted">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="radiology">
+            <h3 data-i18n="dashboard.radiologyTitle">Imaging overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.radioScheduled">Exams scheduled</p>
+                <strong id="radioScheduled">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.radioCompleted">Exams completed</p>
+                <strong id="radioCompleted">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="pharmacy">
+            <h3 data-i18n="dashboard.pharmacyTitle">Pharmacy overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.pharmacyDispensed">Medications dispensed</p>
+                <strong id="pharmacyDispensed">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.pharmacyAlerts">Stock alerts</p>
+                <strong id="pharmacyAlerts">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="accountant">
+            <h3 data-i18n="dashboard.accountTitle">Finance overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.revenue">Total revenue</p>
+                <strong id="accRevenue">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.patientShare">Patient payments</p>
+                <strong id="accPatient">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.insuranceShare">Insurance payments</p>
+                <strong id="accInsurance">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.outstanding">Outstanding balances</p>
+                <strong id="accOutstanding">0</strong>
+              </div>
+            </div>
+            <div class="dash-table">
+              <h4 data-i18n="dashboard.doctorPayments">Doctor payments (locum)</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="dashboard.staffName">Doctor</th>
+                    <th data-i18n="dashboard.amount">Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="accDoctorPayments"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="director">
+            <h3 data-i18n="dashboard.adminTitle">Management overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.totalPatients">Total patients received</p>
+                <strong id="dirPatients">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.totalServices">Service utilization</p>
+                <strong id="dirServices">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.revenue">Total revenue</p>
+                <strong id="dirRevenue">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.staffProductivity">Staff productivity</p>
+                <strong id="dirStaffProductivity">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="other">
+            <h3 data-i18n="dashboard.otherTitle">General overview</h3>
+            <p class="muted" data-i18n="dashboard.otherSubtitle">
+              Your dashboard will appear here once your role is configured.
+            </p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
