@@ -1,928 +1,1495 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MediTrack</title>
+    <title>B-Healthy - Check you heart health</title>
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#c8102e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="lang-switch">
       <label for="langSelect" data-i18n="language.label">Language</label>
-      <select id="langSelect">
+      <select id="langSelect" aria-label="Language">
         <option value="en">English</option>
         <option value="fr">Français</option>
+        <option value="es">Español</option>
       </select>
     </div>
 
-    <header class="topbar hidden" id="topBar">
-      <div class="brand">
-        <img class="logo-img" src="Logo Meditrack.webp" alt="MediTrack logo" />
-        <div>
-          <p class="brand-title">MediTrack</p>
-          <p class="brand-sub" id="facilityName" data-i18n="header.facilityDashboard">
-            Facility Dashboard
-          </p>
+    <main class="app" id="appRoot">
+      <div class="top-bar hidden" id="topBar">
+        <div class="top-bar-left">
+          <img class="top-logo" src="B-HEALTHY-LOGO-.png" alt="B-Healthy logo" />
+          <img class="top-avatar hidden" id="userAvatar" alt="Profile photo" />
+          <div>
+            <p class="top-title">B-Healthy</p>
+            <p class="top-sub" id="userGreeting"></p>
+          </div>
+        </div>
+        <div class="top-bar-actions">
+          <button id="homeBtn" class="ghost icon-btn" type="button" aria-label="Home">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 11l8-6 8 6" />
+              <path d="M6 10v9h12v-9" />
+            </svg>
+          </button>
+          <button id="backToHubBtn" class="ghost hidden" type="button" data-i18n="nav.back">
+            Back to menu
+          </button>
+          <button id="signOutBtn" class="ghost" type="button" data-i18n="nav.signOut">
+            Sign out
+          </button>
         </div>
       </div>
-      <button id="signOutBtn" class="ghost" type="button" data-i18n="actions.signOut">
-        Sign out
-      </button>
-    </header>
 
-    <main class="app">
-      <section id="welcomeView" class="view">
-        <div class="hero">
-          <div class="hero-content">
-            <p class="eyebrow">MediTrack</p>
-            <h1 data-i18n="hero.title">Integrated healthcare facility management</h1>
-            <p class="subhead" data-i18n="hero.subtitle">
-              A secure platform to manage clinical, administrative, and operational workflows in one place.
-            </p>
-            <ul class="hero-list">
-              <li data-i18n="hero.bullet1">Patient registration, appointments, and clinical services</li>
-              <li data-i18n="hero.bullet2">Billing, insurance, and real-time reporting</li>
-              <li data-i18n="hero.bullet3">HR, inventory, procurement, and audit trails</li>
-            </ul>
+      <section id="authView" class="view auth-view">
+        <div class="auth-card">
+          <div class="auth-brand">
+            <img class="logo" src="B-HEALTHY-LOGO-.png" alt="B-Healthy logo" />
+            <p class="eyebrow">B-Healthy</p>
           </div>
-          <div class="hero-card">
-            <div class="tabs">
-              <button id="tabSignIn" class="tab active" type="button" data-i18n="auth.signIn">
-                Sign in
-              </button>
-              <button id="tabSignUp" class="tab" type="button" data-i18n="auth.signUp">
-                Sign up
-              </button>
-            </div>
+          <h1 data-i18n="auth.title">Welcome to B-Healthy</h1>
+          <p class="subhead" data-i18n="auth.subtitle">
+            Sign in to continue or create a profile to get started.
+          </p>
+          <details class="install-tip">
+            <summary data-i18n="install.summary">Install this app (optional)</summary>
+            <p data-i18n="install.desktop">
+              Desktop (Chrome/Edge): click the install icon in the address bar, or use the browser menu.
+            </p>
+            <p data-i18n="install.android">
+              Android (Chrome): Menu → Install app or Add to Home screen.
+            </p>
+            <p data-i18n="install.ios">
+              iPhone/iPad (Safari): Share → Add to Home Screen.
+            </p>
+          </details>
+          <div class="auth-tabs">
+            <button id="tabSignIn" class="tab active" type="button" data-i18n="auth.signIn">
+              Sign in
+            </button>
+            <button id="tabSignUp" class="tab" type="button" data-i18n="auth.signUp">
+              Sign up
+            </button>
+          </div>
 
-            <form id="signInForm" class="auth-form">
-              <label class="field">
-                <span data-i18n="auth.facilityCode">Facility identification code</span>
-                <input
-                  id="signInCode"
-                  type="text"
-                  placeholder="e.g., CFL-001"
-                  data-i18n-placeholder="auth.facilityCodePlaceholder"
-                />
-              </label>
-              <label class="field">
-                <span data-i18n="auth.password">Password</span>
-                <input id="signInPassword" type="password" />
-              </label>
-              <button class="primary" type="submit" data-i18n="auth.continue">
-                Continue
-              </button>
-              <p class="form-message" id="signInMessage"></p>
-            </form>
+          <form id="signInForm" class="auth-form">
+            <label class="field">
+              <span data-i18n="auth.email">Email</span>
+              <input id="signInEmail" type="email" required />
+            </label>
+            <label class="field">
+              <span data-i18n="auth.password">Password</span>
+              <input id="signInPassword" type="password" required />
+            </label>
+            <button class="primary" type="submit" data-i18n="auth.signIn">Sign in</button>
+            <p class="form-message" id="signInMessage"></p>
+          </form>
 
-            <form id="signUpForm" class="auth-form hidden">
-              <label class="field">
-                <span data-i18n="auth.facilityName">Facility name</span>
-                <input
-                  id="signUpFacility"
-                  type="text"
-                  placeholder="e.g., Clinique CFL"
-                  data-i18n-placeholder="auth.facilityNamePlaceholder"
-                />
-              </label>
-              <label class="field">
-                <span data-i18n="auth.facilityEmail">Facility email</span>
-                <input
-                  id="signUpEmail"
-                  type="email"
-                  placeholder="name@facility.tg"
-                  data-i18n-placeholder="auth.facilityEmailPlaceholder"
-                />
-              </label>
-              <label class="field">
-                <span data-i18n="auth.facilityPhone">Facility phone</span>
-                <input
-                  id="signUpPhone"
-                  type="tel"
-                  placeholder="+228..."
-                  data-i18n-placeholder="auth.facilityPhonePlaceholder"
-                />
-              </label>
+          <form id="signUpForm" class="auth-form hidden">
+            <label class="field">
+              <span data-i18n="auth.email">Email</span>
+              <input id="signUpEmail" type="email" required />
+            </label>
+            <label class="field">
+              <span data-i18n="auth.password">Password</span>
+              <input id="signUpPassword" type="password" required />
+            </label>
+            <label class="field">
+              <span data-i18n="auth.confirmPassword">Confirm password</span>
+              <input id="signUpPasswordConfirm" type="password" required />
+            </label>
+            <button class="primary" type="submit" data-i18n="auth.createAccount">Create account</button>
+            <p class="form-message" id="signUpMessage"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="registerView" class="view hidden">
+        <div class="panel">
+          <h2 data-i18n="register.title">Complete your profile</h2>
+          <p class="subhead" data-i18n="register.subtitle">
+            Tell us a bit more so we can personalize the experience.
+          </p>
+          <form id="registerForm" class="stack">
+            <div id="individualFields" class="stack">
               <div class="field-row">
                 <label class="field">
-                  <span data-i18n="auth.facilityCity">City</span>
-                  <input id="signUpCity" type="text" />
+                  <span data-i18n="profile.firstName">First name</span>
+                  <input id="individualFirstName" type="text" required />
                 </label>
                 <label class="field">
-                  <span data-i18n="auth.facilityCountry">Country</span>
-                  <input id="signUpCountry" type="text" />
+                  <span data-i18n="profile.lastName">Surname</span>
+                  <input id="individualLastName" type="text" required />
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="profile.dob">Date of birth</span>
+                  <input id="individualDob" type="date" required />
+                </label>
+                <label class="field">
+                  <span data-i18n="profile.sex">Sex</span>
+                  <select id="individualSex" required>
+                    <option value="" data-i18n="select.placeholder">Select...</option>
+                    <option value="female" data-i18n="about.sexOptions.female">Female</option>
+                    <option value="male" data-i18n="about.sexOptions.male">Male</option>
+                    <option value="intersex" data-i18n="about.sexOptions.intersex">Intersex</option>
+                    <option value="prefer-not" data-i18n="about.sexOptions.preferNot">Prefer not to say</option>
+                  </select>
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="profile.phone">Phone number</span>
+                  <input id="individualPhone" type="tel" required />
+                </label>
+                <label class="field">
+                  <span data-i18n="profile.city">City</span>
+                  <input id="individualCity" type="text" required />
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="profile.country">Country</span>
+                  <input id="individualCountry" type="text" required />
+                </label>
+                <label class="field">
+                  <span data-i18n="profile.email">Email address</span>
+                  <input id="individualEmail" type="email" disabled />
                 </label>
               </div>
               <label class="field">
-                <span data-i18n="auth.authCode">Authorization code</span>
-                <input
-                  id="signUpCode"
-                  type="text"
-                  placeholder="Provided by admin"
-                  data-i18n-placeholder="auth.authCodePlaceholder"
-                />
+                <span data-i18n="profile.photo">Profile photo (optional)</span>
+                <input id="individualPhoto" type="file" accept="image/*" />
               </label>
-              <label class="field">
-                <span data-i18n="auth.password">Password</span>
-                <input id="signUpPassword" type="password" />
-              </label>
-              <button class="primary" type="submit" data-i18n="auth.create">
-                Create facility account
-              </button>
-              <p class="form-message" id="signUpMessage"></p>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <section id="modulesView" class="view hidden">
-        <div class="module-header">
-          <h2 data-i18n="modules.title">Facility Modules</h2>
-          <p class="subhead" data-i18n="modules.subtitle">
-            Choose a module to continue. Access rights are based on your role.
-          </p>
-          <p class="role-badge hidden" id="employeeRoleBadge"></p>
-        </div>
-        <div class="module-grid">
-          <article class="module-card highlight" data-roles="director,accountant,admission">
-            <h3 data-i18n="modules.billing">Billing & Payments</h3>
-            <p data-i18n="modules.billingDesc">
-              Patient admission, insurance validation, and payment processing.
-            </p>
-            <button class="ghost" type="button" data-module="billing" data-i18n="modules.open">
-              Open module
-            </button>
-          </article>
-          <article
-            class="module-card"
-            data-roles="director,accountant,admission,doctor,nurse,lab,radiology,pharmacy,other"
-          >
-            <h3 data-i18n="modules.dashboard">Role Dashboard</h3>
-            <p data-i18n="modules.dashboardDesc">Personalized indicators for your role.</p>
-            <button class="ghost" type="button" data-module="dashboard" data-i18n="modules.open">
-              Open module
-            </button>
-          </article>
-          <article class="module-card" data-roles="director,admission,doctor">
-            <h3 data-i18n="modules.patients">Patient Management</h3>
-            <p data-i18n="modules.patientsDesc">Registration, profiles, and care pathways.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
-          </article>
-          <article class="module-card" data-roles="director,admission,doctor">
-            <h3 data-i18n="modules.appointments">Appointments</h3>
-            <p data-i18n="modules.appointmentsDesc">Scheduling, reminders, and visit tracking.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
-          </article>
-          <article class="module-card" data-roles="director,doctor">
-            <h3 data-i18n="modules.records">Clinical Records</h3>
-            <p data-i18n="modules.recordsDesc">Secure EHR, diagnoses, and treatment history.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
-          </article>
-          <article class="module-card" data-roles="director,lab,radiology">
-            <h3 data-i18n="modules.lab">Laboratory</h3>
-            <p data-i18n="modules.labDesc">Lab orders, samples, and results tracking.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
-          </article>
-          <article class="module-card" data-roles="director">
-            <h3 data-i18n="modules.hr">HR & Payroll</h3>
-            <p data-i18n="modules.hrDesc">Staff profiles, shifts, and payroll export.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
-          </article>
-          <article class="module-card" data-roles="director,lab,pharmacy">
-            <h3 data-i18n="modules.inventory">Inventory & Stock</h3>
-            <p data-i18n="modules.inventoryDesc">Medicines, alerts, and procurement requests.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
-          </article>
-          <article class="module-card" data-roles="director">
-            <h3 data-i18n="modules.procurement">Procurement</h3>
-            <p data-i18n="modules.procurementDesc">Suppliers, purchase orders, and approvals.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
-          </article>
-          <article class="module-card" data-roles="director,accountant">
-            <h3 data-i18n="modules.analytics">Dashboards & Reports</h3>
-            <p data-i18n="modules.analyticsDesc">KPIs, audit trails, and operational insights.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
-          </article>
-          <article class="module-card" data-roles="director">
-            <h3 data-i18n="modules.staff">Staff & Roles</h3>
-            <p data-i18n="modules.staffDesc">Create employee profiles and assign access.</p>
-            <button class="ghost" type="button" data-module="staff" data-i18n="modules.open">
-              Open module
-            </button>
-          </article>
-        </div>
-      </section>
-
-      <section id="staffAccessView" class="view hidden">
-        <div class="module-top">
-          <button id="backToWelcome" class="ghost" type="button" data-i18n="modules.backWelcome">
-            Back
-          </button>
-          <div>
-            <h2 data-i18n="staff.accessTitle">Staff access</h2>
-            <p class="subhead" data-i18n="staff.accessSubtitle">
-              Administrators create employee profiles. Employees sign in to their role-based account.
-            </p>
-          </div>
-        </div>
-
-        <div class="staff-grid">
-          <div class="staff-card">
-            <h3 data-i18n="staff.adminSignIn">Administrator sign in</h3>
-            <form id="adminSignInForm" class="auth-form">
-              <label class="field">
-                <span data-i18n="staff.adminId">Admin ID / Email</span>
-                <input id="adminId" type="text" />
-              </label>
-              <label class="field">
-                <span data-i18n="auth.password">Password</span>
-                <input id="adminPassword" type="password" />
-              </label>
-              <button class="primary" type="submit" data-i18n="staff.enterAdmin">
-                Enter admin space
-              </button>
-              <p class="form-message" id="adminSignInMessage"></p>
-            </form>
-          </div>
-          <div class="staff-card">
-            <h3 data-i18n="staff.employeeSignIn">Employee sign in</h3>
-            <form id="employeeSignInForm" class="auth-form">
-              <label class="field">
-                <span data-i18n="staff.employeeId">Employee ID / Email</span>
-                <input id="employeeId" type="text" />
-              </label>
-              <label class="field">
-                <span data-i18n="auth.password">Password</span>
-                <input id="employeePassword" type="password" />
-              </label>
-              <button class="primary" type="submit" data-i18n="staff.enterEmployee">
-                Enter employee account
-              </button>
-              <p class="form-message" id="employeeSignInMessage"></p>
-            </form>
-          </div>
-        </div>
-
-        <section id="staffAdminPanel" class="module-section hidden">
-          <div class="staff-panel-header">
-            <div>
-              <h3 data-i18n="staff.manageTitle">Employee management</h3>
-              <p class="subhead" data-i18n="staff.manageSubtitle">
-                Create staff profiles and assign roles.
-              </p>
+              <img id="individualPhotoPreview" class="preview-image hidden" alt="Profile preview" />
             </div>
-            <button id="goToModules" class="ghost" type="button" data-i18n="staff.goModules">
-              Go to modules
-            </button>
-          </div>
-          <form id="staffForm" class="grid-form">
-            <label class="field">
-              <span data-i18n="staff.fullName">Full name</span>
-              <input id="staffName" type="text" />
-            </label>
-            <label class="field">
-              <span data-i18n="staff.role">Role</span>
-              <select id="staffRole">
-                <option value="" data-i18n="select.placeholder">Select...</option>
-                <option value="admission" data-i18n="staff.roleAdmission">Admission nurse</option>
-                <option value="director" data-i18n="staff.roleDirector">Director</option>
-                <option value="accountant" data-i18n="staff.roleAccountant">Accountant</option>
-                <option value="doctor" data-i18n="staff.roleDoctor">Doctor</option>
-                <option value="lab" data-i18n="staff.roleLab">Laboratory staff</option>
-                <option value="nurse" data-i18n="staff.roleNurse">Nurse</option>
-                <option value="radiology" data-i18n="staff.roleRadiology">Radiology staff</option>
-                <option value="pharmacy" data-i18n="staff.rolePharmacy">Pharmacy staff</option>
-                <option value="other" data-i18n="staff.roleOther">Other</option>
-              </select>
-            </label>
-            <label class="field">
-              <span data-i18n="staff.email">Email</span>
-              <input id="staffEmail" type="email" />
-            </label>
-            <label class="field">
-              <span data-i18n="staff.phone">Phone</span>
-              <input id="staffPhone" type="tel" />
-            </label>
-            <label class="field">
-              <span data-i18n="staff.employeeCode">Employee ID</span>
-              <input id="staffCode" type="text" />
-            </label>
-            <label class="field">
-              <span data-i18n="staff.tempPassword">Temporary password</span>
-              <input id="staffTempPassword" type="text" />
-            </label>
-            <div class="field-row" id="doctorFields">
-              <label class="field">
-                <span data-i18n="staff.doctorType">Doctor category</span>
-                <select id="doctorType">
-                  <option value="full" data-i18n="staff.doctorFull">Full time</option>
-                  <option value="locum" data-i18n="staff.doctorLocum">Locum (vacataire)</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="staff.doctorRate">Locum rate (%)</span>
-                <input id="doctorRate" type="number" min="0" max="100" step="1" />
-              </label>
-            </div>
-            <button class="primary" type="submit" data-i18n="staff.create">
-              Create employee
-            </button>
-            <p class="form-message" id="staffMessage"></p>
+
+            <button class="primary" type="submit" data-i18n="register.save">Save profile</button>
+            <p class="form-message" id="registerMessage"></p>
           </form>
-          <div class="staff-list">
-            <h4 data-i18n="staff.listTitle">Staff list</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th data-i18n="staff.listName">Name</th>
-                  <th data-i18n="staff.listRole">Role</th>
-                  <th data-i18n="staff.listEmail">Email</th>
-                  <th data-i18n="staff.listCode">Employee ID</th>
-                </tr>
-              </thead>
-              <tbody id="staffListBody"></tbody>
-            </table>
-          </div>
-        </section>
-      </section>
-
-      <section id="moduleBillingView" class="view hidden">
-        <div class="module-top">
-          <button id="backToModules" class="ghost" type="button" data-i18n="modules.back">
-            Back to modules
-          </button>
-          <div>
-            <h2 data-i18n="billing.title">Billing & Patient Admission</h2>
-            <p class="subhead" data-i18n="billing.subtitle">
-              Register patients, validate insurance, and generate billing details.
-            </p>
-          </div>
-        </div>
-
-        <div class="module-layout">
-          <section class="module-section">
-            <h3 data-i18n="billing.admissionTitle">Patient admission</h3>
-            <div class="pill-row">
-              <label class="pill">
-                <input type="radio" name="patientType" value="new" checked />
-                <span data-i18n="billing.newPatient">New patient</span>
-              </label>
-              <label class="pill">
-                <input type="radio" name="patientType" value="returning" />
-                <span data-i18n="billing.returningPatient">Returning patient</span>
-              </label>
-            </div>
-            <label class="field">
-              <span data-i18n="billing.patientSearch">Search patient</span>
-              <input
-                id="patientSearch"
-                type="search"
-                placeholder="Search by name, ID, or phone"
-                data-i18n-placeholder="billing.patientSearchPlaceholder"
-              />
-            </label>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.fullName">Full name</span>
-                <input id="patientFullName" type="text" />
-              </label>
-              <label class="field">
-                <span data-i18n="billing.sex">Sex</span>
-                <select id="patientSex">
-                  <option value="" data-i18n="select.placeholder">Select...</option>
-                  <option value="female" data-i18n="billing.sexFemale">Female</option>
-                  <option value="male" data-i18n="billing.sexMale">Male</option>
-                  <option value="other" data-i18n="billing.sexOther">Other</option>
-                </select>
-              </label>
-            </div>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.dob">Date of birth</span>
-                <input id="patientDob" type="date" />
-              </label>
-              <label class="field">
-                <span data-i18n="billing.age">Age</span>
-                <input id="patientAge" type="number" min="0" />
-              </label>
-            </div>
-            <label class="field">
-              <span data-i18n="billing.address">Address</span>
-              <input id="patientAddress" type="text" />
-            </label>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.phone">Phone number</span>
-                <input id="patientPhone" type="tel" />
-              </label>
-              <label class="field">
-                <span data-i18n="billing.emergencyPhone">Emergency contact</span>
-                <input id="patientEmergencyPhone" type="tel" />
-              </label>
-            </div>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.whatsapp">WhatsApp</span>
-                <input id="patientWhatsapp" type="tel" />
-              </label>
-              <label class="field">
-                <span data-i18n="billing.profession">Profession</span>
-                <select id="patientProfession">
-                  <option value="" data-i18n="select.placeholder">Select...</option>
-                  <option value="employee" data-i18n="billing.profEmployee">Employee (public/private)</option>
-                  <option value="self" data-i18n="billing.profSelf">Self-employed</option>
-                  <option value="civil" data-i18n="billing.profCivil">Civil servant</option>
-                  <option value="student" data-i18n="billing.profStudent">Student</option>
-                  <option value="retired" data-i18n="billing.profRetired">Retired</option>
-                  <option value="unemployed" data-i18n="billing.profUnemployed">Unemployed</option>
-                  <option value="home" data-i18n="billing.profHome">Homemaker</option>
-                </select>
-              </label>
-            </div>
-            <label class="field">
-              <span data-i18n="billing.education">Education level</span>
-              <select id="patientEducation">
-                <option value="" data-i18n="select.placeholder">Select...</option>
-                <option value="primary" data-i18n="billing.educationPrimary">Primary</option>
-                <option value="secondary" data-i18n="billing.educationSecondary">Secondary</option>
-                <option value="tertiary" data-i18n="billing.educationTertiary">University</option>
-                <option value="other" data-i18n="billing.educationOther">Other</option>
-              </select>
-            </label>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.assignDoctor">Assign doctor</span>
-                <select id="assignDoctor">
-                  <option value="" data-i18n="billing.doctorPlaceholder">Select doctor</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="billing.consultationCost">Consultation cost (CFL)</span>
-                <input id="consultationCost" type="number" min="0" step="1" />
-              </label>
-            </div>
-            <div class="button-row">
-              <button id="addConsultationBtn" class="ghost" type="button" data-i18n="billing.addConsultation">
-                Add consultation to billing
-              </button>
-              <button id="savePatientBtn" class="primary" type="button" data-i18n="billing.savePatient">
-                Save patient profile
-              </button>
-            </div>
-            <p class="form-message" id="patientMessage"></p>
-          </section>
-
-          <section class="module-section">
-            <h3 data-i18n="billing.insuranceTitle">Insurance & coverage</h3>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.insuranceProvider">Insurance provider</span>
-                <select id="insuranceProvider">
-                  <option value="" data-i18n="select.placeholder">Select...</option>
-                  <option>AMU</option>
-                  <option>INAM</option>
-                  <option>SUNU</option>
-                  <option>SUNU-GB</option>
-                  <option>SANLAM</option>
-                  <option>GTA</option>
-                  <option>GCA</option>
-                  <option>MSH</option>
-                  <option>ASCOMA</option>
-                  <option>OLEA</option>
-                  <option>TRANSVIE</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="billing.insuranceId">Insurance ID / dossier</span>
-                <input id="insuranceId" type="text" />
-              </label>
-            </div>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.coverageRate">Coverage rate</span>
-                <select id="coverageRate">
-                  <option value="" data-i18n="select.placeholder">Select...</option>
-                  <option value="100">100%</option>
-                  <option value="95">95%</option>
-                  <option value="90">90%</option>
-                  <option value="80">80%</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="billing.patientId">Patient ID / national ID</span>
-                <input type="text" />
-              </label>
-            </div>
-          </section>
-
-          <section class="module-section">
-            <h3 data-i18n="billing.servicesTitle">Reason for visit</h3>
-            <div class="check-grid">
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceConsult">Consultation</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceLab">Lab analysis</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceImaging">Medical imaging</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceHospital">Hospitalization</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceSurgery">Surgery</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceOutpatient">Outpatient care</span></label>
-            </div>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.consultList">Consultation type</span>
-                <select multiple>
-                  <option>Consultation de médecine générale</option>
-                  <option>Consultation de cardiologie</option>
-                  <option>Consultation de neurologie</option>
-                  <option>Consultation de pneumologie</option>
-                  <option>Consultation ORL</option>
-                  <option>Consultation gynécologique/obstétrique</option>
-                  <option>Consultation pédiatrique</option>
-                  <option>Consultation de dermatologie</option>
-                  <option>Téléconsultation</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="billing.labList">Laboratory tests</span>
-                <select multiple>
-                  <option>Numération formule sanguine (NFS)</option>
-                  <option>Glycémie à jeun</option>
-                  <option>HbA1c</option>
-                  <option>Profil lipidique</option>
-                  <option>Bilan rénal</option>
-                  <option>Ionogramme sanguin</option>
-                  <option>Tests infectieux</option>
-                </select>
-              </label>
-            </div>
-            <label class="field">
-              <span data-i18n="billing.imagingList">Imaging services</span>
-              <select multiple>
-                <option>Radiographie standard</option>
-                <option>Échographie</option>
-                <option>Scanner (CT-scan)</option>
-                <option>IRM</option>
-                <option>Mammographie</option>
-                <option>Doppler vasculaire</option>
-              </select>
-            </label>
-          </section>
-
-          <section class="module-section full">
-            <h3 data-i18n="billing.billingTitle">Billing items</h3>
-            <div class="table-scroll">
-              <table class="billing-table">
-                <thead>
-                  <tr>
-                    <th data-i18n="billing.item">Service / Medication</th>
-                    <th data-i18n="billing.code">Code</th>
-                    <th data-i18n="billing.inamCode">Code INAM</th>
-                    <th data-i18n="billing.category">Category</th>
-                    <th data-i18n="billing.qty">Qty</th>
-                    <th data-i18n="billing.unitPrice">Unit price (CFL)</th>
-                    <th data-i18n="billing.rate">Rate</th>
-                    <th data-i18n="billing.total">Total</th>
-                    <th data-i18n="billing.insuranceShareShort">Insurance</th>
-                    <th data-i18n="billing.patientShareShort">Patient</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody id="billingTableBody"></tbody>
-              </table>
-            </div>
-            <button id="addBillingRow" class="ghost" type="button" data-i18n="billing.addLine">
-              Add line
-            </button>
-          </section>
-
-          <section class="module-section">
-            <h3 data-i18n="billing.summaryTitle">Billing summary</h3>
-            <div class="summary-grid">
-              <div class="summary-item">
-                <span data-i18n="billing.totalCfl">Total (CFL)</span>
-                <strong id="billingTotal">0</strong>
-              </div>
-              <div class="summary-item">
-                <span data-i18n="billing.insuranceShare">Insurance share</span>
-                <strong id="insuranceShare">0</strong>
-              </div>
-              <div class="summary-item">
-                <span data-i18n="billing.patientShare">Patient share</span>
-                <strong id="patientShare">0</strong>
-              </div>
-            </div>
-            <label class="field">
-              <span data-i18n="billing.notes">Billing notes</span>
-              <textarea rows="3"></textarea>
-            </label>
-          </section>
-
-          <section class="module-section full receipt-section">
-            <div class="receipt-actions">
-              <button id="generateReceiptBtn" class="primary" type="button" data-i18n="receipt.generate">
-                Generate receipt
-              </button>
-              <button id="printReceiptBtn" class="ghost" type="button" data-i18n="receipt.print" disabled>
-                Print receipt
-              </button>
-            </div>
-            <div id="receiptPanel" class="receipt hidden">
-              <div class="receipt-header">
-                <div class="receipt-brand">
-                  <img src="Logo Meditrack.webp" alt="MediTrack logo" />
-                  <div>
-                    <p id="receiptFacility" class="receipt-facility">Facility</p>
-                    <p class="receipt-meta" data-i18n="receipt.authorization">
-                      Authorization No: __________
-                    </p>
-                  </div>
-                </div>
-                <div class="receipt-title">
-                  <h3 data-i18n="receipt.title">Payment Receipt No</h3>
-                  <span id="receiptNumber">____</span>
-                </div>
-              </div>
-
-              <div class="receipt-row">
-                <p><strong data-i18n="receipt.cashier">Cashier:</strong> <span id="receiptCashier"></span></p>
-                <p><strong data-i18n="receipt.date">Date:</strong> <span id="receiptDate"></span></p>
-                <p><strong data-i18n="receipt.time">Time:</strong> <span id="receiptTime"></span></p>
-              </div>
-
-              <div class="receipt-patient">
-                <div>
-                  <p><strong data-i18n="receipt.clientCode">Client code:</strong> <span id="receiptClientCode"></span></p>
-                  <p><strong data-i18n="receipt.lastName">Last name:</strong> <span id="receiptLastName"></span></p>
-                  <p><strong data-i18n="receipt.firstName">First name:</strong> <span id="receiptFirstName"></span></p>
-                  <p><strong data-i18n="receipt.address">Address:</strong> <span id="receiptAddress"></span></p>
-                  <p><strong data-i18n="receipt.insurer">Insurer:</strong> <span id="receiptInsurer"></span></p>
-                </div>
-                <div>
-                  <p><strong data-i18n="receipt.sex">Sex:</strong> <span id="receiptSex"></span></p>
-                  <p><strong data-i18n="receipt.dob">Born on:</strong> <span id="receiptDob"></span></p>
-                  <p><strong data-i18n="receipt.profession">Profession:</strong> <span id="receiptProfession"></span></p>
-                  <p><strong data-i18n="receipt.phone">Phone:</strong> <span id="receiptPhone"></span></p>
-                  <p><strong data-i18n="receipt.coverage">Coverage:</strong> <span id="receiptCoverage"></span></p>
-                  <p><strong data-i18n="receipt.policy">Policy No:</strong> <span id="receiptPolicy"></span></p>
-                </div>
-              </div>
-
-              <table class="receipt-table">
-                <thead>
-                  <tr>
-                    <th data-i18n="receipt.service">Service</th>
-                    <th data-i18n="receipt.code">Code</th>
-                    <th data-i18n="receipt.inam">Code INAM</th>
-                    <th data-i18n="receipt.qty">Qty</th>
-                    <th data-i18n="receipt.unitPrice">Unit price</th>
-                    <th data-i18n="receipt.rate">Rate</th>
-                    <th data-i18n="receipt.amount">Amount</th>
-                    <th data-i18n="receipt.insuranceShare">Insurance share</th>
-                    <th data-i18n="receipt.patientShare">Patient share</th>
-                  </tr>
-                </thead>
-                <tbody id="receiptTableBody"></tbody>
-              </table>
-
-              <div class="receipt-totals">
-                <p><strong data-i18n="receipt.totalNet">Total net to pay:</strong> <span id="receiptTotalNet"></span></p>
-                <p><strong data-i18n="receipt.totalInsurance">Total insurance:</strong> <span id="receiptTotalInsurance"></span></p>
-              </div>
-            </div>
-          </section>
         </div>
       </section>
 
-      <section id="roleDashboardView" class="view hidden">
-        <div class="module-top">
-          <button id="backToModulesFromDashboard" class="ghost" type="button" data-i18n="modules.back">
-            Back to modules
-          </button>
-          <div>
-            <h2 data-i18n="dashboard.title">Role dashboard</h2>
-            <p class="subhead" id="dashboardRoleLabel" data-i18n="dashboard.subtitle">
-              Key indicators based on your responsibilities.
-            </p>
+      <section id="hubView" class="view hub-view hidden">
+        <div class="panel hub-actions cell-pair action-card">
+          <div class="cell-title">
+            <h2 data-i18n="hub.title">What would you like to do?</h2>
+            <p class="subhead" data-i18n="hub.subtitle">Choose an option to continue.</p>
+          </div>
+          <div class="cell-content">
+            <div class="hub-action-buttons">
+              <button id="hubAssess" class="action-btn action-assess" type="button">
+                <span class="action-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 12h4l2-4 4 8 2-4h6" />
+                    <circle cx="7" cy="12" r="2" />
+                  </svg>
+                </span>
+                <span class="action-text" data-i18n="hub.assess">Assess health</span>
+              </button>
+              <button id="hubMeds" class="action-btn action-meds" type="button">
+                <span class="action-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="8" width="10" height="8" rx="4" />
+                    <rect x="11" y="8" width="10" height="8" rx="4" />
+                    <line x1="12" y1="8" x2="12" y2="16" />
+                  </svg>
+                </span>
+                <span class="action-text" data-i18n="hub.meds">Check medication</span>
+              </button>
+              <button id="hubBook" class="action-btn action-book" type="button">
+                <span class="action-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="4" y="6" width="16" height="14" rx="3" />
+                    <line x1="4" y1="10" x2="20" y2="10" />
+                    <circle cx="9" cy="14" r="1.5" />
+                    <circle cx="15" cy="14" r="1.5" />
+                  </svg>
+                </span>
+                <span class="action-text" data-i18n="hub.book">Book an appointment</span>
+              </button>
+            </div>
           </div>
         </div>
-
-        <div class="dashboard-grid">
-          <section class="dash-section" data-role="admission">
-            <h3 data-i18n="dashboard.admissionTitle">Admission staff overview</h3>
-            <div class="dash-cards">
-              <div class="dash-card">
-                <p data-i18n="dashboard.totalPatients">Total patients received</p>
-                <strong id="admTotalPatients">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.visitsToday">Visits today</p>
-                <strong id="admVisitsToday">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.visitsWeek">Visits this week</p>
-                <strong id="admVisitsWeek">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.visitsMonth">Visits this month</p>
-                <strong id="admVisitsMonth">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.paidByPatients">Paid by patients</p>
-                <strong id="admPaidPatients">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.paidByInsurance">To be paid by insurance</p>
-                <strong id="admPaidInsurance">0</strong>
-              </div>
-            </div>
-            <div class="dash-table">
-              <h4 data-i18n="dashboard.byStaff">Admissions by staff</h4>
-              <table>
-                <thead>
-                  <tr>
-                    <th data-i18n="dashboard.staffName">Staff</th>
-                    <th data-i18n="dashboard.staffCount">Patients</th>
-                  </tr>
-                </thead>
-                <tbody id="admStaffTable"></tbody>
-              </table>
-            </div>
-          </section>
-
-          <section class="dash-section" data-role="doctor">
-            <h3 data-i18n="dashboard.doctorTitle">Doctor overview</h3>
-            <div class="dash-cards">
-              <div class="dash-card">
-                <p data-i18n="dashboard.doctorPatients">Patients assigned</p>
-                <strong id="docPatientsCount">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.doctorUpcoming">Upcoming consultations</p>
-                <strong id="docUpcoming">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.doctorCompleted">Completed consultations</p>
-                <strong id="docCompleted">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.doctorRemuneration">Locum remuneration estimate</p>
-                <strong id="docRemuneration">0</strong>
-              </div>
-            </div>
-            <div class="dash-split">
+        <div class="hub-summary">
+          <div class="hub-cvh-activity" id="hubCvhActivity">
+            <div class="hub-cvh-header">
               <div>
-                <h4 data-i18n="dashboard.assignedPatients">Assigned patients</h4>
-                <ul id="docPatientList" class="dash-list"></ul>
+                <p class="hub-cvh-title" data-i18n="move.dashboardTitle">Your cardiovascular health</p>
+                <p class="hub-cvh-sub" data-i18n="hub.activityTitle">Daily activity</p>
               </div>
-              <div>
-                <h4 data-i18n="dashboard.treatmentPlans">Diagnoses & treatment plans</h4>
-                <p class="muted" data-i18n="dashboard.placeholder">
-                  Add consultations to see structured clinical plans here.
+              <div class="hub-cvh-actions">
+                <button id="hubOpenMove" class="ghost small" type="button" data-i18n="hub.viewActivity">
+                  View activity
+                </button>
+              </div>
+            </div>
+            <div class="hub-cvh-stats">
+              <div class="hub-stat">
+                <span class="hub-stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 12h4l2-4 4 8 2-4h6" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="hub-stat-label" data-i18n="move.cvhScore">CVH score</p>
+                  <p class="hub-stat-value" id="hubCvhScore">--</p>
+                  <p class="hub-stat-sub" id="hubCvhLabel" data-i18n="move.cvhEmpty">No score yet</p>
+                </div>
+              </div>
+              <div class="hub-stat">
+                <span class="hub-stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 20c1-5 3-8 6-10l4 6" />
+                    <circle cx="17" cy="6" r="3" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="hub-stat-label" data-i18n="move.stepsStat">Steps</p>
+                  <p class="hub-stat-value" id="hubStepsValue">--</p>
+                  <p class="hub-stat-sub" data-i18n="hub.stepsToday">Today's steps</p>
+                </div>
+              </div>
+              <div class="hub-stat">
+                <span class="hub-stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="8" />
+                    <path d="M12 8v5l3 2" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="hub-stat-label" data-i18n="move.minutesStat">Minutes</p>
+                  <p class="hub-stat-value" id="hubMinutesValue">--</p>
+                  <p class="hub-stat-sub" data-i18n="hub.minutesHint">150 min/week</p>
+                </div>
+              </div>
+              <div class="hub-stat">
+                <span class="hub-stat-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 17c4-7 12-7 16 0" />
+                    <path d="M12 12l2 2" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="hub-stat-label" data-i18n="move.distanceStat">Distance</p>
+                  <p class="hub-stat-value" id="hubDistanceValue">--</p>
+                  <p class="hub-stat-sub">km</p>
+                </div>
+              </div>
+            </div>
+            <div class="hub-cvh-meta">
+              <span class="hub-meta-pill" id="hubPAValue">PA · --</span>
+              <span class="hub-meta-pill" id="hubBPValue">BP --/--</span>
+              <button id="hubOpenAssessment" class="ghost small" type="button" data-i18n="hub.viewCvh">
+                CVH trend
+              </button>
+            </div>
+            <div class="hub-cvh-trend">
+              <h4 data-i18n="hub.cvhTitle">CVH score trend</h4>
+              <div id="cvhTrend" class="trend-bars score-trend"></div>
+              <p id="cvhTrendSummary" class="muted"></p>
+              <p id="cvhTrendEmpty" class="muted" data-i18n="hub.cvhEmpty">
+                No CVH scores yet. Run your first assessment.
+              </p>
+              <button id="cvhRunAssessment" class="ghost small" type="button" data-i18n="hub.cvhRun">
+                Run assessment
+              </button>
+            </div>
+          </div>
+          <div class="panel reminders-panel" id="hubReminders">
+            <div class="panel-header">
+              <h3 data-i18n="hub.remindersTitle">Reminders</h3>
+            </div>
+            <div class="reminder-grid">
+              <div class="reminder-block">
+                <p class="reminder-label" data-i18n="hub.medsReminder">Medications</p>
+                <ul id="hubMedList" class="list"></ul>
+                <p id="hubMedEmpty" class="muted" data-i18n="hub.medsEmpty">No medications yet.</p>
+              </div>
+              <div class="reminder-block">
+                <p class="reminder-label" data-i18n="hub.appointmentsReminder">
+                  Upcoming appointments
+                </p>
+                <ul id="hubAppointmentList" class="list"></ul>
+                <p id="hubAppointmentEmpty" class="muted" data-i18n="hub.appointmentsEmpty">
+                  No upcoming appointments.
                 </p>
               </div>
             </div>
-          </section>
-
-          <section class="dash-section" data-role="nurse">
-            <h3 data-i18n="dashboard.nurseTitle">Nursing overview</h3>
-            <div class="dash-cards">
-              <div class="dash-card">
-                <p data-i18n="dashboard.nursePatients">Assigned patients</p>
-                <strong id="nursePatients">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.nurseTasks">Tasks completed today</p>
-                <strong id="nurseTasks">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.nurseMonthly">Monthly activity</p>
-                <strong id="nurseMonthly">0</strong>
-              </div>
+          </div>
+          <div class="panel ask-panel" id="hubAsk">
+            <div class="panel-header">
+              <h3 data-i18n="hub.askTitle">Asks</h3>
+              <p class="subhead" data-i18n="hub.askSub">
+                Ask about CVH prevention or medications.
+              </p>
             </div>
-            <div class="dash-table">
-              <h4 data-i18n="dashboard.doctorPayments">Doctor payments (locum)</h4>
-              <table>
-                <thead>
-                  <tr>
-                    <th data-i18n="dashboard.staffName">Doctor</th>
-                    <th data-i18n="dashboard.amount">Amount</th>
-                  </tr>
-                </thead>
-                <tbody id="nurseDoctorPayments"></tbody>
-              </table>
+            <form id="askForm" class="grid-form">
+              <label class="field full">
+                <span data-i18n="hub.askTopicLabel">Topic</span>
+                <select id="askTopic">
+                  <option value="cvh" data-i18n="hub.askTopicCvh">CVH prevention</option>
+                  <option value="meds" data-i18n="hub.askTopicMeds">Medication guidance</option>
+                </select>
+              </label>
+              <label class="field full">
+                <span data-i18n="hub.askQuestionLabel">Your question</span>
+                <textarea id="askQuestion" rows="3" data-i18n-placeholder="hub.askPlaceholder"></textarea>
+              </label>
+              <button class="primary" type="submit" data-i18n="hub.askSubmit">
+                Get guidance
+              </button>
+              <p class="form-message" id="askMessage"></p>
+            </form>
+            <div id="askResponse" class="ask-response hidden">
+              <h4 data-i18n="hub.askResponseTitle">Guidance</h4>
+              <div id="askResponseBody" class="muted"></div>
             </div>
-          </section>
-
-          <section class="dash-section" data-role="lab">
-            <h3 data-i18n="dashboard.labTitle">Laboratory overview</h3>
-            <div class="dash-cards">
-              <div class="dash-card">
-                <p data-i18n="dashboard.labPending">Tests pending</p>
-                <strong id="labPending">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.labInProgress">In progress</p>
-                <strong id="labInProgress">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.labCompleted">Completed</p>
-                <strong id="labCompleted">0</strong>
-              </div>
-            </div>
-          </section>
-
-          <section class="dash-section" data-role="radiology">
-            <h3 data-i18n="dashboard.radiologyTitle">Imaging overview</h3>
-            <div class="dash-cards">
-              <div class="dash-card">
-                <p data-i18n="dashboard.radioScheduled">Exams scheduled</p>
-                <strong id="radioScheduled">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.radioCompleted">Exams completed</p>
-                <strong id="radioCompleted">0</strong>
-              </div>
-            </div>
-          </section>
-
-          <section class="dash-section" data-role="pharmacy">
-            <h3 data-i18n="dashboard.pharmacyTitle">Pharmacy overview</h3>
-            <div class="dash-cards">
-              <div class="dash-card">
-                <p data-i18n="dashboard.pharmacyDispensed">Medications dispensed</p>
-                <strong id="pharmacyDispensed">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.pharmacyAlerts">Stock alerts</p>
-                <strong id="pharmacyAlerts">0</strong>
-              </div>
-            </div>
-          </section>
-
-          <section class="dash-section" data-role="accountant">
-            <h3 data-i18n="dashboard.accountTitle">Finance overview</h3>
-            <div class="dash-cards">
-              <div class="dash-card">
-                <p data-i18n="dashboard.revenue">Total revenue</p>
-                <strong id="accRevenue">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.patientShare">Patient payments</p>
-                <strong id="accPatient">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.insuranceShare">Insurance payments</p>
-                <strong id="accInsurance">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.outstanding">Outstanding balances</p>
-                <strong id="accOutstanding">0</strong>
-              </div>
-            </div>
-            <div class="dash-table">
-              <h4 data-i18n="dashboard.doctorPayments">Doctor payments (locum)</h4>
-              <table>
-                <thead>
-                  <tr>
-                    <th data-i18n="dashboard.staffName">Doctor</th>
-                    <th data-i18n="dashboard.amount">Amount</th>
-                  </tr>
-                </thead>
-                <tbody id="accDoctorPayments"></tbody>
-              </table>
-            </div>
-          </section>
-
-          <section class="dash-section" data-role="director">
-            <h3 data-i18n="dashboard.adminTitle">Management overview</h3>
-            <div class="dash-cards">
-              <div class="dash-card">
-                <p data-i18n="dashboard.totalPatients">Total patients received</p>
-                <strong id="dirPatients">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.totalServices">Service utilization</p>
-                <strong id="dirServices">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.revenue">Total revenue</p>
-                <strong id="dirRevenue">0</strong>
-              </div>
-              <div class="dash-card">
-                <p data-i18n="dashboard.staffProductivity">Staff productivity</p>
-                <strong id="dirStaffProductivity">0</strong>
-              </div>
-            </div>
-          </section>
-
-          <section class="dash-section" data-role="other">
-            <h3 data-i18n="dashboard.otherTitle">General overview</h3>
-            <p class="muted" data-i18n="dashboard.otherSubtitle">
-              Your dashboard will appear here once your role is configured.
+            <p class="muted small" data-i18n="hub.askDisclaimer">
+              This guidance is general education and not a medical diagnosis.
             </p>
-          </section>
+          </div>
         </div>
+      </section>
+
+      <section id="sleepView" class="view hidden">
+        <div class="view-header">
+          <h2 data-i18n="nav.sleep">Sleep</h2>
+        </div>
+        <div class="panel cell-pair sleep-card">
+          <div class="cell-title">
+            <h3 data-i18n="sleep.title">Sleep tracking</h3>
+            <p class="subhead" data-i18n="sleep.subhead">
+              Log your sleep and get tips to improve rest.
+            </p>
+          </div>
+          <div class="cell-content square">
+            <form id="sleepForm" class="grid-form">
+              <label class="field">
+                <span data-i18n="sleep.hours">Hours slept</span>
+                <input id="sleepHoursInput" type="number" min="0" step="0.5" placeholder="e.g., 7.5" />
+              </label>
+              <label class="field">
+                <span data-i18n="sleep.goal">Sleep goal (hours)</span>
+                <input id="sleepGoalInput" type="number" min="0" step="0.5" placeholder="e.g., 8" />
+              </label>
+              <button class="primary" type="submit" data-i18n="sleep.save">Save</button>
+              <p class="form-message" id="sleepMessage"></p>
+            </form>
+            <p id="sleepSummary" class="muted" data-i18n="sleep.empty">
+              No sleep data yet.
+            </p>
+            <div class="steps-trend">
+              <h4 data-i18n="sleep.trendTitle">7-day trend</h4>
+              <div id="sleepTrend" class="trend-bars"></div>
+              <p id="sleepTrendSummary" class="muted" data-i18n="sleep.trendEmpty">
+                No trend data yet.
+              </p>
+            </div>
+            <div class="device-connect">
+              <h4 data-i18n="sleep.deviceTitle">Connect a device</h4>
+              <p class="muted" data-i18n="sleep.deviceHint">
+                Link Apple Health or Google Fit (coming soon).
+              </p>
+              <div class="device-buttons">
+                <button class="ghost" type="button" data-device="apple">Apple Health</button>
+                <button class="ghost" type="button" data-device="google">Google Fit</button>
+              </div>
+              <p class="form-message" id="sleepConnectMessage"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="moveView" class="view hidden">
+        <div class="view-header">
+          <h2 data-i18n="move.dashboardTitle">Your cardiovascular health</h2>
+        </div>
+
+        <div class="activity-hero">
+          <div class="activity-hero-top">
+            <h3 data-i18n="move.heroTitle">Your cardiovascular health</h3>
+          </div>
+          <div class="activity-stats">
+            <div class="activity-stat">
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 12h4l2-4 4 8 2-4h6" />
+                </svg>
+              </span>
+              <div>
+                <p class="stat-label" data-i18n="move.cvhScore">CVH score</p>
+                <p class="stat-value" id="moveCvhScore">--</p>
+                <p class="stat-sub" id="moveCvhLabel" data-i18n="move.cvhEmpty">No score yet</p>
+              </div>
+            </div>
+            <div class="activity-stat">
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 20c1-5 3-8 6-10l4 6" />
+                  <circle cx="17" cy="6" r="3" />
+                </svg>
+              </span>
+              <div>
+                <p class="stat-label" data-i18n="move.stepsStat">Steps</p>
+                <p class="stat-value" id="moveStepsValue">--</p>
+                <p class="stat-sub" data-i18n="move.stepsToday">Today's steps</p>
+              </div>
+            </div>
+            <div class="activity-stat">
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M12 8v5l3 2" />
+                </svg>
+              </span>
+              <div>
+                <p class="stat-label" data-i18n="move.minutesStat">Minutes</p>
+                <p class="stat-value" id="moveMinutesValue">--</p>
+                <p class="stat-sub" data-i18n="move.whoTip">
+                  WHO recommends 150 minutes of moderate activity per week.
+                </p>
+              </div>
+            </div>
+            <div class="activity-stat">
+              <span class="stat-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 17c4-7 12-7 16 0" />
+                  <path d="M12 12l2 2" />
+                </svg>
+              </span>
+              <div>
+                <p class="stat-label" data-i18n="move.distanceStat">Distance</p>
+                <p class="stat-value" id="moveDistanceValue">--</p>
+                <p class="stat-sub">km</p>
+              </div>
+            </div>
+          </div>
+          <div class="activity-meta">
+            <div class="meta-item">
+              <span class="meta-label" data-i18n="move.paLabel">PA</span>
+              <span id="movePAValue">PA · --</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label" data-i18n="move.bpLabel">BP</span>
+              <span id="moveBPValue">--/--</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-card-header">
+            <h3 data-i18n="move.recommendationsTitle">Recommendations</h3>
+            <p class="subhead" data-i18n="move.recommendationsSub">To improve</p>
+          </div>
+          <div class="activity-card-body">
+            <ul id="moveRecommendationsList" class="activity-list"></ul>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-card-header">
+            <h3 data-i18n="move.targetsTitle">Personal targets</h3>
+            <p class="subhead" data-i18n="move.targetsSub">My personal goals</p>
+          </div>
+          <div class="activity-card-body">
+            <ul id="moveTargetsList" class="activity-list"></ul>
+          </div>
+        </div>
+
+        <div class="activity-card badge-card">
+          <div class="activity-card-header">
+            <h3 data-i18n="move.badgesTitle">Badges</h3>
+          </div>
+          <div class="activity-card-body">
+            <div class="badge-row">
+              <div class="badge-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 14l3 3 6-7" />
+                </svg>
+                <span data-i18n="move.badgeStreak">Consistency</span>
+              </div>
+              <div class="badge-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 20s-7-4.5-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.5-7 9-7 9z" />
+                </svg>
+                <span data-i18n="move.badgeHeart">Heart care</span>
+              </div>
+              <div class="badge-pill">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13 2L6 14h6l-1 8 7-12h-6z" />
+                </svg>
+                <span data-i18n="move.badgeSpark">Energy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-card activity-form-card">
+          <div class="activity-card-header">
+            <h3 data-i18n="move.updateTitle">Update today's activity</h3>
+            <p class="subhead" data-i18n="move.updateSubhead">
+              Track activity and keep your streak.
+            </p>
+          </div>
+          <div class="activity-card-body">
+            <form id="moveForm" class="grid-form">
+              <label class="field">
+                <span data-i18n="move.stepsToday">Today's steps</span>
+                <input id="moveStepsToday" type="number" min="0" step="1" placeholder="e.g., 7000" />
+              </label>
+              <label class="field">
+                <span data-i18n="move.stepsGoal">Daily goal</span>
+                <input id="moveStepsGoal" type="number" min="0" step="1" placeholder="e.g., 10000" />
+              </label>
+              <button class="primary" type="submit" data-i18n="move.save">Save</button>
+              <p class="form-message" id="moveMessage"></p>
+            </form>
+            <p id="moveSummary" class="muted" data-i18n="move.empty">
+              No activity data yet.
+            </p>
+            <div class="steps-trend">
+              <h4 data-i18n="move.trendTitle">7-day trend</h4>
+              <div id="moveTrend" class="trend-bars"></div>
+              <p id="moveTrendSummary" class="muted" data-i18n="move.trendEmpty">
+                No trend data yet.
+              </p>
+            </div>
+            <div class="device-connect">
+              <h4 data-i18n="move.deviceTitle">Connect a device</h4>
+              <p class="muted" data-i18n="move.deviceHint">
+                Link Apple Health, Google Fit, or Fitbit (coming soon).
+              </p>
+              <div class="device-buttons">
+                <button class="ghost" type="button" data-device="apple">Apple Health</button>
+                <button class="ghost" type="button" data-device="google">Google Fit</button>
+                <button class="ghost" type="button" data-device="fitbit">Fitbit</button>
+              </div>
+              <p class="form-message" id="moveConnectMessage"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="exploreView" class="view hidden">
+        <div class="view-header">
+          <h2 data-i18n="nav.explore">Explore</h2>
+        </div>
+        <div class="panel cell-pair explore-card">
+          <div class="cell-title">
+            <h3 data-i18n="explore.title">Explore features</h3>
+            <p class="subhead" data-i18n="explore.subhead">
+              Jump into any part of B-Healthy.
+            </p>
+          </div>
+          <div class="cell-content square">
+            <div class="hub-options explore-options">
+              <button class="option-card option-assess" type="button" data-explore="assessment">
+                <span class="option-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M3 12h4l2-4 4 8 2-4h6" />
+                    <circle cx="7" cy="12" r="2" />
+                  </svg>
+                </span>
+                <span class="option-text" data-i18n="hub.assess">Assess health</span>
+              </button>
+              <button class="option-card option-meds" type="button" data-explore="meds">
+                <span class="option-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="8" width="10" height="8" rx="4" />
+                    <rect x="11" y="8" width="10" height="8" rx="4" />
+                    <line x1="12" y1="8" x2="12" y2="16" />
+                  </svg>
+                </span>
+                <span class="option-text" data-i18n="hub.meds">Check medication</span>
+              </button>
+              <button class="option-card option-book" type="button" data-explore="appointments">
+                <span class="option-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="4" y="6" width="16" height="14" rx="3" />
+                    <line x1="4" y1="10" x2="20" y2="10" />
+                    <circle cx="9" cy="14" r="1.5" />
+                    <circle cx="15" cy="14" r="1.5" />
+                  </svg>
+                </span>
+                <span class="option-text" data-i18n="hub.book">Book an appointment</span>
+              </button>
+              <button class="option-card option-assess" type="button" data-explore="ask">
+                <span class="option-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M9.5 9a2.5 2.5 0 1 1 3.8 2.1c-.9.5-1.3 1-1.3 2" />
+                    <circle cx="12" cy="17" r="1" />
+                  </svg>
+                </span>
+                <span class="option-text" data-i18n="hub.askTitle">Asks</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="medsView" class="view hidden">
+        <div class="view-header">
+          <h2 data-i18n="meds.guardianTitle">Treatment Guardian</h2>
+          <button id="backToHubFromMeds" class="ghost" type="button" data-i18n="nav.back">
+            Back to menu
+          </button>
+        </div>
+        <div class="treatment-hero">
+          <div class="treatment-hero-top">
+            <div class="treatment-pill-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <rect x="6" y="24" width="26" height="16" rx="8" fill="#7ce48f" />
+                <rect x="32" y="24" width="26" height="16" rx="8" fill="#ffffff" />
+                <rect x="18" y="6" width="26" height="16" rx="8" fill="#ffd6e0" />
+                <rect x="32" y="6" width="26" height="16" rx="8" fill="#f7b233" />
+              </svg>
+            </div>
+            <h3 data-i18n="meds.setupTitle">Set Up Medications</h3>
+          </div>
+          <div class="treatment-features">
+            <div class="treatment-feature">
+              <span class="treatment-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="8" width="10" height="8" rx="4" />
+                  <rect x="11" y="8" width="10" height="8" rx="4" />
+                  <line x1="12" y1="8" x2="12" y2="16" />
+                </svg>
+              </span>
+              <p data-i18n="meds.setupTrack">Track all your medications in one place.</p>
+            </div>
+            <div class="treatment-divider"></div>
+            <div class="treatment-feature">
+              <span class="treatment-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="4" y="6" width="16" height="14" rx="3" />
+                  <line x1="4" y1="10" x2="20" y2="10" />
+                  <circle cx="9" cy="14" r="1.5" />
+                  <circle cx="15" cy="14" r="1.5" />
+                </svg>
+              </span>
+              <p data-i18n="meds.setupSchedule">Set a schedule and get reminders.</p>
+            </div>
+            <div class="treatment-divider"></div>
+            <div class="treatment-feature">
+              <span class="treatment-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </span>
+              <p data-i18n="meds.setupPrivacy">
+                Your medication information is encrypted and cannot be read by anyone.
+              </p>
+            </div>
+          </div>
+          <button id="medSetupBtn" class="primary treatment-btn" type="button" data-i18n="meds.setupButton">
+            Set Up Medications
+          </button>
+        </div>
+
+        <div class="treatment-privacy-card">
+          <img src="B-HEALTHY-LOGO-.png" alt="B-Healthy" />
+          <p data-i18n="meds.privacyNote">
+            Your medication information is encrypted and cannot be read by anyone, including B-Healthy.
+          </p>
+        </div>
+
+        <div class="panel treatment-panel" id="medSetupSection">
+          <h3 data-i18n="meds.current">Current medications</h3>
+          <p id="medReminderMessage" class="reminder-banner hidden"></p>
+          <ul id="medList" class="list"></ul>
+          <p id="medEmpty" class="muted" data-i18n="meds.empty">No medications yet.</p>
+        </div>
+        <div class="panel treatment-panel">
+          <h3 data-i18n="meds.addTitle">Add medication</h3>
+          <form id="medForm" class="grid-form">
+            <label class="field">
+              <span data-i18n="meds.name">Medication name</span>
+              <input id="medName" type="text" required />
+            </label>
+            <label class="field">
+              <span data-i18n="meds.dosage">Dosage</span>
+              <input id="medDosage" type="text" />
+            </label>
+            <label class="field">
+              <span data-i18n="meds.posology">Posology</span>
+              <input id="medPosology" type="text" />
+            </label>
+            <label class="field">
+              <span data-i18n="meds.dosesPerDay">Doses per day</span>
+              <select id="medDosesPerDay">
+                <option value="" data-i18n="select.placeholder">Select...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </label>
+            <label class="field">
+              <span data-i18n="meds.nextVisit">Next visit date (optional)</span>
+              <input id="medNextVisit" type="date" />
+            </label>
+            <label class="field full">
+              <span data-i18n="meds.notes">Notes</span>
+              <textarea id="medNotes" rows="3"></textarea>
+            </label>
+            <button class="primary" type="submit" data-i18n="meds.add">Save medication</button>
+            <p class="form-message" id="medMessage"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="appointmentsView" class="view hidden">
+        <div class="view-header">
+          <h2 data-i18n="appointments.title">Book an appointment</h2>
+          <button id="backToHubFromAppointments" class="ghost" type="button" data-i18n="nav.back">
+            Back to menu
+          </button>
+        </div>
+        <div class="panel appointment-panel">
+          <h3 data-i18n="appointments.greeting">How are you feeling?</h3>
+          <p class="subhead" data-i18n="appointments.takeAppointment">Book an appointment</p>
+          <label class="search-field">
+            <span class="sr-only" data-i18n="appointments.searchLabel">Search</span>
+            <span class="search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+              </svg>
+            </span>
+            <input
+              id="appointmentSearch"
+              type="search"
+              placeholder="Search doctors, specialties, or city"
+              data-i18n-placeholder="appointments.searchPlaceholder"
+            />
+          </label>
+          <div class="appointment-modes">
+            <button id="modeInPerson" class="mode-card active" type="button" data-mode="in_person">
+              <div class="mode-text">
+                <p class="mode-title" data-i18n="appointments.modeInPerson">In clinic</p>
+                <p class="mode-sub" data-i18n="appointments.modeInPersonHint">
+                  Meet a practitioner on site
+                </p>
+              </div>
+              <span class="mode-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64">
+                  <rect x="10" y="30" width="44" height="20" rx="6"></rect>
+                  <circle cx="24" cy="24" r="8"></circle>
+                  <circle cx="44" cy="24" r="6"></circle>
+                </svg>
+              </span>
+            </button>
+            <button id="modeRemote" class="mode-card" type="button" data-mode="remote">
+              <div class="mode-text">
+                <p class="mode-title" data-i18n="appointments.modeRemote">Remote</p>
+                <p class="mode-sub" data-i18n="appointments.modeRemoteHint">
+                  Video consultation from home
+                </p>
+              </div>
+              <span class="mode-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64">
+                  <rect x="8" y="18" width="48" height="28" rx="8"></rect>
+                  <circle cx="28" cy="32" r="8"></circle>
+                  <polygon points="40,26 50,32 40,38"></polygon>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="panel suggestions-panel">
+          <h3 data-i18n="appointments.suggestions">Suggestions</h3>
+          <div class="suggestion-row">
+            <button id="suggestionCardio" class="suggestion-card" type="button">
+              <div>
+                <p class="suggestion-title" data-i18n="appointments.suggestionCardio">
+                  Heart health check
+                </p>
+                <p class="suggestion-cta" data-i18n="appointments.suggestionCtaAssessment">
+                  Start assessment
+                </p>
+              </div>
+            </button>
+            <button id="suggestionLifestyle" class="suggestion-card" type="button">
+              <div>
+                <p class="suggestion-title" data-i18n="appointments.suggestionLifestyle">
+                  Lifestyle coaching
+                </p>
+                <p class="suggestion-cta" data-i18n="appointments.suggestionCtaAdvice">
+                  View advice
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="panel">
+          <h3 data-i18n="appointments.bookTitle">Choose a doctor and time</h3>
+          <label class="field">
+            <span data-i18n="appointments.doctor">Doctor</span>
+            <select id="doctorSelect">
+              <option value="" data-i18n="select.placeholder">Select...</option>
+            </select>
+          </label>
+          <div id="slotList" class="list"></div>
+          <p id="slotEmpty" class="muted" data-i18n="appointments.noSlots">
+            No open slots for this doctor yet.
+          </p>
+          <p class="form-message" id="bookingMessage"></p>
+        </div>
+        <div class="panel">
+          <h3 data-i18n="appointments.upcoming">Your upcoming appointments</h3>
+          <ul id="patientAppointments" class="list"></ul>
+          <p id="patientAppointmentsEmpty" class="muted" data-i18n="appointments.none">
+            No upcoming appointments.
+          </p>
+        </div>
+      </section>
+
+      <section id="assessmentView" class="view hidden">
+        <header class="hero">
+          <div class="brand">
+            <img class="logo" src="B-HEALTHY-LOGO-.png" alt="B-Healthy logo" />
+            <p class="eyebrow">B-Healthy</p>
+          </div>
+          <h1 data-i18n="hero.title">Check you heart health</h1>
+        <p class="subhead" data-i18n="hero.subhead">
+            A simple, private check-in on eight key cardiovascular health metrics.
+        </p>
+          <details class="install-tip">
+            <summary data-i18n="install.summary">Install this app (optional)</summary>
+            <p data-i18n="install.desktop">
+              Desktop (Chrome/Edge): click the install icon in the address bar, or use the browser menu.
+            </p>
+            <p data-i18n="install.android">
+              Android (Chrome): Menu → Install app or Add to Home screen.
+            </p>
+            <p data-i18n="install.ios">
+              iPhone/iPad (Safari): Share → Add to Home Screen.
+            </p>
+          </details>
+        </header>
+
+        <section class="score-panel" aria-live="polite">
+          <div class="score-card">
+            <div class="score-header">
+              <h2 data-i18n="score.heading">Overall Cardiovascular Health</h2>
+              <button id="resetBtn" class="ghost" type="button" data-i18n="actions.reset">Reset</button>
+            </div>
+            <div class="score-visual">
+              <div class="score-ring" aria-hidden="true">
+                <div class="score-heart">
+                  <svg class="heart-icon" viewBox="0 0 64 64" aria-hidden="true">
+                    <path
+                      d="M32 54s-18-10.5-18-24A11 11 0 0 1 32 22a11 11 0 0 1 18 8c0 13.5-18 24-18 24z"
+                    />
+                  </svg>
+                  <div class="score-number">
+                    <span class="score-value" id="scoreValue">--</span>
+                    <span class="score-unit" id="scoreUnit">/100</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="score-label" id="scoreLabel" data-i18n="score.fillForm">
+              Fill out the form, then click Get Results.
+            </div>
+            <div class="scale" aria-hidden="true">
+              <div class="indicator" id="scoreIndicator"></div>
+            </div>
+            <p class="scale-legend" data-i18n="score.legend">Low &lt;50 · Moderate 50–79 · High ≥80</p>
+            <div class="advice hidden" id="advicePanel">
+              <p class="advice-title" data-i18n="advice.title">Targeted advice</p>
+              <p class="advice-summary" id="adviceSummary"></p>
+              <ul class="advice-list" id="adviceList"></ul>
+              <p class="advice-clinician" id="adviceClinician"></p>
+            </div>
+          </div>
+        </section>
+
+        <form id="assessment" class="grid" autocomplete="off">
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 20c2-4 14-4 16 0" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.about">About You</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.stats">Stats</span>
+            </div>
+            <p class="metric-help" data-i18n="about.help">
+              Age and sex help with aggregate statistics only. Not used in scoring.
+            </p>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="about.age">Age</span>
+                <input
+                  id="age"
+                  type="number"
+                  min="18"
+                  max="120"
+                  step="1"
+                  placeholder="e.g., 42"
+                  data-i18n-placeholder="placeholders.age"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="about.sex">Sex at birth</span>
+                <select id="sex">
+                  <option value="" data-i18n="select.placeholder">Select...</option>
+                  <option value="female" data-i18n="about.sexOptions.female">Female</option>
+                  <option value="male" data-i18n="about.sexOptions.male">Male</option>
+                  <option value="intersex" data-i18n="about.sexOptions.intersex">Intersex</option>
+                  <option value="prefer-not" data-i18n="about.sexOptions.preferNot">Prefer not to say</option>
+                </select>
+              </label>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 19c3-9 10-12 14-14-1 8-4 14-10 14-2 0-3 0-4 0z" />
+                    <path d="M5 19c4-3 7-6 11-10" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.diet">Diet Quality</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.behavior">Behavior</span>
+            </div>
+            <p class="metric-help" data-i18n="diet.help">
+              Quick diet check. We translate these answers into a diet score (0–100).
+            </p>
+            <div class="question-group">
+              <p data-i18n="diet.produce.label">Fruits and vegetables per day</p>
+              <label>
+                <input type="radio" name="dietProduce" value="0" />
+                <span data-i18n="diet.produce.opt0">0–1 servings</span>
+              </label>
+              <label>
+                <input type="radio" name="dietProduce" value="10" />
+                <span data-i18n="diet.produce.opt1">2–3 servings</span>
+              </label>
+              <label>
+                <input type="radio" name="dietProduce" value="20" />
+                <span data-i18n="diet.produce.opt2">4+ servings</span>
+              </label>
+            </div>
+            <div class="question-group">
+              <p data-i18n="diet.grains.label">Whole grains per day</p>
+              <label>
+                <input type="radio" name="dietGrains" value="0" />
+                <span data-i18n="diet.grains.opt0">0–1 servings</span>
+              </label>
+              <label>
+                <input type="radio" name="dietGrains" value="10" />
+                <span data-i18n="diet.grains.opt1">2–3 servings</span>
+              </label>
+              <label>
+                <input type="radio" name="dietGrains" value="20" />
+                <span data-i18n="diet.grains.opt2">4+ servings</span>
+              </label>
+            </div>
+            <div class="question-group">
+              <p data-i18n="diet.sugary.label">Sugary drinks per week</p>
+              <label>
+                <input type="radio" name="dietSugary" value="20" />
+                <span data-i18n="diet.sugary.opt0">0–1 drinks</span>
+              </label>
+              <label>
+                <input type="radio" name="dietSugary" value="10" />
+                <span data-i18n="diet.sugary.opt1">2–6 drinks</span>
+              </label>
+              <label>
+                <input type="radio" name="dietSugary" value="0" />
+                <span data-i18n="diet.sugary.opt2">7+ drinks</span>
+              </label>
+            </div>
+            <div class="question-group">
+              <p data-i18n="diet.meat.label">Processed or red meat per week</p>
+              <label>
+                <input type="radio" name="dietMeat" value="20" />
+                <span data-i18n="diet.meat.opt0">0–1 servings</span>
+              </label>
+              <label>
+                <input type="radio" name="dietMeat" value="10" />
+                <span data-i18n="diet.meat.opt1">2–6 servings</span>
+              </label>
+              <label>
+                <input type="radio" name="dietMeat" value="0" />
+                <span data-i18n="diet.meat.opt2">7+ servings</span>
+              </label>
+            </div>
+            <div class="question-group">
+              <p data-i18n="diet.protein.label">Fish or plant proteins per week</p>
+              <label>
+                <input type="radio" name="dietProtein" value="0" />
+                <span data-i18n="diet.protein.opt0">0–1 servings</span>
+              </label>
+              <label>
+                <input type="radio" name="dietProtein" value="10" />
+                <span data-i18n="diet.protein.opt1">2–3 servings</span>
+              </label>
+              <label>
+                <input type="radio" name="dietProtein" value="20" />
+                <span data-i18n="diet.protein.opt2">4+ servings</span>
+              </label>
+            </div>
+            <p class="metric-footnote" data-i18n="diet.footnote">
+              We can refine this with a longer AHA diet screener later.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 10v4" />
+                    <path d="M7 9v6" />
+                    <path d="M10 11h4" />
+                    <path d="M13 8h4" />
+                    <path d="M17 6h3" />
+                    <path d="M14 14h4" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.activity">Physical Activity</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.behavior">Behavior</span>
+            </div>
+            <p class="metric-help" data-i18n="activity.help">
+              Moderate minutes + 2× vigorous minutes per week.
+            </p>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="activity.moderate">Moderate minutes/week</span>
+                <input
+                  id="activityModerate"
+                  type="number"
+                  min="0"
+                  step="1"
+                  placeholder="e.g., 120"
+                  data-i18n-placeholder="placeholders.moderate"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="activity.vigorous">Vigorous minutes/week</span>
+                <input
+                  id="activityVigorous"
+                  type="number"
+                  min="0"
+                  step="1"
+                  placeholder="e.g., 30"
+                  data-i18n-placeholder="placeholders.vigorous"
+                />
+              </label>
+            </div>
+            <p class="metric-footnote" data-i18n="activity.footnote">
+              AHA scoring caps at 150+ equivalent minutes.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 12c2-4 5-6 6-6s4 2 6 6" />
+                    <path d="M6 12c2 4 5 6 6 6s4-2 6-6" />
+                    <circle cx="12" cy="12" r="2" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.nicotine">Nicotine Exposure</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.behavior">Behavior</span>
+            </div>
+            <p class="metric-help" data-i18n="nicotine.help">Includes smoking, vaping, and secondhand smoke.</p>
+            <label class="field">
+              <span data-i18n="nicotine.status">Status</span>
+              <select id="nicotineStatus">
+                <option value="" data-i18n="select.placeholder">Select...</option>
+                <option value="100" data-i18n="nicotine.options.never">Never used</option>
+                <option value="75" data-i18n="nicotine.options.former5">Former, &gt;5 years</option>
+                <option value="50" data-i18n="nicotine.options.former1to5">Former, 1–5 years</option>
+                <option value="25" data-i18n="nicotine.options.former1">Former, &lt;1 year</option>
+                <option value="25" data-i18n="nicotine.options.vaping">Current vaping/nicotine (no cigarettes)</option>
+                <option value="0" data-i18n="nicotine.options.current">Current smoker</option>
+              </select>
+            </label>
+            <label class="toggle">
+              <input id="nicotineSecondhand" type="checkbox" />
+              <span data-i18n="nicotine.secondhand">Regular secondhand smoke exposure indoors</span>
+            </label>
+            <p class="metric-footnote" data-i18n="nicotine.footnote">
+              Secondhand smoke lowers the score by 20 points.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 12h16" />
+                    <path d="M6 8h12" />
+                    <path d="M8 4h8" />
+                    <path d="M8 20h8" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.sleep">Sleep Health</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.behavior">Behavior</span>
+            </div>
+            <p class="metric-help" data-i18n="sleep.help">Average hours of sleep per night (adults).</p>
+            <label class="field">
+              <span data-i18n="sleep.hours">Hours/night</span>
+              <input
+                id="sleepHours"
+                type="number"
+                min="0"
+                max="14"
+                step="0.1"
+                placeholder="e.g., 7.5"
+                data-i18n-placeholder="placeholders.sleep"
+              />
+            </label>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 20h14" />
+                    <path d="M7 4h10" />
+                    <path d="M12 4v16" />
+                    <path d="M9 8h6" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.bmi">Body Mass Index</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.factor">Factor</span>
+            </div>
+            <p class="metric-help" data-i18n="bmi.help">
+              Enter weight and height. We compute BMI automatically.
+            </p>
+            <div class="field-row">
+              <label class="toggle">
+                <input type="radio" name="bmiUnit" value="imperial" checked />
+                <span data-i18n="bmi.unitImperial">Imperial (lb, in)</span>
+              </label>
+              <label class="toggle">
+                <input type="radio" name="bmiUnit" value="metric" />
+                <span data-i18n="bmi.unitMetric">Metric (kg, cm)</span>
+              </label>
+            </div>
+            <div class="field-row" id="bmiImperialFields">
+              <label class="field">
+                <span data-i18n="bmi.weightLb">Weight (lb)</span>
+                <input
+                  id="weightLb"
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  placeholder="e.g., 180"
+                  data-i18n-placeholder="placeholders.weightLb"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="bmi.heightIn">Height (in)</span>
+                <input
+                  id="heightIn"
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  placeholder="e.g., 70"
+                  data-i18n-placeholder="placeholders.heightIn"
+                />
+              </label>
+            </div>
+            <div class="field-row hidden" id="bmiMetricFields">
+              <label class="field">
+                <span data-i18n="bmi.weightKg">Weight (kg)</span>
+                <input
+                  id="weightKg"
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  placeholder="e.g., 82"
+                  data-i18n-placeholder="placeholders.weightKg"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="bmi.heightCm">Height (cm)</span>
+                <input
+                  id="heightCm"
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  placeholder="e.g., 178"
+                  data-i18n-placeholder="placeholders.heightCm"
+                />
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="bmi.calculated">Calculated BMI</span>
+              <input id="bmiResult" type="text" readonly placeholder="--" />
+            </label>
+            <p class="metric-footnote" data-i18n="bmi.footnote">
+              BMI is a factor. Consider clinical context.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 13c2-2 4-3 7-3s5 1 7 3" />
+                    <path d="M6 17c2-1 4-2 6-2s4 1 6 2" />
+                    <path d="M9 7h6" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.lipids">Blood Lipids (Non-HDL)</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.factor">Factor</span>
+            </div>
+            <p class="metric-help" data-i18n="lipids.help">
+              Most labs report non-HDL cholesterol (mg/dL).
+            </p>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="lipids.nonHdl">Non-HDL (mg/dL)</span>
+                <input
+                  id="lipidsNonHDL"
+                  type="number"
+                  min="0"
+                  step="1"
+                  placeholder="e.g., 140"
+                  data-i18n-placeholder="placeholders.nonHdl"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="lipids.meds">On cholesterol medication</span>
+                <select id="lipidsMeds">
+                  <option value="" data-i18n="select.placeholder">Select...</option>
+                  <option value="yes" data-i18n="yes">Yes</option>
+                  <option value="no" data-i18n="no">No</option>
+                </select>
+              </label>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14" />
+                    <path d="M8 6h8" />
+                    <path d="M9 18h6" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.glucose">Blood Glucose</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.factor">Factor</span>
+            </div>
+            <p class="metric-help" data-i18n="glucose.help">
+              Use HbA1c (%) if available; scoring depends on diagnosis.
+            </p>
+            <div class="field-row">
+              <label class="toggle">
+                <input type="radio" name="glucoseMode" value="no-diabetes" checked />
+                <span data-i18n="glucose.noDiabetes">No diabetes diagnosis</span>
+              </label>
+              <label class="toggle">
+                <input type="radio" name="glucoseMode" value="diabetes" />
+                <span data-i18n="glucose.diabetes">Diabetes diagnosis</span>
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="glucose.a1c">HbA1c (%)</span>
+              <input
+                id="glucoseA1c"
+                type="number"
+                min="3"
+                max="15"
+                step="0.1"
+                placeholder="e.g., 6.8"
+                data-i18n-placeholder="placeholders.a1c"
+              />
+            </label>
+            <p class="metric-footnote" data-i18n="glucose.footnote">
+              If HbA1c ≥7.0% and you have diabetes, choose diabetes mode.
+            </p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-head">
+              <div class="metric-title">
+                <span class="metric-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 14c2 2 4 3 6 3s4-1 6-3" />
+                    <path d="M7 9c1-2 3-3 5-3s4 1 5 3" />
+                    <path d="M12 7v10" />
+                  </svg>
+                </span>
+                <h3 data-i18n="metrics.pressure">Blood Pressure</h3>
+              </div>
+              <span class="metric-pill" data-i18n="pills.factor">Factor</span>
+            </div>
+            <p class="metric-help" data-i18n="pressure.help">
+              Use your most recent resting blood pressure (mmHg).
+            </p>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="pressure.systolic">Systolic</span>
+                <input
+                  id="bpSystolic"
+                  type="number"
+                  min="70"
+                  max="220"
+                  step="1"
+                  placeholder="e.g., 118"
+                  data-i18n-placeholder="placeholders.systolic"
+                />
+              </label>
+              <label class="field">
+                <span data-i18n="pressure.diastolic">Diastolic</span>
+                <input
+                  id="bpDiastolic"
+                  type="number"
+                  min="40"
+                  max="140"
+                  step="1"
+                  placeholder="e.g., 76"
+                  data-i18n-placeholder="placeholders.diastolic"
+                />
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="pressure.meds">On blood pressure medication</span>
+              <select id="bpMeds">
+                <option value="" data-i18n="select.placeholder">Select...</option>
+                <option value="yes" data-i18n="yes">Yes</option>
+                <option value="no" data-i18n="no">No</option>
+              </select>
+            </label>
+          </article>
+        </form>
+
+        <section class="actions">
+          <button id="getResultsBtn" class="primary" type="button" disabled data-i18n="actions.getResults">
+            Get Results
+          </button>
+          <p class="hint" id="resultsHint" data-i18n="actions.hintDefault">
+            Complete all fields to enable results.
+          </p>
+        </section>
+
+        <footer class="footer">
+          <p data-i18n="footer.disclaimer">
+            Adult scoring only. This tool is for general wellness awareness and does not replace
+            clinical advice.
+          </p>
+        </footer>
       </section>
     </main>
 
+    <nav class="bottom-nav hidden" id="bottomNav">
+      <button class="nav-btn" type="button" data-view="hub">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 11l8-6 8 6" />
+            <path d="M6 10v9h12v-9" />
+          </svg>
+        </span>
+        <span data-i18n="nav.home">Home</span>
+      </button>
+      <button class="nav-btn" type="button" data-view="sleep">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 4h10l-4 6h4l-6 10" />
+          </svg>
+        </span>
+        <span data-i18n="nav.sleep">Sleep</span>
+      </button>
+      <button class="nav-btn" type="button" data-view="move">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 18c1-3 4-6 6-6l2 6" />
+            <circle cx="16" cy="6" r="3" />
+          </svg>
+        </span>
+        <span data-i18n="nav.move">Move</span>
+      </button>
+      <button class="nav-btn" type="button" data-view="explore">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 3" />
+          </svg>
+        </span>
+        <span data-i18n="nav.explore">Explore</span>
+      </button>
+      <button class="nav-btn" type="button" data-view="assessment">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 12h4l2-4 4 8 2-4h6" />
+          </svg>
+        </span>
+        <span data-i18n="nav.assess">Assess</span>
+      </button>
+      <button class="nav-btn" type="button" data-view="register">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 20c2-4 14-4 16 0" />
+          </svg>
+        </span>
+        <span data-i18n="nav.profile">Profile</span>
+      </button>
+    </nav>
+
+    <div class="modal hidden" id="resultModal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <div class="modal-card">
+        <h2 id="resultTitle" data-i18n="score.modalTitle">Your Cardiovascular Health Score</h2>
+        <div class="modal-score" id="modalScore">--</div>
+        <p class="modal-label" id="modalLabel" data-i18n="score.completeSections">
+          Complete all sections to see your score.
+        </p>
+        <div class="scale" aria-hidden="true">
+          <div class="indicator" id="modalIndicator"></div>
+        </div>
+        <div class="advice">
+          <p class="advice-title" data-i18n="advice.title">Targeted advice</p>
+          <p class="advice-summary" id="modalAdviceSummary"></p>
+          <ul class="advice-list" id="modalAdviceList"></ul>
+          <p class="advice-clinician" id="modalAdviceClinician"></p>
+        </div>
+        <div class="modal-actions">
+          <button id="exitToHub" class="ghost" type="button" data-i18n="modal.exit">Exit</button>
+          <button id="closeModal" class="ghost" type="button" data-i18n="modal.close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="app.js"></script>
   </body>
 </html>
