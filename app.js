@@ -6,7 +6,9 @@ const serviceSelectionView = document.getElementById('serviceSelectionView');
 const appointmentsView = document.getElementById('appointmentsView');
 const inventoryView = document.getElementById('inventoryView');
 const analyticsView = document.getElementById('analyticsView');
+const staffSelectView = document.getElementById('staffSelectView');
 const staffAccessView = document.getElementById('staffAccessView');
+const staffAccessGrid = document.getElementById('staffAccessGrid');
 const roleDashboardView = document.getElementById('roleDashboardView');
 const topBar = document.getElementById('topBar');
 const facilityName = document.getElementById('facilityName');
@@ -26,10 +28,16 @@ const signUpPhone = document.getElementById('signUpPhone');
 const signUpCity = document.getElementById('signUpCity');
 const signUpCountry = document.getElementById('signUpCountry');
 const signUpCode = document.getElementById('signUpCode');
+const signUpLogo = document.getElementById('signUpLogo');
 
 const moduleButtons = document.querySelectorAll('[data-module]');
 const backToModules = document.getElementById('backToModules');
 const backToWelcome = document.getElementById('backToWelcome');
+const backToWelcomeFromStaff = document.getElementById('backToWelcomeFromStaff');
+const chooseAdminBtn = document.getElementById('chooseAdminBtn');
+const chooseEmployeeBtn = document.getElementById('chooseEmployeeBtn');
+const staffAdminCard = document.getElementById('staffAdminCard');
+const staffEmployeeCard = document.getElementById('staffEmployeeCard');
 const goToModules = document.getElementById('goToModules');
 const backToModulesFromDashboard = document.getElementById('backToModulesFromDashboard');
 const backToModulesFromAppointments = document.getElementById('backToModulesFromAppointments');
@@ -75,6 +83,8 @@ const receiptPolicy = document.getElementById('receiptPolicy');
 const receiptTableBody = document.getElementById('receiptTableBody');
 const receiptTotalNet = document.getElementById('receiptTotalNet');
 const receiptTotalInsurance = document.getElementById('receiptTotalInsurance');
+const facilityLogoImg = document.getElementById('facilityLogoImg');
+const receiptLogoImg = document.getElementById('receiptLogoImg');
 
 const patientFullName = document.getElementById('patientFullName');
 const patientSex = document.getElementById('patientSex');
@@ -208,8 +218,8 @@ const staffTempPassword = document.getElementById('staffTempPassword');
 const staffMessage = document.getElementById('staffMessage');
 const staffListBody = document.getElementById('staffListBody');
 const doctorFields = document.getElementById('doctorFields');
-const doctorType = document.getElementById('doctorType');
-const doctorRate = document.getElementById('doctorRate');
+const staffEmploymentType = document.getElementById('staffEmploymentType');
+const staffLocumRate = document.getElementById('staffLocumRate');
 const doctorSex = document.getElementById('doctorSex');
 const doctorAge = document.getElementById('doctorAge');
 const doctorReg = document.getElementById('doctorReg');
@@ -220,7 +230,80 @@ const doctorOtr = document.getElementById('doctorOtr');
 
 let currentLang = 'en';
 let currentFacility = null;
+let currentFacilityProfile = null;
 let currentEmployee = null;
+let staffAccessMode = null;
+
+function getFacilitiesKey() {
+  return 'meditrack_facilities';
+}
+
+function loadFacilities() {
+  try {
+    const raw = localStorage.getItem(getFacilitiesKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveFacilities(list) {
+  try {
+    localStorage.setItem(getFacilitiesKey(), JSON.stringify(list));
+  } catch (error) {
+    // ignore
+  }
+}
+
+function saveFacilityProfile(profile) {
+  if (!profile?.code) return;
+  const facilities = loadFacilities();
+  const index = facilities.findIndex((item) => item.code === profile.code);
+  if (index >= 0) {
+    facilities[index] = { ...facilities[index], ...profile };
+  } else {
+    facilities.push(profile);
+  }
+  saveFacilities(facilities);
+}
+
+function getFacilityProfile(code) {
+  if (!code) return null;
+  return loadFacilities().find((item) => item.code === code) || null;
+}
+
+function applyFacilityBrand() {
+  if (facilityName) {
+    facilityName.textContent =
+      currentFacilityProfile?.name || currentFacility || t('header.facilityDashboard');
+  }
+  if (facilityLogoImg) {
+    if (currentFacilityProfile?.logo) {
+      facilityLogoImg.src = currentFacilityProfile.logo;
+      facilityLogoImg.classList.remove('hidden');
+    } else {
+      facilityLogoImg.classList.add('hidden');
+      facilityLogoImg.removeAttribute('src');
+    }
+  }
+  if (receiptLogoImg) {
+    receiptLogoImg.src = currentFacilityProfile?.logo || 'Logo Meditrack.webp';
+  }
+}
+
+function readFileAsDataUrl(file) {
+  return new Promise((resolve) => {
+    if (!file) {
+      resolve('');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => resolve('');
+    reader.readAsDataURL(file);
+  });
+}
 
 function getPatientsKey() {
   if (currentFacility) {
@@ -732,6 +815,7 @@ const translations = {
       facilityEmailPlaceholder: 'name@facility.tg',
       facilityPhone: 'Facility phone',
       facilityPhonePlaceholder: '+228...',
+      facilityLogo: 'Facility logo (optional)',
       facilityCity: 'City',
       facilityCountry: 'Country',
       authCode: 'Authorization code',
@@ -825,6 +909,14 @@ const translations = {
       otherSubtitle: 'Your dashboard will appear here once your role is configured.',
     },
     staff: {
+      selectTitle: 'Who is connecting?',
+      selectSubtitle: 'Choose the account type to continue.',
+      choiceAdmin: 'Administrator',
+      choiceAdminDesc: 'Create employee profiles and manage access rights.',
+      choiceEmployee: 'Employee',
+      choiceEmployeeDesc: 'Sign in with your employee credentials to access your role.',
+      enterAdminChoice: 'Continue as administrator',
+      enterEmployeeChoice: 'Continue as employee',
       accessTitle: 'Staff access',
       accessSubtitle:
         'Administrators create employee profiles. Employees sign in to their role-based account.',
@@ -848,6 +940,10 @@ const translations = {
       roleRadiology: 'Radiology staff',
       rolePharmacy: 'Pharmacy staff',
       roleOther: 'Other',
+      employmentType: 'Employment type',
+      employmentPermanent: 'Permanent',
+      employmentLocum: 'Locum (vacataire)',
+      locumRate: 'Locum rate (%)',
       email: 'Email',
       phone: 'Phone',
       employeeCode: 'Employee ID',
@@ -881,6 +977,7 @@ const translations = {
         employeeNotFound: 'Employee not found. Check ID or password.',
         created: 'Employee profile created.',
         staffRequired: 'Please complete required staff fields.',
+        locumRateRequired: 'Please enter the locum rate percentage.',
       },
     },
     billing: {
@@ -1141,6 +1238,7 @@ const translations = {
       facilityEmailPlaceholder: 'nom@etablissement.tg',
       facilityPhone: "Téléphone de l’établissement",
       facilityPhonePlaceholder: '+228...',
+      facilityLogo: "Logo de l’établissement (optionnel)",
       facilityCity: 'Ville',
       facilityCountry: 'Pays',
       authCode: 'Code d’autorisation',
@@ -1234,6 +1332,14 @@ const translations = {
       otherSubtitle: 'Votre tableau de bord s’affichera une fois le rôle configuré.',
     },
     staff: {
+      selectTitle: 'Qui se connecte ?',
+      selectSubtitle: 'Choisissez le type de compte pour continuer.',
+      choiceAdmin: 'Administrateur',
+      choiceAdminDesc: 'Créez des profils employés et gérez les droits d’accès.',
+      choiceEmployee: 'Employé',
+      choiceEmployeeDesc: 'Connectez-vous avec vos identifiants pour accéder à votre rôle.',
+      enterAdminChoice: 'Continuer comme administrateur',
+      enterEmployeeChoice: 'Continuer comme employé',
       accessTitle: 'Accès du personnel',
       accessSubtitle:
         "Les administrateurs créent les profils. Les employés se connectent à leur compte.",
@@ -1257,6 +1363,10 @@ const translations = {
       roleRadiology: 'Imagerie médicale',
       rolePharmacy: 'Pharmacie',
       roleOther: 'Autre',
+      employmentType: "Type d'emploi",
+      employmentPermanent: 'Permanent',
+      employmentLocum: 'Vacataire',
+      locumRate: 'Taux vacataire (%)',
       email: 'Email',
       phone: 'Téléphone',
       employeeCode: "ID employé",
@@ -1290,6 +1400,7 @@ const translations = {
         employeeNotFound: 'Employé introuvable. Vérifiez les identifiants.',
         created: 'Profil employé créé.',
         staffRequired: 'Veuillez compléter les champs obligatoires.',
+        locumRateRequired: 'Veuillez saisir le taux vacataire (%).',
       },
     },
     billing: {
@@ -1551,6 +1662,7 @@ function applyTranslations() {
   if (!currentFacility && facilityName) {
     facilityName.textContent = t('header.facilityDashboard');
   }
+  applyFacilityBrand();
   refreshBillingRowsLanguage();
   refreshAppointmentServiceOptions();
   applyRoleAccess();
@@ -1572,6 +1684,27 @@ function setAuthMode(mode) {
   tabSignUp.classList.toggle('active', !isSignIn);
 }
 
+function setStaffAccessMode(mode) {
+  staffAccessMode = mode;
+  if (!staffAdminCard || !staffEmployeeCard) return;
+  if (!mode) {
+    staffAdminCard.classList.remove('hidden');
+    staffEmployeeCard.classList.remove('hidden');
+    return;
+  }
+  staffAdminCard.classList.toggle('hidden', mode !== 'admin');
+  staffEmployeeCard.classList.toggle('hidden', mode !== 'employee');
+}
+
+function openStaffAdminPanel() {
+  showView('staff-access');
+  if (staffAccessGrid) staffAccessGrid.classList.add('hidden');
+  if (staffAdminPanel) {
+    staffAdminPanel.classList.remove('hidden');
+    renderStaffList();
+  }
+}
+
 function showView(view) {
   welcomeView.classList.add('hidden');
   modulesView.classList.add('hidden');
@@ -1580,6 +1713,7 @@ function showView(view) {
   appointmentsView?.classList.add('hidden');
   inventoryView?.classList.add('hidden');
   analyticsView?.classList.add('hidden');
+  staffSelectView?.classList.add('hidden');
   staffAccessView.classList.add('hidden');
   roleDashboardView.classList.add('hidden');
   if (view === 'modules') {
@@ -1621,6 +1755,12 @@ function showView(view) {
     return;
   }
   if (view === 'staff') {
+    staffSelectView?.classList.remove('hidden');
+    setStaffAccessMode(null);
+    topBar.classList.remove('hidden');
+    return;
+  }
+  if (view === 'staff-access') {
     staffAccessView.classList.remove('hidden');
     topBar.classList.remove('hidden');
     return;
@@ -1664,8 +1804,10 @@ if (signInForm) {
       setMessage(signInMessage, t('messages.signInRequired'));
       return;
     }
-    currentFacility = code;
-    facilityName.textContent = code;
+    const profile = getFacilityProfile(code);
+    currentFacilityProfile = profile;
+    currentFacility = profile?.code || code;
+    applyFacilityBrand();
     currentEmployee = null;
     applyRoleAccess();
     setMessage(signInMessage, '');
@@ -1674,7 +1816,7 @@ if (signInForm) {
 }
 
 if (signUpForm) {
-  signUpForm.addEventListener('submit', (event) => {
+  signUpForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const requiredFields = [
       signUpFacility?.value?.trim(),
@@ -1689,8 +1831,23 @@ if (signUpForm) {
       setMessage(signUpMessage, t('messages.signUpRequired'));
       return;
     }
-    currentFacility = signUpFacility.value.trim();
-    facilityName.textContent = currentFacility;
+    const facilityCode = signUpFacility.value.trim();
+    const logoFile = signUpLogo?.files?.[0];
+    const logoData = logoFile ? await readFileAsDataUrl(logoFile) : '';
+    const profile = {
+      code: facilityCode,
+      name: signUpFacility.value.trim(),
+      email: signUpEmail.value.trim(),
+      phone: signUpPhone.value.trim(),
+      city: signUpCity.value.trim(),
+      country: signUpCountry.value.trim(),
+      authorization: signUpCode.value.trim(),
+      logo: logoData || '',
+    };
+    saveFacilityProfile(profile);
+    currentFacilityProfile = profile;
+    currentFacility = facilityCode;
+    applyFacilityBrand();
     currentEmployee = null;
     applyRoleAccess();
     setMessage(signUpMessage, '');
@@ -1701,8 +1858,9 @@ if (signUpForm) {
 if (signOutBtn) {
   signOutBtn.addEventListener('click', () => {
     currentFacility = null;
+    currentFacilityProfile = null;
     currentEmployee = null;
-    facilityName.textContent = t('header.facilityDashboard');
+    applyFacilityBrand();
     signInForm.reset();
     signUpForm.reset();
     if (adminSignInForm) adminSignInForm.reset();
@@ -2296,7 +2454,11 @@ if (moduleButtons && moduleButtons.length) {
       if (target === 'billing') {
         showView('billing');
       } else if (target === 'staff') {
-        showView('staff');
+        if (currentEmployee?.role === 'director') {
+          openStaffAdminPanel();
+        } else {
+          showView('staff');
+        }
       } else if (target === 'dashboard') {
         showView('dashboard');
       } else if (target === 'appointments') {
@@ -2315,7 +2477,39 @@ if (backToModules) {
 }
 
 if (backToWelcome) {
-  backToWelcome.addEventListener('click', () => showView('welcome'));
+  backToWelcome.addEventListener('click', () => {
+    if (currentEmployee?.role === 'director') {
+      showView('modules');
+    } else {
+      showView('staff');
+    }
+  });
+}
+
+if (backToWelcomeFromStaff) {
+  backToWelcomeFromStaff.addEventListener('click', () => showView('welcome'));
+}
+
+if (chooseAdminBtn) {
+  chooseAdminBtn.addEventListener('click', () => {
+    setStaffAccessMode('admin');
+    showView('staff-access');
+    if (staffAccessGrid) staffAccessGrid.classList.remove('hidden');
+    if (staffAdminPanel) staffAdminPanel.classList.add('hidden');
+    adminSignInForm?.reset();
+    setMessage(adminSignInMessage, '');
+  });
+}
+
+if (chooseEmployeeBtn) {
+  chooseEmployeeBtn.addEventListener('click', () => {
+    setStaffAccessMode('employee');
+    showView('staff-access');
+    if (staffAccessGrid) staffAccessGrid.classList.remove('hidden');
+    if (staffAdminPanel) staffAdminPanel.classList.add('hidden');
+    employeeSignInForm?.reset();
+    setMessage(employeeSignInMessage, '');
+  });
 }
 
 if (backToModulesFromAppointments) {
@@ -2345,11 +2539,16 @@ if (adminSignInForm) {
       setMessage(adminSignInMessage, t('staff.messages.adminRequired'));
       return;
     }
+    const adminCode = adminId.value.trim();
+    currentEmployee = {
+      name: adminCode,
+      role: 'director',
+      roleLabel: t('staff.roleDirector'),
+      code: adminCode,
+    };
+    applyRoleAccess();
     setMessage(adminSignInMessage, '');
-    if (staffAdminPanel) {
-      staffAdminPanel.classList.remove('hidden');
-      renderStaffList();
-    }
+    showView('modules');
   });
 }
 
@@ -2362,14 +2561,19 @@ if (staffForm) {
     const phone = staffPhone?.value?.trim();
     const code = staffCode?.value?.trim();
     const tempPassword = staffTempPassword?.value?.trim();
+    const employmentType = staffEmploymentType?.value || 'permanent';
+    const locumRate = employmentType === 'locum' ? parseNumber(staffLocumRate?.value) : 0;
     if (!name || !role || !code || !tempPassword) {
       setMessage(staffMessage, t('staff.messages.staffRequired'));
       return;
     }
+    if (employmentType === 'locum' && !Number.isFinite(locumRate)) {
+      setMessage(staffMessage, t('staff.messages.locumRateRequired'));
+      return;
+    }
     const roleLabel = staffRole.options[staffRole.selectedIndex]?.textContent || role;
-    const payType = role === 'doctor' ? doctorType?.value || 'full' : null;
-    const payRate =
-      role === 'doctor' && payType === 'locum' ? parseNumber(doctorRate?.value) : 0;
+    const payType = role === 'doctor' ? employmentType : null;
+    const payRate = role === 'doctor' && employmentType === 'locum' ? locumRate : 0;
     const doctorProfile =
       role === 'doctor'
         ? {
@@ -2391,17 +2595,22 @@ if (staffForm) {
       phone,
       code,
       password: tempPassword,
+      employmentType,
+      locumRate,
       payType,
       payRate,
       doctorProfile,
     });
     saveEmployees(employees);
     staffForm.reset();
+    if (staffEmploymentType) staffEmploymentType.value = 'permanent';
+    if (staffLocumRate) staffLocumRate.value = '';
     setMessage(staffMessage, t('staff.messages.created'));
     renderStaffList();
     populateDoctorSelect();
     populateAppointmentDoctors();
     toggleDoctorFields();
+    syncLocumRateField();
   });
 }
 
@@ -2410,8 +2619,6 @@ function toggleDoctorFields() {
   const isDoctor = staffRole.value === 'doctor';
   doctorFields.style.display = isDoctor ? 'grid' : 'none';
   if (!isDoctor) {
-    if (doctorRate) doctorRate.value = '';
-    if (doctorType) doctorType.value = 'full';
     if (doctorSex) doctorSex.value = '';
     if (doctorAge) doctorAge.value = '';
     if (doctorReg) doctorReg.value = '';
@@ -2427,19 +2634,22 @@ if (staffRole) {
   toggleDoctorFields();
 }
 
-if (doctorType) {
-  doctorType.addEventListener('change', () => {
-    if (doctorRate) {
-      doctorRate.disabled = doctorType.value !== 'locum';
-      if (doctorType.value !== 'locum') {
-        doctorRate.value = '';
-      }
-    }
-  });
-  if (doctorRate) {
-    doctorRate.disabled = doctorType.value !== 'locum';
+function syncLocumRateField() {
+  if (!staffEmploymentType || !staffLocumRate) return;
+  const isLocum = staffEmploymentType.value === 'locum';
+  staffLocumRate.disabled = !isLocum;
+  if (!isLocum) {
+    staffLocumRate.value = '';
   }
 }
+
+if (staffEmploymentType) {
+  staffEmploymentType.addEventListener('change', () => {
+    syncLocumRateField();
+  });
+}
+
+syncLocumRateField();
 
 if (employeeSignInForm) {
   employeeSignInForm.addEventListener('submit', (event) => {
@@ -2884,7 +3094,8 @@ function fillReceipt() {
   const name = patientFullName?.value?.trim() || '';
   const { first, last } = splitName(name);
   const coverage = parseNumber(coverageRate?.value);
-  receiptFacility.textContent = currentFacility || 'MediTrack';
+  receiptFacility.textContent =
+    currentFacilityProfile?.name || currentFacility || 'MediTrack';
   receiptNumber.textContent = generateReceiptNumber();
   receiptCashier.textContent = currentEmployee?.name || currentEmployee?.code || 'Admission';
   receiptDate.textContent = now.toLocaleDateString();

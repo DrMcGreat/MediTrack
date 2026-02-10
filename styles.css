@@ -74,6 +74,17 @@ body {
   gap: 12px;
 }
 
+.brand-details {
+  display: grid;
+  gap: 4px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .logo-img {
   width: 46px;
   height: 46px;
@@ -94,6 +105,16 @@ body {
   margin: 0;
   color: var(--muted);
   font-size: 0.85rem;
+}
+
+.facility-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 3px;
+  box-shadow: 0 6px 14px rgba(15, 29, 38, 0.12);
 }
 
 .app {
@@ -666,6 +687,10 @@ h2 {
   gap: 18px;
 }
 
+.staff-choice-grid {
+  margin-top: 12px;
+}
+
 .staff-card {
   background: var(--card);
   border-radius: 20px;
@@ -673,6 +698,11 @@ h2 {
   box-shadow: var(--shadow);
   display: grid;
   gap: 14px;
+}
+
+.staff-choice-card .primary {
+  width: 100%;
+  margin-top: auto;
 }
 
 .staff-panel-header {

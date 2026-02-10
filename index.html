@@ -18,11 +18,14 @@
     <header class="topbar hidden" id="topBar">
       <div class="brand">
         <img class="logo-img" src="Logo Meditrack.webp" alt="MediTrack logo" />
-        <div>
+        <div class="brand-details">
           <p class="brand-title">MediTrack</p>
-          <p class="brand-sub" id="facilityName" data-i18n="header.facilityDashboard">
-            Facility Dashboard
-          </p>
+          <div class="brand-row">
+            <p class="brand-sub" id="facilityName" data-i18n="header.facilityDashboard">
+              Facility Dashboard
+            </p>
+            <img id="facilityLogoImg" class="facility-logo hidden" alt="Facility logo" />
+          </div>
         </div>
       </div>
       <button id="signOutBtn" class="ghost" type="button" data-i18n="actions.signOut">
@@ -102,6 +105,10 @@
                   placeholder="+228..."
                   data-i18n-placeholder="auth.facilityPhonePlaceholder"
                 />
+              </label>
+              <label class="field">
+                <span data-i18n="auth.facilityLogo">Facility logo (optional)</span>
+                <input id="signUpLogo" type="file" accept="image/*" />
               </label>
               <div class="field-row">
                 <label class="field">
@@ -219,6 +226,41 @@
         </div>
       </section>
 
+      <section id="staffSelectView" class="view hidden">
+        <div class="module-top">
+          <button id="backToWelcomeFromStaff" class="ghost" type="button" data-i18n="modules.backWelcome">
+            Back
+          </button>
+          <div>
+            <h2 data-i18n="staff.selectTitle">Who is connecting?</h2>
+            <p class="subhead" data-i18n="staff.selectSubtitle">
+              Choose the account type to continue.
+            </p>
+          </div>
+        </div>
+
+        <div class="staff-grid staff-choice-grid">
+          <div class="staff-card staff-choice-card">
+            <h3 data-i18n="staff.choiceAdmin">Administrator</h3>
+            <p class="muted" data-i18n="staff.choiceAdminDesc">
+              Create employee profiles and manage access rights.
+            </p>
+            <button id="chooseAdminBtn" class="primary" type="button" data-i18n="staff.enterAdminChoice">
+              Continue as administrator
+            </button>
+          </div>
+          <div class="staff-card staff-choice-card">
+            <h3 data-i18n="staff.choiceEmployee">Employee</h3>
+            <p class="muted" data-i18n="staff.choiceEmployeeDesc">
+              Sign in with your employee credentials to access your role.
+            </p>
+            <button id="chooseEmployeeBtn" class="primary" type="button" data-i18n="staff.enterEmployeeChoice">
+              Continue as employee
+            </button>
+          </div>
+        </div>
+      </section>
+
       <section id="staffAccessView" class="view hidden">
         <div class="module-top">
           <button id="backToWelcome" class="ghost" type="button" data-i18n="modules.backWelcome">
@@ -232,8 +274,8 @@
           </div>
         </div>
 
-        <div class="staff-grid">
-          <div class="staff-card">
+        <div class="staff-grid" id="staffAccessGrid">
+          <div class="staff-card" id="staffAdminCard">
             <h3 data-i18n="staff.adminSignIn">Administrator sign in</h3>
             <form id="adminSignInForm" class="auth-form">
               <label class="field">
@@ -250,7 +292,7 @@
               <p class="form-message" id="adminSignInMessage"></p>
             </form>
           </div>
-          <div class="staff-card">
+          <div class="staff-card" id="staffEmployeeCard">
             <h3 data-i18n="staff.employeeSignIn">Employee sign in</h3>
             <form id="employeeSignInForm" class="auth-form">
               <label class="field">
@@ -301,6 +343,19 @@
                 <option value="other" data-i18n="staff.roleOther">Other</option>
               </select>
             </label>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="staff.employmentType">Employment type</span>
+                <select id="staffEmploymentType">
+                  <option value="permanent" data-i18n="staff.employmentPermanent">Permanent</option>
+                  <option value="locum" data-i18n="staff.employmentLocum">Locum (vacataire)</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="staff.locumRate">Locum rate (%)</span>
+                <input id="staffLocumRate" type="number" min="0" max="100" step="1" />
+              </label>
+            </div>
             <label class="field">
               <span data-i18n="staff.email">Email</span>
               <input id="staffEmail" type="email" />
@@ -318,17 +373,6 @@
               <input id="staffTempPassword" type="text" />
             </label>
             <div class="field-row" id="doctorFields">
-              <label class="field">
-                <span data-i18n="staff.doctorType">Doctor category</span>
-                <select id="doctorType">
-                  <option value="full" data-i18n="staff.doctorFull">Full time</option>
-                  <option value="locum" data-i18n="staff.doctorLocum">Locum (vacataire)</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="staff.doctorRate">Locum rate (%)</span>
-                <input id="doctorRate" type="number" min="0" max="100" step="1" />
-              </label>
               <label class="field">
                 <span data-i18n="staff.doctorSex">Sex</span>
                 <select id="doctorSex">
@@ -813,7 +857,7 @@
             <div id="receiptPanel" class="receipt hidden">
               <div class="receipt-header receipt-box">
                 <div class="receipt-brand">
-                  <img src="Logo Meditrack.webp" alt="MediTrack logo" />
+                  <img id="receiptLogoImg" src="Logo Meditrack.webp" alt="Facility logo" />
                   <div>
                     <p id="receiptFacility" class="receipt-facility">Facility</p>
                     <p class="receipt-meta" data-i18n="receipt.authorization">
