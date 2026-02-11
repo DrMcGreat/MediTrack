@@ -6,10 +6,13 @@ const serviceSelectionView = document.getElementById('serviceSelectionView');
 const appointmentsView = document.getElementById('appointmentsView');
 const inventoryView = document.getElementById('inventoryView');
 const analyticsView = document.getElementById('analyticsView');
+const serviceCatalogView = document.getElementById('serviceCatalogView');
+const insurancePartnersView = document.getElementById('insurancePartnersView');
 const staffSelectView = document.getElementById('staffSelectView');
 const staffAccessView = document.getElementById('staffAccessView');
 const staffAccessGrid = document.getElementById('staffAccessGrid');
 const roleDashboardView = document.getElementById('roleDashboardView');
+const facilityProfileView = document.getElementById('facilityProfileView');
 const topBar = document.getElementById('topBar');
 const facilityName = document.getElementById('facilityName');
 
@@ -20,6 +23,7 @@ const signUpForm = document.getElementById('signUpForm');
 const signInMessage = document.getElementById('signInMessage');
 const signUpMessage = document.getElementById('signUpMessage');
 const signOutBtn = document.getElementById('signOutBtn');
+const homeBtn = document.getElementById('homeBtn');
 
 const signInCode = document.getElementById('signInCode');
 const signUpFacility = document.getElementById('signUpFacility');
@@ -43,6 +47,9 @@ const backToModulesFromDashboard = document.getElementById('backToModulesFromDas
 const backToModulesFromAppointments = document.getElementById('backToModulesFromAppointments');
 const backToModulesFromInventory = document.getElementById('backToModulesFromInventory');
 const backToModulesFromAnalytics = document.getElementById('backToModulesFromAnalytics');
+const backToModulesFromServiceCatalog = document.getElementById('backToModulesFromServiceCatalog');
+const backToModulesFromInsurance = document.getElementById('backToModulesFromInsurance');
+const backToModulesFromFacility = document.getElementById('backToModulesFromFacility');
 const billingTableBody = document.getElementById('billingTableBody');
 const addBillingRow = document.getElementById('addBillingRow');
 const insuranceProvider = document.getElementById('insuranceProvider');
@@ -85,6 +92,43 @@ const receiptTotalNet = document.getElementById('receiptTotalNet');
 const receiptTotalInsurance = document.getElementById('receiptTotalInsurance');
 const facilityLogoImg = document.getElementById('facilityLogoImg');
 const receiptLogoImg = document.getElementById('receiptLogoImg');
+const serviceCatalogForm = document.getElementById('serviceCatalogForm');
+const serviceCatalogName = document.getElementById('serviceCatalogName');
+const serviceCatalogCategory = document.getElementById('serviceCatalogCategory');
+const serviceCatalogDiseaseCode = document.getElementById('serviceCatalogDiseaseCode');
+const serviceCatalogUninsuredPrice = document.getElementById('serviceCatalogUninsuredPrice');
+const serviceCatalogMessage = document.getElementById('serviceCatalogMessage');
+const serviceCatalogTable = document.getElementById('serviceCatalogTable');
+const serviceCatalogEmpty = document.getElementById('serviceCatalogEmpty');
+const serviceInsurancePartner = document.getElementById('serviceInsurancePartner');
+const serviceInsuranceCode = document.getElementById('serviceInsuranceCode');
+const serviceInsurancePrice = document.getElementById('serviceInsurancePrice');
+const serviceInsuranceBase = document.getElementById('serviceInsuranceBase');
+const addServiceInsurance = document.getElementById('addServiceInsurance');
+const serviceInsuranceTable = document.getElementById('serviceInsuranceTable');
+const serviceInsuranceEmpty = document.getElementById('serviceInsuranceEmpty');
+const insuranceForm = document.getElementById('insuranceForm');
+const insuranceName = document.getElementById('insuranceName');
+const insuranceCode = document.getElementById('insuranceCode');
+const insuranceEmail = document.getElementById('insuranceEmail');
+const insurancePhone = document.getElementById('insurancePhone');
+const insuranceCoverage = document.getElementById('insuranceCoverage');
+const insurancePolicy = document.getElementById('insurancePolicy');
+const insuranceNotes = document.getElementById('insuranceNotes');
+const insuranceMessage = document.getElementById('insuranceMessage');
+const insuranceTable = document.getElementById('insuranceTable');
+const insuranceEmpty = document.getElementById('insuranceEmpty');
+const facilityProfileForm = document.getElementById('facilityProfileForm');
+const facilityProfileName = document.getElementById('facilityProfileName');
+const facilityProfileCode = document.getElementById('facilityProfileCode');
+const facilityProfileEmail = document.getElementById('facilityProfileEmail');
+const facilityProfilePhone = document.getElementById('facilityProfilePhone');
+const facilityProfileCity = document.getElementById('facilityProfileCity');
+const facilityProfileCountry = document.getElementById('facilityProfileCountry');
+const facilityProfileAddress = document.getElementById('facilityProfileAddress');
+const facilityProfileLogo = document.getElementById('facilityProfileLogo');
+const facilityLogoPreview = document.getElementById('facilityLogoPreview');
+const facilityProfileMessage = document.getElementById('facilityProfileMessage');
 
 const patientFullName = document.getElementById('patientFullName');
 const patientSex = document.getElementById('patientSex');
@@ -233,6 +277,21 @@ let currentFacility = null;
 let currentFacilityProfile = null;
 let currentEmployee = null;
 let staffAccessMode = null;
+let pendingServiceInsurance = [];
+
+const DEFAULT_INSURANCE_PARTNERS = [
+  'AMU',
+  'INAM',
+  'SUNU',
+  'SUNU-GB',
+  'SANLAM',
+  'GTA',
+  'GCA',
+  'MSH',
+  'ASCOMA',
+  'OLEA',
+  'TRANSVIE',
+];
 
 function getFacilitiesKey() {
   return 'meditrack_facilities';
@@ -305,6 +364,31 @@ function readFileAsDataUrl(file) {
   });
 }
 
+function populateFacilityProfileForm() {
+  if (!facilityProfileForm) return;
+  const profile = currentFacilityProfile || {};
+  if (facilityProfileName) facilityProfileName.value = profile.name || '';
+  if (facilityProfileCode) facilityProfileCode.value = profile.code || currentFacility || '';
+  if (facilityProfileEmail) facilityProfileEmail.value = profile.email || '';
+  if (facilityProfilePhone) facilityProfilePhone.value = profile.phone || '';
+  if (facilityProfileCity) facilityProfileCity.value = profile.city || '';
+  if (facilityProfileCountry) facilityProfileCountry.value = profile.country || '';
+  if (facilityProfileAddress) facilityProfileAddress.value = profile.address || '';
+  if (facilityLogoPreview) {
+    if (profile.logo) {
+      facilityLogoPreview.src = profile.logo;
+      facilityLogoPreview.classList.remove('hidden');
+    } else {
+      facilityLogoPreview.classList.add('hidden');
+      facilityLogoPreview.removeAttribute('src');
+    }
+  }
+  if (facilityProfileLogo) {
+    facilityProfileLogo.value = '';
+  }
+  setMessage(facilityProfileMessage, '');
+}
+
 function getPatientsKey() {
   if (currentFacility) {
     return `meditrack_patients_${currentFacility}`;
@@ -360,6 +444,189 @@ function getPricingKey() {
     return `meditrack_pricing_${currentFacility}`;
   }
   return 'meditrack_pricing_default';
+}
+
+function getServiceCatalogKey() {
+  if (currentFacility) {
+    return `meditrack_services_${currentFacility}`;
+  }
+  return 'meditrack_services_default';
+}
+
+function loadServiceCatalog() {
+  try {
+    const raw = localStorage.getItem(getServiceCatalogKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveServiceCatalog(list) {
+  try {
+    localStorage.setItem(getServiceCatalogKey(), JSON.stringify(list));
+  } catch (error) {
+    // ignore
+  }
+}
+
+function getInsurancePartnersKey() {
+  if (currentFacility) {
+    return `meditrack_insurers_${currentFacility}`;
+  }
+  return 'meditrack_insurers_default';
+}
+
+function loadInsurancePartners() {
+  try {
+    const raw = localStorage.getItem(getInsurancePartnersKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveInsurancePartners(list) {
+  try {
+    localStorage.setItem(getInsurancePartnersKey(), JSON.stringify(list));
+  } catch (error) {
+    // ignore
+  }
+}
+
+function seedInsurancePartnersIfEmpty() {
+  const list = loadInsurancePartners();
+  if (list.length) return list;
+  const seeded = DEFAULT_INSURANCE_PARTNERS.map((name, index) => ({
+    id: `ins_seed_${Date.now()}_${index}`,
+    name,
+    code: name,
+    email: '',
+    phone: '',
+    coverage: '',
+    policy: '',
+    notes: '',
+  }));
+  saveInsurancePartners(seeded);
+  return seeded;
+}
+
+function populateServiceInsuranceOptions() {
+  if (!serviceInsurancePartner) return;
+  const insurers = seedInsurancePartnersIfEmpty();
+  serviceInsurancePartner.innerHTML = '';
+  insurers.forEach((partner) => {
+    const option = document.createElement('option');
+    option.value = partner.name;
+    option.textContent = partner.name;
+    serviceInsurancePartner.appendChild(option);
+  });
+}
+
+function renderServiceInsuranceTable() {
+  if (!serviceInsuranceTable) return;
+  serviceInsuranceTable.innerHTML = '';
+  if (!pendingServiceInsurance.length) {
+    if (serviceInsuranceEmpty) {
+      serviceInsuranceEmpty.textContent = t('serviceCatalog.insuranceEmpty');
+    }
+    return;
+  }
+  if (serviceInsuranceEmpty) {
+    serviceInsuranceEmpty.textContent = '';
+  }
+  pendingServiceInsurance.forEach((entry) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${entry.partner}</td>
+      <td>${entry.code}</td>
+      <td>${formatCfl(entry.price)}</td>
+      <td>${formatCfl(entry.base)}</td>
+      <td><button class="ghost" type="button" data-insurance-row="${entry.partner}">${t(
+        'serviceCatalog.delete'
+      )}</button></td>
+    `;
+    serviceInsuranceTable.appendChild(row);
+  });
+}
+
+function renderInsurancePartners() {
+  if (!insuranceTable) return;
+  const list = seedInsurancePartnersIfEmpty();
+  insuranceTable.innerHTML = '';
+  if (!list.length) {
+    if (insuranceEmpty) {
+      insuranceEmpty.textContent = t('insurance.empty');
+    }
+    return;
+  }
+  if (insuranceEmpty) {
+    insuranceEmpty.textContent = '';
+  }
+  list.forEach((partner) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${partner.name || '-'}</td>
+      <td>${partner.code || '-'}</td>
+      <td>${partner.coverage ? `${partner.coverage}%` : '-'}</td>
+      <td>${partner.email || partner.phone || '-'}</td>
+      <td><button class="ghost" type="button" data-insurance-id="${partner.id}">${t(
+        'insurance.delete'
+      )}</button></td>
+    `;
+    insuranceTable.appendChild(row);
+  });
+}
+
+function getServiceCategoryLabel(category) {
+  const map = {
+    consultation: t('serviceCatalog.catConsultation'),
+    lab: t('serviceCatalog.catLab'),
+    imaging: t('serviceCatalog.catImaging'),
+    hospitalization: t('serviceCatalog.catHospital'),
+    surgery: t('serviceCatalog.catSurgery'),
+    outpatient: t('serviceCatalog.catOutpatient'),
+  };
+  return map[category] || category;
+}
+
+function renderServiceCatalog() {
+  if (!serviceCatalogTable) return;
+  const list = loadServiceCatalog();
+  serviceCatalogTable.innerHTML = '';
+  if (!list.length) {
+    if (serviceCatalogEmpty) {
+      serviceCatalogEmpty.textContent = t('serviceCatalog.empty');
+    }
+    return;
+  }
+  if (serviceCatalogEmpty) {
+    serviceCatalogEmpty.textContent = '';
+  }
+  const sorted = [...list].sort((a, b) => {
+    const cat = (a.category || '').localeCompare(b.category || '');
+    if (cat !== 0) return cat;
+    return (a.name || '').localeCompare(b.name || '');
+  });
+  sorted.forEach((service) => {
+    const insuredCount = Array.isArray(service.insurancePricing)
+      ? service.insurancePricing.length
+      : 0;
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${getServiceCategoryLabel(service.category)}</td>
+      <td>${service.name || '-'}</td>
+      <td>${service.diseaseCode || '-'}</td>
+      <td>${formatCfl(service.uninsuredPrice || 0)}</td>
+      <td>${insuredCount ? insuredCount : '-'}</td>
+      <td><button class="ghost" type="button" data-service-id="${service.id}">${t(
+        'serviceCatalog.delete'
+      )}</button></td>
+    `;
+    serviceCatalogTable.appendChild(row);
+  });
 }
 
 function loadPricing() {
@@ -822,7 +1089,7 @@ const translations = {
       authCodePlaceholder: 'Provided by admin',
       create: 'Create facility account',
     },
-    actions: { signOut: 'Sign out' },
+    actions: { signOut: 'Sign out', home: 'Home' },
     modules: {
       title: 'Facility Modules',
       subtitle: 'Choose a module to continue. Access rights are based on your role.',
@@ -848,9 +1115,85 @@ const translations = {
       staffDesc: 'Create employee profiles and assign access.',
       lab: 'Laboratory',
       labDesc: 'Lab orders, samples, and results tracking.',
+      serviceCatalog: 'Service Catalog',
+      serviceCatalogDesc: 'Define services and prices by category.',
+      facilityProfile: 'Facility Profile',
+      facilityProfileDesc: 'Edit hospital details, branding, and contact information.',
+      insurancePartners: 'Insurance Partners',
+      insurancePartnersDesc: 'Manage partner insurers, contacts, and coverage settings.',
       open: 'Open module',
       back: 'Back to modules',
       backWelcome: 'Back',
+    },
+    facilityProfile: {
+      title: 'Facility profile',
+      subtitle: 'Update the hospital name, branding, and contact details.',
+      name: 'Facility name',
+      code: 'Facility code',
+      email: 'Facility email',
+      phone: 'Facility phone',
+      city: 'City',
+      country: 'Country',
+      address: 'Address',
+      logo: 'Facility logo',
+      save: 'Save changes',
+      saved: 'Facility profile updated.',
+    },
+    serviceCatalog: {
+      title: 'Service catalog',
+      subtitle: 'Create services and assign standard prices by category.',
+      name: 'Service name',
+      category: 'Category',
+      diseaseCode: 'Disease code',
+      uninsuredPrice: 'Uninsured price (CFL)',
+      insuranceTitle: 'Insurance-specific pricing',
+      insurancePartner: 'Insurance partner',
+      insuranceServiceCode: 'Service code (insurer)',
+      insurancePrice: 'Insured price (CFL)',
+      insuranceBase: 'Reimbursement base',
+      insuranceAdd: 'Add insurance price',
+      insuranceEmpty: 'No insurance prices added yet.',
+      insuranceRequired: 'Select an insurer and fill code, price, and base.',
+      save: 'Save service',
+      saved: 'Service saved.',
+      required: 'Please enter a name, category, and uninsured price.',
+      empty: 'No services yet. Add your first service.',
+      delete: 'Remove',
+      listCategory: 'Category',
+      listService: 'Service',
+      listDisease: 'Disease code',
+      listUninsured: 'Uninsured price',
+      listInsured: 'Insurer rates',
+      insuranceListPartner: 'Insurer',
+      insuranceListCode: 'Service code',
+      insuranceListPrice: 'CFL price',
+      insuranceListBase: 'Reimbursement base',
+      catConsultation: 'Consultation',
+      catLab: 'Laboratory tests',
+      catImaging: 'Medical imaging',
+      catHospital: 'Hospitalization',
+      catSurgery: 'Surgery',
+      catOutpatient: 'Outpatient care',
+    },
+    insurance: {
+      title: 'Insurance partners',
+      subtitle: 'Create and manage partner insurers that cover patient services.',
+      name: 'Insurance name',
+      code: 'Insurance code',
+      email: 'Email',
+      phone: 'Phone',
+      coverage: 'Default coverage (%)',
+      policy: 'Policy reference',
+      notes: 'Notes',
+      save: 'Save insurer',
+      saved: 'Insurer saved.',
+      required: 'Please enter the insurance name.',
+      empty: 'No insurance partners yet. Add your first insurer.',
+      delete: 'Remove',
+      listName: 'Insurer',
+      listCode: 'Code',
+      listCoverage: 'Coverage',
+      listContact: 'Contact',
     },
     dashboard: {
       title: 'Role dashboard',
@@ -1245,7 +1588,7 @@ const translations = {
       authCodePlaceholder: 'Fourni par admin',
       create: 'Créer le compte établissement',
     },
-    actions: { signOut: 'Se déconnecter' },
+    actions: { signOut: 'Se déconnecter', home: 'Accueil' },
     modules: {
       title: 'Modules de l’établissement',
       subtitle: 'Choisissez un module. Les accès dépendent de votre rôle.',
@@ -1271,9 +1614,85 @@ const translations = {
       staffDesc: 'Créer des profils employés et attribuer les accès.',
       lab: 'Laboratoire',
       labDesc: 'Demandes, échantillons et résultats.',
+      serviceCatalog: 'Catalogue des services',
+      serviceCatalogDesc: 'Définir les services et leurs tarifs par catégorie.',
+      facilityProfile: "Profil de l'établissement",
+      facilityProfileDesc: "Modifier les informations, le logo et les contacts.",
+      insurancePartners: "Partenaires d'assurance",
+      insurancePartnersDesc: "Gérer les assureurs partenaires, contacts et taux.",
       open: 'Ouvrir le module',
       back: 'Retour aux modules',
       backWelcome: 'Retour',
+    },
+    facilityProfile: {
+      title: "Profil de l'établissement",
+      subtitle: "Mettre à jour le nom, le logo et les contacts.",
+      name: "Nom de l'établissement",
+      code: "Code de l'établissement",
+      email: "Email de l'établissement",
+      phone: "Téléphone de l'établissement",
+      city: 'Ville',
+      country: 'Pays',
+      address: 'Adresse',
+      logo: "Logo de l'établissement",
+      save: 'Enregistrer les modifications',
+      saved: "Le profil de l'établissement a été mis à jour.",
+    },
+    serviceCatalog: {
+      title: 'Catalogue des services',
+      subtitle: 'Créer des services et définir les tarifs par catégorie.',
+      name: 'Nom du service',
+      category: 'Catégorie',
+      diseaseCode: 'Code maladie',
+      uninsuredPrice: 'Prix non assuré (CFL)',
+      insuranceTitle: 'Tarifs spécifiques par assureur',
+      insurancePartner: 'Assureur partenaire',
+      insuranceServiceCode: 'Code service (assureur)',
+      insurancePrice: 'Prix assuré (CFL)',
+      insuranceBase: 'Base de remboursement',
+      insuranceAdd: "Ajouter un tarif assureur",
+      insuranceEmpty: "Aucun tarif assureur pour le moment.",
+      insuranceRequired: "Sélectionnez un assureur et renseignez le code, le prix et la base.",
+      save: 'Enregistrer le service',
+      saved: 'Service enregistré.',
+      required: 'Veuillez saisir un nom, une catégorie et un prix non assuré.',
+      empty: 'Aucun service pour le moment. Ajoutez-en un.',
+      delete: 'Supprimer',
+      listCategory: 'Catégorie',
+      listService: 'Service',
+      listDisease: 'Code maladie',
+      listUninsured: 'Prix non assuré',
+      listInsured: 'Tarifs assureurs',
+      insuranceListPartner: 'Assureur',
+      insuranceListCode: 'Code service',
+      insuranceListPrice: 'Prix (CFL)',
+      insuranceListBase: 'Base de remboursement',
+      catConsultation: 'Consultation',
+      catLab: 'Analyses de laboratoire',
+      catImaging: 'Imagerie médicale',
+      catHospital: 'Hospitalisation',
+      catSurgery: 'Chirurgie',
+      catOutpatient: 'Soins ambulatoires',
+    },
+    insurance: {
+      title: "Partenaires d'assurance",
+      subtitle: "Créer et gérer les assureurs partenaires.",
+      name: "Nom de l'assureur",
+      code: "Code d'assurance",
+      email: 'Email',
+      phone: 'Téléphone',
+      coverage: 'Couverture par défaut (%)',
+      policy: 'Référence de police',
+      notes: 'Notes',
+      save: "Enregistrer l'assureur",
+      saved: 'Assureur enregistré.',
+      required: "Veuillez saisir le nom de l'assureur.",
+      empty: "Aucun assureur pour le moment. Ajoutez-en un.",
+      delete: 'Supprimer',
+      listName: 'Assureur',
+      listCode: 'Code',
+      listCoverage: 'Couverture',
+      listContact: 'Contact',
     },
     dashboard: {
       title: 'Tableau de bord',
@@ -1713,9 +2132,12 @@ function showView(view) {
   appointmentsView?.classList.add('hidden');
   inventoryView?.classList.add('hidden');
   analyticsView?.classList.add('hidden');
+  serviceCatalogView?.classList.add('hidden');
+  insurancePartnersView?.classList.add('hidden');
   staffSelectView?.classList.add('hidden');
   staffAccessView.classList.add('hidden');
   roleDashboardView.classList.add('hidden');
+  facilityProfileView?.classList.add('hidden');
   if (view === 'modules') {
     modulesView.classList.remove('hidden');
     topBar.classList.remove('hidden');
@@ -1752,6 +2174,27 @@ function showView(view) {
     analyticsView?.classList.remove('hidden');
     topBar.classList.remove('hidden');
     renderReports();
+    return;
+  }
+  if (view === 'service-catalog') {
+    serviceCatalogView?.classList.remove('hidden');
+    topBar.classList.remove('hidden');
+    pendingServiceInsurance = [];
+    populateServiceInsuranceOptions();
+    renderServiceInsuranceTable();
+    renderServiceCatalog();
+    return;
+  }
+  if (view === 'insurance-partners') {
+    insurancePartnersView?.classList.remove('hidden');
+    topBar.classList.remove('hidden');
+    renderInsurancePartners();
+    return;
+  }
+  if (view === 'facility-profile') {
+    facilityProfileView?.classList.remove('hidden');
+    topBar.classList.remove('hidden');
+    populateFacilityProfileForm();
     return;
   }
   if (view === 'staff') {
@@ -1857,16 +2300,196 @@ if (signUpForm) {
 
 if (signOutBtn) {
   signOutBtn.addEventListener('click', () => {
-    currentFacility = null;
-    currentFacilityProfile = null;
     currentEmployee = null;
-    applyFacilityBrand();
-    signInForm.reset();
-    signUpForm.reset();
+    staffAccessMode = null;
+    applyRoleAccess();
     if (adminSignInForm) adminSignInForm.reset();
     if (employeeSignInForm) employeeSignInForm.reset();
     if (staffAdminPanel) staffAdminPanel.classList.add('hidden');
+    if (currentFacility) {
+      showView('staff');
+      return;
+    }
+    signInForm.reset();
+    signUpForm.reset();
     showView('welcome');
+  });
+}
+
+if (homeBtn) {
+  homeBtn.addEventListener('click', () => {
+    if (currentFacility) {
+      showView('modules');
+    }
+  });
+}
+
+if (facilityProfileLogo) {
+  facilityProfileLogo.addEventListener('change', async () => {
+    const file = facilityProfileLogo.files?.[0];
+    if (!facilityLogoPreview) return;
+    if (!file) {
+      facilityLogoPreview.classList.add('hidden');
+      facilityLogoPreview.removeAttribute('src');
+      return;
+    }
+    const dataUrl = await readFileAsDataUrl(file);
+    if (dataUrl) {
+      facilityLogoPreview.src = dataUrl;
+      facilityLogoPreview.classList.remove('hidden');
+    }
+  });
+}
+
+if (facilityProfileForm) {
+  facilityProfileForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const profile = currentFacilityProfile || {};
+    const codeValue = facilityProfileCode?.value?.trim() || profile.code || currentFacility || '';
+    if (!codeValue) return;
+    const logoFile = facilityProfileLogo?.files?.[0];
+    const logoData = logoFile ? await readFileAsDataUrl(logoFile) : profile.logo || '';
+    const updated = {
+      ...profile,
+      code: codeValue,
+      name: facilityProfileName?.value?.trim() || profile.name || codeValue,
+      email: facilityProfileEmail?.value?.trim() || '',
+      phone: facilityProfilePhone?.value?.trim() || '',
+      city: facilityProfileCity?.value?.trim() || '',
+      country: facilityProfileCountry?.value?.trim() || '',
+      address: facilityProfileAddress?.value?.trim() || '',
+      logo: logoData || '',
+    };
+    saveFacilityProfile(updated);
+    currentFacilityProfile = updated;
+    currentFacility = updated.code;
+    applyFacilityBrand();
+    if (facilityLogoPreview) {
+      if (updated.logo) {
+        facilityLogoPreview.src = updated.logo;
+        facilityLogoPreview.classList.remove('hidden');
+      } else {
+        facilityLogoPreview.classList.add('hidden');
+        facilityLogoPreview.removeAttribute('src');
+      }
+    }
+    setMessage(facilityProfileMessage, t('facilityProfile.saved'));
+  });
+}
+
+if (serviceCatalogForm) {
+  serviceCatalogForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = serviceCatalogName?.value?.trim();
+    const category = serviceCatalogCategory?.value || '';
+    const diseaseCode = serviceCatalogDiseaseCode?.value?.trim() || '';
+    const uninsuredPrice = Number.parseFloat(serviceCatalogUninsuredPrice?.value || '');
+    if (!name || !category || !Number.isFinite(uninsuredPrice)) {
+      setMessage(serviceCatalogMessage, t('serviceCatalog.required'));
+      return;
+    }
+    const list = loadServiceCatalog();
+    list.push({
+      id: `svc_${Date.now()}`,
+      name,
+      category,
+      diseaseCode,
+      uninsuredPrice,
+      insurancePricing: pendingServiceInsurance,
+    });
+    saveServiceCatalog(list);
+    serviceCatalogForm.reset();
+    pendingServiceInsurance = [];
+    renderServiceInsuranceTable();
+    setMessage(serviceCatalogMessage, t('serviceCatalog.saved'));
+    renderServiceCatalog();
+  });
+}
+
+if (serviceCatalogTable) {
+  serviceCatalogTable.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-service-id]');
+    if (!button) return;
+    const id = button.getAttribute('data-service-id');
+    if (!id) return;
+    const list = loadServiceCatalog().filter((item) => item.id !== id);
+    saveServiceCatalog(list);
+    renderServiceCatalog();
+  });
+}
+
+if (addServiceInsurance) {
+  addServiceInsurance.addEventListener('click', () => {
+    const partner = serviceInsurancePartner?.value || '';
+    const code = serviceInsuranceCode?.value?.trim() || '';
+    const price = Number.parseFloat(serviceInsurancePrice?.value || '');
+    const base = Number.parseFloat(serviceInsuranceBase?.value || '');
+    if (!partner || !code || !Number.isFinite(price) || !Number.isFinite(base)) {
+      setMessage(serviceCatalogMessage, t('serviceCatalog.insuranceRequired'));
+      return;
+    }
+    const existingIndex = pendingServiceInsurance.findIndex((entry) => entry.partner === partner);
+    const entry = { partner, code, price, base };
+    if (existingIndex >= 0) {
+      pendingServiceInsurance[existingIndex] = entry;
+    } else {
+      pendingServiceInsurance.push(entry);
+    }
+    if (serviceInsuranceCode) serviceInsuranceCode.value = '';
+    if (serviceInsurancePrice) serviceInsurancePrice.value = '';
+    if (serviceInsuranceBase) serviceInsuranceBase.value = '';
+    setMessage(serviceCatalogMessage, '');
+    renderServiceInsuranceTable();
+  });
+}
+
+if (serviceInsuranceTable) {
+  serviceInsuranceTable.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-insurance-row]');
+    if (!button) return;
+    const partner = button.getAttribute('data-insurance-row');
+    pendingServiceInsurance = pendingServiceInsurance.filter((entry) => entry.partner !== partner);
+    renderServiceInsuranceTable();
+  });
+}
+
+if (insuranceForm) {
+  insuranceForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = insuranceName?.value?.trim();
+    const code = insuranceCode?.value?.trim() || '';
+    const coverage = insuranceCoverage?.value || '';
+    if (!name) {
+      setMessage(insuranceMessage, t('insurance.required'));
+      return;
+    }
+    const list = loadInsurancePartners();
+    list.push({
+      id: `ins_${Date.now()}`,
+      name,
+      code,
+      email: insuranceEmail?.value?.trim() || '',
+      phone: insurancePhone?.value?.trim() || '',
+      coverage,
+      policy: insurancePolicy?.value?.trim() || '',
+      notes: insuranceNotes?.value?.trim() || '',
+    });
+    saveInsurancePartners(list);
+    insuranceForm.reset();
+    setMessage(insuranceMessage, t('insurance.saved'));
+    renderInsurancePartners();
+  });
+}
+
+if (insuranceTable) {
+  insuranceTable.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-insurance-id]');
+    if (!button) return;
+    const id = button.getAttribute('data-insurance-id');
+    if (!id) return;
+    const list = loadInsurancePartners().filter((item) => item.id !== id);
+    saveInsurancePartners(list);
+    renderInsurancePartners();
   });
 }
 
@@ -2467,6 +3090,12 @@ if (moduleButtons && moduleButtons.length) {
         showView('inventory');
       } else if (target === 'analytics') {
         showView('analytics');
+      } else if (target === 'facility-profile') {
+        showView('facility-profile');
+      } else if (target === 'service-catalog') {
+        showView('service-catalog');
+      } else if (target === 'insurance-partners') {
+        showView('insurance-partners');
       }
     });
   });
@@ -2522,6 +3151,18 @@ if (backToModulesFromInventory) {
 
 if (backToModulesFromAnalytics) {
   backToModulesFromAnalytics.addEventListener('click', () => showView('modules'));
+}
+
+if (backToModulesFromServiceCatalog) {
+  backToModulesFromServiceCatalog.addEventListener('click', () => showView('modules'));
+}
+
+if (backToModulesFromInsurance) {
+  backToModulesFromInsurance.addEventListener('click', () => showView('modules'));
+}
+
+if (backToModulesFromFacility) {
+  backToModulesFromFacility.addEventListener('click', () => showView('modules'));
 }
 
 if (goToModules) {

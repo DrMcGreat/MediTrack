@@ -28,9 +28,20 @@
           </div>
         </div>
       </div>
-      <button id="signOutBtn" class="ghost" type="button" data-i18n="actions.signOut">
-        Sign out
-      </button>
+      <div class="topbar-actions">
+        <button id="homeBtn" class="ghost icon-button" type="button" data-i18n="actions.home">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M3 10.2l9-7 9 7v9.3a1 1 0 0 1-1 1h-5.8a1 1 0 0 1-1-1v-4.7H10v4.7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"
+              fill="currentColor"
+            />
+          </svg>
+          <span data-i18n="actions.home">Home</span>
+        </button>
+        <button id="signOutBtn" class="ghost" type="button" data-i18n="actions.signOut">
+          Sign out
+        </button>
+      </div>
     </header>
 
     <main class="app">
@@ -205,6 +216,34 @@
             </button>
           </article>
           <article class="module-card" data-roles="director">
+            <h3 data-i18n="modules.serviceCatalog">Service Catalog</h3>
+            <p data-i18n="modules.serviceCatalogDesc">
+              Define services and prices by category.
+            </p>
+            <button
+              class="ghost"
+              type="button"
+              data-module="service-catalog"
+              data-i18n="modules.open"
+            >
+              Open module
+            </button>
+          </article>
+          <article class="module-card" data-roles="director">
+            <h3 data-i18n="modules.insurancePartners">Insurance Partners</h3>
+            <p data-i18n="modules.insurancePartnersDesc">
+              Manage partner insurers, contacts, and coverage settings.
+            </p>
+            <button
+              class="ghost"
+              type="button"
+              data-module="insurance-partners"
+              data-i18n="modules.open"
+            >
+              Open module
+            </button>
+          </article>
+          <article class="module-card" data-roles="director">
             <h3 data-i18n="modules.procurement">Procurement</h3>
             <p data-i18n="modules.procurementDesc">Suppliers, purchase orders, and approvals.</p>
             <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
@@ -223,6 +262,93 @@
               Open module
             </button>
           </article>
+          <article class="module-card" data-roles="director,accountant">
+            <h3 data-i18n="modules.facilityProfile">Facility Profile</h3>
+            <p data-i18n="modules.facilityProfileDesc">
+              Edit hospital details, branding, and contact information.
+            </p>
+            <button
+              class="ghost"
+              type="button"
+              data-module="facility-profile"
+              data-i18n="modules.open"
+            >
+              Open module
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section id="facilityProfileView" class="view hidden">
+        <div class="module-top">
+          <button
+            id="backToModulesFromFacility"
+            class="ghost"
+            type="button"
+            data-i18n="modules.back"
+          >
+            Back to modules
+          </button>
+          <div>
+            <h2 data-i18n="facilityProfile.title">Facility profile</h2>
+            <p class="subhead" data-i18n="facilityProfile.subtitle">
+              Update the hospital name, branding, and contact details.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-layout">
+          <section class="module-section full">
+            <form id="facilityProfileForm" class="auth-form">
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="facilityProfile.name">Facility name</span>
+                  <input id="facilityProfileName" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="facilityProfile.code">Facility code</span>
+                  <input id="facilityProfileCode" type="text" readonly />
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="facilityProfile.email">Facility email</span>
+                  <input id="facilityProfileEmail" type="email" />
+                </label>
+                <label class="field">
+                  <span data-i18n="facilityProfile.phone">Facility phone</span>
+                  <input id="facilityProfilePhone" type="tel" />
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="facilityProfile.city">City</span>
+                  <input id="facilityProfileCity" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="facilityProfile.country">Country</span>
+                  <input id="facilityProfileCountry" type="text" />
+                </label>
+              </div>
+              <label class="field">
+                <span data-i18n="facilityProfile.address">Address</span>
+                <input id="facilityProfileAddress" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="facilityProfile.logo">Facility logo</span>
+                <input id="facilityProfileLogo" type="file" accept="image/*" />
+              </label>
+              <img
+                id="facilityLogoPreview"
+                class="logo-preview hidden"
+                alt="Facility logo preview"
+              />
+              <button class="primary" type="submit" data-i18n="facilityProfile.save">
+                Save changes
+              </button>
+              <p class="form-message" id="facilityProfileMessage"></p>
+            </form>
+          </section>
         </div>
       </section>
 
@@ -258,6 +384,214 @@
               Continue as employee
             </button>
           </div>
+        </div>
+      </section>
+
+      <section id="serviceCatalogView" class="view hidden">
+        <div class="module-top">
+          <button
+            id="backToModulesFromServiceCatalog"
+            class="ghost"
+            type="button"
+            data-i18n="modules.back"
+          >
+            Back to modules
+          </button>
+          <div>
+            <h2 data-i18n="serviceCatalog.title">Service catalog</h2>
+            <p class="subhead" data-i18n="serviceCatalog.subtitle">
+              Create services and assign standard prices by category.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-layout">
+          <section class="module-section full">
+            <form id="serviceCatalogForm" class="auth-form">
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="serviceCatalog.name">Service name</span>
+                  <input id="serviceCatalogName" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="serviceCatalog.category">Category</span>
+                  <select id="serviceCatalogCategory">
+                    <option value="consultation" data-i18n="serviceCatalog.catConsultation">
+                      Consultation
+                    </option>
+                    <option value="lab" data-i18n="serviceCatalog.catLab">Laboratory tests</option>
+                    <option value="imaging" data-i18n="serviceCatalog.catImaging">Medical imaging</option>
+                    <option value="hospitalization" data-i18n="serviceCatalog.catHospital">
+                      Hospitalization
+                    </option>
+                    <option value="surgery" data-i18n="serviceCatalog.catSurgery">Surgery</option>
+                    <option value="outpatient" data-i18n="serviceCatalog.catOutpatient">
+                      Outpatient care
+                    </option>
+                  </select>
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="serviceCatalog.diseaseCode">Disease code</span>
+                  <input id="serviceCatalogDiseaseCode" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="serviceCatalog.uninsuredPrice">Uninsured price (CFL)</span>
+                  <input id="serviceCatalogUninsuredPrice" type="number" min="0" step="1" />
+                </label>
+              </div>
+
+              <div class="module-section">
+                <h4 data-i18n="serviceCatalog.insuranceTitle">Insurance-specific pricing</h4>
+                <div class="field-row">
+                  <label class="field">
+                    <span data-i18n="serviceCatalog.insurancePartner">Insurance partner</span>
+                    <select id="serviceInsurancePartner"></select>
+                  </label>
+                  <label class="field">
+                    <span data-i18n="serviceCatalog.insuranceServiceCode">Service code (insurer)</span>
+                    <input id="serviceInsuranceCode" type="text" />
+                  </label>
+                </div>
+                <div class="field-row">
+                  <label class="field">
+                    <span data-i18n="serviceCatalog.insurancePrice">Insured price (CFL)</span>
+                    <input id="serviceInsurancePrice" type="number" min="0" step="1" />
+                  </label>
+                  <label class="field">
+                    <span data-i18n="serviceCatalog.insuranceBase">Reimbursement base</span>
+                    <input id="serviceInsuranceBase" type="number" min="0" step="1" />
+                  </label>
+                </div>
+                <button id="addServiceInsurance" class="ghost" type="button" data-i18n="serviceCatalog.insuranceAdd">
+                  Add insurance price
+                </button>
+                <div class="table-scroll">
+                  <table class="billing-table">
+                    <thead>
+                      <tr>
+                        <th data-i18n="serviceCatalog.insuranceListPartner">Insurer</th>
+                        <th data-i18n="serviceCatalog.insuranceListCode">Service code</th>
+                        <th data-i18n="serviceCatalog.insuranceListPrice">CFL price</th>
+                        <th data-i18n="serviceCatalog.insuranceListBase">Reimbursement base</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="serviceInsuranceTable"></tbody>
+                  </table>
+                </div>
+                <p class="form-message" id="serviceInsuranceEmpty"></p>
+              </div>
+
+              <button class="primary" type="submit" data-i18n="serviceCatalog.save">
+                Save service
+              </button>
+              <p class="form-message" id="serviceCatalogMessage"></p>
+            </form>
+
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="serviceCatalog.listCategory">Category</th>
+                    <th data-i18n="serviceCatalog.listService">Service</th>
+                    <th data-i18n="serviceCatalog.listDisease">Disease code</th>
+                    <th data-i18n="serviceCatalog.listUninsured">Uninsured price</th>
+                    <th data-i18n="serviceCatalog.listInsured">Insurer rates</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="serviceCatalogTable"></tbody>
+              </table>
+            </div>
+            <p class="form-message" id="serviceCatalogEmpty"></p>
+          </section>
+        </div>
+      </section>
+
+      <section id="insurancePartnersView" class="view hidden">
+        <div class="module-top">
+          <button
+            id="backToModulesFromInsurance"
+            class="ghost"
+            type="button"
+            data-i18n="modules.back"
+          >
+            Back to modules
+          </button>
+          <div>
+            <h2 data-i18n="insurance.title">Insurance partners</h2>
+            <p class="subhead" data-i18n="insurance.subtitle">
+              Create and manage partner insurers that cover patient services.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-layout">
+          <section class="module-section full">
+            <form id="insuranceForm" class="auth-form">
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="insurance.name">Insurance name</span>
+                  <input id="insuranceName" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="insurance.code">Insurance code</span>
+                  <input id="insuranceCode" type="text" />
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="insurance.email">Email</span>
+                  <input id="insuranceEmail" type="email" />
+                </label>
+                <label class="field">
+                  <span data-i18n="insurance.phone">Phone</span>
+                  <input id="insurancePhone" type="tel" />
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="insurance.coverage">Default coverage (%)</span>
+                  <select id="insuranceCoverage">
+                    <option value="100">100%</option>
+                    <option value="95">95%</option>
+                    <option value="90">90%</option>
+                    <option value="80">80%</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span data-i18n="insurance.policy">Policy reference</span>
+                  <input id="insurancePolicy" type="text" />
+                </label>
+              </div>
+              <label class="field">
+                <span data-i18n="insurance.notes">Notes</span>
+                <textarea id="insuranceNotes" rows="3"></textarea>
+              </label>
+              <button class="primary" type="submit" data-i18n="insurance.save">
+                Save insurer
+              </button>
+              <p class="form-message" id="insuranceMessage"></p>
+            </form>
+
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="insurance.listName">Insurer</th>
+                    <th data-i18n="insurance.listCode">Code</th>
+                    <th data-i18n="insurance.listCoverage">Coverage</th>
+                    <th data-i18n="insurance.listContact">Contact</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="insuranceTable"></tbody>
+              </table>
+            </div>
+            <p class="form-message" id="insuranceEmpty"></p>
+          </section>
         </div>
       </section>
 
@@ -603,195 +937,6 @@
                 <input id="patientIdentifier" type="text" />
               </label>
             </div>
-          </section>
-
-          <section class="module-section full">
-            <h3 data-i18n="billing.pricingTitle">Insurance pricing table (optional)</h3>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.pricingProvider">Insurance provider</span>
-                <select id="pricingProvider">
-                  <option value="" data-i18n="select.placeholder">Select...</option>
-                  <option>AMU</option>
-                  <option>INAM</option>
-                  <option>SUNU</option>
-                  <option>SUNU-GB</option>
-                  <option>SANLAM</option>
-                  <option>GTA</option>
-                  <option>GCA</option>
-                  <option>MSH</option>
-                  <option>ASCOMA</option>
-                  <option>OLEA</option>
-                  <option>TRANSVIE</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="billing.pricingCode">Service code</span>
-                <input id="pricingCode" type="text" />
-              </label>
-            </div>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.pricingLabel">Service name</span>
-                <input id="pricingLabel" type="text" />
-              </label>
-              <label class="field">
-                <span data-i18n="billing.pricingPrice">CFL price</span>
-                <input id="pricingPrice" type="number" min="0" step="1" />
-              </label>
-              <label class="field">
-                <span data-i18n="billing.pricingBase">Reimbursement base</span>
-                <input id="pricingBase" type="number" min="0" step="1" />
-              </label>
-            </div>
-            <div class="button-row">
-              <button id="addPricingRule" class="ghost" type="button" data-i18n="billing.pricingAdd">
-                Save pricing rule
-              </button>
-            </div>
-            <div class="table-scroll">
-              <table class="billing-table">
-                <thead>
-                  <tr>
-                    <th data-i18n="billing.pricingProvider">Insurance provider</th>
-                    <th data-i18n="billing.pricingLabel">Service name</th>
-                    <th data-i18n="billing.pricingPrice">CFL price</th>
-                    <th data-i18n="billing.pricingBase">Reimbursement base</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody id="pricingTableBody"></tbody>
-              </table>
-            </div>
-            <p class="form-message" id="pricingMessage"></p>
-          </section>
-
-          <section class="module-section">
-            <h3 data-i18n="billing.servicesTitle">Reason for visit</h3>
-            <div class="check-grid">
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceConsult">Consultation</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceLab">Lab analysis</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceImaging">Medical imaging</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceHospital">Hospitalization</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceSurgery">Surgery</span></label>
-              <label><input type="checkbox" /> <span data-i18n="billing.serviceOutpatient">Outpatient care</span></label>
-            </div>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.consultList">Consultation type</span>
-                <select multiple>
-                  <option>General medicine consultation</option>
-                  <option>Cardiology consultation</option>
-                  <option>Neurology consultation</option>
-                  <option>Pulmonology consultation</option>
-                  <option>ENT (Otorhinolaryngology) consultation</option>
-                  <option>Hepatology / gastroenterology consultation</option>
-                  <option>Infectious disease consultation</option>
-                  <option>Geriatrics consultation</option>
-                  <option>Internal medicine consultation</option>
-                  <option>Pediatric consultation</option>
-                  <option>Pediatric surgery consultation</option>
-                  <option>General surgery consultation</option>
-                  <option>Traumatology consultation</option>
-                  <option>Gynecology / obstetrics consultation</option>
-                  <option>Antenatal care consultation</option>
-                  <option>Dermatology consultation</option>
-                  <option>Dental consultation</option>
-                  <option>Mental health consultation (psychology / psychiatry)</option>
-                  <option>Dietetics / nutrition consultation</option>
-                  <option>Physiotherapy / rehabilitation consultation</option>
-                  <option>Occupational medicine consultation</option>
-                  <option>Teleconsultation</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="billing.labList">Laboratory tests</span>
-                <select multiple>
-                  <option>Complete blood count (CBC)</option>
-                  <option>Fasting blood glucose</option>
-                  <option>Glycated hemoglobin (HbA1c)</option>
-                  <option>Lipid profile (total cholesterol, LDL, HDL, triglycerides)</option>
-                  <option>Renal function tests (creatinine, urea)</option>
-                  <option>Liver function tests (ALT, AST, bilirubin)</option>
-                  <option>Serum electrolytes (sodium, potassium, calcium)</option>
-                  <option>C-reactive protein (CRP)</option>
-                  <option>Hormonal tests (TSH, T3, T4, FSH, LH)</option>
-                  <option>Coagulation tests (INR, aPTT)</option>
-                  <option>Pregnancy test (β-HCG)</option>
-                  <option>Blood group and Rh factor</option>
-                  <option>Infectious disease tests (HIV, hepatitis B/C, syphilis, malaria)</option>
-                  <option>Urinalysis (dipstick, urine culture)</option>
-                  <option>Stool examination (parasites, occult blood)</option>
-                </select>
-              </label>
-            </div>
-            <label class="field">
-              <span data-i18n="billing.imagingList">Imaging services</span>
-              <select multiple>
-                <option>Standard radiography (chest, bones, abdomen)</option>
-                <option>Ultrasound (abdominal, pelvic, cardiac, breast)</option>
-                <option>CT scan</option>
-                <option>Magnetic resonance imaging (MRI)</option>
-                <option>Mammography</option>
-                <option>Vascular Doppler ultrasound</option>
-                <option>Dental radiography</option>
-                <option>Arthrography</option>
-                <option>Bone densitometry</option>
-                <option>Fluoroscopy</option>
-                <option>Interventional imaging (image-guided biopsy)</option>
-              </select>
-            </label>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.hospitalList">Hospitalization services</span>
-                <select multiple>
-                  <option>Admission to general care unit</option>
-                  <option>Intensive care unit (ICU) hospitalization</option>
-                  <option>Maternity hospitalization</option>
-                  <option>Day hospitalization</option>
-                  <option>Planned surgical hospitalization</option>
-                  <option>Emergency hospitalization</option>
-                  <option>Postoperative follow-up</option>
-                  <option>Rehabilitation unit hospitalization</option>
-                  <option>Short-term observation hospitalization</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="billing.surgeryList">Surgery services</span>
-                <select multiple>
-                  <option>General surgery (appendectomy, hernia repair)</option>
-                  <option>Orthopedic surgery (fracture reduction, prosthesis)</option>
-                  <option>Cardiovascular surgery (bypass surgery, stent placement)</option>
-                  <option>Gynecological surgery (cesarean section, hysterectomy)</option>
-                  <option>ENT surgery (tonsillectomy, ventilation tube insertion)</option>
-                  <option>Ophthalmologic surgery (cataract, glaucoma)</option>
-                  <option>Dental surgery (extractions, implants)</option>
-                  <option>Plastic and reconstructive surgery</option>
-                  <option>Urological surgery (prostatectomy, kidney stones)</option>
-                  <option>Thoracic surgery (lobectomy, thoracoscopy)</option>
-                  <option>Digestive surgery (cholecystectomy, colectomy)</option>
-                  <option>Pediatric surgery</option>
-                  <option>Laparoscopic / minimally invasive surgery</option>
-                </select>
-              </label>
-            </div>
-            <label class="field">
-              <span data-i18n="billing.outpatientList">Outpatient care</span>
-              <select multiple>
-                <option>Wound dressing and care</option>
-                <option>Injections (vaccines, antibiotics, etc.)</option>
-                <option>Intravenous infusion</option>
-                <option>Removal of sutures or staples</option>
-                <option>Abscess drainage</option>
-                <option>Electrocardiogram (ECG)</option>
-                <option>Spirometry</option>
-                <option>Physiotherapy / rehabilitation care</option>
-                <option>Chronic pain management (infiltrations, etc.)</option>
-                <option>Routine dental care (scaling, fillings)</option>
-                <option>Exercise stress testing</option>
-                <option>Blood pressure measurement and vital sign monitoring</option>
-              </select>
-            </label>
           </section>
 
           <section class="module-section full">
