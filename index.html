@@ -415,26 +415,17 @@
                 </label>
                 <label class="field">
                   <span data-i18n="serviceCatalog.category">Category</span>
-                  <select id="serviceCatalogCategory">
-                    <option value="consultation" data-i18n="serviceCatalog.catConsultation">
-                      Consultation
-                    </option>
-                    <option value="lab" data-i18n="serviceCatalog.catLab">Laboratory tests</option>
-                    <option value="imaging" data-i18n="serviceCatalog.catImaging">Medical imaging</option>
-                    <option value="hospitalization" data-i18n="serviceCatalog.catHospital">
-                      Hospitalization
-                    </option>
-                    <option value="surgery" data-i18n="serviceCatalog.catSurgery">Surgery</option>
-                    <option value="outpatient" data-i18n="serviceCatalog.catOutpatient">
-                      Outpatient care
-                    </option>
-                  </select>
+                  <select id="serviceCatalogCategory"></select>
                 </label>
               </div>
               <div class="field-row">
                 <label class="field">
-                  <span data-i18n="serviceCatalog.diseaseCode">Disease code</span>
-                  <input id="serviceCatalogDiseaseCode" type="text" />
+                  <span data-i18n="serviceCatalog.code">Service code</span>
+                  <input id="serviceCatalogCode" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="serviceCatalog.inamCode">INAM code</span>
+                  <input id="serviceCatalogInamCode" type="text" />
                 </label>
                 <label class="field">
                   <span data-i18n="serviceCatalog.uninsuredPrice">Uninsured price (CFL)</span>
@@ -444,38 +435,16 @@
 
               <div class="module-section">
                 <h4 data-i18n="serviceCatalog.insuranceTitle">Insurance-specific pricing</h4>
-                <div class="field-row">
-                  <label class="field">
-                    <span data-i18n="serviceCatalog.insurancePartner">Insurance partner</span>
-                    <select id="serviceInsurancePartner"></select>
-                  </label>
-                  <label class="field">
-                    <span data-i18n="serviceCatalog.insuranceServiceCode">Service code (insurer)</span>
-                    <input id="serviceInsuranceCode" type="text" />
-                  </label>
-                </div>
-                <div class="field-row">
-                  <label class="field">
-                    <span data-i18n="serviceCatalog.insurancePrice">Insured price (CFL)</span>
-                    <input id="serviceInsurancePrice" type="number" min="0" step="1" />
-                  </label>
-                  <label class="field">
-                    <span data-i18n="serviceCatalog.insuranceBase">Reimbursement base</span>
-                    <input id="serviceInsuranceBase" type="number" min="0" step="1" />
-                  </label>
-                </div>
-                <button id="addServiceInsurance" class="ghost" type="button" data-i18n="serviceCatalog.insuranceAdd">
-                  Add insurance price
-                </button>
+                <p class="subhead" data-i18n="serviceCatalog.insuranceHelp">
+                  Each partner insurer appears automatically. Enter the clinic price and reimbursement base for each one.
+                </p>
                 <div class="table-scroll">
                   <table class="billing-table">
                     <thead>
                       <tr>
                         <th data-i18n="serviceCatalog.insuranceListPartner">Insurer</th>
-                        <th data-i18n="serviceCatalog.insuranceListCode">Service code</th>
-                        <th data-i18n="serviceCatalog.insuranceListPrice">CFL price</th>
+                        <th data-i18n="serviceCatalog.insuranceListPrice">Insured price</th>
                         <th data-i18n="serviceCatalog.insuranceListBase">Reimbursement base</th>
-                        <th></th>
                       </tr>
                     </thead>
                     <tbody id="serviceInsuranceTable"></tbody>
@@ -484,9 +453,14 @@
                 <p class="form-message" id="serviceInsuranceEmpty"></p>
               </div>
 
-              <button class="primary" type="submit" data-i18n="serviceCatalog.save">
-                Save service
-              </button>
+              <div class="button-row">
+                <button class="primary" type="submit" data-i18n="serviceCatalog.save">
+                  Save service
+                </button>
+                <button id="cancelServiceEdit" class="ghost hidden" type="button" data-i18n="serviceCatalog.cancelEdit">
+                  Cancel edit
+                </button>
+              </div>
               <p class="form-message" id="serviceCatalogMessage"></p>
             </form>
 
@@ -496,10 +470,13 @@
                   <tr>
                     <th data-i18n="serviceCatalog.listCategory">Category</th>
                     <th data-i18n="serviceCatalog.listService">Service</th>
-                    <th data-i18n="serviceCatalog.listDisease">Disease code</th>
+                    <th data-i18n="serviceCatalog.listCode">Code</th>
+                    <th data-i18n="serviceCatalog.listInam">Code INAM</th>
                     <th data-i18n="serviceCatalog.listUninsured">Uninsured price</th>
-                    <th data-i18n="serviceCatalog.listInsured">Insurer rates</th>
-                    <th></th>
+                    <th data-i18n="serviceCatalog.listInsuredPrice">Insured price</th>
+                    <th data-i18n="serviceCatalog.listBase">Reimbursement base</th>
+                    <th data-i18n="serviceCatalog.listPartner">Insurer</th>
+                    <th data-i18n="serviceCatalog.actions">Actions</th>
                   </tr>
                 </thead>
                 <tbody id="serviceCatalogTable"></tbody>
@@ -658,10 +635,16 @@
             </button>
           </div>
           <form id="staffForm" class="grid-form">
-            <label class="field">
-              <span data-i18n="staff.fullName">Full name</span>
-              <input id="staffName" type="text" />
-            </label>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="staff.firstName">First name</span>
+                <input id="staffFirstName" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="staff.lastName">Last name</span>
+                <input id="staffLastName" type="text" />
+              </label>
+            </div>
             <label class="field">
               <span data-i18n="staff.role">Role</span>
               <select id="staffRole">
@@ -679,6 +662,25 @@
             </label>
             <div class="field-row">
               <label class="field">
+                <span data-i18n="staff.dob">Date of birth</span>
+                <input id="staffDob" type="date" />
+              </label>
+              <label class="field">
+                <span data-i18n="staff.sex">Sex</span>
+                <select id="staffSex">
+                  <option value="" data-i18n="select.placeholder">Select...</option>
+                  <option value="female" data-i18n="staff.sexFemale">Female</option>
+                  <option value="male" data-i18n="staff.sexMale">Male</option>
+                  <option value="other" data-i18n="staff.sexOther">Other</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="staff.contractStart">Contract start date</span>
+                <input id="staffContractStart" type="date" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
                 <span data-i18n="staff.employmentType">Employment type</span>
                 <select id="staffEmploymentType">
                   <option value="permanent" data-i18n="staff.employmentPermanent">Permanent</option>
@@ -694,10 +696,16 @@
               <span data-i18n="staff.email">Email</span>
               <input id="staffEmail" type="email" />
             </label>
-            <label class="field">
-              <span data-i18n="staff.phone">Phone</span>
-              <input id="staffPhone" type="tel" />
-            </label>
+            <div class="field-row compact-row">
+              <label class="field compact-field">
+                <span data-i18n="staff.countryCode">Country code</span>
+                <select id="staffPhoneCountry"></select>
+              </label>
+              <label class="field">
+                <span data-i18n="staff.phone">Phone</span>
+                <input id="staffPhone" type="tel" />
+              </label>
+            </div>
             <label class="field">
               <span data-i18n="staff.employeeCode">Employee ID</span>
               <input id="staffCode" type="text" />
@@ -782,30 +790,35 @@
 
         <div class="module-layout">
           <section class="module-section">
-            <h3 data-i18n="billing.admissionTitle">Patient admission</h3>
-            <div class="pill-row">
-              <label class="pill">
-                <input type="radio" name="patientType" value="new" checked />
-                <span data-i18n="billing.newPatient">New patient</span>
-              </label>
-              <label class="pill">
-                <input type="radio" name="patientType" value="returning" />
-                <span data-i18n="billing.returningPatient">Returning patient</span>
-              </label>
-            </div>
+            <h3 data-i18n="billing.lookupTitle">Patient lookup</h3>
             <label class="field">
               <span data-i18n="billing.patientSearch">Search patient</span>
               <input
                 id="patientSearch"
                 type="search"
-                placeholder="Search by name, ID, or phone"
+                placeholder="Search by name or phone number"
                 data-i18n-placeholder="billing.patientSearchPlaceholder"
               />
             </label>
+            <div id="patientSearchResults" class="search-results"></div>
+            <div class="button-row">
+              <button id="createNewPatientBtn" class="primary" type="button" data-i18n="billing.createPatient">
+                Create new patient profile
+              </button>
+            </div>
+            <p class="form-message" id="patientSearchMessage"></p>
+          </section>
+
+          <section class="module-section full">
+            <h3 data-i18n="billing.admissionTitle">Patient admission</h3>
             <div class="field-row">
               <label class="field">
-                <span data-i18n="billing.fullName">Full name</span>
-                <input id="patientFullName" type="text" />
+                <span data-i18n="billing.firstName">First name</span>
+                <input id="patientFirstName" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="billing.lastName">Last name</span>
+                <input id="patientLastName" type="text" />
               </label>
               <label class="field">
                 <span data-i18n="billing.sex">Sex</span>
@@ -824,28 +837,50 @@
               </label>
               <label class="field">
                 <span data-i18n="billing.age">Age</span>
-                <input id="patientAge" type="number" min="0" />
+                <input id="patientAge" type="number" min="0" readonly />
               </label>
             </div>
-            <label class="field">
-              <span data-i18n="billing.address">Address</span>
-              <input id="patientAddress" type="text" />
-            </label>
             <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.addressCountry">Country</span>
+                <input id="patientCountry" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="billing.addressCity">City</span>
+                <input id="patientCity" type="text" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="billing.addressDistrict">District / neighborhood</span>
+                <input id="patientDistrict" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="billing.addressPostal">Postal code</span>
+                <input id="patientPostalCode" type="text" />
+              </label>
+            </div>
+            <div class="field-row compact-row">
+              <label class="field compact-field">
+                <span data-i18n="billing.countryCode">Country code</span>
+                <select id="patientPhoneCountry"></select>
+              </label>
               <label class="field">
                 <span data-i18n="billing.phone">Phone number</span>
                 <input id="patientPhone" type="tel" />
               </label>
+            </div>
+            <div class="field-row compact-row">
+              <label class="field compact-field">
+                <span data-i18n="billing.countryCode">Country code</span>
+                <select id="patientWhatsappCountry"></select>
+              </label>
               <label class="field">
-                <span data-i18n="billing.emergencyPhone">Emergency contact</span>
-                <input id="patientEmergencyPhone" type="tel" />
+                <span data-i18n="billing.whatsapp">WhatsApp (if different)</span>
+                <input id="patientWhatsapp" type="tel" />
               </label>
             </div>
             <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.whatsapp">WhatsApp</span>
-                <input id="patientWhatsapp" type="tel" />
-              </label>
               <label class="field">
                 <span data-i18n="billing.profession">Profession</span>
                 <select id="patientProfession">
@@ -870,22 +905,11 @@
                 <option value="other" data-i18n="billing.educationOther">Other</option>
               </select>
             </label>
-            <div class="field-row">
-              <label class="field">
-                <span data-i18n="billing.assignDoctor">Assign doctor</span>
-                <select id="assignDoctor">
-                  <option value="" data-i18n="billing.doctorPlaceholder">Select doctor</option>
-                </select>
-              </label>
-              <label class="field">
-                <span data-i18n="billing.consultationCost">Consultation cost (CFL)</span>
-                <input id="consultationCost" type="number" min="0" step="1" />
-              </label>
-            </div>
+            <label class="field">
+              <span data-i18n="billing.patientId">Identification number</span>
+              <input id="patientIdentifier" type="text" />
+            </label>
             <div class="button-row">
-              <button id="addConsultationBtn" class="ghost" type="button" data-i18n="billing.addConsultation">
-                Add consultation to billing
-              </button>
               <button id="savePatientBtn" class="primary" type="button" data-i18n="billing.savePatient">
                 Save patient profile
               </button>
@@ -897,44 +921,63 @@
           </section>
 
           <section class="module-section">
-            <h3 data-i18n="billing.insuranceTitle">Insurance & coverage</h3>
+            <h3 data-i18n="billing.insuranceTitle">Insurance & visit setup</h3>
             <div class="field-row">
               <label class="field">
-                <span data-i18n="billing.insuranceType">Insurance type</span>
-                <select id="insuranceProvider">
-                  <option value="" data-i18n="select.placeholder">Select...</option>
-                  <option>AMU</option>
-                  <option>INAM</option>
-                  <option>SUNU</option>
-                  <option>SUNU-GB</option>
-                  <option>SANLAM</option>
-                  <option>GTA</option>
-                  <option>GCA</option>
-                  <option>MSH</option>
-                  <option>ASCOMA</option>
-                  <option>OLEA</option>
-                  <option>TRANSVIE</option>
+                <span data-i18n="billing.insuranceStatus">Insurance status</span>
+                <select id="patientInsuranceStatus">
+                  <option value="no" data-i18n="billing.insuranceNo">No</option>
+                  <option value="yes" data-i18n="billing.insuranceYes">Yes</option>
                 </select>
               </label>
               <label class="field">
-                <span data-i18n="billing.insuranceId">Insurance ID / dossier</span>
-                <input id="insuranceId" type="text" />
+                <span data-i18n="billing.assignDoctor">Assigned care provider</span>
+                <select id="assignDoctor">
+                  <option value="" data-i18n="billing.doctorPlaceholder">Select doctor</option>
+                </select>
               </label>
+            </div>
+            <div id="insuranceDetails" class="field-group hidden">
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="billing.insuranceType">Insurance type</span>
+                  <select id="insuranceProvider">
+                    <option value="" data-i18n="select.placeholder">Select...</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span data-i18n="billing.insuranceId">Insurance card number</span>
+                  <input id="insuranceId" type="text" />
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="billing.coverageRate">Coverage rate</span>
+                  <select id="coverageRate">
+                    <option value="" data-i18n="select.placeholder">Select...</option>
+                    <option value="100">100%</option>
+                    <option value="95">95%</option>
+                    <option value="90">90%</option>
+                    <option value="80">80%</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span data-i18n="billing.cardExpiry">Card expiry date</span>
+                  <input id="insuranceExpiry" type="date" />
+                </label>
+              </div>
             </div>
             <div class="field-row">
               <label class="field">
-                <span data-i18n="billing.coverageRate">Coverage rate</span>
-                <select id="coverageRate">
-                  <option value="" data-i18n="select.placeholder">Select...</option>
-                  <option value="100">100%</option>
-                  <option value="95">95%</option>
-                  <option value="90">90%</option>
-                  <option value="80">80%</option>
+                <span data-i18n="billing.paymentMethod">Payment method</span>
+                <select id="paymentMethod">
+                  <option value="cash" data-i18n="billing.paymentCash">Cash</option>
+                  <option value="bank_transfer" data-i18n="billing.paymentBank">Bank transfer</option>
                 </select>
               </label>
               <label class="field">
-                <span data-i18n="billing.patientId">Identification number</span>
-                <input id="patientIdentifier" type="text" />
+                <span data-i18n="billing.patientStatus">Admission status</span>
+                <input id="patientStatusLabel" type="text" value="New patient" readonly />
               </label>
             </div>
           </section>
@@ -1094,7 +1137,44 @@
         </div>
 
         <div class="module-layout">
-          <section class="module-section">
+          <section class="module-section full">
+            <h3 data-i18n="services.catalogTitle">Select services from the catalog</h3>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="services.categoryFilter">Service category</span>
+                <select id="serviceSelectionCategoryFilter"></select>
+              </label>
+              <label class="field">
+                <span data-i18n="services.search">Search service</span>
+                <input
+                  id="serviceSelectionSearch"
+                  type="search"
+                  data-i18n-placeholder="services.searchPlaceholder"
+                  placeholder="Search by service name or code"
+                />
+              </label>
+            </div>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="services.tableSelect">Select</th>
+                    <th data-i18n="services.tableCategory">Category</th>
+                    <th data-i18n="services.tableService">Service</th>
+                    <th data-i18n="services.tableCode">Code</th>
+                    <th data-i18n="services.tableInam">Code INAM</th>
+                    <th data-i18n="services.tableUninsured">Uninsured price</th>
+                    <th data-i18n="services.tableInsured">Insured price</th>
+                    <th data-i18n="services.tableBase">Reimbursement base</th>
+                    <th data-i18n="services.tableQty">Qty</th>
+                  </tr>
+                </thead>
+                <tbody id="serviceSelectionTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section legacy-service-block hidden">
             <h3 data-i18n="services.consultations">Consultation (list)</h3>
             <label class="field">
               <span data-i18n="services.selectHint">Select one or more services.</span>
@@ -1177,7 +1257,7 @@
             </label>
           </section>
 
-          <section class="module-section">
+          <section class="module-section legacy-service-block hidden">
             <h3 data-i18n="services.labTests">Laboratory tests (list)</h3>
             <label class="field">
               <span data-i18n="services.selectHint">Select one or more services.</span>
@@ -1247,7 +1327,7 @@
             </label>
           </section>
 
-          <section class="module-section">
+          <section class="module-section legacy-service-block hidden">
             <h3 data-i18n="services.imaging">Medical imaging (list)</h3>
             <label class="field">
               <span data-i18n="services.selectHint">Select one or more services.</span>
@@ -1297,7 +1377,7 @@
             </label>
           </section>
 
-          <section class="module-section">
+          <section class="module-section legacy-service-block hidden">
             <h3 data-i18n="services.hospitalization">Hospitalization (list)</h3>
             <label class="field">
               <span data-i18n="services.selectHint">Select one or more services.</span>
@@ -1349,7 +1429,7 @@
             </label>
           </section>
 
-          <section class="module-section">
+          <section class="module-section legacy-service-block hidden">
             <h3 data-i18n="services.surgery">Surgery (list)</h3>
             <label class="field">
               <span data-i18n="services.selectHint">Select one or more services.</span>
@@ -1433,7 +1513,7 @@
             </label>
           </section>
 
-          <section class="module-section">
+          <section class="module-section legacy-service-block hidden">
             <h3 data-i18n="services.outpatient">Outpatient care (list)</h3>
             <label class="field">
               <span data-i18n="services.selectHint">Select one or more services.</span>
@@ -1478,7 +1558,7 @@
             </label>
           </section>
 
-          <section class="module-section full">
+          <section class="module-section full legacy-service-block hidden">
             <h3 data-i18n="services.medications">Medications for hospitalization & care</h3>
             <div class="table-scroll">
               <table class="billing-table service-table">
@@ -2004,10 +2084,80 @@
               </div>
               <div>
                 <h4 data-i18n="dashboard.treatmentPlans">Diagnoses & treatment plans</h4>
-                <p class="muted" data-i18n="dashboard.placeholder">
+                <p class="muted" id="doctorPatientSummary" data-i18n="dashboard.placeholder">
                   Add consultations to see structured clinical plans here.
                 </p>
               </div>
+            </div>
+            <div class="module-section">
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="dashboard.selectEncounter">Patient encounter</span>
+                  <select id="doctorEncounterSelect"></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="dashboard.prescriptionType">Prescription option</span>
+                  <select id="doctorPrescriptionType">
+                    <option value="" data-i18n="select.placeholder">Select...</option>
+                    <option value="outpatient_care" data-i18n="dashboard.prescriptionOutpatientCare">Outpatient care</option>
+                    <option value="day_hospitalization" data-i18n="dashboard.prescriptionDay">Day hospitalization</option>
+                    <option value="full_hospitalization" data-i18n="dashboard.prescriptionFull">Full hospitalization</option>
+                    <option value="outpatient_prescription" data-i18n="dashboard.prescriptionOutpatientRx">Outpatient prescription</option>
+                  </select>
+                </label>
+              </div>
+              <label class="field">
+                <span data-i18n="dashboard.complaint">Reason for consultation / complaint</span>
+                <textarea id="doctorComplaint" rows="2"></textarea>
+              </label>
+              <label class="field">
+                <span data-i18n="dashboard.symptoms">Functional signs / symptoms</span>
+                <textarea id="doctorSymptoms" rows="2"></textarea>
+              </label>
+              <label class="field">
+                <span data-i18n="dashboard.examSummary">Clinical examination summary</span>
+                <textarea id="doctorExamSummary" rows="3"></textarea>
+              </label>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="dashboard.diagnosis1">Diagnostic hypothesis 1</span>
+                  <input id="doctorDiagnosis1" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="dashboard.diagnosis2">Diagnostic hypothesis 2</span>
+                  <input id="doctorDiagnosis2" type="text" />
+                </label>
+                <label class="field">
+                  <span data-i18n="dashboard.diagnosis3">Diagnostic hypothesis 3</span>
+                  <input id="doctorDiagnosis3" type="text" />
+                </label>
+              </div>
+              <label class="field">
+                <span data-i18n="dashboard.requiredTests">Required tests / investigations</span>
+                <select id="doctorTests" multiple class="service-select"></select>
+              </label>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="dashboard.stockMedication">Medication / consumable</span>
+                  <select id="doctorStockItem"></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="dashboard.stockQty">Quantity</span>
+                  <input id="doctorStockQty" type="number" min="1" value="1" />
+                </label>
+              </div>
+              <div class="button-row">
+                <button id="addDoctorMedicationBtn" class="ghost" type="button" data-i18n="dashboard.addMedication">
+                  Add medication
+                </button>
+              </div>
+              <div id="doctorMedicationList" class="search-results"></div>
+              <div class="button-row">
+                <button id="saveDoctorConsultationBtn" class="primary" type="button" data-i18n="dashboard.saveConsultation">
+                  Save consultation
+                </button>
+              </div>
+              <p class="form-message" id="doctorConsultationMessage"></p>
             </div>
             <div class="dash-table">
               <h4 data-i18n="dashboard.doctorPayslip">Payslip preview</h4>
@@ -2058,6 +2208,63 @@
                 </thead>
                 <tbody id="nurseDoctorPayments"></tbody>
               </table>
+            </div>
+            <div class="module-section">
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="dashboard.selectEncounter">Patient encounter</span>
+                  <select id="nurseEncounterSelect"></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="dashboard.hospitalizationMode">Care mode</span>
+                  <select id="nurseHospitalizationMode">
+                    <option value="outpatient" data-i18n="dashboard.modeOutpatient">Outpatient</option>
+                    <option value="day" data-i18n="dashboard.modeDay">Day hospitalization</option>
+                    <option value="full" data-i18n="dashboard.modeFull">Full hospitalization</option>
+                  </select>
+                </label>
+              </div>
+              <div class="field-row">
+                <label class="field"><span data-i18n="dashboard.temp">Temperature</span><input id="nurseTemperature" type="number" step="0.1" /></label>
+                <label class="field"><span data-i18n="dashboard.bpRight">BP right arm</span><input id="nurseBpRight" type="text" /></label>
+                <label class="field"><span data-i18n="dashboard.bpLeft">BP left arm</span><input id="nurseBpLeft" type="text" /></label>
+              </div>
+              <div class="field-row">
+                <label class="field"><span data-i18n="dashboard.weight">Weight</span><input id="nurseWeight" type="number" step="0.1" /></label>
+                <label class="field"><span data-i18n="dashboard.height">Height</span><input id="nurseHeight" type="number" step="0.1" /></label>
+                <label class="field"><span data-i18n="dashboard.waist">Waist circumference</span><input id="nurseWaist" type="number" step="0.1" /></label>
+                <label class="field"><span data-i18n="dashboard.pulse">Pulse</span><input id="nursePulse" type="number" step="1" /></label>
+              </div>
+              <div class="field-row">
+                <label class="field"><span data-i18n="dashboard.roomNumber">Room number</span><input id="nurseRoomNumber" type="text" /></label>
+                <label class="field"><span data-i18n="dashboard.bedNumber">Bed number</span><input id="nurseBedNumber" type="text" /></label>
+              </div>
+              <label class="field">
+                <span data-i18n="dashboard.nursingCare">Care provided</span>
+                <textarea id="nurseCareNotes" rows="3"></textarea>
+              </label>
+              <div class="field-row">
+                <label class="field">
+                  <span data-i18n="dashboard.nurseStock">Medication / consumable used</span>
+                  <select id="nurseStockItem"></select>
+                </label>
+                <label class="field">
+                  <span data-i18n="dashboard.nurseStockQty">Quantity</span>
+                  <input id="nurseStockQty" type="number" min="1" value="1" />
+                </label>
+              </div>
+              <div class="button-row">
+                <button id="addNurseSupplyBtn" class="ghost" type="button" data-i18n="dashboard.addSupply">
+                  Add supply
+                </button>
+              </div>
+              <div id="nurseSupplyList" class="search-results"></div>
+              <div class="button-row">
+                <button id="saveNurseAssessmentBtn" class="primary" type="button" data-i18n="dashboard.saveVitals">
+                  Save vitals and care
+                </button>
+              </div>
+              <p class="form-message" id="nurseAssessmentMessage"></p>
             </div>
           </section>
 
@@ -2125,6 +2332,14 @@
               <div class="dash-card">
                 <p data-i18n="dashboard.outstanding">Outstanding balances</p>
                 <strong id="accOutstanding">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.cashPayments">Cash payments</p>
+                <strong id="accCashPayments">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.bankPayments">Bank transfer payments</p>
+                <strong id="accBankPayments">0</strong>
               </div>
             </div>
             <div class="dash-table">

@@ -95,18 +95,17 @@ const receiptLogoImg = document.getElementById('receiptLogoImg');
 const serviceCatalogForm = document.getElementById('serviceCatalogForm');
 const serviceCatalogName = document.getElementById('serviceCatalogName');
 const serviceCatalogCategory = document.getElementById('serviceCatalogCategory');
-const serviceCatalogDiseaseCode = document.getElementById('serviceCatalogDiseaseCode');
+const serviceCatalogCode = document.getElementById('serviceCatalogCode');
+const serviceCatalogInamCode = document.getElementById('serviceCatalogInamCode');
 const serviceCatalogUninsuredPrice = document.getElementById('serviceCatalogUninsuredPrice');
 const serviceCatalogMessage = document.getElementById('serviceCatalogMessage');
 const serviceCatalogTable = document.getElementById('serviceCatalogTable');
 const serviceCatalogEmpty = document.getElementById('serviceCatalogEmpty');
-const serviceInsurancePartner = document.getElementById('serviceInsurancePartner');
-const serviceInsuranceCode = document.getElementById('serviceInsuranceCode');
 const serviceInsurancePrice = document.getElementById('serviceInsurancePrice');
 const serviceInsuranceBase = document.getElementById('serviceInsuranceBase');
-const addServiceInsurance = document.getElementById('addServiceInsurance');
 const serviceInsuranceTable = document.getElementById('serviceInsuranceTable');
 const serviceInsuranceEmpty = document.getElementById('serviceInsuranceEmpty');
+const cancelServiceEdit = document.getElementById('cancelServiceEdit');
 const insuranceForm = document.getElementById('insuranceForm');
 const insuranceName = document.getElementById('insuranceName');
 const insuranceCode = document.getElementById('insuranceCode');
@@ -130,19 +129,30 @@ const facilityProfileLogo = document.getElementById('facilityProfileLogo');
 const facilityLogoPreview = document.getElementById('facilityLogoPreview');
 const facilityProfileMessage = document.getElementById('facilityProfileMessage');
 
-const patientFullName = document.getElementById('patientFullName');
+const patientFirstName = document.getElementById('patientFirstName');
+const patientLastName = document.getElementById('patientLastName');
 const patientSex = document.getElementById('patientSex');
 const patientDob = document.getElementById('patientDob');
 const patientAge = document.getElementById('patientAge');
-const patientAddress = document.getElementById('patientAddress');
+const patientCountry = document.getElementById('patientCountry');
+const patientCity = document.getElementById('patientCity');
+const patientDistrict = document.getElementById('patientDistrict');
+const patientPostalCode = document.getElementById('patientPostalCode');
+const patientPhoneCountry = document.getElementById('patientPhoneCountry');
 const patientPhone = document.getElementById('patientPhone');
-const patientEmergencyPhone = document.getElementById('patientEmergencyPhone');
+const patientWhatsappCountry = document.getElementById('patientWhatsappCountry');
 const patientWhatsapp = document.getElementById('patientWhatsapp');
 const patientProfession = document.getElementById('patientProfession');
 const patientEducation = document.getElementById('patientEducation');
+const patientInsuranceStatus = document.getElementById('patientInsuranceStatus');
+const insuranceDetails = document.getElementById('insuranceDetails');
+const insuranceExpiry = document.getElementById('insuranceExpiry');
+const paymentMethod = document.getElementById('paymentMethod');
+const patientStatusLabel = document.getElementById('patientStatusLabel');
 const assignDoctor = document.getElementById('assignDoctor');
-const consultationCost = document.getElementById('consultationCost');
-const addConsultationBtn = document.getElementById('addConsultationBtn');
+const createNewPatientBtn = document.getElementById('createNewPatientBtn');
+const patientSearchResults = document.getElementById('patientSearchResults');
+const patientSearchMessage = document.getElementById('patientSearchMessage');
 const savePatientBtn = document.getElementById('savePatientBtn');
 const provideServicesBtn = document.getElementById('provideServicesBtn');
 const patientMessage = document.getElementById('patientMessage');
@@ -152,6 +162,9 @@ const backToBillingFromServices = document.getElementById('backToBillingFromServ
 const addSelectedServices = document.getElementById('addSelectedServices');
 const clearServiceSelection = document.getElementById('clearServiceSelection');
 const serviceSelectionMessage = document.getElementById('serviceSelectionMessage');
+const serviceSelectionCategoryFilter = document.getElementById('serviceSelectionCategoryFilter');
+const serviceSelectionSearch = document.getElementById('serviceSelectionSearch');
+const serviceSelectionTableBody = document.getElementById('serviceSelectionTableBody');
 const serviceSelects = document.querySelectorAll('[data-service-category]');
 const medicationChecks = document.querySelectorAll('.med-check');
 
@@ -219,6 +232,24 @@ const nursePatients = document.getElementById('nursePatients');
 const nurseTasks = document.getElementById('nurseTasks');
 const nurseMonthly = document.getElementById('nurseMonthly');
 const nurseDoctorPayments = document.getElementById('nurseDoctorPayments');
+const nurseEncounterSelect = document.getElementById('nurseEncounterSelect');
+const nurseHospitalizationMode = document.getElementById('nurseHospitalizationMode');
+const nurseTemperature = document.getElementById('nurseTemperature');
+const nurseBpRight = document.getElementById('nurseBpRight');
+const nurseBpLeft = document.getElementById('nurseBpLeft');
+const nurseWeight = document.getElementById('nurseWeight');
+const nurseHeight = document.getElementById('nurseHeight');
+const nurseWaist = document.getElementById('nurseWaist');
+const nursePulse = document.getElementById('nursePulse');
+const nurseRoomNumber = document.getElementById('nurseRoomNumber');
+const nurseBedNumber = document.getElementById('nurseBedNumber');
+const nurseCareNotes = document.getElementById('nurseCareNotes');
+const nurseStockItem = document.getElementById('nurseStockItem');
+const nurseStockQty = document.getElementById('nurseStockQty');
+const addNurseSupplyBtn = document.getElementById('addNurseSupplyBtn');
+const nurseSupplyList = document.getElementById('nurseSupplyList');
+const saveNurseAssessmentBtn = document.getElementById('saveNurseAssessmentBtn');
+const nurseAssessmentMessage = document.getElementById('nurseAssessmentMessage');
 
 const labPending = document.getElementById('labPending');
 const labInProgress = document.getElementById('labInProgress');
@@ -234,6 +265,8 @@ const accRevenue = document.getElementById('accRevenue');
 const accPatient = document.getElementById('accPatient');
 const accInsurance = document.getElementById('accInsurance');
 const accOutstanding = document.getElementById('accOutstanding');
+const accCashPayments = document.getElementById('accCashPayments');
+const accBankPayments = document.getElementById('accBankPayments');
 const accDoctorPayments = document.getElementById('accDoctorPayments');
 
 const dirPatients = document.getElementById('dirPatients');
@@ -253,9 +286,11 @@ const employeeSignInMessage = document.getElementById('employeeSignInMessage');
 
 const staffAdminPanel = document.getElementById('staffAdminPanel');
 const staffForm = document.getElementById('staffForm');
-const staffName = document.getElementById('staffName');
+const staffFirstName = document.getElementById('staffFirstName');
+const staffLastName = document.getElementById('staffLastName');
 const staffRole = document.getElementById('staffRole');
 const staffEmail = document.getElementById('staffEmail');
+const staffPhoneCountry = document.getElementById('staffPhoneCountry');
 const staffPhone = document.getElementById('staffPhone');
 const staffCode = document.getElementById('staffCode');
 const staffTempPassword = document.getElementById('staffTempPassword');
@@ -264,6 +299,9 @@ const staffListBody = document.getElementById('staffListBody');
 const doctorFields = document.getElementById('doctorFields');
 const staffEmploymentType = document.getElementById('staffEmploymentType');
 const staffLocumRate = document.getElementById('staffLocumRate');
+const staffDob = document.getElementById('staffDob');
+const staffSex = document.getElementById('staffSex');
+const staffContractStart = document.getElementById('staffContractStart');
 const doctorSex = document.getElementById('doctorSex');
 const doctorAge = document.getElementById('doctorAge');
 const doctorReg = document.getElementById('doctorReg');
@@ -271,6 +309,22 @@ const doctorTax = document.getElementById('doctorTax');
 const doctorSpecialty = document.getElementById('doctorSpecialty');
 const doctorFee = document.getElementById('doctorFee');
 const doctorOtr = document.getElementById('doctorOtr');
+const doctorEncounterSelect = document.getElementById('doctorEncounterSelect');
+const doctorPrescriptionType = document.getElementById('doctorPrescriptionType');
+const doctorComplaint = document.getElementById('doctorComplaint');
+const doctorSymptoms = document.getElementById('doctorSymptoms');
+const doctorExamSummary = document.getElementById('doctorExamSummary');
+const doctorDiagnosis1 = document.getElementById('doctorDiagnosis1');
+const doctorDiagnosis2 = document.getElementById('doctorDiagnosis2');
+const doctorDiagnosis3 = document.getElementById('doctorDiagnosis3');
+const doctorTests = document.getElementById('doctorTests');
+const doctorStockItem = document.getElementById('doctorStockItem');
+const doctorStockQty = document.getElementById('doctorStockQty');
+const addDoctorMedicationBtn = document.getElementById('addDoctorMedicationBtn');
+const doctorMedicationList = document.getElementById('doctorMedicationList');
+const saveDoctorConsultationBtn = document.getElementById('saveDoctorConsultationBtn');
+const doctorConsultationMessage = document.getElementById('doctorConsultationMessage');
+const doctorPatientSummary = document.getElementById('doctorPatientSummary');
 
 let currentLang = 'en';
 let currentFacility = null;
@@ -278,6 +332,57 @@ let currentFacilityProfile = null;
 let currentEmployee = null;
 let staffAccessMode = null;
 let pendingServiceInsurance = [];
+let pendingDoctorMedication = [];
+let pendingNurseSupplies = [];
+let activePatientId = null;
+let editingServiceId = null;
+
+const COUNTRY_CODES = [
+  { code: '+228', label: 'Togo (+228)' },
+  { code: '+41', label: 'Switzerland (+41)' },
+  { code: '+33', label: 'France (+33)' },
+  { code: '+44', label: 'United Kingdom (+44)' },
+  { code: '+1', label: 'United States (+1)' },
+  { code: '+221', label: 'Senegal (+221)' },
+  { code: '+225', label: "Cote d'Ivoire (+225)" },
+  { code: '+227', label: 'Niger (+227)' },
+  { code: '+229', label: 'Benin (+229)' },
+  { code: '+234', label: 'Nigeria (+234)' },
+];
+
+const SERVICE_CATEGORY_DEFINITIONS = [
+  { value: 'accouchement', en: 'Delivery', fr: 'Accouchement' },
+  { value: 'acte_gynecologique', en: 'Gynecological procedure', fr: 'Acte gynécologique' },
+  { value: 'anatomie_pathologique', en: 'Pathology', fr: 'Anatomie-pathologique' },
+  { value: 'bacteriologie', en: 'Bacteriology', fr: 'Bactériologie' },
+  { value: 'biochimie', en: 'Biochemistry', fr: 'Biochimie' },
+  { value: 'biologie_moleculaire', en: 'Molecular biology', fr: 'Biologie moléculaire' },
+  { value: 'certificat_medical', en: 'Medical certificate', fr: 'Certificat médical' },
+  { value: 'chirurgie', en: 'Surgery', fr: 'Chirurgie' },
+  { value: 'consultation_bucco_dentaire', en: 'Dental consultation', fr: 'Consultation bucco-dentaire' },
+  { value: 'consultation_mg', en: 'General practice consultation', fr: 'Consultation MG' },
+  { value: 'consultation_sf', en: 'Midwife consultation', fr: 'Consultation SF' },
+  { value: 'consultation_specialiste', en: 'Specialist consultation', fr: 'Consultation spécialiste' },
+  { value: 'consultation_visite', en: 'Consultation / visit', fr: 'Consultation-visite' },
+  { value: 'echographie', en: 'Ultrasound', fr: 'Échographie' },
+  { value: 'electrocardiogramme', en: 'Electrocardiogram', fr: 'Électrocardiogramme' },
+  { value: 'endoscopie', en: 'Endoscopy', fr: 'Endoscopie' },
+  { value: 'expertise_dentaire', en: 'Dental expertise', fr: 'Expertise dentaire' },
+  { value: 'hematologie', en: 'Hematology', fr: 'Hématologie' },
+  { value: 'hospitalisation', en: 'Hospitalization', fr: 'Hospitalisation' },
+  { value: 'imagerie_interventionnelle', en: 'Interventional imaging', fr: 'Imagerie interventionnelle' },
+  { value: 'immuno_serologie', en: 'Immuno-serology', fr: 'Immuno-sérologie' },
+  { value: 'irm', en: 'MRI', fr: 'IRM' },
+  { value: 'location_bloc', en: 'Operating room rental', fr: 'Location bloc' },
+  { value: 'mycologie', en: 'Mycology', fr: 'Mycologie' },
+  { value: 'orl', en: 'ENT', fr: 'ORL' },
+  { value: 'parasitologie', en: 'Parasitology', fr: 'Parasitologie' },
+  { value: 'pharmacie', en: 'Pharmacy', fr: 'Pharmacie' },
+  { value: 'radiologie', en: 'Radiology', fr: 'Radiologie' },
+  { value: 'scanner', en: 'CT scan', fr: 'Scanner' },
+  { value: 'soins_chirurgie_bucco_dentaire', en: 'Dental surgery care', fr: 'Soins chirurgie bucco-dentaire' },
+  { value: 'vaccination', en: 'Vaccination', fr: 'Vaccination' },
+];
 
 const DEFAULT_INSURANCE_PARTNERS = [
   'AMU',
@@ -364,6 +469,41 @@ function readFileAsDataUrl(file) {
   });
 }
 
+function populateCountryCodeSelect(select, defaultCode = '+228') {
+  if (!select) return;
+  select.innerHTML = '';
+  COUNTRY_CODES.forEach((entry) => {
+    const option = document.createElement('option');
+    option.value = entry.code;
+    option.textContent = entry.label;
+    select.appendChild(option);
+  });
+  select.value = defaultCode;
+}
+
+function calculateAgeFromDob(value) {
+  if (!value) return '';
+  const dob = new Date(value);
+  if (Number.isNaN(dob.getTime())) return '';
+  const today = new Date();
+  let age = today.getFullYear() - dob.getFullYear();
+  const monthDiff = today.getMonth() - dob.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+    age -= 1;
+  }
+  return age >= 0 ? age : '';
+}
+
+function joinPhone(countryCode, number) {
+  const local = (number || '').trim();
+  if (!local) return '';
+  return `${countryCode || ''}${local}`;
+}
+
+function fullPatientName(record) {
+  return [record?.firstName, record?.lastName].filter(Boolean).join(' ').trim() || record?.name || '';
+}
+
 function populateFacilityProfileForm() {
   if (!facilityProfileForm) return;
   const profile = currentFacilityProfile || {};
@@ -414,6 +554,31 @@ function savePatients(list) {
   }
 }
 
+function getEncountersKey() {
+  if (currentFacility) {
+    return `meditrack_encounters_${currentFacility}`;
+  }
+  return 'meditrack_encounters_default';
+}
+
+function loadEncounters() {
+  try {
+    const raw = localStorage.getItem(getEncountersKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveEncounters(list) {
+  try {
+    localStorage.setItem(getEncountersKey(), JSON.stringify(list));
+  } catch (error) {
+    // ignore
+  }
+}
+
 function getReceiptsKey() {
   if (currentFacility) {
     return `meditrack_receipts_${currentFacility}`;
@@ -434,6 +599,31 @@ function loadReceipts() {
 function saveReceipts(list) {
   try {
     localStorage.setItem(getReceiptsKey(), JSON.stringify(list));
+  } catch (error) {
+    // ignore
+  }
+}
+
+function getAccountingKey() {
+  if (currentFacility) {
+    return `meditrack_accounting_${currentFacility}`;
+  }
+  return 'meditrack_accounting_default';
+}
+
+function loadAccountingEntries() {
+  try {
+    const raw = localStorage.getItem(getAccountingKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveAccountingEntries(list) {
+  try {
+    localStorage.setItem(getAccountingKey(), JSON.stringify(list));
   } catch (error) {
     // ignore
   }
@@ -513,43 +703,94 @@ function seedInsurancePartnersIfEmpty() {
   return seeded;
 }
 
-function populateServiceInsuranceOptions() {
-  if (!serviceInsurancePartner) return;
+function getServiceCategoryDefinitions() {
+  return SERVICE_CATEGORY_DEFINITIONS.map((item) => ({
+    value: item.value,
+    label: currentLang === 'fr' ? item.fr : item.en,
+  }));
+}
+
+function populateServiceCategoryOptions() {
+  const categories = getServiceCategoryDefinitions();
+  if (serviceCatalogCategory) {
+    const currentValue = serviceCatalogCategory.value;
+    serviceCatalogCategory.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
+    categories.forEach((category) => {
+      const option = document.createElement('option');
+      option.value = category.value;
+      option.textContent = category.label;
+      serviceCatalogCategory.appendChild(option);
+    });
+    serviceCatalogCategory.value = currentValue || '';
+  }
+  if (serviceSelectionCategoryFilter) {
+    const currentValue = serviceSelectionCategoryFilter.value;
+    serviceSelectionCategoryFilter.innerHTML = `
+      <option value="">${t('services.allCategories')}</option>
+    `;
+    categories.forEach((category) => {
+      const option = document.createElement('option');
+      option.value = category.value;
+      option.textContent = category.label;
+      serviceSelectionCategoryFilter.appendChild(option);
+    });
+    serviceSelectionCategoryFilter.value = currentValue || '';
+  }
+}
+
+function buildInsurancePricingDraft(existingEntries = []) {
   const insurers = seedInsurancePartnersIfEmpty();
-  serviceInsurancePartner.innerHTML = '';
-  insurers.forEach((partner) => {
-    const option = document.createElement('option');
-    option.value = partner.name;
-    option.textContent = partner.name;
-    serviceInsurancePartner.appendChild(option);
+  const byPartner = new Map(
+    existingEntries.map((entry) => [normalizeProvider(entry.partner), entry])
+  );
+  return insurers.map((partner) => {
+    const existing = byPartner.get(normalizeProvider(partner.name));
+    return {
+      partner: partner.name,
+      price: existing?.price ?? '',
+      base: existing?.base ?? '',
+    };
   });
 }
 
 function renderServiceInsuranceTable() {
   if (!serviceInsuranceTable) return;
-  serviceInsuranceTable.innerHTML = '';
   if (!pendingServiceInsurance.length) {
-    if (serviceInsuranceEmpty) {
-      serviceInsuranceEmpty.textContent = t('serviceCatalog.insuranceEmpty');
-    }
-    return;
+    pendingServiceInsurance = buildInsurancePricingDraft();
   }
-  if (serviceInsuranceEmpty) {
-    serviceInsuranceEmpty.textContent = '';
-  }
+  serviceInsuranceTable.innerHTML = '';
   pendingServiceInsurance.forEach((entry) => {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${entry.partner}</td>
-      <td>${entry.code}</td>
-      <td>${formatCfl(entry.price)}</td>
-      <td>${formatCfl(entry.base)}</td>
-      <td><button class="ghost" type="button" data-insurance-row="${entry.partner}">${t(
-        'serviceCatalog.delete'
-      )}</button></td>
+      <td>
+        <input
+          type="number"
+          min="0"
+          step="1"
+          class="service-insurance-price"
+          data-partner="${entry.partner}"
+          value="${entry.price !== '' ? entry.price : ''}"
+        />
+      </td>
+      <td>
+        <input
+          type="number"
+          min="0"
+          step="1"
+          class="service-insurance-base"
+          data-partner="${entry.partner}"
+          value="${entry.base !== '' ? entry.base : ''}"
+        />
+      </td>
     `;
     serviceInsuranceTable.appendChild(row);
   });
+  if (serviceInsuranceEmpty) {
+    serviceInsuranceEmpty.textContent = pendingServiceInsurance.length
+      ? ''
+      : t('serviceCatalog.insuranceEmpty');
+  }
 }
 
 function renderInsurancePartners() {
@@ -581,15 +822,77 @@ function renderInsurancePartners() {
 }
 
 function getServiceCategoryLabel(category) {
-  const map = {
-    consultation: t('serviceCatalog.catConsultation'),
-    lab: t('serviceCatalog.catLab'),
-    imaging: t('serviceCatalog.catImaging'),
-    hospitalization: t('serviceCatalog.catHospital'),
-    surgery: t('serviceCatalog.catSurgery'),
-    outpatient: t('serviceCatalog.catOutpatient'),
+  const normalizedCategory = normalizeServiceCategory(category);
+  const match = getServiceCategoryDefinitions().find((item) => item.value === normalizedCategory);
+  if (match) return match.label;
+  const legacyMap = {
+    consultation: currentLang === 'fr' ? 'Consultation spécialiste' : 'Specialist consultation',
+    lab: currentLang === 'fr' ? 'Biochimie' : 'Biochemistry',
+    imaging: currentLang === 'fr' ? 'Radiologie' : 'Radiology',
+    hospitalization: currentLang === 'fr' ? 'Hospitalisation' : 'Hospitalization',
+    surgery: currentLang === 'fr' ? 'Chirurgie' : 'Surgery',
+    outpatient: currentLang === 'fr' ? 'Consultation-visite' : 'Consultation / visit',
+    pharmacy: currentLang === 'fr' ? 'Pharmacie' : 'Pharmacy',
   };
-  return map[category] || category;
+  return legacyMap[normalizedCategory] || category;
+}
+
+function normalizeServiceCategory(value) {
+  const normalized = String(value || '').trim().toLowerCase();
+  const aliases = {
+    hospital: 'hospitalisation',
+    hospitalization: 'hospitalisation',
+    hospitalisation: 'hospitalisation',
+    surgery: 'chirurgie',
+    consultation: 'consultation_specialiste',
+    lab: 'biochimie',
+    imaging: 'radiologie',
+    outpatient: 'consultation_visite',
+    pharmacy: 'pharmacie',
+  };
+  return aliases[normalized] || normalized || 'consultation_specialiste';
+}
+
+function findCatalogService(category, label, code = '') {
+  const catalog = loadServiceCatalog();
+  const normalizedCategory = normalizeServiceCategory(category);
+  const normalizedLabel = normalizeLabel(label || '');
+  const normalizedCode = normalizeLabel(code || '');
+  return (
+    catalog.find(
+      (item) =>
+        normalizeServiceCategory(item.category) === normalizedCategory &&
+        (item.code || item.diseaseCode) &&
+        normalizeLabel(item.code || item.diseaseCode) === normalizedCode
+    ) ||
+    catalog.find(
+      (item) =>
+        normalizeServiceCategory(item.category) === normalizedCategory &&
+        normalizeLabel(item.name) === normalizedLabel
+    )
+  );
+}
+
+function resolveServicePricing(service, provider) {
+  const catalogService = findCatalogService(service.category, service.label, service.code);
+  if (!catalogService) {
+    return {
+      price: service.price || 0,
+      base: service.base || '',
+      code: service.code || '',
+      inamCode: service.inam || '',
+    };
+  }
+  const insurer = normalizeProvider(provider);
+  const insurerPricing = (catalogService.insurancePricing || []).find(
+    (item) => normalizeProvider(item.partner) === insurer
+  );
+  return {
+    price: insurerPricing?.price ?? catalogService.uninsuredPrice ?? service.price ?? 0,
+    base: insurerPricing?.base ?? '',
+    code: catalogService.code || catalogService.diseaseCode || service.code || '',
+    inamCode: catalogService.inamCode || service.inam || '',
+  };
 }
 
 function renderServiceCatalog() {
@@ -611,21 +914,28 @@ function renderServiceCatalog() {
     return (a.name || '').localeCompare(b.name || '');
   });
   sorted.forEach((service) => {
-    const insuredCount = Array.isArray(service.insurancePricing)
-      ? service.insurancePricing.length
-      : 0;
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${getServiceCategoryLabel(service.category)}</td>
-      <td>${service.name || '-'}</td>
-      <td>${service.diseaseCode || '-'}</td>
-      <td>${formatCfl(service.uninsuredPrice || 0)}</td>
-      <td>${insuredCount ? insuredCount : '-'}</td>
-      <td><button class="ghost" type="button" data-service-id="${service.id}">${t(
-        'serviceCatalog.delete'
-      )}</button></td>
-    `;
-    serviceCatalogTable.appendChild(row);
+    const insurerRows =
+      Array.isArray(service.insurancePricing) && service.insurancePricing.length
+        ? service.insurancePricing
+        : [{ partner: '-', price: '', base: '' }];
+    insurerRows.forEach((entry) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${getServiceCategoryLabel(service.category)}</td>
+        <td>${service.name || '-'}</td>
+        <td>${service.code || service.diseaseCode || '-'}</td>
+        <td>${service.inamCode || '-'}</td>
+        <td>${formatCfl(service.uninsuredPrice || 0)}</td>
+        <td>${entry.price !== '' ? formatCfl(entry.price || 0) : '-'}</td>
+        <td>${entry.base !== '' ? formatCfl(entry.base || 0) : '-'}</td>
+        <td>${entry.partner || '-'}</td>
+        <td class="table-actions">
+          <button class="ghost" type="button" data-service-edit="${service.id}">${t('serviceCatalog.edit')}</button>
+          <button class="ghost" type="button" data-service-id="${service.id}">${t('serviceCatalog.delete')}</button>
+        </td>
+      `;
+      serviceCatalogTable.appendChild(row);
+    });
   });
 }
 
@@ -724,33 +1034,113 @@ function savePurchaseOrders(list) {
 
 function fillPatientForm(record) {
   if (!record) return;
-  if (patientFullName) patientFullName.value = record.name || '';
+  activePatientId = record.id || null;
+  if (patientFirstName) patientFirstName.value = record.firstName || '';
+  if (patientLastName) patientLastName.value = record.lastName || '';
   if (patientSex) patientSex.value = record.sex || '';
   if (patientDob) patientDob.value = record.dob || '';
-  if (patientAge) patientAge.value = record.age || '';
-  if (patientAddress) patientAddress.value = record.address || '';
-  if (patientPhone) patientPhone.value = record.phone || '';
-  if (patientEmergencyPhone) patientEmergencyPhone.value = record.emergency || '';
-  if (patientWhatsapp) patientWhatsapp.value = record.whatsapp || '';
+  if (patientAge) patientAge.value = record.age || calculateAgeFromDob(record.dob) || '';
+  if (patientCountry) patientCountry.value = record.address?.country || '';
+  if (patientCity) patientCity.value = record.address?.city || '';
+  if (patientDistrict) patientDistrict.value = record.address?.district || '';
+  if (patientPostalCode) patientPostalCode.value = record.address?.postalCode || '';
+  if (patientPhoneCountry) patientPhoneCountry.value = record.phoneCountryCode || '+228';
+  if (patientPhone) patientPhone.value = record.phoneLocal || '';
+  if (patientWhatsappCountry) patientWhatsappCountry.value = record.whatsappCountryCode || '+228';
+  if (patientWhatsapp) patientWhatsapp.value = record.whatsappLocal || '';
   if (patientProfession) patientProfession.value = record.profession || '';
   if (patientEducation) patientEducation.value = record.education || '';
+  if (patientInsuranceStatus) patientInsuranceStatus.value = record.isInsured ? 'yes' : 'no';
   if (assignDoctor) assignDoctor.value = record.doctor || '';
   if (insuranceProvider) insuranceProvider.value = record.insuranceType || '';
   if (insuranceId) insuranceId.value = record.insuranceId || '';
   if (coverageRate) coverageRate.value = record.coverage || '';
+  if (insuranceExpiry) insuranceExpiry.value = record.insuranceExpiry || '';
   if (patientIdentifier) patientIdentifier.value = record.identifier || '';
+  if (patientStatusLabel) patientStatusLabel.value = t('billing.returningPatient');
+  toggleInsuranceDetails();
 }
 
 function searchPatients(query) {
   const q = query.trim().toLowerCase();
-  if (!q) return null;
+  if (!q) return [];
   const patients = loadPatients();
-  return (
-    patients.find((patient) => patient.name?.toLowerCase().includes(q)) ||
-    patients.find((patient) => patient.phone?.toLowerCase().includes(q)) ||
-    patients.find((patient) => patient.whatsapp?.toLowerCase().includes(q)) ||
-    patients.find((patient) => patient.identifier?.toLowerCase().includes(q))
-  );
+  return patients.filter((patient) => {
+    const haystacks = [
+      fullPatientName(patient),
+      patient.phone,
+      patient.whatsapp,
+      patient.identifier,
+    ];
+    return haystacks.some((value) => String(value || '').toLowerCase().includes(q));
+  });
+}
+
+function clearPatientForm() {
+  activePatientId = null;
+  if (patientFirstName) patientFirstName.value = '';
+  if (patientLastName) patientLastName.value = '';
+  if (patientSex) patientSex.value = '';
+  if (patientDob) patientDob.value = '';
+  if (patientAge) patientAge.value = '';
+  if (patientCountry) patientCountry.value = '';
+  if (patientCity) patientCity.value = '';
+  if (patientDistrict) patientDistrict.value = '';
+  if (patientPostalCode) patientPostalCode.value = '';
+  if (patientPhoneCountry) patientPhoneCountry.value = '+228';
+  if (patientPhone) patientPhone.value = '';
+  if (patientWhatsappCountry) patientWhatsappCountry.value = '+228';
+  if (patientWhatsapp) patientWhatsapp.value = '';
+  if (patientProfession) patientProfession.value = '';
+  if (patientEducation) patientEducation.value = '';
+  if (patientInsuranceStatus) patientInsuranceStatus.value = 'no';
+  if (assignDoctor) assignDoctor.value = '';
+  if (insuranceProvider) insuranceProvider.value = '';
+  if (insuranceId) insuranceId.value = '';
+  if (coverageRate) coverageRate.value = '';
+  if (insuranceExpiry) insuranceExpiry.value = '';
+  if (patientIdentifier) patientIdentifier.value = '';
+  if (patientStatusLabel) patientStatusLabel.value = t('billing.newPatient');
+  toggleInsuranceDetails();
+}
+
+function renderPatientSearchResults(matches) {
+  if (!patientSearchResults) return;
+  patientSearchResults.innerHTML = '';
+  if (!matches.length) {
+    return;
+  }
+  matches.slice(0, 8).forEach((patient) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'search-result';
+    button.dataset.patientId = patient.id || '';
+    button.innerHTML = `
+      <strong>${fullPatientName(patient) || '-'}</strong>
+      <span>${patient.phone || patient.identifier || '-'}</span>
+    `;
+    patientSearchResults.appendChild(button);
+  });
+}
+
+function toggleInsuranceDetails() {
+  if (!insuranceDetails || !patientInsuranceStatus) return;
+  const insured = patientInsuranceStatus.value === 'yes';
+  insuranceDetails.classList.toggle('hidden', !insured);
+}
+
+function populateInsuranceProviderOptions() {
+  if (!insuranceProvider) return;
+  const currentValue = insuranceProvider.value;
+  const insurers = seedInsurancePartnersIfEmpty();
+  insuranceProvider.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
+  insurers.forEach((partner) => {
+    const option = document.createElement('option');
+    option.value = partner.name;
+    option.textContent = partner.name;
+    insuranceProvider.appendChild(option);
+  });
+  insuranceProvider.value = currentValue;
 }
 
 function normalizeProvider(value) {
@@ -808,6 +1198,7 @@ function renderPricingTable() {
 
 function populateAppointmentDoctors() {
   if (!appointmentDoctor) return;
+  const currentValue = appointmentDoctor.value;
   const employees = loadEmployees();
   const doctors = employees.filter((emp) => emp.role === 'doctor');
   appointmentDoctor.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
@@ -818,6 +1209,7 @@ function populateAppointmentDoctors() {
     option.textContent = `${doc.name || doc.email || doc.code}${specialty}`;
     appointmentDoctor.appendChild(option);
   });
+  appointmentDoctor.value = currentValue;
 }
 
 function renderAppointmentsTable() {
@@ -962,15 +1354,16 @@ function getServiceCounts(receipts) {
     consultation: 0,
     lab: 0,
     imaging: 0,
-    hospital: 0,
+    hospitalization: 0,
     surgery: 0,
     outpatient: 0,
     pharmacy: 0,
   };
   receipts.forEach((rec) => {
     (rec.items || []).forEach((item) => {
-      if (counts[item.category] !== undefined) {
-        counts[item.category] += 1;
+      const category = normalizeServiceCategory(item.category);
+      if (counts[category] !== undefined) {
+        counts[category] += 1;
       }
     });
   });
@@ -983,10 +1376,21 @@ function calculateDoctorPayslip(doctor) {
   const doctorReceipts = receipts.filter(
     (rec) => rec.doctor === docKey || rec.doctorName === doctor.name
   );
-  const serviceCount = doctorReceipts.reduce((sum, rec) => sum + (rec.items || []).length, 0);
+  const serviceCount = doctorReceipts.reduce((sum, rec) => {
+    const relevantItems = (rec.items || []).filter(
+      (item) => !item.providerId || item.providerId === docKey || item.providerName === doctor.name
+    );
+    return sum + relevantItems.length;
+  }, 0);
   const serviceFee = parseNumber(doctor.doctorProfile?.serviceFee);
   const otrRate = parseNumber(doctor.doctorProfile?.otrRate);
-  const totalReceipts = doctorReceipts.reduce((sum, rec) => sum + (rec.total || 0), 0);
+  const totalReceipts = doctorReceipts.reduce((sum, rec) => {
+    const relevantItems = (rec.items || []).filter(
+      (item) => !item.providerId || item.providerId === docKey || item.providerName === doctor.name
+    );
+    const subtotal = relevantItems.reduce((lineSum, item) => lineSum + (item.total || 0), 0);
+    return sum + subtotal;
+  }, 0);
   let gross = 0;
   if (doctor.payType === 'locum' && doctor.payRate) {
     gross = totalReceipts * (doctor.payRate / 100);
@@ -998,13 +1402,140 @@ function calculateDoctorPayslip(doctor) {
   return { gross, otr, net, serviceCount };
 }
 
+function populateNurseEncounterOptions() {
+  if (!nurseEncounterSelect) return;
+  const currentValue = nurseEncounterSelect.value;
+  const encounters = loadEncounters();
+  nurseEncounterSelect.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
+  encounters.forEach((encounter) => {
+    const option = document.createElement('option');
+    option.value = encounter.id;
+    option.textContent = `${encounter.patientName} · ${encounter.doctorName || '-'}`;
+    nurseEncounterSelect.appendChild(option);
+  });
+  nurseEncounterSelect.value = currentValue;
+}
+
+function populateDoctorEncounterOptions() {
+  if (!doctorEncounterSelect) return;
+  const currentValue = doctorEncounterSelect.value;
+  const encounters = loadEncounters();
+  const docKey = currentEmployee?.code || currentEmployee?.email || currentEmployee?.name;
+  const filtered = currentEmployee?.role === 'doctor'
+    ? encounters.filter((encounter) => encounter.doctor === docKey || encounter.doctorName === currentEmployee?.name)
+    : encounters;
+  doctorEncounterSelect.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
+  filtered.forEach((encounter) => {
+    const option = document.createElement('option');
+    option.value = encounter.id;
+    option.textContent = `${encounter.patientName} · ${formatDate(encounter.createdAt)}`;
+    doctorEncounterSelect.appendChild(option);
+  });
+  doctorEncounterSelect.value = currentValue;
+}
+
+function populateDoctorTestOptions() {
+  if (!doctorTests) return;
+  const selectedValues = new Set(Array.from(doctorTests.selectedOptions || []).map((option) => option.value));
+  const catalog = loadServiceCatalog().filter((item) =>
+    ['lab', 'imaging', 'outpatient'].includes(normalizeServiceCategory(item.category))
+  );
+  doctorTests.innerHTML = '';
+  catalog.forEach((service) => {
+    const option = document.createElement('option');
+    option.value = service.id;
+    option.textContent = `${service.name} (${getServiceCategoryLabel(service.category)})`;
+    option.selected = selectedValues.has(option.value);
+    doctorTests.appendChild(option);
+  });
+}
+
+function populateDoctorStockOptions() {
+  if (!doctorStockItem) return;
+  const currentValue = doctorStockItem.value;
+  const stock = loadStock();
+  doctorStockItem.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
+  stock.forEach((item) => {
+    const option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = `${item.name} (${item.qty || 0})`;
+    doctorStockItem.appendChild(option);
+  });
+  doctorStockItem.value = currentValue;
+}
+
+function populateNurseStockOptions() {
+  if (!nurseStockItem) return;
+  const currentValue = nurseStockItem.value;
+  const stock = loadStock();
+  nurseStockItem.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
+  stock.forEach((item) => {
+    const option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = `${item.name} (${item.qty || 0})`;
+    nurseStockItem.appendChild(option);
+  });
+  nurseStockItem.value = currentValue;
+}
+
+function renderDoctorMedicationList() {
+  if (!doctorMedicationList) return;
+  doctorMedicationList.innerHTML = '';
+  pendingDoctorMedication.forEach((item) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'search-result';
+    button.dataset.stockId = item.stockId;
+    button.innerHTML = `<strong>${item.name}</strong><span>${item.qty}</span>`;
+    doctorMedicationList.appendChild(button);
+  });
+}
+
+function renderNurseSupplyList() {
+  if (!nurseSupplyList) return;
+  nurseSupplyList.innerHTML = '';
+  pendingNurseSupplies.forEach((item) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'search-result';
+    button.dataset.stockId = item.stockId;
+    button.innerHTML = `<strong>${item.name}</strong><span>${item.qty}</span>`;
+    nurseSupplyList.appendChild(button);
+  });
+}
+
+function getEncounterById(id) {
+  return loadEncounters().find((encounter) => encounter.id === id) || null;
+}
+
+function setDoctorEncounterSummary(encounter) {
+  if (!doctorPatientSummary) return;
+  if (!encounter) {
+    doctorPatientSummary.textContent = t('dashboard.placeholder');
+    return;
+  }
+  const patient = loadPatients().find((item) => item.id === encounter.patientId);
+  const details = [];
+  if (patient) {
+    details.push(`${fullPatientName(patient)} · ${patient.sex || '-'} · ${patient.age || '-'}`);
+    details.push([patient.address?.country, patient.address?.city, patient.address?.district].filter(Boolean).join(', '));
+  }
+  if (encounter.nurseAssessment) {
+    const nurse = encounter.nurseAssessment;
+    details.push(
+      `Vitals: T ${nurse.temperature || '-'} | BP R ${nurse.bpRight || '-'} | BP L ${nurse.bpLeft || '-'} | W ${nurse.weight || '-'} | H ${nurse.height || '-'} | P ${nurse.pulse || '-'}`
+    );
+  }
+  doctorPatientSummary.textContent = details.filter(Boolean).join(' | ') || t('dashboard.placeholder');
+}
+
 function renderReports() {
   const receipts = loadReceipts();
   const counts = getServiceCounts(receipts);
   if (reportConsultations) reportConsultations.textContent = counts.consultation.toString();
   if (reportLab) reportLab.textContent = counts.lab.toString();
   if (reportImaging) reportImaging.textContent = counts.imaging.toString();
-  if (reportHospital) reportHospital.textContent = counts.hospital.toString();
+  if (reportHospital) reportHospital.textContent = counts.hospitalization.toString();
   if (reportSurgery) reportSurgery.textContent = counts.surgery.toString();
   if (reportOutpatient) reportOutpatient.textContent = counts.outpatient.toString();
   if (reportPharmacy) reportPharmacy.textContent = counts.pharmacy.toString();
@@ -1141,39 +1672,39 @@ const translations = {
     },
     serviceCatalog: {
       title: 'Service catalog',
-      subtitle: 'Create services and assign standard prices by category.',
+      subtitle: 'Create services, insurer tariffs, and billing references by category.',
       name: 'Service name',
       category: 'Category',
-      diseaseCode: 'Disease code',
+      code: 'Service code',
+      inamCode: 'INAM code',
       uninsuredPrice: 'Uninsured price (CFL)',
       insuranceTitle: 'Insurance-specific pricing',
-      insurancePartner: 'Insurance partner',
-      insuranceServiceCode: 'Service code (insurer)',
+      insuranceHelp:
+        'Each partner insurer appears automatically. Enter the clinic price and reimbursement base for each one.',
       insurancePrice: 'Insured price (CFL)',
       insuranceBase: 'Reimbursement base',
-      insuranceAdd: 'Add insurance price',
       insuranceEmpty: 'No insurance prices added yet.',
-      insuranceRequired: 'Select an insurer and fill code, price, and base.',
+      insuranceRequired: 'Complete the service code, INAM code, and uninsured price.',
       save: 'Save service',
       saved: 'Service saved.',
-      required: 'Please enter a name, category, and uninsured price.',
+      cancelEdit: 'Cancel edit',
+      edit: 'Edit',
+      editLoaded: 'Service loaded for editing.',
+      required: 'Please enter the service name, category, code, INAM code, and uninsured price.',
       empty: 'No services yet. Add your first service.',
       delete: 'Remove',
       listCategory: 'Category',
       listService: 'Service',
-      listDisease: 'Disease code',
+      listCode: 'Code',
+      listInam: 'Code INAM',
       listUninsured: 'Uninsured price',
-      listInsured: 'Insurer rates',
+      listInsuredPrice: 'Insured price',
+      listBase: 'Reimbursement base',
+      listPartner: 'Insurer',
+      actions: 'Actions',
       insuranceListPartner: 'Insurer',
-      insuranceListCode: 'Service code',
-      insuranceListPrice: 'CFL price',
+      insuranceListPrice: 'Insured price',
       insuranceListBase: 'Reimbursement base',
-      catConsultation: 'Consultation',
-      catLab: 'Laboratory tests',
-      catImaging: 'Medical imaging',
-      catHospital: 'Hospitalization',
-      catSurgery: 'Surgery',
-      catOutpatient: 'Outpatient care',
     },
     insurance: {
       title: 'Insurance partners',
@@ -1222,10 +1753,49 @@ const translations = {
       assignedPatients: 'Assigned patients',
       treatmentPlans: 'Diagnoses & treatment plans',
       placeholder: 'Add consultations to see structured clinical plans here.',
+      selectEncounter: 'Patient encounter',
+      selectEncounterRequired: 'Select a patient encounter first.',
+      prescriptionType: 'Prescription option',
+      prescriptionOutpatientCare: 'Outpatient care',
+      prescriptionDay: 'Day hospitalization',
+      prescriptionFull: 'Full hospitalization',
+      prescriptionOutpatientRx: 'Outpatient prescription',
+      complaint: 'Reason for consultation / complaint',
+      symptoms: 'Functional signs / symptoms',
+      examSummary: 'Clinical examination summary',
+      diagnosis1: 'Diagnostic hypothesis 1',
+      diagnosis2: 'Diagnostic hypothesis 2',
+      diagnosis3: 'Diagnostic hypothesis 3',
+      requiredTests: 'Required tests / investigations',
+      stockMedication: 'Medication / consumable',
+      stockQty: 'Quantity',
+      addMedication: 'Add medication',
+      saveConsultation: 'Save consultation',
+      medicationRequired: 'Select a stock item and quantity.',
+      doctorSaved: 'Consultation saved.',
       nurseTitle: 'Nursing overview',
       nursePatients: 'Assigned patients',
       nurseTasks: 'Tasks completed today',
       nurseMonthly: 'Monthly activity',
+      hospitalizationMode: 'Care mode',
+      modeOutpatient: 'Outpatient',
+      modeDay: 'Day hospitalization',
+      modeFull: 'Full hospitalization',
+      temp: 'Temperature',
+      bpRight: 'BP right arm',
+      bpLeft: 'BP left arm',
+      weight: 'Weight',
+      height: 'Height',
+      waist: 'Waist circumference',
+      pulse: 'Pulse',
+      roomNumber: 'Room number',
+      bedNumber: 'Bed number',
+      nursingCare: 'Care provided',
+      nurseStock: 'Medication / consumable used',
+      nurseStockQty: 'Quantity',
+      addSupply: 'Add supply',
+      saveVitals: 'Save vitals and care',
+      nurseSaved: 'Vitals and nursing care saved.',
       labTitle: 'Laboratory overview',
       labPending: 'Tests pending',
       labInProgress: 'In progress',
@@ -1241,6 +1811,8 @@ const translations = {
       patientShare: 'Patient payments',
       insuranceShare: 'Insurance payments',
       outstanding: 'Outstanding balances',
+      cashPayments: 'Cash payments',
+      bankPayments: 'Bank transfer payments',
       adminTitle: 'Management overview',
       totalServices: 'Service utilization',
       staffProductivity: 'Staff productivity',
@@ -1272,6 +1844,11 @@ const translations = {
       manageTitle: 'Employee management',
       manageSubtitle: 'Create staff profiles and assign roles.',
       goModules: 'Go to modules',
+      firstName: 'First name',
+      lastName: 'Last name',
+      dob: 'Date of birth',
+      sex: 'Sex',
+      contractStart: 'Contract start date',
       fullName: 'Full name',
       role: 'Role',
       roleAdmission: 'Admission / Medical secretary',
@@ -1288,6 +1865,7 @@ const translations = {
       employmentLocum: 'Locum (vacataire)',
       locumRate: 'Locum rate (%)',
       email: 'Email',
+      countryCode: 'Country code',
       phone: 'Phone',
       employeeCode: 'Employee ID',
       tempPassword: 'Temporary password',
@@ -1326,11 +1904,16 @@ const translations = {
     billing: {
       title: 'Billing & Patient Admission',
       subtitle: 'Register patients, validate insurance, and generate billing details.',
+      lookupTitle: 'Patient lookup',
       admissionTitle: 'Patient admission',
       newPatient: 'New patient',
       returningPatient: 'Returning patient',
       patientSearch: 'Search patient',
-      patientSearchPlaceholder: 'Search by name, ID, or phone',
+      patientSearchPlaceholder: 'Search by name or phone number',
+      createPatient: 'Create new patient profile',
+      patientNotFound: 'No patient found. Create a new profile to continue.',
+      firstName: 'First name',
+      lastName: 'Last name',
       fullName: 'Full name',
       sex: 'Sex',
       sexFemale: 'Female',
@@ -1338,10 +1921,15 @@ const translations = {
       sexOther: 'Other',
       dob: 'Date of birth',
       age: 'Age',
+      addressCountry: 'Country',
+      addressCity: 'City',
+      addressDistrict: 'District / neighborhood',
+      addressPostal: 'Postal code',
+      countryCode: 'Country code',
       address: 'Address',
       phone: 'Phone number',
       emergencyPhone: 'Emergency contact',
-      whatsapp: 'WhatsApp',
+      whatsapp: 'WhatsApp (if different)',
       profession: 'Profession',
       profEmployee: 'Salaried employee (public or private)',
       profSelf: 'Self-employed worker (trader, artisan, farmer, fisher, etc.)',
@@ -1355,7 +1943,10 @@ const translations = {
       educationSecondary: 'Secondary',
       educationTertiary: 'University',
       educationOther: 'Other',
-      insuranceTitle: 'Insurance & coverage',
+      insuranceTitle: 'Insurance & visit setup',
+      insuranceStatus: 'Insurance status',
+      insuranceYes: 'Yes',
+      insuranceNo: 'No',
       pricingTitle: 'Insurance pricing table (optional)',
       pricingProvider: 'Insurance provider',
       pricingCode: 'Service code',
@@ -1369,6 +1960,7 @@ const translations = {
       insuranceType: 'Insurance type',
       insuranceId: 'Insurance ID / dossier',
       coverageRate: 'Coverage rate',
+      cardExpiry: 'Card expiry date',
       patientId: 'Identification number (national ID, insurance card, or medical record)',
       servicesTitle: 'Reason for visit (multiple selections possible)',
       serviceConsult: 'Consultation',
@@ -1382,9 +1974,13 @@ const translations = {
       surgeryList: 'Surgery services',
       outpatientList: 'Outpatient care',
       consultList: 'Consultation type',
-      assignDoctor: 'Assign doctor',
+      assignDoctor: 'Assigned care provider',
       doctorPlaceholder: 'Select doctor',
       noDoctor: 'No doctors available',
+      paymentMethod: 'Payment method',
+      paymentCash: 'Cash',
+      paymentBank: 'Bank transfer',
+      patientStatus: 'Admission status',
       consultationCost: 'Consultation cost (CFL)',
       addConsultation: 'Add consultation to billing',
       provideServices: 'Provide services',
@@ -1395,6 +1991,9 @@ const translations = {
       patientRequired: 'Please complete all required patient fields.',
       patientSaved: 'Patient profile saved.',
       patientLoaded: 'Patient profile loaded.',
+      insuranceRequired: 'Complete all insurance details, including the card expiry date.',
+      providerRequired: 'Select the assigned care provider before saving the patient.',
+      savePatientFirst: 'Save the patient profile before adding services.',
       labList: 'Laboratory tests',
       imagingList: 'Imaging services',
       billingTitle: 'Billing items',
@@ -1426,6 +2025,20 @@ const translations = {
       subtitle: 'Select the services to add to the billing table.',
       back: 'Back to admission',
       selectHint: 'Select one or more services.',
+      catalogTitle: 'Select services from the catalog',
+      allCategories: 'All categories',
+      categoryFilter: 'Service category',
+      search: 'Search service',
+      searchPlaceholder: 'Search by service name or code',
+      tableSelect: 'Select',
+      tableCategory: 'Category',
+      tableService: 'Service',
+      tableCode: 'Code',
+      tableInam: 'Code INAM',
+      tableUninsured: 'Uninsured price',
+      tableInsured: 'Insured price',
+      tableBase: 'Reimbursement base',
+      tableQty: 'Qty',
       consultations: 'Consultation (list)',
       labTests: 'Laboratory tests (list)',
       imaging: 'Medical imaging (list)',
@@ -1640,39 +2253,39 @@ const translations = {
     },
     serviceCatalog: {
       title: 'Catalogue des services',
-      subtitle: 'Créer des services et définir les tarifs par catégorie.',
+      subtitle: 'Créer les services, tarifs assureurs et références de facturation par catégorie.',
       name: 'Nom du service',
       category: 'Catégorie',
-      diseaseCode: 'Code maladie',
+      code: 'Code du service',
+      inamCode: 'Code INAM',
       uninsuredPrice: 'Prix non assuré (CFL)',
       insuranceTitle: 'Tarifs spécifiques par assureur',
-      insurancePartner: 'Assureur partenaire',
-      insuranceServiceCode: 'Code service (assureur)',
+      insuranceHelp:
+        'Chaque assureur partenaire apparaît automatiquement. Renseignez le prix clinique et la base de remboursement pour chacun.',
       insurancePrice: 'Prix assuré (CFL)',
       insuranceBase: 'Base de remboursement',
-      insuranceAdd: "Ajouter un tarif assureur",
       insuranceEmpty: "Aucun tarif assureur pour le moment.",
-      insuranceRequired: "Sélectionnez un assureur et renseignez le code, le prix et la base.",
+      insuranceRequired: 'Renseignez le code du service, le code INAM et le prix non assuré.',
       save: 'Enregistrer le service',
       saved: 'Service enregistré.',
-      required: 'Veuillez saisir un nom, une catégorie et un prix non assuré.',
+      cancelEdit: "Annuler la modification",
+      edit: 'Modifier',
+      editLoaded: 'Service chargé pour modification.',
+      required: 'Veuillez renseigner le nom du service, la catégorie, le code, le code INAM et le prix non assuré.',
       empty: 'Aucun service pour le moment. Ajoutez-en un.',
       delete: 'Supprimer',
       listCategory: 'Catégorie',
       listService: 'Service',
-      listDisease: 'Code maladie',
+      listCode: 'Code',
+      listInam: 'Code INAM',
       listUninsured: 'Prix non assuré',
-      listInsured: 'Tarifs assureurs',
+      listInsuredPrice: 'Prix assuré',
+      listBase: 'Base de remboursement',
+      listPartner: 'Assureur',
+      actions: 'Actions',
       insuranceListPartner: 'Assureur',
-      insuranceListCode: 'Code service',
-      insuranceListPrice: 'Prix (CFL)',
+      insuranceListPrice: 'Prix assuré',
       insuranceListBase: 'Base de remboursement',
-      catConsultation: 'Consultation',
-      catLab: 'Analyses de laboratoire',
-      catImaging: 'Imagerie médicale',
-      catHospital: 'Hospitalisation',
-      catSurgery: 'Chirurgie',
-      catOutpatient: 'Soins ambulatoires',
     },
     insurance: {
       title: "Partenaires d'assurance",
@@ -1721,10 +2334,49 @@ const translations = {
       assignedPatients: 'Patients assignés',
       treatmentPlans: 'Diagnostics & plans de traitement',
       placeholder: 'Ajoutez des consultations pour afficher les plans cliniques.',
+      selectEncounter: 'Parcours patient',
+      selectEncounterRequired: 'Sélectionnez d’abord un parcours patient.',
+      prescriptionType: 'Type de prescription',
+      prescriptionOutpatientCare: 'Soins ambulatoires',
+      prescriptionDay: 'Hospitalisation de jour',
+      prescriptionFull: 'Hospitalisation complète',
+      prescriptionOutpatientRx: 'Ordonnance ambulatoire',
+      complaint: 'Motif de consultation / plainte',
+      symptoms: 'Signes fonctionnels / symptômes',
+      examSummary: 'Résumé de l’examen clinique',
+      diagnosis1: 'Hypothèse diagnostique 1',
+      diagnosis2: 'Hypothèse diagnostique 2',
+      diagnosis3: 'Hypothèse diagnostique 3',
+      requiredTests: 'Examens / investigations demandés',
+      stockMedication: 'Médicament / consommable',
+      stockQty: 'Quantité',
+      addMedication: 'Ajouter le médicament',
+      saveConsultation: 'Enregistrer la consultation',
+      medicationRequired: 'Sélectionnez un article de stock et une quantité.',
+      doctorSaved: 'Consultation enregistrée.',
       nurseTitle: "Vue d'ensemble soins infirmiers",
       nursePatients: 'Patients assignés',
       nurseTasks: 'Tâches réalisées aujourd’hui',
       nurseMonthly: 'Activité mensuelle',
+      hospitalizationMode: 'Mode de prise en charge',
+      modeOutpatient: 'Ambulatoire',
+      modeDay: 'Hospitalisation de jour',
+      modeFull: 'Hospitalisation complète',
+      temp: 'Température',
+      bpRight: 'TA bras droit',
+      bpLeft: 'TA bras gauche',
+      weight: 'Poids',
+      height: 'Taille',
+      waist: 'Tour de taille',
+      pulse: 'Pouls',
+      roomNumber: 'Numéro de chambre',
+      bedNumber: 'Numéro de lit',
+      nursingCare: 'Soins réalisés',
+      nurseStock: 'Médicament / consommable utilisé',
+      nurseStockQty: 'Quantité',
+      addSupply: 'Ajouter le consommable',
+      saveVitals: 'Enregistrer les constantes et soins',
+      nurseSaved: 'Constantes et soins enregistrés.',
       labTitle: 'Vue d’ensemble laboratoire',
       labPending: 'Tests en attente',
       labInProgress: 'En cours',
@@ -1740,6 +2392,8 @@ const translations = {
       patientShare: 'Paiements patients',
       insuranceShare: "Paiements assurance",
       outstanding: 'Soldes impayés',
+      cashPayments: 'Paiements en espèces',
+      bankPayments: 'Paiements par virement',
       adminTitle: "Vue d'ensemble direction",
       totalServices: 'Utilisation des services',
       staffProductivity: 'Productivité du personnel',
@@ -1771,6 +2425,11 @@ const translations = {
       manageTitle: 'Gestion du personnel',
       manageSubtitle: 'Créer des profils et attribuer les rôles.',
       goModules: 'Aller aux modules',
+      firstName: 'Prénom',
+      lastName: 'Nom',
+      dob: 'Date de naissance',
+      sex: 'Sexe',
+      contractStart: 'Date de début du contrat',
       fullName: 'Nom complet',
       role: 'Rôle',
       roleAdmission: "Admission / Secrétariat médical",
@@ -1787,6 +2446,7 @@ const translations = {
       employmentLocum: 'Vacataire',
       locumRate: 'Taux vacataire (%)',
       email: 'Email',
+      countryCode: 'Indicatif pays',
       phone: 'Téléphone',
       employeeCode: "ID employé",
       tempPassword: 'Mot de passe temporaire',
@@ -1825,11 +2485,16 @@ const translations = {
     billing: {
       title: 'Facturation & Admission du patient',
       subtitle: "Enregistrez les patients, validez l'assurance et générez la facturation.",
+      lookupTitle: 'Recherche patient',
       admissionTitle: 'Admission du patient',
       newPatient: 'Nouveau patient',
       returningPatient: 'Ancien patient',
       patientSearch: 'Rechercher un patient',
-      patientSearchPlaceholder: 'Rechercher par nom, ID ou téléphone',
+      patientSearchPlaceholder: 'Rechercher par nom ou téléphone',
+      createPatient: 'Créer un nouveau profil patient',
+      patientNotFound: 'Aucun patient trouvé. Créez un nouveau profil pour continuer.',
+      firstName: 'Prénom',
+      lastName: 'Nom',
       fullName: 'Nom complet',
       sex: 'Sexe',
       sexFemale: 'Femme',
@@ -1837,10 +2502,15 @@ const translations = {
       sexOther: 'Autre',
       dob: 'Date de naissance',
       age: 'Âge',
+      addressCountry: 'Pays',
+      addressCity: 'Ville',
+      addressDistrict: 'Quartier / district',
+      addressPostal: 'Code postal',
+      countryCode: 'Indicatif pays',
       address: 'Adresse',
       phone: 'Téléphone',
       emergencyPhone: "Contact d'urgence",
-      whatsapp: 'WhatsApp',
+      whatsapp: 'WhatsApp (si différent)',
       profession: 'Profession',
       profEmployee: 'Salarié (public ou privé)',
       profSelf: 'Travailleur indépendant (commerçant, artisan, agriculteur, pêcheur, etc.)',
@@ -1854,7 +2524,10 @@ const translations = {
       educationSecondary: 'Secondaire',
       educationTertiary: 'Universitaire',
       educationOther: 'Autre',
-      insuranceTitle: 'Assurance & couverture',
+      insuranceTitle: 'Assurance & paramétrage de la visite',
+      insuranceStatus: "Statut d'assurance",
+      insuranceYes: 'Oui',
+      insuranceNo: 'Non',
       pricingTitle: "Table de tarification assurance (optionnel)",
       pricingProvider: "Assureur",
       pricingCode: "Code de prestation",
@@ -1868,6 +2541,7 @@ const translations = {
       insuranceType: "Type d'assurance",
       insuranceId: "Numéro d'assurance / dossier",
       coverageRate: 'Taux de couverture',
+      cardExpiry: "Date d'expiration de la carte",
       patientId: "Numéro d'identification (carte nationale, assurance, ou dossier médical)",
       servicesTitle: 'Motif de visite (sélections multiples possibles)',
       serviceConsult: 'Consultation',
@@ -1881,9 +2555,13 @@ const translations = {
       surgeryList: 'Services de chirurgie',
       outpatientList: 'Soins ambulatoires',
       consultList: 'Type de consultation',
-      assignDoctor: 'Assigner un médecin',
+      assignDoctor: 'Prestataire de soins assigné',
       doctorPlaceholder: 'Sélectionner un médecin',
       noDoctor: 'Aucun médecin disponible',
+      paymentMethod: 'Mode de paiement',
+      paymentCash: 'Espèces',
+      paymentBank: 'Virement bancaire',
+      patientStatus: "Statut d'admission",
       consultationCost: 'Coût de consultation (CFL)',
       addConsultation: 'Ajouter la consultation à la facture',
       provideServices: 'Proposer des services',
@@ -1894,6 +2572,10 @@ const translations = {
       patientRequired: 'Veuillez compléter toutes les informations requises du patient.',
       patientSaved: 'Profil patient enregistré.',
       patientLoaded: 'Profil patient chargé.',
+      insuranceRequired:
+        "Veuillez compléter toutes les informations d'assurance, y compris la date d'expiration.",
+      providerRequired: 'Veuillez sélectionner le prestataire de soins avant de sauvegarder.',
+      savePatientFirst: "Enregistrez d'abord le profil patient avant d'ajouter les services.",
       labList: 'Analyses biologiques',
       imagingList: "Services d'imagerie",
       billingTitle: 'Actes facturés',
@@ -1925,6 +2607,20 @@ const translations = {
       subtitle: 'Sélectionnez les services à ajouter à la facturation.',
       back: "Retour à l'admission",
       selectHint: 'Sélectionnez un ou plusieurs services.',
+      catalogTitle: 'Sélectionner les services du catalogue',
+      allCategories: 'Toutes les catégories',
+      categoryFilter: 'Catégorie de service',
+      search: 'Rechercher un service',
+      searchPlaceholder: 'Rechercher par nom ou code',
+      tableSelect: 'Choisir',
+      tableCategory: 'Catégorie',
+      tableService: 'Service',
+      tableCode: 'Code',
+      tableInam: 'Code INAM',
+      tableUninsured: 'Prix non assuré',
+      tableInsured: 'Prix assuré',
+      tableBase: 'Base de remboursement',
+      tableQty: 'Qté',
       consultations: 'Consultation (liste)',
       labTests: 'Analyses de laboratoire (liste)',
       imaging: 'Imagerie médicale (liste)',
@@ -2084,10 +2780,15 @@ function applyTranslations() {
   applyFacilityBrand();
   refreshBillingRowsLanguage();
   refreshAppointmentServiceOptions();
+  populateInsuranceProviderOptions();
+  populateServiceCategoryOptions();
+  if (patientStatusLabel) {
+    patientStatusLabel.value = activePatientId ? t('billing.returningPatient') : t('billing.newPatient');
+  }
   applyRoleAccess();
   populateDoctorSelect();
   populateAppointmentDoctors();
-  renderPricingTable();
+  renderServiceSelectionOptions();
   renderAppointmentsTable();
   renderStockTable();
   renderPurchaseOrders();
@@ -2148,12 +2849,14 @@ function showView(view) {
     moduleBillingView.classList.remove('hidden');
     topBar.classList.remove('hidden');
     populateDoctorSelect();
-    renderPricingTable();
+    populateInsuranceProviderOptions();
+    toggleInsuranceDetails();
     return;
   }
   if (view === 'services') {
     serviceSelectionView?.classList.remove('hidden');
     topBar.classList.remove('hidden');
+    renderServiceSelectionOptions();
     return;
   }
   if (view === 'appointments') {
@@ -2179,8 +2882,9 @@ function showView(view) {
   if (view === 'service-catalog') {
     serviceCatalogView?.classList.remove('hidden');
     topBar.classList.remove('hidden');
-    pendingServiceInsurance = [];
-    populateServiceInsuranceOptions();
+    pendingServiceInsurance = editingServiceId
+      ? pendingServiceInsurance
+      : buildInsurancePricingDraft();
     renderServiceInsuranceTable();
     renderServiceCatalog();
     return;
@@ -2382,74 +3086,112 @@ if (serviceCatalogForm) {
     event.preventDefault();
     const name = serviceCatalogName?.value?.trim();
     const category = serviceCatalogCategory?.value || '';
-    const diseaseCode = serviceCatalogDiseaseCode?.value?.trim() || '';
+    const code = serviceCatalogCode?.value?.trim() || '';
+    const inamCode = serviceCatalogInamCode?.value?.trim() || '';
     const uninsuredPrice = Number.parseFloat(serviceCatalogUninsuredPrice?.value || '');
-    if (!name || !category || !Number.isFinite(uninsuredPrice)) {
+    if (!name || !category || !code || !inamCode || !Number.isFinite(uninsuredPrice)) {
       setMessage(serviceCatalogMessage, t('serviceCatalog.required'));
       return;
     }
     const list = loadServiceCatalog();
-    list.push({
-      id: `svc_${Date.now()}`,
+    const insurancePricing = pendingServiceInsurance
+      .filter((entry) => entry.price !== '' || entry.base !== '')
+      .map((entry) => ({
+        partner: entry.partner,
+        price: parseNumber(entry.price),
+        base: parseNumber(entry.base),
+      }));
+    const payload = {
+      id: editingServiceId || `svc_${Date.now()}`,
       name,
       category,
-      diseaseCode,
+      code,
+      inamCode,
       uninsuredPrice,
-      insurancePricing: pendingServiceInsurance,
-    });
+      insurancePricing,
+    };
+    const index = list.findIndex((item) => item.id === payload.id);
+    if (index >= 0) {
+      list[index] = payload;
+    } else {
+      list.push(payload);
+    }
     saveServiceCatalog(list);
     serviceCatalogForm.reset();
-    pendingServiceInsurance = [];
+    editingServiceId = null;
+    pendingServiceInsurance = buildInsurancePricingDraft();
     renderServiceInsuranceTable();
+    if (cancelServiceEdit) cancelServiceEdit.classList.add('hidden');
     setMessage(serviceCatalogMessage, t('serviceCatalog.saved'));
     renderServiceCatalog();
+    renderServiceSelectionTable();
   });
 }
 
 if (serviceCatalogTable) {
   serviceCatalogTable.addEventListener('click', (event) => {
-    const button = event.target.closest('button[data-service-id]');
-    if (!button) return;
-    const id = button.getAttribute('data-service-id');
+    const editButton = event.target.closest('button[data-service-edit]');
+    if (editButton) {
+      const id = editButton.getAttribute('data-service-edit');
+      const service = loadServiceCatalog().find((item) => item.id === id);
+      if (!service) return;
+      editingServiceId = service.id;
+      if (serviceCatalogName) serviceCatalogName.value = service.name || '';
+      if (serviceCatalogCategory) serviceCatalogCategory.value = service.category || '';
+      if (serviceCatalogCode) serviceCatalogCode.value = service.code || service.diseaseCode || '';
+      if (serviceCatalogInamCode) serviceCatalogInamCode.value = service.inamCode || '';
+      if (serviceCatalogUninsuredPrice) {
+        serviceCatalogUninsuredPrice.value = service.uninsuredPrice || '';
+      }
+      pendingServiceInsurance = buildInsurancePricingDraft(service.insurancePricing || []);
+      renderServiceInsuranceTable();
+      if (cancelServiceEdit) cancelServiceEdit.classList.remove('hidden');
+      setMessage(serviceCatalogMessage, t('serviceCatalog.editLoaded'));
+      return;
+    }
+    const deleteButton = event.target.closest('button[data-service-id]');
+    if (!deleteButton) return;
+    const id = deleteButton.getAttribute('data-service-id');
     if (!id) return;
     const list = loadServiceCatalog().filter((item) => item.id !== id);
     saveServiceCatalog(list);
+    if (editingServiceId === id) {
+      editingServiceId = null;
+      serviceCatalogForm.reset();
+      pendingServiceInsurance = buildInsurancePricingDraft();
+      renderServiceInsuranceTable();
+      if (cancelServiceEdit) cancelServiceEdit.classList.add('hidden');
+    }
     renderServiceCatalog();
-  });
-}
-
-if (addServiceInsurance) {
-  addServiceInsurance.addEventListener('click', () => {
-    const partner = serviceInsurancePartner?.value || '';
-    const code = serviceInsuranceCode?.value?.trim() || '';
-    const price = Number.parseFloat(serviceInsurancePrice?.value || '');
-    const base = Number.parseFloat(serviceInsuranceBase?.value || '');
-    if (!partner || !code || !Number.isFinite(price) || !Number.isFinite(base)) {
-      setMessage(serviceCatalogMessage, t('serviceCatalog.insuranceRequired'));
-      return;
-    }
-    const existingIndex = pendingServiceInsurance.findIndex((entry) => entry.partner === partner);
-    const entry = { partner, code, price, base };
-    if (existingIndex >= 0) {
-      pendingServiceInsurance[existingIndex] = entry;
-    } else {
-      pendingServiceInsurance.push(entry);
-    }
-    if (serviceInsuranceCode) serviceInsuranceCode.value = '';
-    if (serviceInsurancePrice) serviceInsurancePrice.value = '';
-    if (serviceInsuranceBase) serviceInsuranceBase.value = '';
-    setMessage(serviceCatalogMessage, '');
-    renderServiceInsuranceTable();
+    renderServiceSelectionTable();
   });
 }
 
 if (serviceInsuranceTable) {
-  serviceInsuranceTable.addEventListener('click', (event) => {
-    const button = event.target.closest('button[data-insurance-row]');
-    if (!button) return;
-    const partner = button.getAttribute('data-insurance-row');
-    pendingServiceInsurance = pendingServiceInsurance.filter((entry) => entry.partner !== partner);
+  serviceInsuranceTable.addEventListener('input', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement)) return;
+    const partner = target.dataset.partner;
+    if (!partner) return;
+    const entry = pendingServiceInsurance.find((item) => item.partner === partner);
+    if (!entry) return;
+    if (target.classList.contains('service-insurance-price')) {
+      entry.price = target.value;
+    }
+    if (target.classList.contains('service-insurance-base')) {
+      entry.base = target.value;
+    }
+  });
+}
+
+if (cancelServiceEdit) {
+  cancelServiceEdit.addEventListener('click', () => {
+    editingServiceId = null;
+    serviceCatalogForm?.reset();
+    pendingServiceInsurance = buildInsurancePricingDraft();
     renderServiceInsuranceTable();
+    cancelServiceEdit.classList.add('hidden');
+    setMessage(serviceCatalogMessage, '');
   });
 }
 
@@ -2478,6 +3220,10 @@ if (insuranceForm) {
     insuranceForm.reset();
     setMessage(insuranceMessage, t('insurance.saved'));
     renderInsurancePartners();
+    pendingServiceInsurance = buildInsurancePricingDraft(pendingServiceInsurance);
+    renderServiceInsuranceTable();
+    populateInsuranceProviderOptions();
+    renderServiceSelectionTable();
   });
 }
 
@@ -2490,6 +3236,10 @@ if (insuranceTable) {
     const list = loadInsurancePartners().filter((item) => item.id !== id);
     saveInsurancePartners(list);
     renderInsurancePartners();
+    pendingServiceInsurance = buildInsurancePricingDraft(pendingServiceInsurance);
+    renderServiceInsuranceTable();
+    populateInsuranceProviderOptions();
+    renderServiceSelectionTable();
   });
 }
 
@@ -2608,6 +3358,20 @@ function sumReceiptTotals(receipts) {
   );
 }
 
+function sumAccountingTotals(entries) {
+  return entries.reduce(
+    (acc, entry) => {
+      acc.total += entry.totalAmount || 0;
+      acc.insurance += entry.insurerAmount || 0;
+      acc.patient += (entry.cashAmount || 0) + (entry.bankAmount || 0);
+      acc.cash += entry.cashAmount || 0;
+      acc.bank += entry.bankAmount || 0;
+      return acc;
+    },
+    { total: 0, insurance: 0, patient: 0, cash: 0, bank: 0 }
+  );
+}
+
 function getDoctorPayments() {
   const employees = loadEmployees().filter((emp) => emp.role === 'doctor');
   return employees.map((doc) => {
@@ -2639,6 +3403,9 @@ function renderRoleDashboard() {
   filterSectionByRole();
   const patients = loadPatients();
   const receipts = loadReceipts();
+  const encounters = loadEncounters();
+  const accountingEntries = loadAccountingEntries();
+  const accountingTotals = sumAccountingTotals(accountingEntries);
 
   if (dashboardRoleLabel) {
     const roleLabel = currentEmployee.roleLabel || currentEmployee.role || '';
@@ -2646,13 +3413,12 @@ function renderRoleDashboard() {
   }
 
   if (currentEmployee.role === 'admission') {
-    const totals = sumReceiptTotals(receipts);
     if (admTotalPatients) admTotalPatients.textContent = patients.length.toString();
     if (admVisitsToday) admVisitsToday.textContent = countByDays(patients, 1).toString();
     if (admVisitsWeek) admVisitsWeek.textContent = countByDays(patients, 7).toString();
     if (admVisitsMonth) admVisitsMonth.textContent = countByDays(patients, 30).toString();
-    if (admPaidPatients) admPaidPatients.textContent = formatCfl(totals.patient);
-    if (admPaidInsurance) admPaidInsurance.textContent = formatCfl(totals.insurance);
+    if (admPaidPatients) admPaidPatients.textContent = formatCfl(accountingTotals.patient);
+    if (admPaidInsurance) admPaidInsurance.textContent = formatCfl(accountingTotals.insurance);
     if (admStaffTable) {
       const counts = patients.reduce((acc, rec) => {
         const key = rec.admittedBy || t('dashboard.unknownStaff');
@@ -2671,6 +3437,9 @@ function renderRoleDashboard() {
   if (currentEmployee.role === 'doctor') {
     const docKey = currentEmployee.code || currentEmployee.email || currentEmployee.name;
     const assigned = patients.filter((p) => p.doctor === docKey);
+    const assignedEncounters = encounters.filter(
+      (encounter) => encounter.doctor === docKey || encounter.doctorName === currentEmployee.name
+    );
     if (docPatientsCount) docPatientsCount.textContent = assigned.length.toString();
     if (docUpcoming) {
       const appointments = loadAppointments();
@@ -2679,12 +3448,17 @@ function renderRoleDashboard() {
       ).length;
       docUpcoming.textContent = upcoming.toString();
     }
-    if (docCompleted) docCompleted.textContent = receipts.filter((r) => r.doctor === docKey).length.toString();
+    if (docCompleted) {
+      const completed = assignedEncounters.filter(
+        (encounter) => encounter.status === 'doctor-completed'
+      ).length;
+      docCompleted.textContent = completed.toString();
+    }
     if (docPatientList) {
       docPatientList.innerHTML = '';
-      assigned.slice(0, 6).forEach((p) => {
+      assignedEncounters.slice(0, 6).forEach((p) => {
         const li = document.createElement('li');
-        li.textContent = p.name || '-';
+        li.textContent = p.patientName || '-';
         docPatientList.appendChild(li);
       });
     }
@@ -2693,13 +3467,21 @@ function renderRoleDashboard() {
     if (docGross) docGross.textContent = formatCfl(payslip.gross);
     if (docOtr) docOtr.textContent = formatCfl(payslip.otr);
     if (docNet) docNet.textContent = formatCfl(payslip.net);
+    populateDoctorEncounterOptions();
+    populateDoctorTestOptions();
+    populateDoctorStockOptions();
   }
 
   if (currentEmployee.role === 'nurse') {
-    if (nursePatients) nursePatients.textContent = patients.length.toString();
-    if (nurseTasks) nurseTasks.textContent = '0';
+    if (nursePatients) nursePatients.textContent = encounters.length.toString();
+    if (nurseTasks) {
+      const completed = encounters.filter((encounter) => encounter.nurseAssessment).length;
+      nurseTasks.textContent = completed.toString();
+    }
     if (nurseMonthly) nurseMonthly.textContent = countByDays(patients, 30).toString();
     renderDoctorPayments(nurseDoctorPayments);
+    populateNurseEncounterOptions();
+    populateNurseStockOptions();
   }
 
   if (currentEmployee.role === 'lab') {
@@ -2726,22 +3508,22 @@ function renderRoleDashboard() {
   }
 
   if (currentEmployee.role === 'accountant') {
-    const totals = sumReceiptTotals(receipts);
-    if (accRevenue) accRevenue.textContent = formatCfl(totals.total);
-    if (accPatient) accPatient.textContent = formatCfl(totals.patient);
-    if (accInsurance) accInsurance.textContent = formatCfl(totals.insurance);
+    if (accRevenue) accRevenue.textContent = formatCfl(accountingTotals.total);
+    if (accPatient) accPatient.textContent = formatCfl(accountingTotals.patient);
+    if (accInsurance) accInsurance.textContent = formatCfl(accountingTotals.insurance);
     if (accOutstanding) accOutstanding.textContent = formatCfl(0);
+    if (accCashPayments) accCashPayments.textContent = formatCfl(accountingTotals.cash);
+    if (accBankPayments) accBankPayments.textContent = formatCfl(accountingTotals.bank);
     renderDoctorPayments(accDoctorPayments);
   }
 
   if (currentEmployee.role === 'director') {
-    const totals = sumReceiptTotals(receipts);
     if (dirPatients) dirPatients.textContent = patients.length.toString();
     if (dirServices) {
       const serviceCount = receipts.flatMap((r) => r.items || []).length;
       dirServices.textContent = serviceCount.toString();
     }
-    if (dirRevenue) dirRevenue.textContent = formatCfl(totals.total);
+    if (dirRevenue) dirRevenue.textContent = formatCfl(accountingTotals.total);
     if (dirStaffProductivity) dirStaffProductivity.textContent = patients.length.toString();
   }
 }
@@ -2754,6 +3536,7 @@ function refreshDashboardIfVisible() {
 
 function populateDoctorSelect() {
   if (!assignDoctor) return;
+  const currentValue = assignDoctor.value;
   const employees = loadEmployees();
   const doctors = employees.filter((emp) => emp.role === 'doctor');
   assignDoctor.innerHTML = `<option value="">${t('billing.doctorPlaceholder')}</option>`;
@@ -2771,6 +3554,7 @@ function populateDoctorSelect() {
     option.textContent = `${doc.name || doc.email || doc.code}${specialty}`;
     assignDoctor.appendChild(option);
   });
+  assignDoctor.value = currentValue;
 }
 
 function updateBillingTotals() {
@@ -2832,15 +3616,7 @@ function updateBillingTotals() {
 
 function createBillingRow() {
   const row = document.createElement('tr');
-  const categories = [
-    { value: 'consultation', label: t('billing.serviceConsult') },
-    { value: 'lab', label: t('billing.serviceLab') },
-    { value: 'imaging', label: t('billing.serviceImaging') },
-    { value: 'hospital', label: t('billing.serviceHospital') },
-    { value: 'surgery', label: t('billing.serviceSurgery') },
-    { value: 'outpatient', label: t('billing.serviceOutpatient') },
-    { value: 'pharmacy', label: t('billing.servicePharmacy') },
-  ];
+  const categories = getServiceCategoryDefinitions();
   const categoryOptions = categories
     .map((cat) => `<option value="${cat.value}">${cat.label}</option>`)
     .join('');
@@ -2889,15 +3665,7 @@ function createBillingRow() {
 
 function refreshBillingRowsLanguage() {
   if (!billingTableBody) return;
-  const categories = [
-    { value: 'consultation', label: t('billing.serviceConsult') },
-    { value: 'lab', label: t('billing.serviceLab') },
-    { value: 'imaging', label: t('billing.serviceImaging') },
-    { value: 'hospital', label: t('billing.serviceHospital') },
-    { value: 'surgery', label: t('billing.serviceSurgery') },
-    { value: 'outpatient', label: t('billing.serviceOutpatient') },
-    { value: 'pharmacy', label: t('billing.servicePharmacy') },
-  ];
+  const categories = getServiceCategoryDefinitions();
   billingTableBody.querySelectorAll('tr').forEach((row) => {
     const input = row.querySelector('input[type="text"]');
     if (input) {
@@ -2917,7 +3685,7 @@ function refreshBillingRowsLanguage() {
       select.innerHTML = categories
         .map((cat) => `<option value="${cat.value}">${cat.label}</option>`)
         .join('');
-      select.value = currentValue || 'consultation';
+      select.value = currentValue || categories[0]?.value || '';
     }
     const removeBtn = row.querySelector('.remove-row');
     if (removeBtn) {
@@ -2929,15 +3697,13 @@ function refreshBillingRowsLanguage() {
 function refreshAppointmentServiceOptions() {
   if (!appointmentService) return;
   const currentValue = appointmentService.value;
-  appointmentService.innerHTML = `
-    <option value="">${t('select.placeholder')}</option>
-    <option value="consultation">${t('billing.serviceConsult')}</option>
-    <option value="lab">${t('billing.serviceLab')}</option>
-    <option value="imaging">${t('billing.serviceImaging')}</option>
-    <option value="hospital">${t('billing.serviceHospital')}</option>
-    <option value="surgery">${t('billing.serviceSurgery')}</option>
-    <option value="outpatient">${t('billing.serviceOutpatient')}</option>
-  `;
+  appointmentService.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
+  getServiceCategoryDefinitions().forEach((category) => {
+    const option = document.createElement('option');
+    option.value = category.value;
+    option.textContent = category.label;
+    appointmentService.appendChild(option);
+  });
   appointmentService.value = currentValue || '';
 }
 
@@ -2965,6 +3731,30 @@ function addServiceToBilling(service) {
 }
 
 function collectSelectedServices() {
+  if (serviceSelectionTableBody) {
+    const dynamicRows = Array.from(
+      serviceSelectionTableBody.querySelectorAll('input.service-pick:checked')
+    );
+    if (dynamicRows.length) {
+      const catalog = loadServiceCatalog();
+      return dynamicRows
+        .map((input) => {
+          const service = catalog.find((item) => item.id === input.dataset.serviceId);
+          const row = input.closest('tr');
+          const qty = parseNumber(row?.querySelector('.service-pick-qty')?.value) || 1;
+          if (!service) return null;
+          return {
+            label: service.name,
+            category: normalizeServiceCategory(service.category),
+            code: service.code || service.diseaseCode || '',
+            inam: service.inamCode || '',
+            price: parseNumber(service.uninsuredPrice),
+            qty,
+          };
+        })
+        .filter(Boolean);
+    }
+  }
   const services = [];
   serviceSelects.forEach((select) => {
     const category = select.dataset.serviceCategory || 'consultation';
@@ -2997,6 +3787,14 @@ function collectSelectedServices() {
 }
 
 function clearServiceSelections() {
+  if (serviceSelectionTableBody) {
+    serviceSelectionTableBody.querySelectorAll('input.service-pick').forEach((input) => {
+      input.checked = false;
+    });
+    serviceSelectionTableBody.querySelectorAll('.service-pick-qty').forEach((input) => {
+      input.value = '1';
+    });
+  }
   serviceSelects.forEach((select) => {
     Array.from(select.options).forEach((option) => {
       option.selected = false;
@@ -3007,6 +3805,89 @@ function clearServiceSelections() {
     const row = check.closest('tr');
     const qtyInput = row?.querySelector('.med-qty');
     if (qtyInput) qtyInput.value = 1;
+  });
+}
+
+function renderServiceSelectionTable() {
+  if (!serviceSelectionTableBody) return;
+  const catalog = loadServiceCatalog();
+  const provider = normalizeProvider(insuranceProvider?.value);
+  const rawCategoryFilter = serviceSelectionCategoryFilter?.value || '';
+  const categoryFilter = rawCategoryFilter ? normalizeServiceCategory(rawCategoryFilter) : '';
+  const search = normalizeLabel(serviceSelectionSearch?.value || '');
+  const filtered = catalog
+    .filter((item) => {
+      const serviceCategory = normalizeServiceCategory(item.category);
+      if (categoryFilter && serviceCategory !== categoryFilter) return false;
+      if (!search) return true;
+      return [item.name, item.code, item.inamCode]
+        .map((value) => normalizeLabel(value || ''))
+        .some((value) => value.includes(search));
+    })
+    .sort((a, b) => {
+      const byCategory = getServiceCategoryLabel(a.category).localeCompare(getServiceCategoryLabel(b.category));
+      if (byCategory !== 0) return byCategory;
+      return (a.name || '').localeCompare(b.name || '');
+    });
+  serviceSelectionTableBody.innerHTML = '';
+  if (!filtered.length) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td colspan="9">${t('dashboard.noData')}</td>`;
+    serviceSelectionTableBody.appendChild(row);
+    return;
+  }
+  filtered.forEach((service) => {
+    const pricing = resolveServicePricing(
+      {
+        category: service.category,
+        label: service.name,
+        code: service.code || service.diseaseCode || '',
+        inam: service.inamCode || '',
+        price: service.uninsuredPrice || 0,
+      },
+      provider
+    );
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td><input class="service-pick" type="checkbox" data-service-id="${service.id}" /></td>
+      <td>${getServiceCategoryLabel(service.category)}</td>
+      <td>${service.name || '-'}</td>
+      <td>${service.code || service.diseaseCode || '-'}</td>
+      <td>${service.inamCode || '-'}</td>
+      <td>${formatCfl(service.uninsuredPrice || 0)}</td>
+      <td>${formatCfl(pricing.price || 0)}</td>
+      <td>${pricing.base ? formatCfl(pricing.base) : '-'}</td>
+      <td><input class="service-pick-qty" type="number" min="1" value="1" /></td>
+    `;
+    serviceSelectionTableBody.appendChild(row);
+  });
+}
+
+function renderServiceSelectionOptions() {
+  const catalog = loadServiceCatalog();
+  renderServiceSelectionTable();
+  serviceSelects.forEach((select) => {
+    const selectedValues = new Set(Array.from(select.selectedOptions).map((option) => option.value));
+    const category = normalizeServiceCategory(select.dataset.serviceCategory || 'consultation');
+    const services = catalog.filter((item) => normalizeServiceCategory(item.category) === category);
+    select.innerHTML = '';
+    if (!services.length) {
+      const option = document.createElement('option');
+      option.disabled = true;
+      option.textContent = t('dashboard.noData');
+      select.appendChild(option);
+      return;
+    }
+    services.forEach((service) => {
+      const option = document.createElement('option');
+      option.value = service.name;
+      option.dataset.code = service.code || service.diseaseCode || '';
+      option.dataset.inam = service.inamCode || '';
+      option.dataset.price = String(service.uninsuredPrice || 0);
+      option.textContent = service.name;
+      option.selected = selectedValues.has(option.value);
+      select.appendChild(option);
+    });
   });
 }
 
@@ -3023,11 +3904,26 @@ if (coverageRate) {
 }
 
 if (insuranceProvider) {
-  insuranceProvider.addEventListener('change', updateBillingTotals);
+  insuranceProvider.addEventListener('change', () => {
+    updateBillingTotals();
+    renderServiceSelectionTable();
+  });
+}
+
+if (serviceSelectionCategoryFilter) {
+  serviceSelectionCategoryFilter.addEventListener('change', renderServiceSelectionTable);
+}
+
+if (serviceSelectionSearch) {
+  serviceSelectionSearch.addEventListener('input', renderServiceSelectionTable);
 }
 
 if (provideServicesBtn) {
   provideServicesBtn.addEventListener('click', () => {
+    if (!activePatientId) {
+      setMessage(patientMessage, t('billing.savePatientFirst'));
+      return;
+    }
     setMessage(serviceSelectionMessage, '');
     showView('services');
   });
@@ -3039,6 +3935,10 @@ if (backToBillingFromServices) {
 
 if (addSelectedServices) {
   addSelectedServices.addEventListener('click', () => {
+    if (!activePatientId) {
+      setMessage(serviceSelectionMessage, t('billing.savePatientFirst'));
+      return;
+    }
     const selected = collectSelectedServices();
     if (!selected.length) {
       setMessage(serviceSelectionMessage, t('services.empty'));
@@ -3046,10 +3946,15 @@ if (addSelectedServices) {
     }
     const provider = normalizeProvider(insuranceProvider?.value);
     selected.forEach((service) => {
-      const rule = findPricingRule(provider, service);
-      const price = rule?.price ?? service.price;
-      const base = rule?.base ?? '';
-      addServiceToBilling({ ...service, price, base });
+      const pricing = resolveServicePricing(service, provider);
+      addServiceToBilling({
+        ...service,
+        category: normalizeServiceCategory(service.category),
+        price: pricing.price,
+        base: pricing.base,
+        code: pricing.code || service.code,
+        inam: pricing.inamCode || service.inam,
+      });
     });
     updateBillingTotals();
     clearServiceSelections();
@@ -3196,19 +4101,23 @@ if (adminSignInForm) {
 if (staffForm) {
   staffForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const name = staffName?.value?.trim();
+    const firstName = staffFirstName?.value?.trim();
+    const lastName = staffLastName?.value?.trim();
+    const name = [firstName, lastName].filter(Boolean).join(' ').trim();
     const role = staffRole?.value;
     const email = staffEmail?.value?.trim();
-    const phone = staffPhone?.value?.trim();
+    const phoneCountryCode = staffPhoneCountry?.value || '+228';
+    const phoneLocal = staffPhone?.value?.trim();
+    const phone = joinPhone(phoneCountryCode, phoneLocal);
     const code = staffCode?.value?.trim();
     const tempPassword = staffTempPassword?.value?.trim();
     const employmentType = staffEmploymentType?.value || 'permanent';
-    const locumRate = employmentType === 'locum' ? parseNumber(staffLocumRate?.value) : 0;
-    if (!name || !role || !code || !tempPassword) {
+    const locumRate = employmentType === 'locum' ? parseNumber(staffLocumRate?.value) : 100;
+    if (!firstName || !lastName || !role || !code || !tempPassword || !staffDob?.value || !staffSex?.value || !staffContractStart?.value) {
       setMessage(staffMessage, t('staff.messages.staffRequired'));
       return;
     }
-    if (employmentType === 'locum' && !Number.isFinite(locumRate)) {
+    if (employmentType === 'locum' && (!Number.isFinite(locumRate) || locumRate <= 0)) {
       setMessage(staffMessage, t('staff.messages.locumRateRequired'));
       return;
     }
@@ -3232,8 +4141,15 @@ if (staffForm) {
       name,
       role,
       roleLabel,
+      firstName,
+      lastName,
+      dob: staffDob?.value || '',
+      sex: staffSex?.value || '',
+      contractStart: staffContractStart?.value || '',
       email,
       phone,
+      phoneCountryCode,
+      phoneLocal,
       code,
       password: tempPassword,
       employmentType,
@@ -3245,7 +4161,7 @@ if (staffForm) {
     saveEmployees(employees);
     staffForm.reset();
     if (staffEmploymentType) staffEmploymentType.value = 'permanent';
-    if (staffLocumRate) staffLocumRate.value = '';
+    if (staffPhoneCountry) staffPhoneCountry.value = '+228';
     setMessage(staffMessage, t('staff.messages.created'));
     renderStaffList();
     populateDoctorSelect();
@@ -3280,7 +4196,7 @@ function syncLocumRateField() {
   const isLocum = staffEmploymentType.value === 'locum';
   staffLocumRate.disabled = !isLocum;
   if (!isLocum) {
-    staffLocumRate.value = '';
+    staffLocumRate.value = '100';
   }
 }
 
@@ -3291,6 +4207,17 @@ if (staffEmploymentType) {
 }
 
 syncLocumRateField();
+populateCountryCodeSelect(staffPhoneCountry);
+populateCountryCodeSelect(patientPhoneCountry);
+populateCountryCodeSelect(patientWhatsappCountry);
+populateInsuranceProviderOptions();
+populateServiceCategoryOptions();
+pendingServiceInsurance = buildInsurancePricingDraft();
+renderServiceInsuranceTable();
+toggleInsuranceDetails();
+if (patientStatusLabel) {
+  patientStatusLabel.value = t('billing.newPatient');
+}
 
 if (employeeSignInForm) {
   employeeSignInForm.addEventListener('submit', (event) => {
@@ -3317,86 +4244,277 @@ if (employeeSignInForm) {
   });
 }
 
-if (addConsultationBtn) {
-  addConsultationBtn.addEventListener('click', () => {
-    const cost = parseNumber(consultationCost?.value);
-    if (!cost) {
-      setMessage(patientMessage, t('billing.consultationRequired'));
+if (nurseEncounterSelect) {
+  nurseEncounterSelect.addEventListener('change', () => {
+    const encounter = getEncounterById(nurseEncounterSelect.value);
+    const nurse = encounter?.nurseAssessment;
+    if (nurseHospitalizationMode) nurseHospitalizationMode.value = nurse?.mode || 'outpatient';
+    if (nurseTemperature) nurseTemperature.value = nurse?.temperature || '';
+    if (nurseBpRight) nurseBpRight.value = nurse?.bpRight || '';
+    if (nurseBpLeft) nurseBpLeft.value = nurse?.bpLeft || '';
+    if (nurseWeight) nurseWeight.value = nurse?.weight || '';
+    if (nurseHeight) nurseHeight.value = nurse?.height || '';
+    if (nurseWaist) nurseWaist.value = nurse?.waist || '';
+    if (nursePulse) nursePulse.value = nurse?.pulse || '';
+    if (nurseRoomNumber) nurseRoomNumber.value = nurse?.roomNumber || '';
+    if (nurseBedNumber) nurseBedNumber.value = nurse?.bedNumber || '';
+    if (nurseCareNotes) nurseCareNotes.value = nurse?.careNotes || '';
+    pendingNurseSupplies = nurse?.supplies || [];
+    if (nurseStockQty) nurseStockQty.value = '1';
+    renderNurseSupplyList();
+  });
+}
+
+if (addNurseSupplyBtn) {
+  addNurseSupplyBtn.addEventListener('click', () => {
+    const stockId = nurseStockItem?.value || '';
+    const qty = parseNumber(nurseStockQty?.value) || 0;
+    if (!stockId || qty <= 0) {
+      setMessage(nurseAssessmentMessage, t('dashboard.medicationRequired'));
       return;
     }
-    if (!billingTableBody) return;
-    const row = createBillingRow();
-    const itemInput = row.querySelector('input[type="text"]');
-    if (itemInput) itemInput.value = t('billing.consultationItem');
-    const categorySelect = row.querySelector('select');
-    if (categorySelect) categorySelect.value = 'consultation';
-    const priceInput = row.querySelector('.billing-price');
-    if (priceInput) priceInput.value = cost;
-    const qtyInput = row.querySelector('.billing-qty');
-    if (qtyInput) qtyInput.value = 1;
-    billingTableBody.appendChild(row);
-    updateBillingTotals();
-    setMessage(patientMessage, t('billing.consultAdded'));
+    const stockItem = loadStock().find((item) => item.id === stockId);
+    if (!stockItem) return;
+    const existing = pendingNurseSupplies.find((item) => item.stockId === stockId);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      pendingNurseSupplies.push({ stockId, name: stockItem.name, qty });
+    }
+    if (nurseStockQty) nurseStockQty.value = '1';
+    setMessage(nurseAssessmentMessage, '');
+    renderNurseSupplyList();
   });
+}
+
+if (nurseSupplyList) {
+  nurseSupplyList.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-stock-id]');
+    if (!button) return;
+    const stockId = button.getAttribute('data-stock-id');
+    pendingNurseSupplies = pendingNurseSupplies.filter((item) => item.stockId !== stockId);
+    renderNurseSupplyList();
+  });
+}
+
+if (saveNurseAssessmentBtn) {
+  saveNurseAssessmentBtn.addEventListener('click', () => {
+    const encounterId = nurseEncounterSelect?.value || '';
+    if (!encounterId) {
+      setMessage(nurseAssessmentMessage, t('dashboard.selectEncounterRequired'));
+      return;
+    }
+    const encounters = loadEncounters();
+    const encounter = encounters.find((item) => item.id === encounterId);
+    if (!encounter) return;
+    encounter.nurseAssessment = {
+      mode: nurseHospitalizationMode?.value || 'outpatient',
+      temperature: nurseTemperature?.value || '',
+      bpRight: nurseBpRight?.value || '',
+      bpLeft: nurseBpLeft?.value || '',
+      weight: nurseWeight?.value || '',
+      height: nurseHeight?.value || '',
+      waist: nurseWaist?.value || '',
+      pulse: nursePulse?.value || '',
+      roomNumber: nurseRoomNumber?.value || '',
+      bedNumber: nurseBedNumber?.value || '',
+      careNotes: nurseCareNotes?.value || '',
+      supplies: pendingNurseSupplies,
+      recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+      recordedAt: new Date().toISOString(),
+    };
+    encounter.status = 'nurse-completed';
+    saveEncounters(encounters);
+    applyStockDeductions(
+      pendingNurseSupplies.map((item) => ({
+        label: item.name,
+        qty: item.qty,
+        category: 'pharmacy',
+      }))
+    );
+    setMessage(nurseAssessmentMessage, t('dashboard.nurseSaved'));
+    refreshDashboardIfVisible();
+  });
+}
+
+if (doctorEncounterSelect) {
+  doctorEncounterSelect.addEventListener('change', () => {
+    const encounter = getEncounterById(doctorEncounterSelect.value);
+    setDoctorEncounterSummary(encounter);
+    const consult = encounter?.doctorConsultation;
+    if (doctorPrescriptionType) doctorPrescriptionType.value = consult?.prescriptionType || '';
+    if (doctorComplaint) doctorComplaint.value = consult?.complaint || '';
+    if (doctorSymptoms) doctorSymptoms.value = consult?.symptoms || '';
+    if (doctorExamSummary) doctorExamSummary.value = consult?.examSummary || '';
+    if (doctorDiagnosis1) doctorDiagnosis1.value = consult?.diagnoses?.[0] || '';
+    if (doctorDiagnosis2) doctorDiagnosis2.value = consult?.diagnoses?.[1] || '';
+    if (doctorDiagnosis3) doctorDiagnosis3.value = consult?.diagnoses?.[2] || '';
+    if (doctorTests) {
+      const testIds = new Set(consult?.tests || []);
+      Array.from(doctorTests.options).forEach((option) => {
+        option.selected = testIds.has(option.value);
+      });
+    }
+    pendingDoctorMedication = consult?.medications || [];
+    renderDoctorMedicationList();
+  });
+}
+
+if (addDoctorMedicationBtn) {
+  addDoctorMedicationBtn.addEventListener('click', () => {
+    const stockId = doctorStockItem?.value || '';
+    const qty = parseNumber(doctorStockQty?.value) || 0;
+    if (!stockId || qty <= 0) {
+      setMessage(doctorConsultationMessage, t('dashboard.medicationRequired'));
+      return;
+    }
+    const stockItem = loadStock().find((item) => item.id === stockId);
+    if (!stockItem) return;
+    const existing = pendingDoctorMedication.find((item) => item.stockId === stockId);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      pendingDoctorMedication.push({ stockId, name: stockItem.name, qty });
+    }
+    if (doctorStockQty) doctorStockQty.value = '1';
+    setMessage(doctorConsultationMessage, '');
+    renderDoctorMedicationList();
+  });
+}
+
+if (doctorMedicationList) {
+  doctorMedicationList.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-stock-id]');
+    if (!button) return;
+    const stockId = button.getAttribute('data-stock-id');
+    pendingDoctorMedication = pendingDoctorMedication.filter((item) => item.stockId !== stockId);
+    renderDoctorMedicationList();
+  });
+}
+
+if (saveDoctorConsultationBtn) {
+  saveDoctorConsultationBtn.addEventListener('click', () => {
+    const encounterId = doctorEncounterSelect?.value || '';
+    if (!encounterId) {
+      setMessage(doctorConsultationMessage, t('dashboard.selectEncounterRequired'));
+      return;
+    }
+    const encounters = loadEncounters();
+    const encounter = encounters.find((item) => item.id === encounterId);
+    if (!encounter) return;
+    const diagnoses = [doctorDiagnosis1?.value, doctorDiagnosis2?.value, doctorDiagnosis3?.value]
+      .map((value) => value?.trim())
+      .filter(Boolean);
+    encounter.doctorConsultation = {
+      complaint: doctorComplaint?.value?.trim() || '',
+      symptoms: doctorSymptoms?.value?.trim() || '',
+      examSummary: doctorExamSummary?.value?.trim() || '',
+      diagnoses,
+      tests: Array.from(doctorTests?.selectedOptions || []).map((option) => option.value),
+      prescriptionType: doctorPrescriptionType?.value || '',
+      medications: pendingDoctorMedication,
+      recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+      recordedAt: new Date().toISOString(),
+    };
+    encounter.status = 'doctor-completed';
+    saveEncounters(encounters);
+    applyStockDeductions(
+      pendingDoctorMedication.map((item) => ({
+        label: item.name,
+        qty: item.qty,
+        category: 'pharmacy',
+      }))
+    );
+    setMessage(doctorConsultationMessage, t('dashboard.doctorSaved'));
+    refreshDashboardIfVisible();
+  });
+}
+
+function buildPatientRecord() {
+  const firstName = patientFirstName?.value?.trim() || '';
+  const lastName = patientLastName?.value?.trim() || '';
+  const sex = patientSex?.value || '';
+  const dob = patientDob?.value || '';
+  const age = patientAge?.value || calculateAgeFromDob(dob) || '';
+  const phoneCountryCode = patientPhoneCountry?.value || '+228';
+  const phoneLocal = patientPhone?.value?.trim() || '';
+  const whatsappCountryCode = patientWhatsappCountry?.value || phoneCountryCode;
+  const whatsappLocal = patientWhatsapp?.value?.trim() || '';
+  const isInsured = patientInsuranceStatus?.value === 'yes';
+  return {
+    id: activePatientId || `PT-${Date.now()}`,
+    firstName,
+    lastName,
+    name: [firstName, lastName].filter(Boolean).join(' ').trim(),
+    sex,
+    dob,
+    age,
+    phoneCountryCode,
+    phoneLocal,
+    phone: joinPhone(phoneCountryCode, phoneLocal),
+    whatsappCountryCode,
+    whatsappLocal,
+    whatsapp: joinPhone(whatsappCountryCode, whatsappLocal),
+    profession: patientProfession?.value || '',
+    education: patientEducation?.value || '',
+    identifier: patientIdentifier?.value?.trim() || '',
+    address: {
+      country: patientCountry?.value?.trim() || '',
+      city: patientCity?.value?.trim() || '',
+      district: patientDistrict?.value?.trim() || '',
+      postalCode: patientPostalCode?.value?.trim() || '',
+    },
+    isInsured,
+    insuranceType: isInsured ? insuranceProvider?.value || '' : '',
+    insuranceId: isInsured ? insuranceId?.value?.trim() || '' : '',
+    coverage: isInsured ? coverageRate?.value || '' : '',
+    insuranceExpiry: isInsured ? insuranceExpiry?.value || '' : '',
+    doctor: assignDoctor?.value || '',
+    admittedBy: currentEmployee?.name || currentEmployee?.code || '',
+    createdAt: new Date().toISOString(),
+  };
 }
 
 if (savePatientBtn) {
   savePatientBtn.addEventListener('click', () => {
-    const name = patientFullName?.value?.trim();
-    const sex = patientSex?.value || '';
-    const dob = patientDob?.value || '';
-    const age = patientAge?.value || '';
-    const address = patientAddress?.value?.trim() || '';
-    const phone = patientPhone?.value?.trim() || '';
-    const emergency = patientEmergencyPhone?.value?.trim() || '';
-    const whatsapp = patientWhatsapp?.value?.trim() || '';
-    const profession = patientProfession?.value || '';
-    const education = patientEducation?.value || '';
-    const insuranceType = insuranceProvider?.value || '';
-    const identifier = patientIdentifier?.value?.trim() || '';
-    const insuranceIdValue = insuranceId?.value?.trim() || '';
-    const coverage = coverageRate?.value || '';
-    const patientType = document.querySelector('input[name="patientType"]:checked')?.value || 'new';
-    const hasDobOrAge = Boolean(dob || age);
+    const record = buildPatientRecord();
     if (
-      patientType === 'new' &&
-      (!name ||
-        !sex ||
-        !hasDobOrAge ||
-        !address ||
-        !phone ||
-        !emergency ||
-        !whatsapp ||
-        !profession ||
-        !education ||
-        !insuranceType ||
-        !identifier)
+      !record.firstName ||
+      !record.lastName ||
+      !record.sex ||
+      !record.dob ||
+      !record.phone ||
+      !record.address.country ||
+      !record.address.city ||
+      !record.address.district ||
+      !record.profession ||
+      !record.education ||
+      !record.identifier
     ) {
       setMessage(patientMessage, t('billing.patientRequired'));
       return;
     }
-    const record = {
-      name,
-      sex,
-      dob,
-      age,
-      address,
-      phone,
-      emergency,
-      whatsapp,
-      profession,
-      education,
-      insuranceType,
-      insuranceId: insuranceIdValue,
-      coverage,
-      identifier,
-      doctor: assignDoctor?.value || '',
-      admittedBy: currentEmployee?.name || currentEmployee?.code || '',
-      createdAt: new Date().toISOString(),
-    };
+    if (!record.doctor) {
+      setMessage(patientMessage, t('billing.providerRequired'));
+      return;
+    }
+    if (
+      record.isInsured &&
+      (!record.insuranceType || !record.insuranceId || !record.coverage || !record.insuranceExpiry)
+    ) {
+      setMessage(patientMessage, t('billing.insuranceRequired'));
+      return;
+    }
     const list = loadPatients();
-    list.push(record);
+    const index = list.findIndex((item) => item.id === record.id);
+    if (index >= 0) {
+      list[index] = { ...list[index], ...record };
+    } else {
+      list.push(record);
+    }
     savePatients(list);
+    activePatientId = record.id;
+    if (patientStatusLabel) patientStatusLabel.value = index >= 0 ? t('billing.returningPatient') : t('billing.newPatient');
     setMessage(patientMessage, t('billing.patientSaved'));
     refreshDashboardIfVisible();
   });
@@ -3405,12 +4523,49 @@ if (savePatientBtn) {
 if (patientSearch) {
   patientSearch.addEventListener('input', () => {
     const query = patientSearch.value;
-    if (!query || query.length < 2) return;
-    const match = searchPatients(query);
-    if (match) {
-      fillPatientForm(match);
-      setMessage(patientMessage, t('billing.patientLoaded'));
+    if (!query || query.length < 2) {
+      renderPatientSearchResults([]);
+      setMessage(patientSearchMessage, '');
+      return;
     }
+    const matches = searchPatients(query);
+    renderPatientSearchResults(matches);
+    setMessage(patientSearchMessage, matches.length ? '' : t('billing.patientNotFound'));
+  });
+}
+
+if (patientSearchResults) {
+  patientSearchResults.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-patient-id]');
+    if (!button) return;
+    const patientId = button.getAttribute('data-patient-id');
+    const match = loadPatients().find((patient) => patient.id === patientId);
+    if (!match) return;
+    fillPatientForm(match);
+    if (patientSearch) patientSearch.value = fullPatientName(match);
+    renderPatientSearchResults([]);
+    setMessage(patientSearchMessage, '');
+    setMessage(patientMessage, t('billing.patientLoaded'));
+  });
+}
+
+if (createNewPatientBtn) {
+  createNewPatientBtn.addEventListener('click', () => {
+    clearPatientForm();
+    if (patientSearch) patientSearch.value = '';
+    renderPatientSearchResults([]);
+    setMessage(patientSearchMessage, '');
+    setMessage(patientMessage, '');
+  });
+}
+
+if (patientInsuranceStatus) {
+  patientInsuranceStatus.addEventListener('change', toggleInsuranceDetails);
+}
+
+if (patientDob) {
+  patientDob.addEventListener('change', () => {
+    if (patientAge) patientAge.value = calculateAgeFromDob(patientDob.value);
   });
 }
 
@@ -3732,26 +4887,38 @@ function generateReceiptNumber() {
 function fillReceipt() {
   if (!receiptPanel) return;
   const now = new Date();
-  const name = patientFullName?.value?.trim() || '';
+  const patientRecord = buildPatientRecord();
+  if (!patientRecord.firstName || !patientRecord.lastName) {
+    setMessage(patientMessage, t('billing.patientRequired'));
+    return;
+  }
+  const name = fullPatientName(patientRecord);
   const { first, last } = splitName(name);
-  const coverage = parseNumber(coverageRate?.value);
+  const coverage = parseNumber(patientRecord.coverage);
   receiptFacility.textContent =
     currentFacilityProfile?.name || currentFacility || 'MediTrack';
   receiptNumber.textContent = generateReceiptNumber();
   receiptCashier.textContent = currentEmployee?.name || currentEmployee?.code || 'Admission';
   receiptDate.textContent = now.toLocaleDateString();
   receiptTime.textContent = formatTime(now);
-  receiptClientCode.textContent = patientPhone?.value || patientWhatsapp?.value || '-';
+  receiptClientCode.textContent = patientRecord.identifier || patientRecord.phone || '-';
   receiptLastName.textContent = last || name || '-';
   receiptFirstName.textContent = first || '-';
-  receiptAddress.textContent = patientAddress?.value || '-';
-  receiptInsurer.textContent = document.getElementById('insuranceProvider')?.value || '-';
-  receiptSex.textContent = patientSex?.value || '-';
-  receiptDob.textContent = formatDate(patientDob?.value) || '-';
-  receiptProfession.textContent = patientProfession?.value || '-';
-  receiptPhone.textContent = patientPhone?.value || '-';
+  receiptAddress.textContent = [
+    patientRecord.address?.country,
+    patientRecord.address?.city,
+    patientRecord.address?.district,
+    patientRecord.address?.postalCode,
+  ]
+    .filter(Boolean)
+    .join(', ') || '-';
+  receiptInsurer.textContent = patientRecord.insuranceType || '-';
+  receiptSex.textContent = patientRecord.sex || '-';
+  receiptDob.textContent = formatDate(patientRecord.dob) || '-';
+  receiptProfession.textContent = patientRecord.profession || '-';
+  receiptPhone.textContent = patientRecord.phone || '-';
   receiptCoverage.textContent = coverage ? `${coverage}%` : '-';
-  receiptPolicy.textContent = document.getElementById('insuranceId')?.value || '-';
+  receiptPolicy.textContent = patientRecord.insuranceId || '-';
 
   receiptTableBody.innerHTML = '';
   let totalInsurance = 0;
@@ -3792,6 +4959,8 @@ function fillReceipt() {
       calculatedPatient,
       code,
       inam,
+      providerId: assignDoctor?.value || '',
+      providerName: assignDoctor?.selectedOptions?.[0]?.textContent || '',
     });
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -3807,13 +4976,21 @@ function fillReceipt() {
     `;
     receiptTableBody.appendChild(tr);
   });
+  if (!items.length) {
+    setMessage(patientMessage, t('services.empty'));
+    receiptPanel.classList.add('hidden');
+    if (printReceiptBtn) printReceiptBtn.disabled = true;
+    return;
+  }
   receiptTotalNet.textContent = formatCfl(totalPatient);
   receiptTotalInsurance.textContent = formatCfl(totalInsurance);
   receiptPanel.classList.remove('hidden');
   if (printReceiptBtn) printReceiptBtn.disabled = false;
 
   const receipts = loadReceipts();
-  receipts.push({
+  const paymentType = paymentMethod?.value || 'cash';
+  const encounterId = `ENC-${Date.now()}`;
+  const receiptRecord = {
     id: receiptNumber.textContent,
     createdAt: now.toISOString(),
     total: totalInsurance + totalPatient,
@@ -3822,12 +4999,63 @@ function fillReceipt() {
     items,
     doctor: assignDoctor?.value || '',
     doctorName: assignDoctor?.selectedOptions?.[0]?.textContent || '',
+    patientId: patientRecord.id,
+    patientName: name,
+    paymentMethod: paymentType,
     admittedBy: currentEmployee?.name || currentEmployee?.code || '',
+    encounterId,
+  };
+  receipts.push({
+    ...receiptRecord,
   });
   saveReceipts(receipts);
+  const patients = loadPatients();
+  const patientIndex = patients.findIndex((item) => item.id === patientRecord.id);
+  if (patientIndex >= 0) {
+    patients[patientIndex] = { ...patients[patientIndex], ...patientRecord };
+  } else {
+    patients.push(patientRecord);
+  }
+  savePatients(patients);
+  activePatientId = patientRecord.id;
+  const encounters = loadEncounters();
+  encounters.push({
+    id: encounterId,
+    patientId: patientRecord.id,
+    patientName: name,
+    doctor: assignDoctor?.value || '',
+    doctorName: assignDoctor?.selectedOptions?.[0]?.textContent || '',
+    receiptId: receiptRecord.id,
+    paymentMethod: paymentType,
+    services: items,
+    insuranceType: patientRecord.insuranceType || '',
+    insuranceCoverage: patientRecord.coverage || '',
+    status: 'registered',
+    createdAt: now.toISOString(),
+  });
+  saveEncounters(encounters);
+  const accountingEntries = loadAccountingEntries();
+  accountingEntries.push({
+    id: `ACC-${Date.now()}`,
+    receiptId: receiptRecord.id,
+    encounterId,
+    patientId: patientRecord.id,
+    patientName: name,
+    admittedBy: currentEmployee?.name || currentEmployee?.code || '',
+    insurer: patientRecord.insuranceType || '',
+    paymentMethod: paymentType,
+    cashAmount: paymentType === 'cash' ? totalPatient : 0,
+    bankAmount: paymentType === 'bank_transfer' ? totalPatient : 0,
+    insurerAmount: totalInsurance,
+    totalAmount: totalInsurance + totalPatient,
+    createdAt: now.toISOString(),
+  });
+  saveAccountingEntries(accountingEntries);
   applyStockDeductions(items);
   renderReports();
   refreshDashboardIfVisible();
+  populateNurseEncounterOptions();
+  populateDoctorEncounterOptions();
 }
 
 if (generateReceiptBtn) {

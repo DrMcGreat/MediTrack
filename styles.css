@@ -280,6 +280,23 @@ h2 {
   gap: 12px;
 }
 
+.compact-row {
+  grid-template-columns: minmax(120px, 160px) minmax(0, 1fr);
+}
+
+.compact-field {
+  min-width: 0;
+}
+
+.field-group {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #f7fbff;
+}
+
 .primary {
   border: none;
   background: var(--teal);
@@ -419,6 +436,16 @@ h2 {
   border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.service-pick-qty {
+  max-width: 90px;
 }
 
 .receipt-actions {
@@ -574,6 +601,33 @@ h2 {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.search-results {
+  display: grid;
+  gap: 10px;
+}
+
+.search-result {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border);
+  background: #f7fbff;
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 4px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.search-result strong {
+  font-size: 0.95rem;
+}
+
+.search-result span {
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
 .summary-grid {
