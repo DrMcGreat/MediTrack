@@ -323,6 +323,13 @@ h2 {
   background: var(--mint);
 }
 
+.ghost:disabled,
+.primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 .form-message {
   margin: 0;
   color: var(--muted);
@@ -763,6 +770,54 @@ h2 {
   color: var(--muted);
 }
 
+.dash-section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dash-overview-panels .dash-table {
+  display: grid;
+  gap: 12px;
+}
+
+.trend-chart {
+  min-height: 280px;
+  display: grid;
+  gap: 12px;
+}
+
+.trend-chart-svg {
+  width: 100%;
+  min-height: 240px;
+  background: #f7fbfe;
+  border-radius: 18px;
+  border: 1px solid #dce8f0;
+}
+
+.trend-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.trend-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
 .staff-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -821,3 +876,47 @@ h2 {
     padding: 24px 16px 60px;
   }
 }
+
+.clinical-record-layout {
+  align-items: start;
+}
+
+.records-summary-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.record-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.record-card {
+  display: grid;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #f5f9fd;
+  border: 1px solid var(--border);
+}
+
+.record-card span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.record-card strong {
+  color: var(--navy);
+  font-size: 0.95rem;
+}
+
+#hrPayrollTableBody .ghost,
+#staffListBody td,
+#hrPaymentHistoryBody td {
+  white-space: nowrap;
+}
+

@@ -162,7 +162,7 @@
           <p class="role-badge hidden" id="employeeRoleBadge"></p>
         </div>
         <div class="module-grid">
-          <article class="module-card highlight" data-roles="director,accountant,admission">
+          <article class="module-card highlight" data-roles="admin,director,accountant,admission">
             <h3 data-i18n="modules.billing">Billing & Payments</h3>
             <p data-i18n="modules.billingDesc">
               Patient admission, insurance validation, and payment processing.
@@ -173,7 +173,7 @@
           </article>
           <article
             class="module-card"
-            data-roles="director,accountant,admission,doctor,nurse,lab,radiology,pharmacy,other"
+            data-roles="admin,director,accountant,admission,doctor,nurse,lab,radiology,pharmacy,hr,other"
           >
             <h3 data-i18n="modules.dashboard">Role Dashboard</h3>
             <p data-i18n="modules.dashboardDesc">Personalized indicators for your role.</p>
@@ -181,41 +181,41 @@
               Open module
             </button>
           </article>
-          <article class="module-card" data-roles="director,admission,doctor">
+          <article class="module-card" data-roles="admin,director,admission,doctor">
             <h3 data-i18n="modules.patients">Patient Management</h3>
             <p data-i18n="modules.patientsDesc">Registration, profiles, and care pathways.</p>
             <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
           </article>
-          <article class="module-card" data-roles="director,admission,doctor">
+          <article class="module-card" data-roles="admin,director,admission,doctor">
             <h3 data-i18n="modules.appointments">Appointments</h3>
             <p data-i18n="modules.appointmentsDesc">Scheduling, reminders, and visit tracking.</p>
             <button class="ghost" type="button" data-module="appointments" data-i18n="modules.open">
               Open module
             </button>
           </article>
-          <article class="module-card" data-roles="director,doctor">
+          <article class="module-card" data-roles="admin,director,accountant,admission,doctor,nurse,lab,radiology,pharmacy">
             <h3 data-i18n="modules.records">Clinical Records</h3>
             <p data-i18n="modules.recordsDesc">Secure EHR, diagnoses, and treatment history.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+            <button class="ghost" type="button" data-module="records" data-i18n="modules.open">Open module</button>
           </article>
-          <article class="module-card" data-roles="director,lab,radiology">
+          <article class="module-card" data-roles="admin,director,lab,radiology">
             <h3 data-i18n="modules.lab">Laboratory</h3>
             <p data-i18n="modules.labDesc">Lab orders, samples, and results tracking.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+            <button class="ghost" type="button" data-module="lab" data-i18n="modules.open">Open module</button>
           </article>
-          <article class="module-card" data-roles="director">
+          <article class="module-card" data-roles="admin,director,accountant,hr">
             <h3 data-i18n="modules.hr">HR & Payroll</h3>
             <p data-i18n="modules.hrDesc">Staff profiles, shifts, and payroll export.</p>
-            <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
+            <button class="ghost" type="button" data-module="hr" data-i18n="modules.open">Open module</button>
           </article>
-          <article class="module-card" data-roles="director,lab,pharmacy">
+          <article class="module-card" data-roles="admin,director,accountant,lab,pharmacy">
             <h3 data-i18n="modules.inventory">Inventory & Stock</h3>
             <p data-i18n="modules.inventoryDesc">Medicines, alerts, and procurement requests.</p>
             <button class="ghost" type="button" data-module="inventory" data-i18n="modules.open">
               Open module
             </button>
           </article>
-          <article class="module-card" data-roles="director">
+          <article class="module-card" data-roles="admin,director">
             <h3 data-i18n="modules.serviceCatalog">Service Catalog</h3>
             <p data-i18n="modules.serviceCatalogDesc">
               Define services and prices by category.
@@ -229,7 +229,7 @@
               Open module
             </button>
           </article>
-          <article class="module-card" data-roles="director">
+          <article class="module-card" data-roles="admin,director">
             <h3 data-i18n="modules.insurancePartners">Insurance Partners</h3>
             <p data-i18n="modules.insurancePartnersDesc">
               Manage partner insurers, contacts, and coverage settings.
@@ -243,26 +243,26 @@
               Open module
             </button>
           </article>
-          <article class="module-card" data-roles="director">
+          <article class="module-card" data-roles="admin,director">
             <h3 data-i18n="modules.procurement">Procurement</h3>
             <p data-i18n="modules.procurementDesc">Suppliers, purchase orders, and approvals.</p>
             <button class="ghost" type="button" data-i18n="modules.open">Open module</button>
           </article>
-          <article class="module-card" data-roles="director,accountant">
+          <article class="module-card" data-roles="admin,director,accountant">
             <h3 data-i18n="modules.analytics">Dashboards & Reports</h3>
             <p data-i18n="modules.analyticsDesc">KPIs, audit trails, and operational insights.</p>
             <button class="ghost" type="button" data-module="analytics" data-i18n="modules.open">
               Open module
             </button>
           </article>
-          <article class="module-card" data-roles="director">
+          <article class="module-card" data-roles="admin,director">
             <h3 data-i18n="modules.staff">Staff & Roles</h3>
             <p data-i18n="modules.staffDesc">Create employee profiles and assign access.</p>
             <button class="ghost" type="button" data-module="staff" data-i18n="modules.open">
               Open module
             </button>
           </article>
-          <article class="module-card" data-roles="director,accountant">
+          <article class="module-card" data-roles="admin,director,accountant">
             <h3 data-i18n="modules.facilityProfile">Facility Profile</h3>
             <p data-i18n="modules.facilityProfileDesc">
               Edit hospital details, branding, and contact information.
@@ -410,7 +410,7 @@
             <form id="serviceCatalogForm" class="auth-form">
               <div class="field-row">
                 <label class="field">
-                  <span data-i18n="serviceCatalog.name">Service name</span>
+                  <span data-i18n="serviceCatalog.name">Services / Acte / Médicament</span>
                   <input id="serviceCatalogName" type="text" />
                 </label>
                 <label class="field">
@@ -469,7 +469,7 @@
                 <thead>
                   <tr>
                     <th data-i18n="serviceCatalog.listCategory">Category</th>
-                    <th data-i18n="serviceCatalog.listService">Service</th>
+                    <th data-i18n="serviceCatalog.listService">Services / Acte / Médicament</th>
                     <th data-i18n="serviceCatalog.listCode">Code</th>
                     <th data-i18n="serviceCatalog.listInam">Code INAM</th>
                     <th data-i18n="serviceCatalog.listUninsured">Uninsured price</th>
@@ -650,13 +650,15 @@
               <select id="staffRole">
                 <option value="" data-i18n="select.placeholder">Select...</option>
                 <option value="admission" data-i18n="staff.roleAdmission">Admission nurse</option>
+                <option value="admin" data-i18n="staff.roleAdmin">Administrator</option>
                 <option value="director" data-i18n="staff.roleDirector">Director</option>
                 <option value="accountant" data-i18n="staff.roleAccountant">Accountant</option>
                 <option value="doctor" data-i18n="staff.roleDoctor">Doctor</option>
-                <option value="lab" data-i18n="staff.roleLab">Laboratory staff</option>
                 <option value="nurse" data-i18n="staff.roleNurse">Nurse</option>
+                <option value="lab" data-i18n="staff.roleLab">Laboratory staff</option>
                 <option value="radiology" data-i18n="staff.roleRadiology">Radiology staff</option>
                 <option value="pharmacy" data-i18n="staff.rolePharmacy">Pharmacy staff</option>
+                <option value="hr" data-i18n="staff.roleHr">Human resources</option>
                 <option value="other" data-i18n="staff.roleOther">Other</option>
               </select>
             </label>
@@ -692,6 +694,54 @@
                 <input id="staffLocumRate" type="number" min="0" max="100" step="1" />
               </label>
             </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="staff.position">Position / function</span>
+                <input id="staffPosition" type="text" />
+              </label>
+              <label class="field">
+                <span data-i18n="staff.staffStatus">Staff status</span>
+                <select id="staffStatus">
+                  <option value="active" data-i18n="staff.statusActive">Active</option>
+                  <option value="on_leave" data-i18n="staff.statusOnLeave">On leave</option>
+                  <option value="suspended" data-i18n="staff.statusSuspended">Suspended</option>
+                  <option value="inactive" data-i18n="staff.statusInactive">Inactive</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="staff.payMode">Pay mode</span>
+                <select id="staffPayMode">
+                  <option value="contract_salary" data-i18n="staff.paySalary">Contract salary</option>
+                  <option value="service_percentage" data-i18n="staff.payPercentage">Percentage on services</option>
+                </select>
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="staff.contractSalary">Contract salary (CFL)</span>
+                <input id="staffContractSalary" type="number" min="0" step="1" />
+              </label>
+              <label class="field">
+                <span data-i18n="staff.employeeSocialRate">Employee social rate (%)</span>
+                <input id="staffEmployeeSocialRate" type="number" min="0" step="0.1" value="0" />
+              </label>
+              <label class="field">
+                <span data-i18n="staff.employerSocialRate">Employer social rate (%)</span>
+                <input id="staffEmployerSocialRate" type="number" min="0" step="0.1" value="0" />
+              </label>
+              <label class="field">
+                <span data-i18n="staff.otherDeductions">Other deductions (CFL)</span>
+                <input id="staffOtherDeductions" type="number" min="0" step="1" value="0" />
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="staff.socialId">Social / administrative reference</span>
+              <input id="staffSocialId" type="text" />
+            </label>
+            <label class="field">
+              <span data-i18n="staff.notes">Administrative notes</span>
+              <textarea id="staffNotes" rows="2"></textarea>
+            </label>
             <label class="field">
               <span data-i18n="staff.email">Email</span>
               <input id="staffEmail" type="email" />
@@ -765,7 +815,10 @@
                 <tr>
                   <th data-i18n="staff.listName">Name</th>
                   <th data-i18n="staff.listRole">Role</th>
-                  <th data-i18n="staff.listEmail">Email</th>
+                  <th data-i18n="staff.listPosition">Position</th>
+                  <th data-i18n="staff.listContract">Contract</th>
+                  <th data-i18n="staff.listPayMode">Pay mode</th>
+                  <th data-i18n="staff.listStatus">Status</th>
                   <th data-i18n="staff.listCode">Employee ID</th>
                 </tr>
               </thead>
@@ -773,6 +826,139 @@
             </table>
           </div>
         </section>
+      </section>
+
+      <section id="hrPayrollView" class="view hidden">
+        <div class="module-top">
+          <button id="backToModulesFromHr" class="ghost" type="button" data-i18n="modules.back">
+            Back to modules
+          </button>
+          <div>
+            <h2 data-i18n="hrPayroll.title">HR & payroll</h2>
+            <p class="subhead" data-i18n="hrPayroll.subtitle">
+              Review employee records, calculate payroll by period, record payments, and generate payroll statements.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-layout clinical-record-layout">
+          <section class="module-section full">
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="hrPayroll.period">Payroll period</span>
+                <input id="hrPayrollPeriod" type="month" />
+              </label>
+              <label class="field">
+                <span data-i18n="hrPayroll.filter">Filter</span>
+                <select id="hrPayrollFilter">
+                  <option value="all" data-i18n="hrPayroll.filterAll">All employees</option>
+                  <option value="permanent" data-i18n="hrPayroll.filterPermanent">Permanent staff</option>
+                  <option value="locum" data-i18n="hrPayroll.filterLocum">Locum staff</option>
+                  <option value="outstanding" data-i18n="hrPayroll.filterOutstanding">Outstanding balances</option>
+                  <option value="paid" data-i18n="hrPayroll.filterPaid">Fully paid</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section class="module-section full">
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="hrPayroll.totalEmployees">Employees in period</p>
+                <strong id="hrPayrollTotalEmployees">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="hrPayroll.totalDue">Net payroll due</p>
+                <strong id="hrPayrollTotalDue">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="hrPayroll.totalPaid">Paid in period</p>
+                <strong id="hrPayrollTotalPaid">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="hrPayroll.totalOutstanding">Outstanding balance</p>
+                <strong id="hrPayrollTotalOutstanding">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="module-section full">
+            <h3 data-i18n="hrPayroll.tableTitle">Payroll roster</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="staff.listName">Name</th>
+                    <th data-i18n="staff.listRole">Role</th>
+                    <th data-i18n="staff.listPosition">Position</th>
+                    <th data-i18n="staff.listContract">Contract</th>
+                    <th data-i18n="staff.listPayMode">Pay mode</th>
+                    <th data-i18n="hrPayroll.gross">Gross</th>
+                    <th data-i18n="hrPayroll.employeeSocial">Employee social</th>
+                    <th data-i18n="hrPayroll.employerSocial">Employer social</th>
+                    <th data-i18n="hrPayroll.netDue">Net due</th>
+                    <th data-i18n="hrPayroll.paid">Paid</th>
+                    <th data-i18n="hrPayroll.balance">Balance</th>
+                    <th data-i18n="hrPayroll.action">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="hrPayrollTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section">
+            <h3 data-i18n="hrPayroll.employeeSummary">Employee summary</h3>
+            <div id="hrEmployeeSummaryGrid" class="record-grid"></div>
+            <h4 data-i18n="hrPayroll.calculationBasis">Calculation basis</h4>
+            <div id="hrPayrollBasisGrid" class="record-grid"></div>
+          </section>
+
+          <section class="module-section">
+            <h3 data-i18n="hrPayroll.recordPayment">Record payment</h3>
+            <label class="field">
+              <span data-i18n="hrPayroll.paymentMethod">Payment method</span>
+              <select id="hrPaymentMethod">
+                <option value="cash" data-i18n="billing.paymentCash">Cash</option>
+                <option value="bank_transfer" data-i18n="billing.paymentBank">Bank transfer</option>
+              </select>
+            </label>
+            <label class="field">
+              <span data-i18n="hrPayroll.paymentAmount">Amount</span>
+              <input id="hrPaymentAmount" type="number" min="0" step="1" />
+            </label>
+            <label class="field">
+              <span data-i18n="hrPayroll.paymentNote">Note</span>
+              <textarea id="hrPaymentNote" rows="3"></textarea>
+            </label>
+            <div class="button-row">
+              <button id="recordPayrollPaymentBtn" class="primary" type="button" data-i18n="hrPayroll.recordPaymentBtn">
+                Record payment
+              </button>
+              <button id="downloadPayrollStatementBtn" class="ghost" type="button" data-i18n="hrPayroll.downloadStatement">
+                Download statement
+              </button>
+            </div>
+            <p class="form-message" id="hrPayrollMessage"></p>
+          </section>
+
+          <section class="module-section full">
+            <h3 data-i18n="hrPayroll.historyTitle">Payment history</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.timelineDate">Date</th>
+                    <th data-i18n="hrPayroll.paymentMethod">Payment method</th>
+                    <th data-i18n="hrPayroll.paymentAmount">Amount</th>
+                    <th data-i18n="hrPayroll.paymentNote">Note</th>
+                  </tr>
+                </thead>
+                <tbody id="hrPaymentHistoryBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
       </section>
 
       <section id="moduleBillingView" class="view hidden">
@@ -988,27 +1174,31 @@
               <table class="billing-table">
                 <thead>
                   <tr>
-                    <th data-i18n="billing.item">Service / Medication</th>
+                    <th data-i18n="billing.category">Catégorie</th>
+                    <th data-i18n="billing.item">Services / Acte / Médicament</th>
                     <th data-i18n="billing.code">Code</th>
                     <th data-i18n="billing.inamCode">Code INAM</th>
-                    <th data-i18n="billing.category">Category</th>
-                    <th data-i18n="billing.qty">Qty</th>
-                    <th data-i18n="billing.unitPrice">Unit price (CFL)</th>
-                    <th data-i18n="billing.base">Reimbursement base</th>
-                    <th data-i18n="billing.rate">Rate</th>
+                    <th data-i18n="billing.qty">Qté</th>
+                    <th data-i18n="billing.unitPrice">Prix unitaire (CFL)</th>
+                    <th data-i18n="billing.base">Base de remboursement</th>
+                    <th data-i18n="billing.rate">Taux</th>
                     <th data-i18n="billing.total">Total</th>
-                    <th data-i18n="billing.insuranceShareShort">Insurance</th>
-                    <th data-i18n="billing.patientShareShort">Calculated patient</th>
-                    <th data-i18n="billing.actualPatientShare">Actual patient share</th>
-                    <th></th>
+                    <th data-i18n="billing.insurerColumn">Assurance</th>
+                    <th data-i18n="billing.calculatedShare">Part calculée</th>
+                    <th data-i18n="billing.actualPatientShare">Part patient réelle</th>
                   </tr>
                 </thead>
                 <tbody id="billingTableBody"></tbody>
               </table>
             </div>
-            <button id="addBillingRow" class="ghost" type="button" data-i18n="billing.addLine">
-              Add line
-            </button>
+            <div class="button-row">
+              <button id="addBillingRow" class="ghost" type="button" data-i18n="billing.addLine">
+                Add line
+              </button>
+              <button id="removeLastBillingRow" class="ghost" type="button" data-i18n="billing.removeLine">
+                Remove last line
+              </button>
+            </div>
           </section>
 
           <section class="module-section">
@@ -1118,6 +1308,395 @@
         </div>
       </section>
 
+
+      <section id="clinicalRecordsView" class="view hidden">
+        <div class="module-top">
+          <button id="backToModulesFromRecords" class="ghost" type="button" data-i18n="modules.back">
+            Back to modules
+          </button>
+          <div>
+            <h2 data-i18n="records.title">Clinical records</h2>
+            <p class="subhead" data-i18n="records.subtitle">
+              Consolidated patient history, clinical documentation, tests, prescriptions, and related billing.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-layout clinical-record-layout">
+          <section class="module-section">
+            <h3 data-i18n="records.patientLookupTitle">Patient lookup</h3>
+            <label class="field">
+              <span data-i18n="records.patientSearch">Search patient</span>
+              <input
+                id="clinicalPatientSearch"
+                type="search"
+                placeholder="Search by name, identifier, or phone"
+                data-i18n-placeholder="records.patientSearchPlaceholder"
+              />
+            </label>
+            <div id="clinicalPatientResults" class="search-results"></div>
+            <p class="form-message" id="clinicalPatientMessage"></p>
+          </section>
+
+          <section class="module-section full">
+            <div class="records-summary-head">
+              <div>
+                <h3 id="clinicalSelectedPatientName" data-i18n="records.noPatientSelected">No patient selected</h3>
+                <p id="clinicalSelectedPatientMeta" class="subhead" data-i18n="records.selectPatientHint">
+                  Select a patient to open the clinical record.
+                </p>
+              </div>
+              <div id="clinicalSelectedPatientStats" class="pill-row"></div>
+            </div>
+          </section>
+
+          <section class="module-section full" data-record-roles="admin,director,accountant,admission,doctor,nurse,lab,radiology,pharmacy">
+            <h3 data-i18n="records.identityTitle">Identity and administrative data</h3>
+            <div id="clinicalIdentityGrid" class="record-grid"></div>
+          </section>
+
+          <section class="module-section full" data-record-roles="admin,director,accountant,admission,doctor,nurse,lab,radiology,pharmacy">
+            <h3 data-i18n="records.socioTitle">Sociodemographic profile</h3>
+            <div id="clinicalSocioGrid" class="record-grid"></div>
+          </section>
+
+          <section class="module-section full" data-record-roles="doctor,director">
+            <h3 data-i18n="records.historyTitle">Medical history and antecedents</h3>
+            <label class="field">
+              <span data-i18n="records.antecedents">Antecedents</span>
+              <textarea id="clinicalAntecedents" rows="3"></textarea>
+            </label>
+            <label class="field">
+              <span data-i18n="records.clinicalNotes">Clinical notes</span>
+              <textarea id="clinicalNotes" rows="3"></textarea>
+            </label>
+            <div class="button-row">
+              <button id="saveClinicalHistoryBtn" class="primary" type="button" data-i18n="records.saveHistory">
+                Save history
+              </button>
+            </div>
+            <p class="form-message" id="clinicalHistoryMessage"></p>
+          </section>
+
+          <section class="module-section full" data-record-roles="admin,director,accountant,admission,doctor,nurse,lab,radiology,pharmacy">
+            <h3 data-i18n="records.timelineTitle">Care pathway history</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.timelineDate">Date</th>
+                    <th data-i18n="records.timelineProvider">Provider</th>
+                    <th data-i18n="records.timelineStatus">Status</th>
+                    <th data-i18n="records.timelineServices">Services</th>
+                    <th data-i18n="records.timelinePayment">Payment</th>
+                  </tr>
+                </thead>
+                <tbody id="clinicalEncounterTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section full" data-record-roles="doctor,nurse,director">
+            <h3 data-i18n="records.nurseTitle">Nursing assessments</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.nurseDate">Date</th>
+                    <th data-i18n="records.nurseVitals">Vitals</th>
+                    <th data-i18n="records.nurseMode">Care mode</th>
+                    <th data-i18n="records.nurseCare">Care provided</th>
+                  </tr>
+                </thead>
+                <tbody id="clinicalNurseTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section full" data-record-roles="doctor,director">
+            <h3 data-i18n="records.doctorTitle">Doctor clinical record</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.doctorDate">Date</th>
+                    <th data-i18n="records.doctorComplaint">Complaint</th>
+                    <th data-i18n="records.doctorDiagnoses">Diagnostic hypotheses</th>
+                    <th data-i18n="records.doctorPrescription">Orientation / prescription</th>
+                    <th data-i18n="records.doctorAction">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="clinicalDoctorTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section full" data-record-roles="doctor,lab,radiology,director">
+            <h3 data-i18n="records.requestedTestsTitle">Requested tests and investigations</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.requestDate">Date</th>
+                    <th data-i18n="records.requestService">Service</th>
+                    <th data-i18n="records.requestCategory">Category</th>
+                    <th data-i18n="records.requestPaid">Paid</th>
+                    <th data-i18n="records.requestStatus">Status</th>
+                    <th data-i18n="records.requestProvider">Prescriber</th>
+                  </tr>
+                </thead>
+                <tbody id="clinicalExamRequestsTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section" data-record-roles="lab,radiology">
+            <h3 data-i18n="records.resultEntryTitle">Record exam result</h3>
+            <label class="field">
+              <span data-i18n="records.resultRequest">Requested exam</span>
+              <select id="clinicalExamRequestSelect"></select>
+            </label>
+            <label class="field">
+              <span data-i18n="records.resultStatus">Result status</span>
+              <select id="clinicalExamStatus">
+                <option value="pending" data-i18n="records.statusPending">Pending</option>
+                <option value="in_progress" data-i18n="records.statusInProgress">In progress</option>
+                <option value="completed" data-i18n="records.statusCompleted">Completed</option>
+                <option value="validated" data-i18n="records.statusValidated">Validated</option>
+              </select>
+            </label>
+            <label class="field">
+              <span data-i18n="records.resultText">Result</span>
+              <textarea id="clinicalExamResult" rows="4"></textarea>
+            </label>
+            <label class="field">
+              <span data-i18n="records.resultComment">Comment</span>
+              <textarea id="clinicalExamComment" rows="3"></textarea>
+            </label>
+            <div class="button-row">
+              <button id="saveClinicalExamResultBtn" class="primary" type="button" data-i18n="records.saveResult">
+                Save result
+              </button>
+            </div>
+            <p class="form-message" id="clinicalExamMessage"></p>
+          </section>
+
+          <section class="module-section full" data-record-roles="doctor,lab,radiology,director">
+            <h3 data-i18n="records.resultsTitle">Laboratory and imaging results</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.resultDate">Date</th>
+                    <th data-i18n="records.resultService">Service</th>
+                    <th data-i18n="records.resultCategory">Category</th>
+                    <th data-i18n="records.resultStatus">Status</th>
+                    <th data-i18n="records.resultValue">Result</th>
+                    <th data-i18n="records.resultComment">Comment</th>
+                    <th data-i18n="records.resultBy">Recorded by</th>
+                  </tr>
+                </thead>
+                <tbody id="clinicalResultsTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section full" data-record-roles="doctor,nurse,pharmacy,director">
+            <h3 data-i18n="records.prescriptionTitle">Prescriptions and care plan</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.prescriptionDate">Date</th>
+                    <th data-i18n="records.prescriptionType">Type</th>
+                    <th data-i18n="records.prescriptionMeds">Medications</th>
+                    <th data-i18n="records.prescriptionTests">Tests</th>
+                    <th data-i18n="records.requestProvider">Prescriber</th>
+                  </tr>
+                </thead>
+                <tbody id="clinicalPrescriptionTable"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section full" data-record-roles="admin,director,accountant,admission,doctor">
+            <h3 data-i18n="records.billingTitle">Invoices and payments</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.billingReceipt">Receipt</th>
+                    <th data-i18n="records.billingDate">Date</th>
+                    <th data-i18n="records.billingTotal">Total</th>
+                    <th data-i18n="records.billingInsurance">Insurance share</th>
+                    <th data-i18n="records.billingPatient">Patient share</th>
+                    <th data-i18n="records.billingMethod">Payment method</th>
+                    <th data-i18n="records.billingCashier">Recorded by</th>
+                  </tr>
+                </thead>
+                <tbody id="clinicalBillingTable"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="labModuleView" class="view hidden">
+        <div class="module-top">
+          <button id="backToModulesFromLab" class="ghost" type="button" data-i18n="modules.back">
+            Back to modules
+          </button>
+          <div>
+            <h2 data-i18n="labModule.title">Laboratory module</h2>
+            <p class="subhead" data-i18n="labModule.subtitle">
+              Review prescribed analyses, confirm payment eligibility, record findings, and validate results.
+            </p>
+          </div>
+        </div>
+
+        <div class="module-layout clinical-record-layout">
+          <section class="module-section full">
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="labModule.kpiRequested">Prescribed analyses</p>
+                <strong id="labModuleRequested">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="labModule.kpiEligible">Paid / eligible</p>
+                <strong id="labModuleEligible">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="labModule.kpiValidated">Validated results</p>
+                <strong id="labModuleValidated">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="module-section">
+            <h3 data-i18n="labModule.filtersTitle">Request filters</h3>
+            <label class="field">
+              <span data-i18n="labModule.search">Search</span>
+              <input
+                id="labRequestSearch"
+                type="search"
+                placeholder="Search by patient, service, or prescriber"
+                data-i18n-placeholder="labModule.searchPlaceholder"
+              />
+            </label>
+            <label class="field">
+              <span data-i18n="labModule.statusFilter">Queue filter</span>
+              <select id="labStatusFilter">
+                <option value="all" data-i18n="labModule.filterAll">All requests</option>
+                <option value="eligible" data-i18n="labModule.filterEligible">Paid / eligible only</option>
+                <option value="pending" data-i18n="records.statusPending">Pending</option>
+                <option value="in_progress" data-i18n="records.statusInProgress">In progress</option>
+                <option value="completed" data-i18n="records.statusCompleted">Completed</option>
+                <option value="validated" data-i18n="records.statusValidated">Validated</option>
+                <option value="unpaid" data-i18n="records.unpaid">Not paid</option>
+              </select>
+            </label>
+            <p class="form-message" id="labRequestMessage"></p>
+          </section>
+
+          <section class="module-section">
+            <h3 data-i18n="labModule.requestSummaryTitle">Selected request</h3>
+            <div id="labRequestSummaryGrid" class="record-grid"></div>
+            <div class="button-row">
+              <button id="openLabPatientRecordBtn" class="ghost" type="button" data-i18n="labModule.openPatientRecord">
+                Open patient record
+              </button>
+            </div>
+          </section>
+
+          <section class="module-section full">
+            <h3 data-i18n="labModule.queueTitle">Prescribed analyses</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="labModule.queuePatient">Patient</th>
+                    <th data-i18n="records.requestService">Service</th>
+                    <th data-i18n="records.requestCategory">Category</th>
+                    <th data-i18n="records.requestPaid">Paid</th>
+                    <th data-i18n="records.requestStatus">Status</th>
+                    <th data-i18n="records.requestDate">Date</th>
+                    <th data-i18n="records.requestProvider">Prescriber</th>
+                    <th data-i18n="labModule.queueAction">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="labRequestsTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section">
+            <h3 data-i18n="labModule.resultEntryTitle">Result entry and validation</h3>
+            <label class="field">
+              <span data-i18n="records.resultStatus">Result status</span>
+              <select id="labResultStatus">
+                <option value="pending" data-i18n="records.statusPending">Pending</option>
+                <option value="in_progress" data-i18n="records.statusInProgress">In progress</option>
+                <option value="completed" data-i18n="records.statusCompleted">Completed</option>
+                <option value="validated" data-i18n="records.statusValidated">Validated</option>
+              </select>
+            </label>
+            <label class="field">
+              <span data-i18n="records.resultText">Result</span>
+              <textarea id="labResultText" rows="5"></textarea>
+            </label>
+            <label class="field">
+              <span data-i18n="records.resultComment">Comment</span>
+              <textarea id="labResultComment" rows="3"></textarea>
+            </label>
+            <div class="field-row compact-row">
+              <label class="field">
+                <span data-i18n="labModule.stockItem">Reagent / consumable</span>
+                <select id="labStockItem"></select>
+              </label>
+              <label class="field compact-field">
+                <span data-i18n="labModule.stockQty">Quantity</span>
+                <input id="labStockQty" type="number" min="1" step="1" value="1" />
+              </label>
+              <div class="field action-field">
+                <span data-i18n="labModule.stockUsageTitle">Stock consumption</span>
+                <button id="addLabSupplyBtn" class="ghost" type="button" data-i18n="labModule.addSupply">
+                  Add consumption
+                </button>
+              </div>
+            </div>
+            <div id="labSupplyList" class="search-results"></div>
+            <div class="button-row">
+              <button id="saveLabResultBtn" class="primary" type="button" data-i18n="records.saveResult">
+                Save result
+              </button>
+              <button id="validateLabResultBtn" class="ghost" type="button" data-i18n="labModule.validateResult">
+                Validate result
+              </button>
+            </div>
+            <p class="form-message" id="labResultMessage"></p>
+          </section>
+
+          <section class="module-section full">
+            <h3 data-i18n="labModule.historyTitle">Result history</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="records.resultDate">Date</th>
+                    <th data-i18n="labModule.queuePatient">Patient</th>
+                    <th data-i18n="records.resultService">Service</th>
+                    <th data-i18n="records.resultStatus">Status</th>
+                    <th data-i18n="records.resultValue">Result</th>
+                    <th data-i18n="records.resultBy">Recorded by</th>
+                  </tr>
+                </thead>
+                <tbody id="labHistoryTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
       <section id="serviceSelectionView" class="view hidden">
         <div class="module-top">
           <button
@@ -1160,7 +1739,7 @@
                   <tr>
                     <th data-i18n="services.tableSelect">Select</th>
                     <th data-i18n="services.tableCategory">Category</th>
-                    <th data-i18n="services.tableService">Service</th>
+                    <th data-i18n="services.tableService">Services / Acte / Médicament</th>
                     <th data-i18n="services.tableCode">Code</th>
                     <th data-i18n="services.tableInam">Code INAM</th>
                     <th data-i18n="services.tableUninsured">Uninsured price</th>
@@ -1798,23 +2377,60 @@
             Back to modules
           </button>
           <div>
-            <h2 data-i18n="inventory.title">Inventory & Stock</h2>
+            <h2 data-i18n="inventory.title">Purchasing, stock & orders</h2>
             <p class="subhead" data-i18n="inventory.subtitle">
-              Track medications, expiry dates, and low-stock alerts.
+              Track products, stock movements, purchase orders, receptions, and low-stock alerts.
             </p>
           </div>
         </div>
 
         <div class="module-layout">
+          <section class="module-section full">
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="inventory.kpiProducts">Products in stock</p>
+                <strong id="inventoryTotalProducts">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="inventory.kpiLow">Low stock alerts</p>
+                <strong id="inventoryLowAlerts">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="inventory.kpiExpiring">Expiring soon</p>
+                <strong id="inventoryExpiringAlerts">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="inventory.kpiOrders">Open purchase orders</p>
+                <strong id="inventoryOpenOrders">0</strong>
+              </div>
+            </div>
+          </section>
+
           <section class="module-section">
-            <h3 data-i18n="inventory.addTitle">Add medication</h3>
+            <h3 data-i18n="inventory.addTitle">Register product</h3>
             <label class="field">
-              <span data-i18n="inventory.name">Medication (Commercial / INN)</span>
+              <span data-i18n="inventory.name">Product / designation</span>
               <input id="stockName" type="text" />
             </label>
             <div class="field-row">
               <label class="field">
-                <span data-i18n="inventory.unitPrice">Unit price (CFL)</span>
+                <span data-i18n="inventory.type">Product type</span>
+                <select id="stockType">
+                  <option value="medication" data-i18n="inventory.typeMedication">Medication</option>
+                  <option value="consumable" data-i18n="inventory.typeConsumable">Consumable</option>
+                  <option value="reagent" data-i18n="inventory.typeReagent">Reagent</option>
+                  <option value="equipment" data-i18n="inventory.typeEquipment">Equipment</option>
+                  <option value="other" data-i18n="inventory.typeOther">Other</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="inventory.supplier">Supplier</span>
+                <input id="stockSupplier" type="text" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="inventory.unitPrice">Unit cost (CFL)</span>
                 <input id="stockPrice" type="number" min="0" step="1" />
               </label>
               <label class="field">
@@ -1840,8 +2456,12 @@
               <span data-i18n="inventory.receipt">Supplier receipt</span>
               <input id="stockReceipt" type="file" />
             </label>
+            <label class="field">
+              <span data-i18n="inventory.notes">Notes</span>
+              <textarea id="stockNotes" rows="2"></textarea>
+            </label>
             <button id="addStockBtn" class="primary" type="button" data-i18n="inventory.add">
-              Add to stock
+              Save product
             </button>
             <p class="form-message" id="inventoryMessage"></p>
           </section>
@@ -1852,15 +2472,17 @@
               <table class="billing-table">
                 <thead>
                   <tr>
-                    <th data-i18n="inventory.name">Medication</th>
+                    <th data-i18n="inventory.name">Product</th>
+                    <th data-i18n="inventory.type">Type</th>
+                    <th data-i18n="inventory.supplier">Supplier</th>
                     <th data-i18n="inventory.quantity">Qty</th>
                     <th data-i18n="inventory.minLevel">Min</th>
-                    <th data-i18n="inventory.unitPrice">Unit price</th>
+                    <th data-i18n="inventory.unitPrice">Unit cost</th>
                     <th data-i18n="inventory.entryDate">Entry</th>
                     <th data-i18n="inventory.expiryDate">Expiry</th>
                     <th data-i18n="inventory.receipt">Receipt</th>
                     <th data-i18n="inventory.status">Status</th>
-                    <th></th>
+                    <th data-i18n="hrPayroll.action">Action</th>
                   </tr>
                 </thead>
                 <tbody id="stockTableBody"></tbody>
@@ -1869,19 +2491,35 @@
           </section>
 
           <section class="module-section full">
-            <h3 data-i18n="inventory.purchaseTitle">Purchase orders</h3>
+            <h3 data-i18n="inventory.purchaseTitle">Purchasing & orders</h3>
             <div class="field-row">
               <label class="field">
                 <span data-i18n="inventory.supplier">Supplier</span>
                 <input id="poSupplier" type="text" />
               </label>
               <label class="field">
-                <span data-i18n="inventory.orderItem">Item</span>
+                <span data-i18n="inventory.orderItem">Product / designation</span>
                 <input id="poItem" type="text" />
               </label>
               <label class="field">
-                <span data-i18n="inventory.orderQty">Quantity</span>
+                <span data-i18n="inventory.type">Product type</span>
+                <select id="poType">
+                  <option value="medication" data-i18n="inventory.typeMedication">Medication</option>
+                  <option value="consumable" data-i18n="inventory.typeConsumable">Consumable</option>
+                  <option value="reagent" data-i18n="inventory.typeReagent">Reagent</option>
+                  <option value="equipment" data-i18n="inventory.typeEquipment">Equipment</option>
+                  <option value="other" data-i18n="inventory.typeOther">Other</option>
+                </select>
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="inventory.orderQty">Ordered quantity</span>
                 <input id="poQty" type="number" min="1" step="1" />
+              </label>
+              <label class="field">
+                <span data-i18n="inventory.unitCost">Unit purchase cost (CFL)</span>
+                <input id="poUnitCost" type="number" min="0" step="1" />
               </label>
               <label class="field">
                 <span data-i18n="inventory.orderDate">Expected date</span>
@@ -1890,7 +2528,7 @@
             </div>
             <div class="button-row">
               <button id="addPurchaseOrderBtn" class="ghost" type="button" data-i18n="inventory.createOrder">
-                Create order
+                Create purchase order
               </button>
             </div>
             <div class="table-scroll">
@@ -1899,16 +2537,42 @@
                   <tr>
                     <th data-i18n="inventory.supplier">Supplier</th>
                     <th data-i18n="inventory.orderItem">Item</th>
-                    <th data-i18n="inventory.orderQty">Qty</th>
-                    <th data-i18n="inventory.orderDate">Expected</th>
+                    <th data-i18n="inventory.type">Type</th>
+                    <th data-i18n="inventory.orderQty">Ordered qty</th>
+                    <th data-i18n="inventory.receivedQty">Received qty</th>
+                    <th data-i18n="inventory.unitCost">Unit cost</th>
+                    <th data-i18n="inventory.totalCost">Total cost</th>
+                    <th data-i18n="inventory.orderDate">Expected date</th>
+                    <th data-i18n="inventory.receivedDate">Received date</th>
                     <th data-i18n="inventory.status">Status</th>
-                    <th></th>
+                    <th data-i18n="hrPayroll.action">Action</th>
                   </tr>
                 </thead>
                 <tbody id="poTableBody"></tbody>
               </table>
             </div>
             <p class="form-message" id="poMessage"></p>
+          </section>
+
+          <section class="module-section full">
+            <h3 data-i18n="inventory.movementTitle">Stock movements</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="inventory.movementDate">Date</th>
+                    <th data-i18n="inventory.movementItem">Product</th>
+                    <th data-i18n="inventory.type">Type</th>
+                    <th data-i18n="inventory.movementDirection">Direction</th>
+                    <th data-i18n="inventory.movementQty">Qty</th>
+                    <th data-i18n="inventory.movementSource">Source</th>
+                    <th data-i18n="inventory.movementCost">Cost</th>
+                    <th data-i18n="inventory.movementRecordedBy">Recorded by</th>
+                  </tr>
+                </thead>
+                <tbody id="stockMovementTableBody"></tbody>
+              </table>
+            </div>
           </section>
         </div>
       </section>
@@ -1998,6 +2662,263 @@
               </table>
             </div>
           </section>
+
+          <section class="module-section full">
+            <div class="module-top">
+              <div>
+                <h3 data-i18n="reports.insuranceClaimsTitle">Insurance claims statements</h3>
+                <p class="subhead" data-i18n="reports.insuranceClaimsSubtitle">
+                  Generate insurer-specific claims, export supporting files, record insurer payments, and track balances.
+                </p>
+              </div>
+              <div class="pill-row">
+                <button id="insuranceReportGenerateBtn" class="primary" type="button" data-i18n="reports.generateStatement">
+                  Generate statement
+                </button>
+                <button id="insuranceReportEmailBtn" class="ghost" type="button" data-i18n="reports.openEmailDraft" disabled>
+                  Open email draft
+                </button>
+                <button id="insuranceReportBordereauBtn" class="ghost" type="button" data-i18n="reports.exportBordereau" disabled>
+                  Export bordereau
+                </button>
+                <button id="insuranceReportPdfBtn" class="ghost" type="button" data-i18n="reports.exportPdf" disabled>
+                  Export PDF
+                </button>
+                <button id="insuranceReportDownloadBtn" class="ghost" type="button" data-i18n="reports.exportExcel" disabled>
+                  Export Excel
+                </button>
+                <button id="insuranceReportLetterBtn" class="ghost" type="button" data-i18n="reports.downloadLetter" disabled>
+                  Download transmittal letter
+                </button>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="reports.insurerFilter">Insurer</span>
+                <select id="insuranceReportInsurer"></select>
+              </label>
+              <label class="field">
+                <span data-i18n="reports.periodStart">Period start</span>
+                <input id="insuranceReportStart" type="date" />
+              </label>
+              <label class="field">
+                <span data-i18n="reports.periodEnd">Period end</span>
+                <input id="insuranceReportEnd" type="date" />
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="reports.statusSelect">Status update</span>
+                <select id="insuranceReportStatusSelect">
+                  <option value="generated" data-i18n="reports.statusGenerated">Generated</option>
+                  <option value="sent" data-i18n="reports.statusSent">Sent</option>
+                  <option value="rejected" data-i18n="reports.statusRejected">Rejected</option>
+                  <option value="disputed" data-i18n="reports.statusDisputed">Disputed</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>&nbsp;</span>
+                <button id="insuranceReportUpdateStatusBtn" class="ghost" type="button" data-i18n="reports.statusUpdateAction" disabled>
+                  Update status
+                </button>
+              </label>
+            </div>
+
+            <p class="form-message" id="insuranceReportMessage"></p>
+
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span data-i18n="reports.claimLines">Claim lines</span>
+                <strong id="insuranceReportClaimsCount">0</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.coveredReceipts">Receipts</span>
+                <strong id="insuranceReportReceiptsCount">0</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.coveredPatients">Patients</span>
+                <strong id="insuranceReportPatientsCount">0</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.statementBilled">Total billed</span>
+                <strong id="insuranceReportBilledTotal">0 CFL</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.statementDue">Insurer share due</span>
+                <strong id="insuranceReportAmountDue">0 CFL</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.statementPatientShare">Patient share collected</span>
+                <strong id="insuranceReportPatientPart">0 CFL</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.statementPaid">Insurer payments received</span>
+                <strong id="insuranceReportPaidTotal">0 CFL</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.statementBalance">Balance due</span>
+                <strong id="insuranceReportBalance">0 CFL</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.statementStatus">Statement status</span>
+                <strong id="insuranceReportStatus">-</strong>
+              </div>
+            </div>
+
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="reports.statementDate">Date</th>
+                    <th data-i18n="reports.statementReceipt">Receipt</th>
+                    <th data-i18n="reports.statementPatient">Patient</th>
+                    <th data-i18n="reports.statementService">Services / Act / Medication</th>
+                    <th data-i18n="reports.statementCode">Code</th>
+                    <th data-i18n="reports.statementInam">INAM code</th>
+                    <th data-i18n="reports.statementQty">Qty</th>
+                    <th data-i18n="reports.statementBase">Reimbursement base</th>
+                    <th data-i18n="reports.statementRate">Rate</th>
+                    <th data-i18n="reports.statementTotal">Total billed</th>
+                    <th data-i18n="reports.statementInsuranceShare">Insurer share</th>
+                    <th data-i18n="reports.statementPatientShareColumn">Patient share</th>
+                    <th data-i18n="reports.statementPrescriber">Prescriber</th>
+                  </tr>
+                </thead>
+                <tbody id="insuranceReportTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section full">
+            <div class="module-top">
+              <div>
+                <h3 data-i18n="reports.recordPaymentTitle">Record insurer payment</h3>
+                <p class="subhead" data-i18n="reports.recordPaymentSubtitle">
+                  Register each insurer settlement to update balances, accounting, and receivables tracking automatically.
+                </p>
+              </div>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="reports.paymentAmount">Payment amount</span>
+                <input id="insuranceReportPaymentAmount" type="number" min="0" step="1" />
+              </label>
+              <label class="field">
+                <span data-i18n="reports.paymentDate">Payment date</span>
+                <input id="insuranceReportPaymentDate" type="date" />
+              </label>
+              <label class="field">
+                <span data-i18n="reports.paymentMethod">Payment method</span>
+                <select id="insuranceReportPaymentMethod">
+                  <option value="cash" data-i18n="billing.paymentCash">Cash</option>
+                  <option value="bank_transfer" data-i18n="billing.paymentBank">Bank transfer</option>
+                  <option value="mobile_money" data-i18n="reports.paymentMethodMobileMoney">Mobile money</option>
+                  <option value="cheque" data-i18n="reports.paymentMethodCheque">Cheque</option>
+                  <option value="other" data-i18n="reports.paymentMethodOther">Other</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="reports.paymentReference">Reference</span>
+                <input id="insuranceReportPaymentReference" type="text" />
+              </label>
+            </div>
+            <label class="field">
+              <span data-i18n="reports.paymentNote">Payment note</span>
+              <textarea id="insuranceReportPaymentNote" rows="3"></textarea>
+            </label>
+            <div class="pill-row">
+              <button id="insuranceReportRecordPaymentBtn" class="primary" type="button" data-i18n="reports.paymentRecordAction" disabled>
+                Record payment
+              </button>
+            </div>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="reports.paymentHistoryDate">Date</th>
+                    <th data-i18n="reports.paymentHistoryMethod">Method</th>
+                    <th data-i18n="reports.paymentHistoryReference">Reference</th>
+                    <th data-i18n="reports.paymentHistoryAmount">Amount</th>
+                    <th data-i18n="reports.paymentHistoryNote">Note</th>
+                    <th data-i18n="reports.paymentHistoryRecordedBy">Recorded by</th>
+                  </tr>
+                </thead>
+                <tbody id="insuranceReportPaymentHistoryBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section full">
+            <div class="module-top">
+              <div>
+                <h3 data-i18n="reports.receivablesTitle">Insurance receivables follow-up</h3>
+                <p class="subhead" data-i18n="reports.receivablesSubtitle">
+                  Use this accounting view to monitor insurer balances, aging, and follow-up reminders.
+                </p>
+              </div>
+            </div>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <span data-i18n="reports.receivablesOpen">Open statements</span>
+                <strong id="insuranceReceivablesOpenCount">0</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.receivablesOutstanding">Outstanding balance</span>
+                <strong id="insuranceReceivablesOutstandingTotal">0 CFL</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.receivablesOverdue">Overdue statements</span>
+                <strong id="insuranceReceivablesOverdueCount">0</strong>
+              </div>
+              <div class="summary-item">
+                <span data-i18n="reports.receivablesReminders">Reminders sent</span>
+                <strong id="insuranceReceivablesReminderCount">0</strong>
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="reports.historyInsurer">Insurer</th>
+                    <th data-i18n="reports.historyPeriod">Period</th>
+                    <th data-i18n="reports.historyAmount">Amount due</th>
+                    <th data-i18n="reports.historyPaid">Paid</th>
+                    <th data-i18n="reports.historyBalance">Balance</th>
+                    <th data-i18n="reports.historyStatus">Status</th>
+                    <th data-i18n="reports.receivablesLastSent">Last sent</th>
+                    <th data-i18n="reports.receivablesLastReminder">Last reminder</th>
+                    <th data-i18n="reports.receivablesAging">Days outstanding</th>
+                    <th data-i18n="reports.historyActions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="insuranceReceivablesTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="module-section full">
+            <h3 data-i18n="reports.insuranceHistoryTitle">Insurance statement history</h3>
+            <div class="table-scroll">
+              <table class="billing-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="reports.historyInsurer">Insurer</th>
+                    <th data-i18n="reports.historyPeriod">Period</th>
+                    <th data-i18n="reports.historyClaims">Claim lines</th>
+                    <th data-i18n="reports.historyAmount">Amount due</th>
+                    <th data-i18n="reports.historyPaid">Paid</th>
+                    <th data-i18n="reports.historyBalance">Balance</th>
+                    <th data-i18n="reports.historyStatus">Status</th>
+                    <th data-i18n="reports.historyUpdated">Updated</th>
+                    <th data-i18n="reports.historyActions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="insuranceReportHistoryBody"></tbody>
+              </table>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -2015,6 +2936,76 @@
         </div>
 
         <div class="dashboard-grid">
+          <section class="dash-section dash-overview" id="dashboardOverviewSection">
+            <div class="dash-section-head">
+              <div>
+                <h3 data-i18n="dashboard.overviewTitle">Operational overview</h3>
+                <p class="muted" id="dashboardOverviewSubtitle" data-i18n="dashboard.overviewSubtitle">Daily and monthly indicators, activity mix, and trend analysis.</p>
+              </div>
+              <label class="field compact-field">
+                <span data-i18n="dashboard.trendMetric">Trend metric</span>
+                <select id="dashboardTrendMetric">
+                  <option value="patients" data-i18n="dashboard.metricPatients">Patients</option>
+                  <option value="revenue" data-i18n="dashboard.metricRevenue">Revenue</option>
+                  <option value="services" data-i18n="dashboard.metricServices">Services billed</option>
+                  <option value="hospitalizations" data-i18n="dashboard.metricHospitalizations">Hospitalizations</option>
+                  <option value="labImaging" data-i18n="dashboard.metricLabImaging">Laboratory / imaging</option>
+                  <option value="prescriptions" data-i18n="dashboard.metricPrescriptions">Prescriptions</option>
+                  <option value="stock" data-i18n="dashboard.metricStock">Stock consumption</option>
+                </select>
+              </label>
+            </div>
+            <div class="dash-split dash-overview-panels">
+              <div class="dash-table">
+                <h4 data-i18n="dashboard.daySummary">Today</h4>
+                <div id="dashboardDailyCards" class="dash-cards"></div>
+              </div>
+              <div class="dash-table">
+                <h4 data-i18n="dashboard.monthSummary">This month</h4>
+                <div id="dashboardMonthlyCards" class="dash-cards"></div>
+              </div>
+            </div>
+            <div class="dash-split">
+              <div class="dash-table">
+                <h4 data-i18n="dashboard.activityByCategory">Activities by category</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="dashboard.tableCategory">Category</th>
+                      <th data-i18n="dashboard.tableToday">Today</th>
+                      <th data-i18n="dashboard.tableMonth">This month</th>
+                      <th data-i18n="dashboard.tableAmount">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dashboardCategoryTable"></tbody>
+                </table>
+              </div>
+              <div class="dash-table">
+                <h4 data-i18n="dashboard.activityByService">Activities by service</h4>
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="dashboard.tableService">Services / Acte / Médicament</th>
+                      <th data-i18n="dashboard.tableToday">Today</th>
+                      <th data-i18n="dashboard.tableMonth">This month</th>
+                      <th data-i18n="dashboard.tableAmount">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dashboardServiceTable"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="dash-split">
+              <div class="dash-table">
+                <h4 data-i18n="dashboard.monthlyTrend">Monthly trend (current year)</h4>
+                <div id="dashboardMonthlyTrendChart" class="trend-chart"></div>
+              </div>
+              <div class="dash-table">
+                <h4 data-i18n="dashboard.yearlyTrend">Multi-year comparison</h4>
+                <div id="dashboardYearlyTrendChart" class="trend-chart"></div>
+              </div>
+            </div>
+          </section>
           <section class="dash-section" data-role="admission">
             <h3 data-i18n="dashboard.admissionTitle">Admission staff overview</h3>
             <div class="dash-cards">
@@ -2048,8 +3039,8 @@
               <table>
                 <thead>
                   <tr>
-                    <th data-i18n="dashboard.staffName">Staff</th>
-                    <th data-i18n="dashboard.staffCount">Patients</th>
+                    <th data-i18n="dashboard.role">Role</th>
+                    <th data-i18n="dashboard.count">Count</th>
                   </tr>
                 </thead>
                 <tbody id="admStaffTable"></tbody>
@@ -2158,6 +3149,21 @@
                 </button>
               </div>
               <p class="form-message" id="doctorConsultationMessage"></p>
+            </div>
+            <div class="dash-table">
+              <h4 data-i18n="dashboard.doctorExamResults">Recent examination results</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="records.resultDate">Date</th>
+                    <th data-i18n="dashboard.patient">Patient</th>
+                    <th data-i18n="records.resultService">Service</th>
+                    <th data-i18n="records.resultStatus">Status</th>
+                    <th data-i18n="records.resultValue">Result</th>
+                  </tr>
+                </thead>
+                <tbody id="doctorLabResultsTable"></tbody>
+              </table>
             </div>
             <div class="dash-table">
               <h4 data-i18n="dashboard.doctorPayslip">Payslip preview</h4>
@@ -2304,6 +3310,10 @@
             <h3 data-i18n="dashboard.pharmacyTitle">Pharmacy overview</h3>
             <div class="dash-cards">
               <div class="dash-card">
+                <p data-i18n="dashboard.pharmacyPending">Prescriptions pending</p>
+                <strong id="pharmacyPending">0</strong>
+              </div>
+              <div class="dash-card">
                 <p data-i18n="dashboard.pharmacyDispensed">Medications dispensed</p>
                 <strong id="pharmacyDispensed">0</strong>
               </div>
@@ -2311,6 +3321,20 @@
                 <p data-i18n="dashboard.pharmacyAlerts">Stock alerts</p>
                 <strong id="pharmacyAlerts">0</strong>
               </div>
+            </div>
+            <div class="dash-table">
+              <h4 data-i18n="dashboard.pharmacyQueueTitle">Dispensing queue</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="dashboard.patient">Patient</th>
+                    <th data-i18n="dashboard.pharmacyQueuePrescription">Prescription</th>
+                    <th data-i18n="appointments.status">Status</th>
+                    <th data-i18n="dashboard.action">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="pharmacyQueueTable"></tbody>
+              </table>
             </div>
           </section>
 
@@ -2356,8 +3380,42 @@
             </div>
           </section>
 
+          <section class="dash-section" data-role="admin">
+            <h3 data-i18n="dashboard.adminSectionTitle">Administrator overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.staffConfigured">Configured staff</p>
+                <strong id="adminStaffCount">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.servicesConfigured">Configured services</p>
+                <strong id="adminServiceCatalogCount">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.insurersConfigured">Insurance partners</p>
+                <strong id="adminInsurancePartnersCount">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.admissionsTodayCard">Admissions today</p>
+                <strong id="adminTodayAdmissions">0</strong>
+              </div>
+            </div>
+            <div class="dash-table">
+              <h4 data-i18n="dashboard.staffMix">Staff distribution</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="dashboard.role">Role</th>
+                    <th data-i18n="dashboard.count">Count</th>
+                  </tr>
+                </thead>
+                <tbody id="adminRoleMixTable"></tbody>
+              </table>
+            </div>
+          </section>
+
           <section class="dash-section" data-role="director">
-            <h3 data-i18n="dashboard.adminTitle">Management overview</h3>
+            <h3 data-i18n="dashboard.directorTitle">Executive overview</h3>
             <div class="dash-cards">
               <div class="dash-card">
                 <p data-i18n="dashboard.totalPatients">Total patients received</p>
@@ -2375,6 +3433,40 @@
                 <p data-i18n="dashboard.staffProductivity">Staff productivity</p>
                 <strong id="dirStaffProductivity">0</strong>
               </div>
+            </div>
+          </section>
+
+          <section class="dash-section" data-role="hr">
+            <h3 data-i18n="dashboard.hrTitle">HR overview</h3>
+            <div class="dash-cards">
+              <div class="dash-card">
+                <p data-i18n="dashboard.hrTotalStaff">Total staff</p>
+                <strong id="hrStaffTotal">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.hrPermanent">Permanent staff</p>
+                <strong id="hrPermanentTotal">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.hrLocum">Locum staff</p>
+                <strong id="hrLocumTotal">0</strong>
+              </div>
+              <div class="dash-card">
+                <p data-i18n="dashboard.hrPayrollEstimate">Estimated payroll due</p>
+                <strong id="hrPayrollEstimate">0</strong>
+              </div>
+            </div>
+            <div class="dash-table">
+              <h4 data-i18n="dashboard.staffMix">Staff distribution</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="dashboard.role">Role</th>
+                    <th data-i18n="dashboard.count">Count</th>
+                  </tr>
+                </thead>
+                <tbody id="hrRoleMixTable"></tbody>
+              </table>
             </div>
           </section>
 

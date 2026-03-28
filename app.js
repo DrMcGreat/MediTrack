@@ -13,6 +13,9 @@ const staffAccessView = document.getElementById('staffAccessView');
 const staffAccessGrid = document.getElementById('staffAccessGrid');
 const roleDashboardView = document.getElementById('roleDashboardView');
 const facilityProfileView = document.getElementById('facilityProfileView');
+const clinicalRecordsView = document.getElementById('clinicalRecordsView');
+const labModuleView = document.getElementById('labModuleView');
+const hrPayrollView = document.getElementById('hrPayrollView');
 const topBar = document.getElementById('topBar');
 const facilityName = document.getElementById('facilityName');
 
@@ -50,8 +53,12 @@ const backToModulesFromAnalytics = document.getElementById('backToModulesFromAna
 const backToModulesFromServiceCatalog = document.getElementById('backToModulesFromServiceCatalog');
 const backToModulesFromInsurance = document.getElementById('backToModulesFromInsurance');
 const backToModulesFromFacility = document.getElementById('backToModulesFromFacility');
+const backToModulesFromRecords = document.getElementById('backToModulesFromRecords');
+const backToModulesFromLab = document.getElementById('backToModulesFromLab');
+const backToModulesFromHr = document.getElementById('backToModulesFromHr');
 const billingTableBody = document.getElementById('billingTableBody');
 const addBillingRow = document.getElementById('addBillingRow');
+const removeLastBillingRow = document.getElementById('removeLastBillingRow');
 const insuranceProvider = document.getElementById('insuranceProvider');
 const insuranceId = document.getElementById('insuranceId');
 const patientIdentifier = document.getElementById('patientIdentifier');
@@ -182,18 +189,28 @@ const appointmentsPortalLink = document.getElementById('appointmentsPortalLink')
 const copyPortalLink = document.getElementById('copyPortalLink');
 
 const stockName = document.getElementById('stockName');
+const stockType = document.getElementById('stockType');
+const stockSupplier = document.getElementById('stockSupplier');
 const stockPrice = document.getElementById('stockPrice');
 const stockQty = document.getElementById('stockQty');
 const stockMin = document.getElementById('stockMin');
 const stockEntryDate = document.getElementById('stockEntryDate');
 const stockExpiryDate = document.getElementById('stockExpiryDate');
 const stockReceipt = document.getElementById('stockReceipt');
+const stockNotes = document.getElementById('stockNotes');
 const addStockBtn = document.getElementById('addStockBtn');
 const stockTableBody = document.getElementById('stockTableBody');
+const stockMovementTableBody = document.getElementById('stockMovementTableBody');
+const inventoryTotalProducts = document.getElementById('inventoryTotalProducts');
+const inventoryLowAlerts = document.getElementById('inventoryLowAlerts');
+const inventoryExpiringAlerts = document.getElementById('inventoryExpiringAlerts');
+const inventoryOpenOrders = document.getElementById('inventoryOpenOrders');
 const inventoryMessage = document.getElementById('inventoryMessage');
 const poSupplier = document.getElementById('poSupplier');
 const poItem = document.getElementById('poItem');
+const poType = document.getElementById('poType');
 const poQty = document.getElementById('poQty');
+const poUnitCost = document.getElementById('poUnitCost');
 const poDate = document.getElementById('poDate');
 const addPurchaseOrderBtn = document.getElementById('addPurchaseOrderBtn');
 const poTableBody = document.getElementById('poTableBody');
@@ -208,8 +225,52 @@ const reportOutpatient = document.getElementById('reportOutpatient');
 const reportPharmacy = document.getElementById('reportPharmacy');
 const trendTableBody = document.getElementById('trendTableBody');
 const payslipTableBody = document.getElementById('payslipTableBody');
+const insuranceReportInsurer = document.getElementById('insuranceReportInsurer');
+const insuranceReportStart = document.getElementById('insuranceReportStart');
+const insuranceReportEnd = document.getElementById('insuranceReportEnd');
+const insuranceReportGenerateBtn = document.getElementById('insuranceReportGenerateBtn');
+const insuranceReportEmailBtn = document.getElementById('insuranceReportEmailBtn');
+const insuranceReportBordereauBtn = document.getElementById('insuranceReportBordereauBtn');
+const insuranceReportPdfBtn = document.getElementById('insuranceReportPdfBtn');
+const insuranceReportDownloadBtn = document.getElementById('insuranceReportDownloadBtn');
+const insuranceReportLetterBtn = document.getElementById('insuranceReportLetterBtn');
+const insuranceReportMessage = document.getElementById('insuranceReportMessage');
+const insuranceReportClaimsCount = document.getElementById('insuranceReportClaimsCount');
+const insuranceReportReceiptsCount = document.getElementById('insuranceReportReceiptsCount');
+const insuranceReportPatientsCount = document.getElementById('insuranceReportPatientsCount');
+const insuranceReportBilledTotal = document.getElementById('insuranceReportBilledTotal');
+const insuranceReportAmountDue = document.getElementById('insuranceReportAmountDue');
+const insuranceReportPatientPart = document.getElementById('insuranceReportPatientPart');
+const insuranceReportPaidTotal = document.getElementById('insuranceReportPaidTotal');
+const insuranceReportBalance = document.getElementById('insuranceReportBalance');
+const insuranceReportStatus = document.getElementById('insuranceReportStatus');
+const insuranceReportStatusSelect = document.getElementById('insuranceReportStatusSelect');
+const insuranceReportUpdateStatusBtn = document.getElementById('insuranceReportUpdateStatusBtn');
+const insuranceReportTableBody = document.getElementById('insuranceReportTableBody');
+const insuranceReportPaymentAmount = document.getElementById('insuranceReportPaymentAmount');
+const insuranceReportPaymentDate = document.getElementById('insuranceReportPaymentDate');
+const insuranceReportPaymentMethod = document.getElementById('insuranceReportPaymentMethod');
+const insuranceReportPaymentReference = document.getElementById('insuranceReportPaymentReference');
+const insuranceReportPaymentNote = document.getElementById('insuranceReportPaymentNote');
+const insuranceReportRecordPaymentBtn = document.getElementById('insuranceReportRecordPaymentBtn');
+const insuranceReportPaymentHistoryBody = document.getElementById('insuranceReportPaymentHistoryBody');
+const insuranceReceivablesOpenCount = document.getElementById('insuranceReceivablesOpenCount');
+const insuranceReceivablesOutstandingTotal = document.getElementById('insuranceReceivablesOutstandingTotal');
+const insuranceReceivablesOverdueCount = document.getElementById('insuranceReceivablesOverdueCount');
+const insuranceReceivablesReminderCount = document.getElementById('insuranceReceivablesReminderCount');
+const insuranceReceivablesTableBody = document.getElementById('insuranceReceivablesTableBody');
+const insuranceReportHistoryBody = document.getElementById('insuranceReportHistoryBody');
 
 const dashboardRoleLabel = document.getElementById('dashboardRoleLabel');
+const dashboardOverviewSection = document.getElementById('dashboardOverviewSection');
+const dashboardOverviewSubtitle = document.getElementById('dashboardOverviewSubtitle');
+const dashboardTrendMetric = document.getElementById('dashboardTrendMetric');
+const dashboardDailyCards = document.getElementById('dashboardDailyCards');
+const dashboardMonthlyCards = document.getElementById('dashboardMonthlyCards');
+const dashboardCategoryTable = document.getElementById('dashboardCategoryTable');
+const dashboardServiceTable = document.getElementById('dashboardServiceTable');
+const dashboardMonthlyTrendChart = document.getElementById('dashboardMonthlyTrendChart');
+const dashboardYearlyTrendChart = document.getElementById('dashboardYearlyTrendChart');
 const admTotalPatients = document.getElementById('admTotalPatients');
 const admVisitsToday = document.getElementById('admVisitsToday');
 const admVisitsWeek = document.getElementById('admVisitsWeek');
@@ -258,8 +319,10 @@ const labCompleted = document.getElementById('labCompleted');
 const radioScheduled = document.getElementById('radioScheduled');
 const radioCompleted = document.getElementById('radioCompleted');
 
+const pharmacyPending = document.getElementById('pharmacyPending');
 const pharmacyDispensed = document.getElementById('pharmacyDispensed');
 const pharmacyAlerts = document.getElementById('pharmacyAlerts');
+const pharmacyQueueTable = document.getElementById('pharmacyQueueTable');
 
 const accRevenue = document.getElementById('accRevenue');
 const accPatient = document.getElementById('accPatient');
@@ -273,6 +336,78 @@ const dirPatients = document.getElementById('dirPatients');
 const dirServices = document.getElementById('dirServices');
 const dirRevenue = document.getElementById('dirRevenue');
 const dirStaffProductivity = document.getElementById('dirStaffProductivity');
+const adminStaffCount = document.getElementById('adminStaffCount');
+const adminServiceCatalogCount = document.getElementById('adminServiceCatalogCount');
+const adminInsurancePartnersCount = document.getElementById('adminInsurancePartnersCount');
+const adminTodayAdmissions = document.getElementById('adminTodayAdmissions');
+const adminRoleMixTable = document.getElementById('adminRoleMixTable');
+const hrStaffTotal = document.getElementById('hrStaffTotal');
+const hrPermanentTotal = document.getElementById('hrPermanentTotal');
+const hrLocumTotal = document.getElementById('hrLocumTotal');
+const hrPayrollEstimate = document.getElementById('hrPayrollEstimate');
+const hrRoleMixTable = document.getElementById('hrRoleMixTable');
+const hrPayrollPeriod = document.getElementById('hrPayrollPeriod');
+const hrPayrollFilter = document.getElementById('hrPayrollFilter');
+const hrPayrollTotalEmployees = document.getElementById('hrPayrollTotalEmployees');
+const hrPayrollTotalDue = document.getElementById('hrPayrollTotalDue');
+const hrPayrollTotalPaid = document.getElementById('hrPayrollTotalPaid');
+const hrPayrollTotalOutstanding = document.getElementById('hrPayrollTotalOutstanding');
+const hrPayrollTableBody = document.getElementById('hrPayrollTableBody');
+const hrEmployeeSummaryGrid = document.getElementById('hrEmployeeSummaryGrid');
+const hrPayrollBasisGrid = document.getElementById('hrPayrollBasisGrid');
+const hrPaymentMethod = document.getElementById('hrPaymentMethod');
+const hrPaymentAmount = document.getElementById('hrPaymentAmount');
+const hrPaymentNote = document.getElementById('hrPaymentNote');
+const recordPayrollPaymentBtn = document.getElementById('recordPayrollPaymentBtn');
+const downloadPayrollStatementBtn = document.getElementById('downloadPayrollStatementBtn');
+const hrPayrollMessage = document.getElementById('hrPayrollMessage');
+const hrPaymentHistoryBody = document.getElementById('hrPaymentHistoryBody');
+
+const clinicalPatientSearch = document.getElementById('clinicalPatientSearch');
+const clinicalPatientResults = document.getElementById('clinicalPatientResults');
+const clinicalPatientMessage = document.getElementById('clinicalPatientMessage');
+const clinicalSelectedPatientName = document.getElementById('clinicalSelectedPatientName');
+const clinicalSelectedPatientMeta = document.getElementById('clinicalSelectedPatientMeta');
+const clinicalSelectedPatientStats = document.getElementById('clinicalSelectedPatientStats');
+const clinicalIdentityGrid = document.getElementById('clinicalIdentityGrid');
+const clinicalSocioGrid = document.getElementById('clinicalSocioGrid');
+const clinicalAntecedents = document.getElementById('clinicalAntecedents');
+const clinicalNotes = document.getElementById('clinicalNotes');
+const saveClinicalHistoryBtn = document.getElementById('saveClinicalHistoryBtn');
+const clinicalHistoryMessage = document.getElementById('clinicalHistoryMessage');
+const clinicalEncounterTable = document.getElementById('clinicalEncounterTable');
+const clinicalNurseTable = document.getElementById('clinicalNurseTable');
+const clinicalDoctorTable = document.getElementById('clinicalDoctorTable');
+const clinicalExamRequestsTable = document.getElementById('clinicalExamRequestsTable');
+const clinicalExamRequestSelect = document.getElementById('clinicalExamRequestSelect');
+const clinicalExamStatus = document.getElementById('clinicalExamStatus');
+const clinicalExamResult = document.getElementById('clinicalExamResult');
+const clinicalExamComment = document.getElementById('clinicalExamComment');
+const saveClinicalExamResultBtn = document.getElementById('saveClinicalExamResultBtn');
+const clinicalExamMessage = document.getElementById('clinicalExamMessage');
+const clinicalResultsTable = document.getElementById('clinicalResultsTable');
+const clinicalPrescriptionTable = document.getElementById('clinicalPrescriptionTable');
+const clinicalBillingTable = document.getElementById('clinicalBillingTable');
+const labRequestSearch = document.getElementById('labRequestSearch');
+const labStatusFilter = document.getElementById('labStatusFilter');
+const labRequestMessage = document.getElementById('labRequestMessage');
+const labRequestSummaryGrid = document.getElementById('labRequestSummaryGrid');
+const openLabPatientRecordBtn = document.getElementById('openLabPatientRecordBtn');
+const labRequestsTableBody = document.getElementById('labRequestsTableBody');
+const labResultStatus = document.getElementById('labResultStatus');
+const labResultText = document.getElementById('labResultText');
+const labResultComment = document.getElementById('labResultComment');
+const labStockItem = document.getElementById('labStockItem');
+const labStockQty = document.getElementById('labStockQty');
+const addLabSupplyBtn = document.getElementById('addLabSupplyBtn');
+const labSupplyList = document.getElementById('labSupplyList');
+const saveLabResultBtn = document.getElementById('saveLabResultBtn');
+const validateLabResultBtn = document.getElementById('validateLabResultBtn');
+const labResultMessage = document.getElementById('labResultMessage');
+const labHistoryTableBody = document.getElementById('labHistoryTableBody');
+const labModuleRequested = document.getElementById('labModuleRequested');
+const labModuleEligible = document.getElementById('labModuleEligible');
+const labModuleValidated = document.getElementById('labModuleValidated');
 
 const adminSignInForm = document.getElementById('adminSignInForm');
 const adminId = document.getElementById('adminId');
@@ -302,6 +437,15 @@ const staffLocumRate = document.getElementById('staffLocumRate');
 const staffDob = document.getElementById('staffDob');
 const staffSex = document.getElementById('staffSex');
 const staffContractStart = document.getElementById('staffContractStart');
+const staffPosition = document.getElementById('staffPosition');
+const staffStatus = document.getElementById('staffStatus');
+const staffPayMode = document.getElementById('staffPayMode');
+const staffContractSalary = document.getElementById('staffContractSalary');
+const staffEmployeeSocialRate = document.getElementById('staffEmployeeSocialRate');
+const staffEmployerSocialRate = document.getElementById('staffEmployerSocialRate');
+const staffOtherDeductions = document.getElementById('staffOtherDeductions');
+const staffSocialId = document.getElementById('staffSocialId');
+const staffNotes = document.getElementById('staffNotes');
 const doctorSex = document.getElementById('doctorSex');
 const doctorAge = document.getElementById('doctorAge');
 const doctorReg = document.getElementById('doctorReg');
@@ -325,6 +469,7 @@ const doctorMedicationList = document.getElementById('doctorMedicationList');
 const saveDoctorConsultationBtn = document.getElementById('saveDoctorConsultationBtn');
 const doctorConsultationMessage = document.getElementById('doctorConsultationMessage');
 const doctorPatientSummary = document.getElementById('doctorPatientSummary');
+const doctorLabResultsTable = document.getElementById('doctorLabResultsTable');
 
 let currentLang = 'en';
 let currentFacility = null;
@@ -334,8 +479,15 @@ let staffAccessMode = null;
 let pendingServiceInsurance = [];
 let pendingDoctorMedication = [];
 let pendingNurseSupplies = [];
+let pendingLabSupplies = [];
 let activePatientId = null;
+let activeAppointmentId = '';
+let activeClinicalPatientId = null;
 let editingServiceId = null;
+let pendingDashboardEncounterId = '';
+let activeLabRequestId = '';
+let activePayrollEmployeeId = '';
+let activeInsuranceStatementId = '';
 
 const COUNTRY_CODES = [
   { code: '+228', label: 'Togo (+228)' },
@@ -686,6 +838,31 @@ function saveInsurancePartners(list) {
   }
 }
 
+function getInsuranceStatementsKey() {
+  if (currentFacility) {
+    return `meditrack_insurance_statements_${currentFacility}`;
+  }
+  return 'meditrack_insurance_statements_default';
+}
+
+function loadInsuranceStatements() {
+  try {
+    const raw = localStorage.getItem(getInsuranceStatementsKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveInsuranceStatements(list) {
+  try {
+    localStorage.setItem(getInsuranceStatementsKey(), JSON.stringify(list));
+  } catch (error) {
+    // ignore
+  }
+}
+
 function seedInsurancePartnersIfEmpty() {
   const list = loadInsurancePartners();
   if (list.length) return list;
@@ -818,6 +995,1035 @@ function renderInsurancePartners() {
       )}</button></td>
     `;
     insuranceTable.appendChild(row);
+  });
+}
+
+function formatDateInputValue(value) {
+  if (!value) return '';
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${date.getFullYear()}-${month}-${day}`;
+}
+
+function getDefaultInsuranceStatementPeriod() {
+  const now = new Date();
+  return {
+    start: formatDateInputValue(new Date(now.getFullYear(), now.getMonth(), 1)),
+    end: formatDateInputValue(now),
+  };
+}
+
+function getDefaultInsuranceStatementPaymentDate() {
+  return formatDateInputValue(new Date());
+}
+
+function getInsuranceStatementSelectableStatuses() {
+  return ['generated', 'sent', 'rejected', 'disputed'];
+}
+
+function normalizeInsuranceStatementStatus(status) {
+  const value = String(status || '').trim().toLowerCase();
+  const aliases = {
+    draft: 'generated',
+    generated: 'generated',
+    sent: 'sent',
+    transmitted: 'sent',
+    settled: 'paid',
+    paid: 'paid',
+    partial: 'partially_paid',
+    partially_paid: 'partially_paid',
+    partiallypaid: 'partially_paid',
+    rejected: 'rejected',
+    disputed: 'disputed',
+    litige: 'disputed',
+  };
+  return aliases[value] || value || 'generated';
+}
+
+function getInsuranceStatementSelectableStatus(statement) {
+  if (!statement) return 'generated';
+  const candidate = normalizeInsuranceStatementStatus(statement.manualStatus || statement.status || 'generated');
+  if (getInsuranceStatementSelectableStatuses().includes(candidate)) return candidate;
+  return statement.transmittedAt ? 'sent' : 'generated';
+}
+
+function normalizeInsuranceStatementPayment(payment, index = 0, statementId = '') {
+  return {
+    id: payment?.id || `${statementId || 'ISR'}-PAY-${index + 1}`,
+    amount: parseNumber(payment?.amount),
+    paymentDate: formatDateInputValue(payment?.paymentDate || payment?.createdAt || new Date()),
+    paymentMethod: payment?.paymentMethod || payment?.method || 'bank_transfer',
+    reference: payment?.reference || '',
+    note: payment?.note || '',
+    createdAt: payment?.createdAt || new Date().toISOString(),
+    createdBy: payment?.createdBy || payment?.recordedBy || '',
+  };
+}
+
+function normalizeInsuranceStatementReminder(reminder, index = 0, statementId = '') {
+  const sentAt = reminder?.sentAt || reminder?.createdAt || new Date().toISOString();
+  return {
+    id: reminder?.id || `${statementId || 'ISR'}-REM-${index + 1}`,
+    sentAt,
+    method: reminder?.method || 'email',
+    note: reminder?.note || '',
+    createdBy: reminder?.createdBy || reminder?.recordedBy || '',
+  };
+}
+
+function getFacilityBranding() {
+  const fallbackLogo =
+    currentFacilityProfile?.logo ||
+    receiptLogoImg?.src ||
+    facilityLogoImg?.src ||
+    document.querySelector('.logo-img')?.src ||
+    '';
+  return {
+    name: currentFacilityProfile?.name || currentFacility || 'MediTrack',
+    code: currentFacilityProfile?.code || currentFacility || '',
+    email: currentFacilityProfile?.email || '',
+    phone: currentFacilityProfile?.phone || '',
+    city: currentFacilityProfile?.city || '',
+    country: currentFacilityProfile?.country || '',
+    address: currentFacilityProfile?.address || '',
+    logo: fallbackLogo,
+  };
+}
+
+function buildFacilityPrintHeaderHtml(title, subtitle = '') {
+  const facility = getFacilityBranding();
+  const locationLine = [facility.city, facility.country].filter(Boolean).join(', ');
+  const contacts = [facility.address, locationLine, facility.phone, facility.email].filter(Boolean);
+  const logoMarkup = facility.logo
+    ? `<div class="print-brand-logo"><img src="${escapeHtml(facility.logo)}" alt="${escapeHtml(
+        facility.name
+      )}" /></div>`
+    : '';
+  return `
+    <header class="print-brand">
+      ${logoMarkup}
+      <div class="print-brand-copy">
+        <p class="print-brand-tag">${escapeHtml(facility.code || 'MEDITRACK')}</p>
+        <h1>${escapeHtml(title)}</h1>
+        ${subtitle ? `<p class="print-brand-subtitle">${escapeHtml(subtitle)}</p>` : ''}
+        <h2>${escapeHtml(facility.name)}</h2>
+        ${contacts.length ? `<p>${escapeHtml(contacts.join(' · '))}</p>` : ''}
+      </div>
+    </header>
+  `;
+}
+
+function getInsuranceStatementAgingDays(statement, referenceDate = new Date()) {
+  const baseDate = parseDateValue(statement?.transmittedAt || statement?.createdAt || statement?.updatedAt);
+  if (!baseDate || !(referenceDate instanceof Date)) return 0;
+  const diff = referenceDate.getTime() - baseDate.getTime();
+  return diff > 0 ? Math.floor(diff / 86400000) : 0;
+}
+
+function normalizeInsuranceStatement(raw) {
+  if (!raw || typeof raw !== 'object') return null;
+  const id = raw.id || `ISR-${Date.now()}`;
+  const rows = Array.isArray(raw.rows)
+    ? raw.rows
+        .map((row, index) => ({
+          id: row?.id || `${id}-ROW-${index + 1}`,
+          createdAt: row?.createdAt || raw.createdAt || '',
+          receiptId: row?.receiptId || '',
+          receiptNumber: row?.receiptNumber || row?.receiptId || '',
+          encounterId: row?.encounterId || '',
+          patientId: row?.patientId || '',
+          patientName: row?.patientName || '',
+          insurer: row?.insurer || raw.insurer || '',
+          label: row?.label || row?.service || row?.name || '',
+          code: row?.code || '',
+          inam: row?.inam || '',
+          qty: parseNumber(row?.qty) || 1,
+          price: parseNumber(row?.price),
+          base: parseNumber(row?.base),
+          rate: parseNumber(row?.rate),
+          total: parseNumber(row?.total) || (parseNumber(row?.qty) || 1) * parseNumber(row?.price),
+          insuranceShare: parseNumber(row?.insuranceShare),
+          patientShare: parseNumber(row?.patientShare),
+          doctorName: row?.doctorName || row?.providerName || '',
+          policy: row?.policy || '',
+          category: row?.category || '',
+        }))
+        .filter((row) => row.insurer || row.total || row.insuranceShare || row.patientShare)
+    : [];
+  const receiptIds = new Set(rows.map((row) => row.receiptId).filter(Boolean));
+  const patientIds = new Set(rows.map((row) => row.patientId).filter(Boolean));
+  const rowTotals = rows.reduce(
+    (acc, row) => {
+      acc.billed += row.total || 0;
+      acc.insurerShare += row.insuranceShare || 0;
+      acc.patientShare += row.patientShare || 0;
+      return acc;
+    },
+    { billed: 0, insurerShare: 0, patientShare: 0 }
+  );
+  const payments = Array.isArray(raw.payments)
+    ? raw.payments
+        .map((payment, index) => normalizeInsuranceStatementPayment(payment, index, id))
+        .filter((payment) => payment.amount > 0)
+        .sort((a, b) => new Date(a.paymentDate || a.createdAt || 0) - new Date(b.paymentDate || b.createdAt || 0))
+    : [];
+  const reminders = Array.isArray(raw.reminders)
+    ? raw.reminders
+        .map((reminder, index) => normalizeInsuranceStatementReminder(reminder, index, id))
+        .sort((a, b) => new Date(b.sentAt || 0) - new Date(a.sentAt || 0))
+    : [];
+  const paidAmount = payments.reduce((sum, payment) => sum + (payment.amount || 0), 0);
+  const amountDue = rowTotals.insurerShare;
+  const balanceDue = Math.max(amountDue - paidAmount, 0);
+  let manualStatus = normalizeInsuranceStatementStatus(raw.manualStatus || raw.status || 'generated');
+  if (!getInsuranceStatementSelectableStatuses().includes(manualStatus)) {
+    manualStatus = raw.transmittedAt ? 'sent' : 'generated';
+  }
+  const status = resolveInsuranceStatementStatus({
+    manualStatus,
+    paidAmount,
+    amountDue,
+    transmittedAt: raw.transmittedAt || '',
+  });
+  const lastPayment = payments.length ? payments[payments.length - 1] : null;
+  const lastReminder = reminders.length ? reminders[0] : null;
+  return {
+    id,
+    insurer: raw.insurer || '',
+    insurerCode: raw.insurerCode || '',
+    insurerEmail: raw.insurerEmail || '',
+    insurerPhone: raw.insurerPhone || '',
+    periodStart: raw.periodStart || '',
+    periodEnd: raw.periodEnd || '',
+    createdAt: raw.createdAt || new Date().toISOString(),
+    updatedAt: raw.updatedAt || raw.createdAt || new Date().toISOString(),
+    transmittedAt: raw.transmittedAt || '',
+    settledAt:
+      raw.settledAt ||
+      (status === 'paid' && lastPayment ? lastPayment.createdAt || `${lastPayment.paymentDate}T12:00:00` : ''),
+    transmissionMethod: raw.transmissionMethod || '',
+    manualStatus,
+    status,
+    rows,
+    payments,
+    reminders,
+    lastReminderAt: lastReminder?.sentAt || '',
+    totals: {
+      lineCount: rows.length,
+      receiptCount: receiptIds.size,
+      patientCount: patientIds.size,
+      billed: rowTotals.billed,
+      insurerShare: rowTotals.insurerShare,
+      patientShare: rowTotals.patientShare,
+      paidAmount,
+      balanceDue,
+      reminderCount: reminders.length,
+    },
+  };
+}
+
+function resetInsuranceStatementPaymentForm() {
+  if (insuranceReportPaymentAmount) insuranceReportPaymentAmount.value = '';
+  if (insuranceReportPaymentDate) insuranceReportPaymentDate.value = getDefaultInsuranceStatementPaymentDate();
+  if (insuranceReportPaymentMethod) insuranceReportPaymentMethod.value = 'bank_transfer';
+  if (insuranceReportPaymentReference) insuranceReportPaymentReference.value = '';
+  if (insuranceReportPaymentNote) insuranceReportPaymentNote.value = '';
+}
+
+function renderInsurancePaymentHistory(statement) {
+  if (!insuranceReportPaymentHistoryBody) return;
+  insuranceReportPaymentHistoryBody.innerHTML = '';
+  const payments = statement?.payments || [];
+  if (!payments.length) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td colspan="6">${t('dashboard.noData')}</td>`;
+    insuranceReportPaymentHistoryBody.appendChild(row);
+    return;
+  }
+  payments.forEach((payment) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${escapeHtml(formatDate(payment.paymentDate) || '-')}</td>
+      <td>${escapeHtml(formatPaymentMethodLabel(payment.paymentMethod))}</td>
+      <td>${escapeHtml(payment.reference || '-')}</td>
+      <td>${formatCfl(payment.amount || 0)}</td>
+      <td>${escapeHtml(payment.note || '-')}</td>
+      <td>${escapeHtml(payment.createdBy || '-')}</td>
+    `;
+    insuranceReportPaymentHistoryBody.appendChild(row);
+  });
+}
+
+function clearInsuranceStatementPreview() {
+  if (insuranceReportClaimsCount) insuranceReportClaimsCount.textContent = '0';
+  if (insuranceReportReceiptsCount) insuranceReportReceiptsCount.textContent = '0';
+  if (insuranceReportPatientsCount) insuranceReportPatientsCount.textContent = '0';
+  if (insuranceReportBilledTotal) insuranceReportBilledTotal.textContent = formatCfl(0);
+  if (insuranceReportAmountDue) insuranceReportAmountDue.textContent = formatCfl(0);
+  if (insuranceReportPatientPart) insuranceReportPatientPart.textContent = formatCfl(0);
+  if (insuranceReportPaidTotal) insuranceReportPaidTotal.textContent = formatCfl(0);
+  if (insuranceReportBalance) insuranceReportBalance.textContent = formatCfl(0);
+  if (insuranceReportStatus) insuranceReportStatus.textContent = '-';
+  if (insuranceReportStatusSelect) insuranceReportStatusSelect.value = 'generated';
+  if (insuranceReportTableBody) {
+    insuranceReportTableBody.innerHTML = '';
+    const row = document.createElement('tr');
+    row.innerHTML = `<td colspan="13">${t('dashboard.noData')}</td>`;
+    insuranceReportTableBody.appendChild(row);
+  }
+  renderInsurancePaymentHistory(null);
+  resetInsuranceStatementPaymentForm();
+}
+
+function setInsuranceReportActionState(statement) {
+  const hasStatement = !!statement && !!statement.rows?.length;
+  if (insuranceReportEmailBtn) insuranceReportEmailBtn.disabled = !hasStatement;
+  if (insuranceReportBordereauBtn) insuranceReportBordereauBtn.disabled = !hasStatement;
+  if (insuranceReportPdfBtn) insuranceReportPdfBtn.disabled = !hasStatement;
+  if (insuranceReportDownloadBtn) insuranceReportDownloadBtn.disabled = !hasStatement;
+  if (insuranceReportLetterBtn) insuranceReportLetterBtn.disabled = !hasStatement;
+  if (insuranceReportStatusSelect) insuranceReportStatusSelect.disabled = !hasStatement;
+  if (insuranceReportUpdateStatusBtn) insuranceReportUpdateStatusBtn.disabled = !hasStatement;
+  const allowPayment = hasStatement && (statement.totals?.balanceDue || 0) > 0;
+  if (insuranceReportPaymentAmount) insuranceReportPaymentAmount.disabled = !allowPayment;
+  if (insuranceReportPaymentDate) insuranceReportPaymentDate.disabled = !allowPayment;
+  if (insuranceReportPaymentMethod) insuranceReportPaymentMethod.disabled = !allowPayment;
+  if (insuranceReportPaymentReference) insuranceReportPaymentReference.disabled = !allowPayment;
+  if (insuranceReportPaymentNote) insuranceReportPaymentNote.disabled = !allowPayment;
+  if (insuranceReportRecordPaymentBtn) insuranceReportRecordPaymentBtn.disabled = !allowPayment;
+}
+
+function renderInsuranceStatementPreview(statement) {
+  if (!statement) {
+    clearInsuranceStatementPreview();
+    setInsuranceReportActionState(null);
+    return;
+  }
+  if (insuranceReportClaimsCount) insuranceReportClaimsCount.textContent = String(statement.totals?.lineCount || 0);
+  if (insuranceReportReceiptsCount) insuranceReportReceiptsCount.textContent = String(statement.totals?.receiptCount || 0);
+  if (insuranceReportPatientsCount) insuranceReportPatientsCount.textContent = String(statement.totals?.patientCount || 0);
+  if (insuranceReportBilledTotal) insuranceReportBilledTotal.textContent = formatCfl(statement.totals?.billed || 0);
+  if (insuranceReportAmountDue) insuranceReportAmountDue.textContent = formatCfl(statement.totals?.insurerShare || 0);
+  if (insuranceReportPatientPart) insuranceReportPatientPart.textContent = formatCfl(statement.totals?.patientShare || 0);
+  if (insuranceReportPaidTotal) insuranceReportPaidTotal.textContent = formatCfl(statement.totals?.paidAmount || 0);
+  if (insuranceReportBalance) insuranceReportBalance.textContent = formatCfl(statement.totals?.balanceDue || 0);
+  if (insuranceReportStatus) insuranceReportStatus.textContent = getInsuranceStatementStatusLabel(statement.status);
+  if (insuranceReportStatusSelect) insuranceReportStatusSelect.value = getInsuranceStatementSelectableStatus(statement);
+  if (insuranceReportTableBody) {
+    insuranceReportTableBody.innerHTML = '';
+    if (!statement.rows.length) {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td colspan="13">${t('reports.noClaims')}</td>`;
+      insuranceReportTableBody.appendChild(row);
+    } else {
+      statement.rows.forEach((rowData) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${escapeHtml(formatDate(rowData.createdAt) || '-')}</td>
+          <td>${escapeHtml(rowData.receiptNumber || '-')}</td>
+          <td>${escapeHtml(rowData.patientName || '-')}</td>
+          <td>${escapeHtml(rowData.label || '-')}</td>
+          <td>${escapeHtml(rowData.code || '-')}</td>
+          <td>${escapeHtml(rowData.inam || '-')}</td>
+          <td>${escapeHtml(String(rowData.qty || 1))}</td>
+          <td>${formatCfl(rowData.base || 0)}</td>
+          <td>${rowData.rate ? `${rowData.rate}%` : '-'}</td>
+          <td>${formatCfl(rowData.total || 0)}</td>
+          <td>${formatCfl(rowData.insuranceShare || 0)}</td>
+          <td>${formatCfl(rowData.patientShare || 0)}</td>
+          <td>${escapeHtml(rowData.doctorName || '-')}</td>
+        `;
+        insuranceReportTableBody.appendChild(row);
+      });
+    }
+  }
+  renderInsurancePaymentHistory(statement);
+  setInsuranceReportActionState(statement);
+}
+
+function renderInsuranceStatementHistory() {
+  if (!insuranceReportHistoryBody) return;
+  const statements = loadInsuranceStatements().slice().sort(
+    (a, b) => new Date(b.updatedAt || b.createdAt || 0) - new Date(a.updatedAt || a.createdAt || 0)
+  );
+  insuranceReportHistoryBody.innerHTML = '';
+  if (!statements.length) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td colspan="9">${t('dashboard.noData')}</td>`;
+    insuranceReportHistoryBody.appendChild(row);
+    return;
+  }
+  statements.forEach((statement) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${escapeHtml(statement.insurer || '-')}</td>
+      <td>${escapeHtml(formatDate(statement.periodStart) || '-')} - ${escapeHtml(
+        formatDate(statement.periodEnd) || '-'
+      )}</td>
+      <td>${escapeHtml(String(statement.totals?.lineCount || 0))}</td>
+      <td>${formatCfl(statement.totals?.insurerShare || 0)}</td>
+      <td>${formatCfl(statement.totals?.paidAmount || 0)}</td>
+      <td>${formatCfl(statement.totals?.balanceDue || 0)}</td>
+      <td><span class="pill">${escapeHtml(getInsuranceStatementStatusLabel(statement.status))}</span></td>
+      <td>${escapeHtml(formatDate(statement.updatedAt || statement.createdAt) || '-')}</td>
+      <td><button type="button" class="ghost insurance-report-load" data-statement-id="${escapeHtml(
+        statement.id
+      )}">${escapeHtml(t('reports.openStatement'))}</button></td>
+    `;
+    insuranceReportHistoryBody.appendChild(row);
+  });
+}
+
+function renderInsuranceStatementsSection() {
+  syncInsuranceReportFilters();
+  const activeStatement = getInsuranceStatementById(activeInsuranceStatementId);
+  renderInsuranceStatementPreview(activeStatement);
+  renderInsuranceStatementHistory();
+}
+
+function buildInsuranceStatementEmail(statement) {
+  const facility = currentFacilityProfile?.name || currentFacility || 'MediTrack';
+  const subject = `${t('reports.emailSubject')} - ${facility} - ${statement.insurer} (${formatDate(
+    statement.periodStart
+  )} - ${formatDate(statement.periodEnd)})`;
+  const body = [
+    `${t('reports.emailGreeting')}`,
+    '',
+    `${t('reports.emailIntro')} ${facility}.`,
+    `${t('reports.emailInsurer')}: ${statement.insurer}`,
+    `${t('reports.emailPeriod')}: ${formatDate(statement.periodStart)} - ${formatDate(statement.periodEnd)}`,
+    `${t('reports.emailClaims')}: ${statement.totals?.lineCount || 0}`,
+    `${t('reports.emailAmountDue')}: ${formatCfl(statement.totals?.insurerShare || 0)}`,
+    '',
+    `${t('reports.emailAttachmentNote')}`,
+    '',
+    `${t('reports.emailClosing')}`,
+  ].join('\n');
+  return { subject, body };
+}
+
+function buildInsuranceReminderEmail(statement) {
+  const facility = currentFacilityProfile?.name || currentFacility || 'MediTrack';
+  const subject = `${t('reports.reminderSubject')} - ${statement.insurer} (${formatDate(statement.periodStart)} - ${formatDate(
+    statement.periodEnd
+  )})`;
+  const body = [
+    `${t('reports.emailGreeting')}`,
+    '',
+    `${t('reports.reminderIntro')} ${facility}.`,
+    `${t('reports.emailInsurer')}: ${statement.insurer}`,
+    `${t('reports.emailPeriod')}: ${formatDate(statement.periodStart)} - ${formatDate(statement.periodEnd)}`,
+    `${t('reports.statementBalance')}: ${formatCfl(statement.totals?.balanceDue || 0)}`,
+    `${t('reports.reminderLastTransmission')}: ${formatDate(statement.transmittedAt || statement.createdAt) || '-'}`,
+    '',
+    `${t('reports.reminderAttachmentNote')}`,
+    '',
+    `${t('reports.emailClosing')}`,
+  ].join('\n');
+  return { subject, body };
+}
+
+function openInsuranceStatementEmailDraft(statement) {
+  if (!statement) return false;
+  const partner = getInsuranceStatementPartner(statement.insurer);
+  const email = partner?.email || statement.insurerEmail || '';
+  if (!email) {
+    setMessage(insuranceReportMessage, t('reports.insurerEmailMissing'));
+    return false;
+  }
+  const draft = buildInsuranceStatementEmail(statement);
+  window.location.href = `mailto:${email}?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(
+    draft.body
+  )}`;
+  return true;
+}
+
+function openInsuranceReminderEmailDraft(statement) {
+  if (!statement) return false;
+  const partner = getInsuranceStatementPartner(statement.insurer);
+  const email = partner?.email || statement.insurerEmail || '';
+  if (!email) {
+    setMessage(insuranceReportMessage, t('reports.reminderEmailMissing'));
+    return false;
+  }
+  const draft = buildInsuranceReminderEmail(statement);
+  window.location.href = `mailto:${email}?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(
+    draft.body
+  )}`;
+  return true;
+}
+
+function csvEscape(value) {
+  const stringValue = String(value ?? '');
+  if (/[;\n"]/.test(stringValue)) {
+    return `"${stringValue.replace(/"/g, '""')}"`;
+  }
+  return stringValue;
+}
+
+function downloadBlobFile(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+}
+
+function openPrintableDocument(html, name = 'print') {
+  const popup = window.open('', '_blank', 'noopener,noreferrer,width=1200,height=800');
+  if (!popup) return false;
+  popup.document.open();
+  popup.document.write(html);
+  popup.document.close();
+  popup.focus();
+  setTimeout(() => {
+    popup.print();
+  }, 300);
+  return true;
+}
+
+function buildInsuranceStatementPdfHtml(statement, title = '', subtitle = '') {
+  const reportTitle = title || t('reports.insuranceClaimsTitle');
+  const header = buildFacilityPrintHeaderHtml(
+    reportTitle,
+    subtitle || `${statement.insurer} · ${formatDate(statement.periodStart)} - ${formatDate(statement.periodEnd)}`
+  );
+  const detailRows = statement.rows.length
+    ? statement.rows
+        .map(
+          (row) => `
+            <tr>
+              <td>${escapeHtml(formatDate(row.createdAt) || '-')}</td>
+              <td>${escapeHtml(row.receiptNumber || '-')}</td>
+              <td>${escapeHtml(row.patientName || '-')}</td>
+              <td>${escapeHtml(row.label || '-')}</td>
+              <td>${escapeHtml(row.code || '-')}</td>
+              <td>${escapeHtml(row.inam || '-')}</td>
+              <td>${escapeHtml(String(row.qty || 1))}</td>
+              <td>${formatCfl(row.base || 0)}</td>
+              <td>${row.rate ? `${row.rate}%` : '-'}</td>
+              <td>${formatCfl(row.total || 0)}</td>
+              <td>${formatCfl(row.insuranceShare || 0)}</td>
+              <td>${formatCfl(row.patientShare || 0)}</td>
+              <td>${escapeHtml(row.doctorName || '-')}</td>
+            </tr>
+          `
+        )
+        .join('')
+    : `<tr><td colspan="13">${escapeHtml(t('reports.noClaims'))}</td></tr>`;
+  return `<!DOCTYPE html>
+<html lang="${escapeHtml(currentLang || 'en')}">
+  <head>
+    <meta charset="utf-8" />
+    <title>${escapeHtml(reportTitle)} - ${escapeHtml(statement.insurer || '')}</title>
+    <style>
+      body { font-family: Arial, sans-serif; color: #10213a; margin: 24px; }
+      .print-brand { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 24px; border-bottom: 2px solid #d8e1ee; padding-bottom: 16px; }
+      .print-brand-logo img { width: 90px; max-height: 90px; object-fit: contain; border-radius: 16px; }
+      .print-brand-tag { margin: 0 0 8px; font-size: 11px; letter-spacing: 0.22em; color: #285ea6; font-weight: 700; text-transform: uppercase; }
+      .print-brand h1 { margin: 0 0 8px; font-size: 30px; }
+      .print-brand h2 { margin: 0 0 8px; font-size: 18px; color: #285ea6; }
+      .print-brand-subtitle, .print-brand p { margin: 0; color: #506683; }
+      .meta-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+      .meta-card, .summary-card { border: 1px solid #d8e1ee; border-radius: 16px; padding: 14px; background: #f8fbff; }
+      .summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0 24px; }
+      .summary-card span, .meta-card span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #6c8098; margin-bottom: 6px; }
+      .summary-card strong, .meta-card strong { font-size: 18px; }
+      table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+      th, td { border: 1px solid #d8e1ee; padding: 8px; font-size: 12px; text-align: left; vertical-align: top; }
+      th { background: #eef4ff; }
+      .footer-note { margin-top: 18px; font-size: 11px; color: #6c8098; }
+    </style>
+  </head>
+  <body>
+    ${header}
+    <section class="meta-grid">
+      <div class="meta-card"><span>${escapeHtml(t('reports.insurerFilter'))}</span><strong>${escapeHtml(
+        statement.insurer || '-'
+      )}</strong></div>
+      <div class="meta-card"><span>${escapeHtml(t('reports.statementStatus'))}</span><strong>${escapeHtml(
+        getInsuranceStatementStatusLabel(statement.status)
+      )}</strong></div>
+      <div class="meta-card"><span>${escapeHtml(t('reports.periodStart'))}</span><strong>${escapeHtml(
+        formatDate(statement.periodStart) || '-'
+      )}</strong></div>
+      <div class="meta-card"><span>${escapeHtml(t('reports.periodEnd'))}</span><strong>${escapeHtml(
+        formatDate(statement.periodEnd) || '-'
+      )}</strong></div>
+    </section>
+    <section class="summary-grid">
+      <div class="summary-card"><span>${escapeHtml(t('reports.statementBilled'))}</span><strong>${escapeHtml(
+        formatCfl(statement.totals?.billed || 0)
+      )}</strong></div>
+      <div class="summary-card"><span>${escapeHtml(t('reports.statementDue'))}</span><strong>${escapeHtml(
+        formatCfl(statement.totals?.insurerShare || 0)
+      )}</strong></div>
+      <div class="summary-card"><span>${escapeHtml(t('reports.statementPatientShare'))}</span><strong>${escapeHtml(
+        formatCfl(statement.totals?.patientShare || 0)
+      )}</strong></div>
+      <div class="summary-card"><span>${escapeHtml(t('reports.statementPaid'))}</span><strong>${escapeHtml(
+        formatCfl(statement.totals?.paidAmount || 0)
+      )}</strong></div>
+      <div class="summary-card"><span>${escapeHtml(t('reports.statementBalance'))}</span><strong>${escapeHtml(
+        formatCfl(statement.totals?.balanceDue || 0)
+      )}</strong></div>
+      <div class="summary-card"><span>${escapeHtml(t('reports.claimLines'))}</span><strong>${escapeHtml(
+        String(statement.totals?.lineCount || 0)
+      )}</strong></div>
+    </section>
+    <table>
+      <thead>
+        <tr>
+          <th>${escapeHtml(t('reports.statementDate'))}</th>
+          <th>${escapeHtml(t('reports.statementReceipt'))}</th>
+          <th>${escapeHtml(t('reports.statementPatient'))}</th>
+          <th>${escapeHtml(t('reports.statementService'))}</th>
+          <th>${escapeHtml(t('reports.statementCode'))}</th>
+          <th>${escapeHtml(t('reports.statementInam'))}</th>
+          <th>${escapeHtml(t('reports.statementQty'))}</th>
+          <th>${escapeHtml(t('reports.statementBase'))}</th>
+          <th>${escapeHtml(t('reports.statementRate'))}</th>
+          <th>${escapeHtml(t('reports.statementTotal'))}</th>
+          <th>${escapeHtml(t('reports.statementInsuranceShare'))}</th>
+          <th>${escapeHtml(t('reports.statementPatientShareColumn'))}</th>
+          <th>${escapeHtml(t('reports.statementPrescriber'))}</th>
+        </tr>
+      </thead>
+      <tbody>${detailRows}</tbody>
+    </table>
+    <p class="footer-note">${escapeHtml(t('reports.printGeneratedAt'))}: ${escapeHtml(
+      formatDate(new Date().toISOString()) || '-'
+    )}</p>
+  </body>
+</html>`;
+}
+
+function buildInsuranceBordereauHtml(statement) {
+  const header = buildFacilityPrintHeaderHtml(
+    t('reports.bordereauTitle'),
+    `${statement.insurer} · ${formatDate(statement.periodStart)} - ${formatDate(statement.periodEnd)}`
+  );
+  const attachments = [
+    t('reports.attachmentStatement'),
+    t('reports.attachmentBordereau'),
+    t('reports.attachmentExcel'),
+    t('reports.attachmentLetter'),
+  ];
+  const attachmentRows = attachments
+    .map(
+      (label) => `<tr><td>${escapeHtml(label)}</td><td style="width:120px; text-align:center;">&#9633;</td></tr>`
+    )
+    .join('');
+  return `<!DOCTYPE html>
+<html lang="${escapeHtml(currentLang || 'en')}">
+  <head>
+    <meta charset="utf-8" />
+    <title>${escapeHtml(t('reports.bordereauTitle'))}</title>
+    <style>
+      body { font-family: Arial, sans-serif; color: #10213a; margin: 24px; }
+      .print-brand { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 24px; border-bottom: 2px solid #d8e1ee; padding-bottom: 16px; }
+      .print-brand-logo img { width: 90px; max-height: 90px; object-fit: contain; border-radius: 16px; }
+      .print-brand-tag { margin: 0 0 8px; font-size: 11px; letter-spacing: 0.22em; color: #285ea6; font-weight: 700; text-transform: uppercase; }
+      .print-brand h1 { margin: 0 0 8px; font-size: 30px; }
+      .print-brand h2 { margin: 0 0 8px; font-size: 18px; color: #285ea6; }
+      .print-brand-subtitle, .print-brand p { margin: 0; color: #506683; }
+      .sheet { border: 1px solid #d8e1ee; border-radius: 18px; padding: 18px; background: #f8fbff; }
+      .sheet-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 20px; }
+      .sheet-card { border: 1px solid #d8e1ee; border-radius: 16px; padding: 14px; background: white; }
+      .sheet-card span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #6c8098; margin-bottom: 6px; }
+      .sheet-card strong { font-size: 18px; }
+      table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+      th, td { border: 1px solid #d8e1ee; padding: 8px; font-size: 12px; text-align: left; }
+      th { background: #eef4ff; }
+      .signature { margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+      .signature div { border-top: 1px solid #8898aa; padding-top: 10px; min-height: 48px; }
+    </style>
+  </head>
+  <body>
+    ${header}
+    <div class="sheet">
+      <div class="sheet-grid">
+        <div class="sheet-card"><span>${escapeHtml(t('reports.insurerFilter'))}</span><strong>${escapeHtml(
+          statement.insurer || '-'
+        )}</strong></div>
+        <div class="sheet-card"><span>${escapeHtml(t('reports.historyPeriod'))}</span><strong>${escapeHtml(
+          `${formatDate(statement.periodStart) || '-'} - ${formatDate(statement.periodEnd) || '-'}`
+        )}</strong></div>
+        <div class="sheet-card"><span>${escapeHtml(t('reports.coveredPatients'))}</span><strong>${escapeHtml(
+          String(statement.totals?.patientCount || 0)
+        )}</strong></div>
+        <div class="sheet-card"><span>${escapeHtml(t('reports.coveredReceipts'))}</span><strong>${escapeHtml(
+          String(statement.totals?.receiptCount || 0)
+        )}</strong></div>
+        <div class="sheet-card"><span>${escapeHtml(t('reports.claimLines'))}</span><strong>${escapeHtml(
+          String(statement.totals?.lineCount || 0)
+        )}</strong></div>
+        <div class="sheet-card"><span>${escapeHtml(t('reports.statementDue'))}</span><strong>${escapeHtml(
+          formatCfl(statement.totals?.insurerShare || 0)
+        )}</strong></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>${escapeHtml(t('reports.bordereauLabel'))}</th>
+            <th>${escapeHtml(t('reports.bordereauValue'))}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>${escapeHtml(t('reports.statementBilled'))}</td><td>${escapeHtml(
+            formatCfl(statement.totals?.billed || 0)
+          )}</td></tr>
+          <tr><td>${escapeHtml(t('reports.statementPatientShare'))}</td><td>${escapeHtml(
+            formatCfl(statement.totals?.patientShare || 0)
+          )}</td></tr>
+          <tr><td>${escapeHtml(t('reports.statementPaid'))}</td><td>${escapeHtml(
+            formatCfl(statement.totals?.paidAmount || 0)
+          )}</td></tr>
+          <tr><td>${escapeHtml(t('reports.statementBalance'))}</td><td>${escapeHtml(
+            formatCfl(statement.totals?.balanceDue || 0)
+          )}</td></tr>
+          <tr><td>${escapeHtml(t('reports.statementStatus'))}</td><td>${escapeHtml(
+            getInsuranceStatementStatusLabel(statement.status)
+          )}</td></tr>
+        </tbody>
+      </table>
+      <h3>${escapeHtml(t('reports.attachmentsTitle'))}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>${escapeHtml(t('reports.attachmentDocument'))}</th>
+            <th>${escapeHtml(t('reports.attachmentIncluded'))}</th>
+          </tr>
+        </thead>
+        <tbody>${attachmentRows}</tbody>
+      </table>
+      <div class="signature">
+        <div>${escapeHtml(t('reports.signaturePreparedBy'))}</div>
+        <div>${escapeHtml(t('reports.signatureValidatedBy'))}</div>
+      </div>
+    </div>
+  </body>
+</html>`;
+}
+
+function exportInsuranceStatementPdf(statement) {
+  if (!statement) return false;
+  return openPrintableDocument(buildInsuranceStatementPdfHtml(statement), 'insurance-statement');
+}
+
+function exportInsuranceStatementBordereau(statement) {
+  if (!statement) return false;
+  return openPrintableDocument(buildInsuranceBordereauHtml(statement), 'insurance-bordereau');
+}
+
+function downloadInsuranceStatementExcel(statement) {
+  if (!statement) return;
+  const rows = statement.rows
+    .map(
+      (row) => `
+        <tr>
+          <td>${escapeHtml(formatDate(row.createdAt) || '-')}</td>
+          <td>${escapeHtml(row.receiptNumber || '-')}</td>
+          <td>${escapeHtml(row.patientName || '-')}</td>
+          <td>${escapeHtml(row.label || '-')}</td>
+          <td>${escapeHtml(row.code || '-')}</td>
+          <td>${escapeHtml(row.inam || '-')}</td>
+          <td>${escapeHtml(String(row.qty || 1))}</td>
+          <td>${escapeHtml(String(row.base || 0))}</td>
+          <td>${escapeHtml(row.rate ? `${row.rate}%` : '-')}</td>
+          <td>${escapeHtml(String(row.total || 0))}</td>
+          <td>${escapeHtml(String(row.insuranceShare || 0))}</td>
+          <td>${escapeHtml(String(row.patientShare || 0))}</td>
+          <td>${escapeHtml(row.doctorName || '-')}</td>
+        </tr>
+      `
+    )
+    .join('');
+  const html = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <table border="1">
+      <tr><th colspan="13">${escapeHtml(t('reports.insuranceClaimsTitle'))}</th></tr>
+      <tr><td>${escapeHtml(t('reports.insurerFilter'))}</td><td colspan="12">${escapeHtml(
+        statement.insurer || '-'
+      )}</td></tr>
+      <tr><td>${escapeHtml(t('reports.periodStart'))}</td><td>${escapeHtml(
+        formatDate(statement.periodStart) || '-'
+      )}</td><td>${escapeHtml(t('reports.periodEnd'))}</td><td>${escapeHtml(
+        formatDate(statement.periodEnd) || '-'
+      )}</td><td>${escapeHtml(t('reports.statementDue'))}</td><td>${escapeHtml(
+        String(statement.totals?.insurerShare || 0)
+      )}</td><td>${escapeHtml(t('reports.statementPaid'))}</td><td>${escapeHtml(
+        String(statement.totals?.paidAmount || 0)
+      )}</td><td>${escapeHtml(t('reports.statementBalance'))}</td><td>${escapeHtml(
+        String(statement.totals?.balanceDue || 0)
+      )}</td><td colspan="3"></td></tr>
+      <tr>
+        <th>${escapeHtml(t('reports.statementDate'))}</th>
+        <th>${escapeHtml(t('reports.statementReceipt'))}</th>
+        <th>${escapeHtml(t('reports.statementPatient'))}</th>
+        <th>${escapeHtml(t('reports.statementService'))}</th>
+        <th>${escapeHtml(t('reports.statementCode'))}</th>
+        <th>${escapeHtml(t('reports.statementInam'))}</th>
+        <th>${escapeHtml(t('reports.statementQty'))}</th>
+        <th>${escapeHtml(t('reports.statementBase'))}</th>
+        <th>${escapeHtml(t('reports.statementRate'))}</th>
+        <th>${escapeHtml(t('reports.statementTotal'))}</th>
+        <th>${escapeHtml(t('reports.statementInsuranceShare'))}</th>
+        <th>${escapeHtml(t('reports.statementPatientShareColumn'))}</th>
+        <th>${escapeHtml(t('reports.statementPrescriber'))}</th>
+      </tr>
+      ${rows}
+    </table>
+  </body>
+</html>`;
+  const blob = new Blob(['\ufeff', html], { type: 'application/vnd.ms-excel' });
+  downloadBlobFile(
+    blob,
+    `insurance-statement-${normalizeProvider(statement.insurer || 'insurer')}-${statement.periodStart}-${statement.periodEnd}.xls`
+  );
+}
+
+function buildInsuranceTransmissionLetterHtml(statement) {
+  const header = buildFacilityPrintHeaderHtml(
+    t('reports.transmittalTitle'),
+    `${statement.insurer} · ${formatDate(statement.periodStart)} - ${formatDate(statement.periodEnd)}`
+  );
+  return `<!DOCTYPE html>
+<html lang="${escapeHtml(currentLang || 'en')}">
+  <head>
+    <meta charset="utf-8" />
+    <title>${escapeHtml(t('reports.transmittalTitle'))}</title>
+    <style>
+      body { font-family: Arial, sans-serif; color: #10213a; margin: 32px; line-height: 1.6; }
+      .print-brand { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 24px; border-bottom: 2px solid #d8e1ee; padding-bottom: 16px; }
+      .print-brand-logo img { width: 90px; max-height: 90px; object-fit: contain; border-radius: 16px; }
+      .print-brand-tag { margin: 0 0 8px; font-size: 11px; letter-spacing: 0.22em; color: #285ea6; font-weight: 700; text-transform: uppercase; }
+      .print-brand h1 { margin: 0 0 8px; font-size: 30px; }
+      .print-brand h2 { margin: 0 0 8px; font-size: 18px; color: #285ea6; }
+      .print-brand-subtitle, .print-brand p { margin: 0; color: #506683; }
+    </style>
+  </head>
+  <body>
+    ${header}
+    <p>${escapeHtml(t('reports.transmittalIntro'))}</p>
+    <p><strong>${escapeHtml(t('reports.insurerFilter'))}:</strong> ${escapeHtml(statement.insurer || '-')}</p>
+    <p><strong>${escapeHtml(t('reports.periodStart'))}:</strong> ${escapeHtml(
+      formatDate(statement.periodStart) || '-'
+    )}<br />
+    <strong>${escapeHtml(t('reports.periodEnd'))}:</strong> ${escapeHtml(formatDate(statement.periodEnd) || '-')}</p>
+    <p><strong>${escapeHtml(t('reports.claimLines'))}:</strong> ${escapeHtml(
+      String(statement.totals?.lineCount || 0)
+    )}<br />
+    <strong>${escapeHtml(t('reports.statementDue'))}:</strong> ${escapeHtml(
+      formatCfl(statement.totals?.insurerShare || 0)
+    )}</p>
+    <p>${escapeHtml(t('reports.transmittalBody'))}</p>
+    <p>${escapeHtml(t('reports.emailClosing'))}</p>
+  </body>
+</html>`;
+}
+
+function downloadInsuranceTransmissionLetter(statement) {
+  if (!statement) return;
+  const blob = new Blob(['\ufeff', buildInsuranceTransmissionLetterHtml(statement)], {
+    type: 'application/msword',
+  });
+  downloadBlobFile(
+    blob,
+    `insurance-transmittal-${normalizeProvider(statement.insurer || 'insurer')}-${statement.periodStart}-${statement.periodEnd}.doc`
+  );
+}
+
+function updateInsuranceStatementStatus(statementId, status, transmissionMethod = '') {
+  const statements = loadInsuranceStatements();
+  const index = statements.findIndex((statement) => statement.id === statementId);
+  if (index === -1) return null;
+  const current = statements[index];
+  const normalizedStatus = normalizeInsuranceStatementStatus(status);
+  const selectable = getInsuranceStatementSelectableStatuses();
+  const now = new Date().toISOString();
+  const manualStatus = selectable.includes(normalizedStatus)
+    ? normalizedStatus
+    : current.manualStatus || getInsuranceStatementSelectableStatus(current);
+  const nextStatement = normalizeInsuranceStatement({
+    ...current,
+    manualStatus,
+    transmissionMethod: transmissionMethod || current.transmissionMethod || '',
+    transmittedAt:
+      manualStatus === 'sent'
+        ? current.transmittedAt || now
+        : manualStatus === 'generated'
+          ? ''
+          : current.transmittedAt || '',
+    updatedAt: now,
+  });
+  statements[index] = nextStatement;
+  saveInsuranceStatements(statements);
+  activeInsuranceStatementId = statementId;
+  return nextStatement;
+}
+
+function recordInsuranceStatementReminder(statementId, payload = {}) {
+  const statements = loadInsuranceStatements();
+  const index = statements.findIndex((statement) => statement.id === statementId);
+  if (index === -1) return { error: 'missing_statement' };
+  const statement = statements[index];
+  const sentAt = new Date().toISOString();
+  const reminder = normalizeInsuranceStatementReminder(
+    {
+      id: `INSREM-${Date.now()}`,
+      sentAt,
+      method: payload.method || 'email',
+      note: payload.note || '',
+      createdBy: currentEmployee?.name || currentEmployee?.code || '',
+    },
+    (statement.reminders || []).length,
+    statement.id
+  );
+  const updated = normalizeInsuranceStatement({
+    ...statement,
+    reminders: [...(statement.reminders || []), reminder],
+    manualStatus: statement.manualStatus === 'generated' ? 'sent' : statement.manualStatus,
+    transmittedAt: statement.transmittedAt || sentAt,
+    updatedAt: sentAt,
+  });
+  statements[index] = updated;
+  saveInsuranceStatements(statements);
+  activeInsuranceStatementId = updated.id;
+  return { statement: updated, reminder };
+}
+
+function recordInsuranceStatementPayment(statementId, payload) {
+  const statements = loadInsuranceStatements();
+  const index = statements.findIndex((statement) => statement.id === statementId);
+  if (index === -1) return { error: 'missing_statement' };
+  const statement = statements[index];
+  const amount = parseNumber(payload?.amount);
+  if (!(amount > 0)) return { error: 'invalid_amount' };
+  const balance = statement.totals?.balanceDue || 0;
+  if (amount > balance + 0.01) return { error: 'exceeds_balance' };
+  const paymentDate = formatDateInputValue(payload?.paymentDate || getDefaultInsuranceStatementPaymentDate());
+  if (!paymentDate) return { error: 'missing_payment_date' };
+  const paymentMethod = payload?.paymentMethod || 'bank_transfer';
+  const createdAt = `${paymentDate}T12:00:00`;
+  const payment = normalizeInsuranceStatementPayment(
+    {
+      id: `INSPAY-${Date.now()}`,
+      amount,
+      paymentDate,
+      paymentMethod,
+      reference: payload?.reference || '',
+      note: payload?.note || '',
+      createdAt,
+      createdBy: currentEmployee?.name || currentEmployee?.code || '',
+    },
+    (statement.payments || []).length,
+    statement.id
+  );
+  const updated = normalizeInsuranceStatement({
+    ...statement,
+    payments: [...(statement.payments || []), payment],
+    updatedAt: new Date().toISOString(),
+  });
+  statements[index] = updated;
+  saveInsuranceStatements(statements);
+  const accountingEntries = loadAccountingEntries();
+  accountingEntries.push({
+    id: `ACC-INS-${Date.now()}`,
+    entryType: 'insurance_payment',
+    statementId: updated.id,
+    insurer: updated.insurer || '',
+    paymentMethod,
+    cashAmount: paymentMethod === 'cash' ? amount : 0,
+    bankAmount: paymentMethod === 'bank_transfer' ? amount : 0,
+    insurerAmount: 0,
+    insurerPaymentAmount: amount,
+    totalAmount: amount,
+    reference: payment.reference || '',
+    note: payment.note || '',
+    recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+    createdAt,
+  });
+  saveAccountingEntries(accountingEntries);
+  activeInsuranceStatementId = updated.id;
+  return { statement: updated, payment };
+}
+
+function getInsuranceReceivablesSummary(referenceDate = new Date()) {
+  const statements = loadInsuranceStatements();
+  const accountingEntries = loadAccountingEntries();
+  const insurerPayments = accountingEntries
+    .filter((entry) => entry.entryType === 'insurance_payment')
+    .filter((entry) => isSameCalendarMonth(parseDateValue(entry.createdAt), referenceDate))
+    .reduce((sum, entry) => sum + (entry.insurerPaymentAmount || entry.totalAmount || 0), 0);
+  const openStatements = statements.filter((statement) => (statement.totals?.balanceDue || 0) > 0);
+  const overdueStatements = openStatements.filter(
+    (statement) => !['rejected', 'disputed'].includes(statement.status) && getInsuranceStatementAgingDays(statement, referenceDate) > 30
+  );
+  return {
+    insurerPayments,
+    outstanding: statements.reduce((sum, statement) => sum + (statement.totals?.balanceDue || 0), 0),
+    openCount: openStatements.length,
+    overdueCount: overdueStatements.length,
+    reminderCount: statements.reduce((sum, statement) => sum + (statement.totals?.reminderCount || 0), 0),
+  };
+}
+
+function renderInsuranceReceivablesSection() {
+  if (!insuranceReceivablesTableBody) return;
+  const now = new Date();
+  const statements = loadInsuranceStatements()
+    .slice()
+    .sort((a, b) => (b.totals?.balanceDue || 0) - (a.totals?.balanceDue || 0));
+  const summary = getInsuranceReceivablesSummary(now);
+  if (insuranceReceivablesOpenCount) insuranceReceivablesOpenCount.textContent = String(summary.openCount || 0);
+  if (insuranceReceivablesOutstandingTotal) {
+    insuranceReceivablesOutstandingTotal.textContent = formatCfl(summary.outstanding || 0);
+  }
+  if (insuranceReceivablesOverdueCount) insuranceReceivablesOverdueCount.textContent = String(summary.overdueCount || 0);
+  if (insuranceReceivablesReminderCount) insuranceReceivablesReminderCount.textContent = String(summary.reminderCount || 0);
+  insuranceReceivablesTableBody.innerHTML = '';
+  if (!statements.length) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td colspan="10">${t('dashboard.noData')}</td>`;
+    insuranceReceivablesTableBody.appendChild(row);
+    return;
+  }
+  statements.forEach((statement) => {
+    const aging = getInsuranceStatementAgingDays(statement, now);
+    const canRemind = (statement.totals?.balanceDue || 0) > 0 && !!(getInsuranceStatementPartner(statement.insurer)?.email || statement.insurerEmail);
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${escapeHtml(statement.insurer || '-')}</td>
+      <td>${escapeHtml(formatDate(statement.periodStart) || '-')} - ${escapeHtml(formatDate(statement.periodEnd) || '-')}</td>
+      <td>${formatCfl(statement.totals?.insurerShare || 0)}</td>
+      <td>${formatCfl(statement.totals?.paidAmount || 0)}</td>
+      <td>${formatCfl(statement.totals?.balanceDue || 0)}</td>
+      <td><span class="pill">${escapeHtml(getInsuranceStatementStatusLabel(statement.status))}</span></td>
+      <td>${escapeHtml(formatDate(statement.transmittedAt || statement.createdAt) || '-')}</td>
+      <td>${escapeHtml(formatDate(statement.lastReminderAt) || '-')}</td>
+      <td>${escapeHtml(String(aging))}</td>
+      <td>
+        <div class="pill-row">
+          <button type="button" class="ghost insurance-receivable-open" data-statement-id="${escapeHtml(statement.id)}">${escapeHtml(
+            t('reports.openStatement')
+          )}</button>
+          <button type="button" class="ghost insurance-receivable-reminder" data-statement-id="${escapeHtml(
+            statement.id
+          )}" ${canRemind ? '' : 'disabled'}>${escapeHtml(t('reports.sendReminder'))}</button>
+        </div>
+      </td>
+    `;
+    insuranceReceivablesTableBody.appendChild(row);
   });
 }
 
@@ -982,6 +2188,126 @@ function saveAppointments(list) {
   }
 }
 
+
+function getClinicalResultsKey() {
+  if (currentFacility) {
+    return `meditrack_clinical_results_${currentFacility}`;
+  }
+  return 'meditrack_clinical_results_default';
+}
+
+function loadClinicalResults() {
+  try {
+    const raw = localStorage.getItem(getClinicalResultsKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveClinicalResults(list) {
+  try {
+    localStorage.setItem(getClinicalResultsKey(), JSON.stringify(list));
+  } catch (error) {
+    // ignore
+  }
+}
+
+function normalizeStockType(value) {
+  const normalized = String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[\s/.-]+/g, '_');
+  const aliases = {
+    medication: 'medication',
+    medicament: 'medication',
+    pharmacy: 'medication',
+    consumable: 'consumable',
+    consommable: 'consumable',
+    reagent: 'reagent',
+    reactif: 'reagent',
+    réactif: 'reagent',
+    equipment: 'equipment',
+    materiel: 'equipment',
+    matériel: 'equipment',
+    other: 'other',
+    autre: 'other',
+  };
+  return aliases[normalized] || 'medication';
+}
+
+function normalizeStockRecord(item = {}) {
+  return {
+    id: item.id || `ST-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+    name: item.name || item.item || '',
+    type: normalizeStockType(item.type || item.category),
+    supplier: item.supplier || '',
+    unitPrice: parseNumber(item.unitPrice ?? item.price),
+    qty: parseNumber(item.qty ?? item.quantity),
+    min: parseNumber(item.min ?? item.minLevel),
+    entryDate: item.entryDate || '',
+    expiryDate: item.expiryDate || '',
+    receiptName: item.receiptName || '',
+    notes: item.notes || '',
+    updatedAt: item.updatedAt || item.createdAt || '',
+  };
+}
+
+function normalizePurchaseOrderRecord(order = {}) {
+  const qtyOrdered = parseNumber(order.qtyOrdered ?? order.qty);
+  const qtyReceived = parseNumber(order.qtyReceived);
+  let status = order.status || 'open';
+  if (qtyOrdered > 0) {
+    if (qtyReceived >= qtyOrdered) {
+      status = 'received';
+    } else if (qtyReceived > 0) {
+      status = 'partial';
+    } else if (!status) {
+      status = 'open';
+    }
+  }
+  return {
+    id: order.id || `PO-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+    supplier: order.supplier || '',
+    itemName: order.itemName || order.item || '',
+    type: normalizeStockType(order.type),
+    qtyOrdered,
+    qtyReceived,
+    unitCost: parseNumber(order.unitCost),
+    expectedDate: order.expectedDate || order.date || '',
+    receivedDate: order.receivedDate || '',
+    status,
+    receiptName: order.receiptName || '',
+    stockItemId: order.stockItemId || '',
+    notes: order.notes || '',
+    createdAt: order.createdAt || '',
+  };
+}
+
+function normalizeStockMovementRecord(entry = {}) {
+  const qty = Math.abs(parseNumber(entry.qty));
+  const unitCost = parseNumber(entry.unitCost ?? entry.unitPrice ?? entry.cost);
+  return {
+    id: entry.id || `STM-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+    stockId: entry.stockId || '',
+    item: entry.item || entry.name || '',
+    itemType: normalizeStockType(entry.itemType || entry.type || entry.category),
+    direction: entry.direction === 'in' ? 'in' : 'out',
+    qty,
+    unitCost,
+    totalCost: parseNumber(entry.totalCost) || qty * unitCost,
+    movementType: entry.movementType || (entry.direction === 'in' ? 'purchase' : 'consumption'),
+    sourceModule: entry.sourceModule || entry.sourceRole || 'inventory',
+    recordedBy: entry.recordedBy || '',
+    supplier: entry.supplier || '',
+    patientId: entry.patientId || '',
+    encounterId: entry.encounterId || '',
+    createdAt: entry.createdAt || new Date().toISOString(),
+    note: entry.note || '',
+  };
+}
+
 function getStockKey() {
   if (currentFacility) {
     return `meditrack_stock_${currentFacility}`;
@@ -993,7 +2319,7 @@ function loadStock() {
   try {
     const raw = localStorage.getItem(getStockKey());
     const data = raw ? JSON.parse(raw) : [];
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data) ? data.map((entry) => normalizeStockRecord(entry)) : [];
   } catch (error) {
     return [];
   }
@@ -1001,7 +2327,7 @@ function loadStock() {
 
 function saveStock(list) {
   try {
-    localStorage.setItem(getStockKey(), JSON.stringify(list));
+    localStorage.setItem(getStockKey(), JSON.stringify((list || []).map((entry) => normalizeStockRecord(entry))));
   } catch (error) {
     // ignore
   }
@@ -1018,7 +2344,7 @@ function loadPurchaseOrders() {
   try {
     const raw = localStorage.getItem(getPurchaseOrdersKey());
     const data = raw ? JSON.parse(raw) : [];
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data) ? data.map((entry) => normalizePurchaseOrderRecord(entry)) : [];
   } catch (error) {
     return [];
   }
@@ -1026,7 +2352,32 @@ function loadPurchaseOrders() {
 
 function savePurchaseOrders(list) {
   try {
-    localStorage.setItem(getPurchaseOrdersKey(), JSON.stringify(list));
+    localStorage.setItem(getPurchaseOrdersKey(), JSON.stringify((list || []).map((entry) => normalizePurchaseOrderRecord(entry))));
+  } catch (error) {
+    // ignore
+  }
+}
+
+function getStockMovementsKey() {
+  if (currentFacility) {
+    return `meditrack_stock_movements_${currentFacility}`;
+  }
+  return 'meditrack_stock_movements_default';
+}
+
+function loadStockMovements() {
+  try {
+    const raw = localStorage.getItem(getStockMovementsKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data.map((entry) => normalizeStockMovementRecord(entry)) : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveStockMovements(list) {
+  try {
+    localStorage.setItem(getStockMovementsKey(), JSON.stringify((list || []).map((entry) => normalizeStockMovementRecord(entry))));
   } catch (error) {
     // ignore
   }
@@ -1059,6 +2410,7 @@ function fillPatientForm(record) {
   if (patientIdentifier) patientIdentifier.value = record.identifier || '';
   if (patientStatusLabel) patientStatusLabel.value = t('billing.returningPatient');
   toggleInsuranceDetails();
+  maybeLinkAppointmentToCurrentPatient(record, { silent: true });
 }
 
 function searchPatients(query) {
@@ -1078,6 +2430,7 @@ function searchPatients(query) {
 
 function clearPatientForm() {
   activePatientId = null;
+  activeAppointmentId = '';
   if (patientFirstName) patientFirstName.value = '';
   if (patientLastName) patientLastName.value = '';
   if (patientSex) patientSex.value = '';
@@ -1214,7 +2567,7 @@ function populateAppointmentDoctors() {
 
 function renderAppointmentsTable() {
   if (!appointmentsTableBody) return;
-  const appointments = loadAppointments();
+  const { appointments } = syncFacilityInterconnections();
   appointmentsTableBody.innerHTML = '';
   if (!appointments.length) {
     const row = document.createElement('tr');
@@ -1222,26 +2575,680 @@ function renderAppointmentsTable() {
     appointmentsTableBody.appendChild(row);
     return;
   }
-  appointments.forEach((appt) => {
-    const row = document.createElement('tr');
-    row.dataset.id = appt.id;
-    row.innerHTML = `
-      <td>${appt.patientName || '-'}</td>
-      <td>${appt.doctorName || '-'}</td>
-      <td>${appt.serviceLabel || appt.service || '-'}</td>
-      <td>${appt.date || '-'}</td>
-      <td>${appt.time || '-'}</td>
-      <td>
-        <select class="appointment-status">
-          <option value="scheduled" ${appt.status === 'scheduled' ? 'selected' : ''}>${t('appointments.statusScheduled')}</option>
-          <option value="completed" ${appt.status === 'completed' ? 'selected' : ''}>${t('appointments.statusCompleted')}</option>
-          <option value="cancelled" ${appt.status === 'cancelled' ? 'selected' : ''}>${t('appointments.statusCancelled')}</option>
-        </select>
-      </td>
-      <td><button type="button" class="remove-row" data-id="${appt.id}">${t('billing.remove')}</button></td>
-    `;
-    appointmentsTableBody.appendChild(row);
+  appointments
+    .slice()
+    .sort((a, b) => getAppointmentTimestamp(a) - getAppointmentTimestamp(b))
+    .forEach((appt) => {
+      const row = document.createElement('tr');
+      row.dataset.id = appt.id;
+      row.innerHTML = `
+        <td>${appt.patientName || '-'}</td>
+        <td>${appt.doctorName || '-'}</td>
+        <td>${appt.serviceLabel || appt.service || '-'}</td>
+        <td>${appt.date || '-'}</td>
+        <td>${appt.time || '-'}</td>
+        <td>
+          <select class="appointment-status">
+            <option value="scheduled" ${appt.status === 'scheduled' ? 'selected' : ''}>${t('appointments.statusScheduled')}</option>
+            <option value="arrived" ${appt.status === 'arrived' ? 'selected' : ''}>${t('appointments.statusArrived')}</option>
+            <option value="in_care" ${appt.status === 'in_care' ? 'selected' : ''}>${t('appointments.statusInCare')}</option>
+            <option value="completed" ${appt.status === 'completed' ? 'selected' : ''}>${t('appointments.statusCompleted')}</option>
+            <option value="cancelled" ${appt.status === 'cancelled' ? 'selected' : ''}>${t('appointments.statusCancelled')}</option>
+          </select>
+        </td>
+        <td>
+          <button type="button" class="ghost appointment-open" data-id="${appt.id}" ${appt.status === 'cancelled' ? 'disabled' : ''}>${t('appointments.openAdmission')}</button>
+          <button type="button" class="remove-row" data-id="${appt.id}">${t('billing.remove')}</button>
+        </td>
+      `;
+      appointmentsTableBody.appendChild(row);
+    });
+}
+
+function normalizePhoneComparable(value) {
+  return String(value || '').replace(/\D+/g, '');
+}
+
+function normalizeAppointmentBucket(value) {
+  const normalized = normalizeLabel(value || '').replace(/[\s/.-]+/g, '_');
+  const aliases = {
+    consultation: 'consultation',
+    consult: 'consultation',
+    lab: 'lab',
+    laboratory: 'lab',
+    imaging: 'imaging',
+    radiology: 'imaging',
+    hospital: 'hospitalization',
+    hospitalization: 'hospitalization',
+    surgery: 'surgery',
+    outpatient: 'outpatient',
+    pharmacy: 'pharmacy',
+  };
+  return aliases[normalized] || normalized;
+}
+
+function getAppointmentTimestamp(appointment) {
+  if (!appointment) return Number.POSITIVE_INFINITY;
+  const raw = `${appointment.date || ''}T${appointment.time || '00:00'}`;
+  const parsed = new Date(raw);
+  if (!Number.isFinite(parsed.getTime())) return Number.POSITIVE_INFINITY;
+  return parsed.getTime();
+}
+
+function findPatientForAppointment(appointment, patients = loadPatients()) {
+  if (!appointment) return null;
+  const phone = normalizePhoneComparable(appointment.phone);
+  const name = normalizeLabel(appointment.patientName || '');
+  if (appointment.patientId) {
+    const existing = patients.find((patient) => patient.id === appointment.patientId);
+    if (existing) return existing;
+  }
+  if (phone) {
+    const byPhone = patients.find((patient) => normalizePhoneComparable(patient.phone) === phone);
+    if (byPhone) return byPhone;
+  }
+  if (!name) return null;
+  return (
+    patients.find((patient) => normalizeLabel(fullPatientName(patient)) === name) ||
+    patients.find((patient) => {
+      const full = normalizeLabel(fullPatientName(patient));
+      return full.includes(name) || name.includes(full);
+    }) ||
+    null
+  );
+}
+
+function appointmentMatchesEncounter(appointment, encounter) {
+  if (!appointment || !encounter) return false;
+  if (appointment.patientId && encounter.patientId && appointment.patientId !== encounter.patientId) return false;
+  if (!appointment.patientId) {
+    const patientName = normalizeLabel(appointment.patientName || '');
+    if (patientName) {
+      const encounterName = normalizeLabel(encounter.patientName || '');
+      if (!(encounterName.includes(patientName) || patientName.includes(encounterName))) return false;
+    }
+  }
+  if (appointment.doctor && encounter.doctor && appointment.doctor !== encounter.doctor) return false;
+  const appointmentTs = getAppointmentTimestamp(appointment);
+  const encounterDate = parseDateValue(encounter.createdAt);
+  if (Number.isFinite(appointmentTs) && encounterDate) {
+    const diff = Math.abs(encounterDate.getTime() - appointmentTs);
+    if (diff > 7 * 24 * 60 * 60 * 1000) return false;
+  }
+  const bucket = normalizeAppointmentBucket(appointment.service || appointment.serviceLabel);
+  if (bucket) {
+    const matchesService = (encounter.services || []).some((item) => {
+      const itemBucket = getDashboardCategoryBucket(item.category);
+      const itemLabel = normalizeLabel(item.label || '');
+      const appointmentLabel = normalizeLabel(appointment.serviceLabel || appointment.service || '');
+      return itemBucket === bucket || (appointmentLabel && itemLabel.includes(appointmentLabel));
+    });
+    if (!matchesService && bucket !== 'consultation') return false;
+  }
+  return true;
+}
+
+function getEncounterLabRequestsForStatus(encounter, results = loadClinicalResults()) {
+  if (!encounter?.doctorConsultation?.tests?.length) return [];
+  return encounter.doctorConsultation.tests.map((serviceId) => {
+    const result = results.find((entry) => entry.encounterId === encounter.id && entry.serviceId === serviceId);
+    return {
+      serviceId,
+      status: result?.status || 'pending',
+    };
   });
+}
+
+function getEncounterLabStatus(encounter, results = loadClinicalResults()) {
+  const requests = getEncounterLabRequestsForStatus(encounter, results);
+  if (!requests.length) return 'not_applicable';
+  if (requests.every((entry) => entry.status === 'validated')) return 'validated';
+  if (requests.some((entry) => ['in_progress', 'completed'].includes(entry.status))) return 'in_progress';
+  return 'pending';
+}
+
+function getEncounterPharmacyItems(encounter) {
+  if (!encounter) return [];
+  const prescribed = Array.isArray(encounter.doctorConsultation?.medications)
+    ? encounter.doctorConsultation.medications
+    : [];
+  if (prescribed.length) return prescribed;
+  return (encounter.services || []).filter((item) => getDashboardCategoryBucket(item.category) === 'pharmacy');
+}
+
+function hasEncounterPharmacyNeed(encounter) {
+  return getEncounterPharmacyItems(encounter).length > 0;
+}
+
+function getEncounterPrescriptionStatus(encounter) {
+  if (!hasEncounterPharmacyNeed(encounter)) return 'not_applicable';
+  if (encounter?.pharmacyDispense?.status === 'dispensed') return 'dispensed';
+  if ((encounter.services || []).some((item) => getDashboardCategoryBucket(item.category) === 'pharmacy')) return 'dispensed';
+  return 'pending';
+}
+
+function deriveEncounterWorkflow(encounter, results = loadClinicalResults()) {
+  if (!encounter) {
+    return { workflowStatus: 'registered', labStatus: 'not_applicable', pharmacyStatus: 'not_applicable' };
+  }
+  const labStatus = getEncounterLabStatus(encounter, results);
+  const pharmacyStatus = getEncounterPrescriptionStatus(encounter);
+  let workflowStatus = encounter.status || 'registered';
+  if (pharmacyStatus === 'dispensed') {
+    workflowStatus = 'pharmacy-dispensed';
+  } else if (labStatus === 'validated') {
+    workflowStatus = 'results-validated';
+  } else if (labStatus === 'pending' || labStatus === 'in_progress') {
+    workflowStatus = 'awaiting-results';
+  } else if (encounter.doctorConsultation) {
+    workflowStatus = 'doctor-completed';
+  } else if (encounter.nurseAssessment) {
+    workflowStatus = 'nurse-completed';
+  }
+  return { workflowStatus, labStatus, pharmacyStatus };
+}
+
+function deriveAppointmentStatus(appointment, encounter) {
+  const currentStatus = appointment?.status || 'scheduled';
+  if (currentStatus === 'cancelled') return 'cancelled';
+  if (currentStatus === 'completed' && !encounter) return 'completed';
+  if (!encounter) return currentStatus === 'in_care' || currentStatus === 'arrived' ? currentStatus : 'scheduled';
+  if (encounter.doctorConsultation) return 'completed';
+  if (encounter.nurseAssessment) return 'in_care';
+  return 'arrived';
+}
+
+function syncFacilityInterconnections(persist = true) {
+  const patients = loadPatients().slice();
+  const appointments = loadAppointments().slice();
+  const encounters = loadEncounters().slice();
+  const receipts = loadReceipts().slice();
+  const accountingEntries = loadAccountingEntries().slice();
+  const clinicalResults = loadClinicalResults();
+  const patientsById = new Map(patients.map((patient) => [patient.id, patient]));
+  const encountersById = new Map(encounters.map((encounter) => [encounter.id, encounter]));
+  const receiptsByEncounter = new Map(receipts.filter((receipt) => receipt.encounterId).map((receipt) => [receipt.encounterId, receipt]));
+  const receiptsById = new Map(receipts.map((receipt) => [receipt.id, receipt]));
+  let patientsChanged = false;
+  let appointmentsChanged = false;
+  let encountersChanged = false;
+  let receiptsChanged = false;
+  let accountingChanged = false;
+
+  appointments.forEach((appointment) => {
+    const patient = findPatientForAppointment(appointment, patients);
+    if (patient) {
+      if (appointment.patientId !== patient.id) {
+        appointment.patientId = patient.id;
+        appointmentsChanged = true;
+      }
+      const normalizedName = fullPatientName(patient);
+      if (normalizedName && appointment.patientName !== normalizedName) {
+        appointment.patientName = normalizedName;
+        appointmentsChanged = true;
+      }
+      if (!appointment.phone && patient.phone) {
+        appointment.phone = patient.phone;
+        appointmentsChanged = true;
+      }
+    }
+  });
+
+  appointments.forEach((appointment) => {
+    if (appointment.encounterId && encountersById.has(appointment.encounterId)) return;
+    const match = encounters.find((encounter) => appointmentMatchesEncounter(appointment, encounter));
+    if (match) {
+      appointment.encounterId = match.id;
+      appointment.receiptId = match.receiptId || appointment.receiptId || '';
+      appointmentsChanged = true;
+    }
+  });
+
+  encounters.forEach((encounter) => {
+    const patient = patientsById.get(encounter.patientId) || findPatientForAppointment({ patientId: encounter.patientId, patientName: encounter.patientName }, patients);
+    if (patient) {
+      if (!encounter.patientName || encounter.patientName !== fullPatientName(patient)) {
+        encounter.patientName = fullPatientName(patient);
+        encountersChanged = true;
+      }
+      if (!encounter.patientPhone && patient.phone) {
+        encounter.patientPhone = patient.phone;
+        encountersChanged = true;
+      }
+    }
+    const linkedReceipt = receiptsByEncounter.get(encounter.id);
+    if (linkedReceipt) {
+      if (encounter.receiptId !== linkedReceipt.id) {
+        encounter.receiptId = linkedReceipt.id;
+        encountersChanged = true;
+      }
+      if (!encounter.paymentMethod && linkedReceipt.paymentMethod) {
+        encounter.paymentMethod = linkedReceipt.paymentMethod;
+        encountersChanged = true;
+      }
+      if (!encounter.admittedBy && linkedReceipt.admittedBy) {
+        encounter.admittedBy = linkedReceipt.admittedBy;
+        encountersChanged = true;
+      }
+    }
+    if (!encounter.appointmentId) {
+      const match = appointments.find((appointment) => appointmentMatchesEncounter(appointment, encounter));
+      if (match) {
+        encounter.appointmentId = match.id;
+        encountersChanged = true;
+      }
+    }
+    const workflow = deriveEncounterWorkflow(encounter, clinicalResults);
+    if (encounter.workflowStatus !== workflow.workflowStatus) {
+      encounter.workflowStatus = workflow.workflowStatus;
+      encountersChanged = true;
+    }
+    if (encounter.labStatus !== workflow.labStatus) {
+      encounter.labStatus = workflow.labStatus;
+      encountersChanged = true;
+    }
+    if (encounter.pharmacyStatus !== workflow.pharmacyStatus) {
+      encounter.pharmacyStatus = workflow.pharmacyStatus;
+      encountersChanged = true;
+    }
+  });
+
+  receipts.forEach((receipt) => {
+    const patient = patientsById.get(receipt.patientId);
+    const encounter = encountersById.get(receipt.encounterId);
+    if (patient && (!receipt.patientName || receipt.patientName !== fullPatientName(patient))) {
+      receipt.patientName = fullPatientName(patient);
+      receiptsChanged = true;
+    }
+    if (patient && !receipt.patientPhone && patient.phone) {
+      receipt.patientPhone = patient.phone;
+      receiptsChanged = true;
+    }
+    if (encounter && !receipt.appointmentId && encounter.appointmentId) {
+      receipt.appointmentId = encounter.appointmentId;
+      receiptsChanged = true;
+    }
+  });
+
+  accountingEntries.forEach((entry) => {
+    const receipt = receiptsById.get(entry.receiptId);
+    const encounter = encountersById.get(entry.encounterId) || (receipt ? encountersById.get(receipt.encounterId) : null);
+    const patient = patientsById.get(entry.patientId) || (encounter ? patientsById.get(encounter.patientId) : null);
+    if (receipt && !entry.receiptId) {
+      entry.receiptId = receipt.id;
+      accountingChanged = true;
+    }
+    if (encounter && !entry.encounterId) {
+      entry.encounterId = encounter.id;
+      accountingChanged = true;
+    }
+    if (encounter && !entry.appointmentId && encounter.appointmentId) {
+      entry.appointmentId = encounter.appointmentId;
+      accountingChanged = true;
+    }
+    if (patient && (!entry.patientName || entry.patientName !== fullPatientName(patient))) {
+      entry.patientName = fullPatientName(patient);
+      accountingChanged = true;
+    }
+    if (receipt && !entry.admittedBy && receipt.admittedBy) {
+      entry.admittedBy = receipt.admittedBy;
+      accountingChanged = true;
+    }
+    if (!entry.insurer && (receipt?.insurer || encounter?.insuranceType || patient?.insuranceType)) {
+      entry.insurer = receipt?.insurer || encounter?.insuranceType || patient?.insuranceType || '';
+      accountingChanged = true;
+    }
+  });
+
+  appointments.forEach((appointment) => {
+    const encounter = appointment.encounterId ? encountersById.get(appointment.encounterId) : encounters.find((item) => appointmentMatchesEncounter(appointment, item));
+    if (encounter) {
+      if (appointment.encounterId !== encounter.id) {
+        appointment.encounterId = encounter.id;
+        appointmentsChanged = true;
+      }
+      if (appointment.receiptId !== (encounter.receiptId || appointment.receiptId || '')) {
+        appointment.receiptId = encounter.receiptId || '';
+        appointmentsChanged = true;
+      }
+      if (!encounter.appointmentId || encounter.appointmentId !== appointment.id) {
+        encounter.appointmentId = appointment.id;
+        encountersChanged = true;
+      }
+    }
+    const nextStatus = deriveAppointmentStatus(appointment, encounter || null);
+    if (appointment.status !== nextStatus) {
+      appointment.status = nextStatus;
+      appointmentsChanged = true;
+    }
+  });
+
+  if (persist) {
+    if (patientsChanged) savePatients(patients);
+    if (appointmentsChanged) saveAppointments(appointments);
+    if (encountersChanged) saveEncounters(encounters);
+    if (receiptsChanged) saveReceipts(receipts);
+    if (accountingChanged) saveAccountingEntries(accountingEntries);
+  }
+
+  return { patients, appointments, encounters, receipts, accountingEntries };
+}
+
+function refreshAppointmentsIfVisible() {
+  if (appointmentsView && !appointmentsView.classList.contains('hidden')) {
+    renderAppointmentsTable();
+  }
+}
+
+function getPatientLinkedAppointments(patientRecord, options = {}) {
+  if (!patientRecord) return [];
+  const allowedStatuses = options.allowedStatuses || ['scheduled', 'arrived', 'in_care'];
+  const phone = normalizePhoneComparable(patientRecord.phone);
+  const name = normalizeLabel(fullPatientName(patientRecord));
+  return loadAppointments()
+    .filter((appointment) => {
+      if (allowedStatuses && !allowedStatuses.includes(appointment.status)) return false;
+      if (appointment.patientId && appointment.patientId === patientRecord.id) return true;
+      if (phone && normalizePhoneComparable(appointment.phone) === phone) return true;
+      const appointmentName = normalizeLabel(appointment.patientName || '');
+      return !!name && !!appointmentName && (appointmentName.includes(name) || name.includes(appointmentName));
+    })
+    .sort((a, b) => getAppointmentTimestamp(a) - getAppointmentTimestamp(b));
+}
+
+function applyAppointmentContext(appointment, options = {}) {
+  if (!appointment) return null;
+  activeAppointmentId = appointment.id;
+  if (assignDoctor && appointment.doctor && !assignDoctor.value) {
+    assignDoctor.value = appointment.doctor;
+  }
+  if (!options.silent) {
+    setMessage(patientMessage, t('appointments.admissionLoaded'));
+  }
+  return appointment;
+}
+
+function maybeLinkAppointmentToCurrentPatient(patientRecord, options = {}) {
+  if (!patientRecord) {
+    activeAppointmentId = '';
+    return null;
+  }
+  const appointments = getPatientLinkedAppointments(patientRecord);
+  if (!appointments.length) {
+    if (!options.preserveCurrent) activeAppointmentId = '';
+    return null;
+  }
+  const preferred = appointments.find((appointment) => appointment.id === activeAppointmentId) || appointments[0];
+  return applyAppointmentContext(preferred, { silent: !!options.silent });
+}
+
+function openAppointmentInBilling(appointmentId) {
+  const { appointments, patients } = syncFacilityInterconnections();
+  const appointment = appointments.find((entry) => entry.id === appointmentId);
+  if (!appointment) return;
+  showView('billing');
+  const patient = appointment.patientId ? patients.find((entry) => entry.id === appointment.patientId) : null;
+  if (patient) {
+    fillPatientForm(patient);
+  } else {
+    clearPatientForm();
+    const parts = splitName(appointment.patientName || '');
+    activePatientId = null;
+    if (patientFirstName) patientFirstName.value = parts.first || '';
+    if (patientLastName) patientLastName.value = parts.last || '';
+    if (patientPhone) patientPhone.value = String(appointment.phone || '').replace(/^\+\d+\s*/, '');
+    if (patientStatusLabel) patientStatusLabel.value = t('billing.newPatient');
+  }
+  if (assignDoctor && appointment.doctor) assignDoctor.value = appointment.doctor;
+  applyAppointmentContext(appointment);
+}
+
+function getBillingAppointmentCandidate(patientRecord) {
+  if (activeAppointmentId) {
+    const linked = loadAppointments().find((appointment) => appointment.id === activeAppointmentId);
+    if (linked) return linked;
+  }
+  return maybeLinkAppointmentToCurrentPatient(patientRecord, { silent: true, preserveCurrent: false });
+}
+
+function formatPharmacyQueueStatus(value) {
+  const labels = {
+    pending: t('dashboard.pharmacyQueuePending'),
+    dispensed: t('dashboard.pharmacyQueueDispensed'),
+    not_applicable: t('records.none'),
+  };
+  return labels[value] || value || t('records.none');
+}
+
+function getPharmacyQueueRecords() {
+  const { encounters, patients } = syncFacilityInterconnections();
+  const patientMap = new Map(patients.map((patient) => [patient.id, patient]));
+  return encounters
+    .filter((encounter) => hasEncounterPharmacyNeed(encounter))
+    .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
+    .map((encounter) => {
+      const patient = patientMap.get(encounter.patientId);
+      const items = getEncounterPharmacyItems(encounter);
+      return {
+        encounterId: encounter.id,
+        patientId: encounter.patientId,
+        patientName: encounter.patientName || fullPatientName(patient) || '-',
+        prescription: items.map((item) => `${item.name || item.label || '-'} x${parseNumber(item.qty) || 1}`).join(', '),
+        status: getEncounterPrescriptionStatus(encounter),
+        recordedAt: encounter.pharmacyDispense?.recordedAt || '',
+      };
+    });
+}
+
+function renderPharmacyQueue() {
+  if (!pharmacyQueueTable) return;
+  const queue = getPharmacyQueueRecords();
+  pharmacyQueueTable.innerHTML = '';
+  if (!queue.length) {
+    renderClinicalEmptyRow(pharmacyQueueTable, 4);
+    return;
+  }
+  queue.forEach((entry) => {
+    const row = document.createElement('tr');
+    row.dataset.encounterId = entry.encounterId;
+    row.innerHTML = `
+      <td>${escapeHtml(entry.patientName || '-')}</td>
+      <td>${escapeHtml(entry.prescription || t('records.none'))}</td>
+      <td>${escapeHtml(formatPharmacyQueueStatus(entry.status))}</td>
+      <td>${entry.status === 'dispensed'
+        ? '-'
+        : `<button type="button" class="ghost pharmacy-dispense" data-encounter-id="${escapeHtml(entry.encounterId)}">${escapeHtml(t('dashboard.pharmacyDispenseAction'))}</button>`}</td>
+    `;
+    pharmacyQueueTable.appendChild(row);
+  });
+}
+
+function markEncounterPrescriptionDispensed(encounterId) {
+  if (!encounterId) return;
+  const encounters = loadEncounters();
+  const match = encounters.find((encounter) => encounter.id === encounterId);
+  if (!match || !hasEncounterPharmacyNeed(match)) return;
+  match.pharmacyDispense = {
+    status: 'dispensed',
+    recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+    recordedAt: new Date().toISOString(),
+    items: getEncounterPharmacyItems(match).map((item) => ({
+      name: item.name || item.label || '',
+      qty: parseNumber(item.qty) || 1,
+      stockId: item.stockId || '',
+    })),
+  };
+  saveEncounters(encounters);
+  syncFacilityInterconnections(true);
+  refreshDashboardIfVisible();
+  refreshClinicalRecordsIfVisible();
+  refreshAppointmentsIfVisible();
+}
+
+function getStockTypeLabel(value) {
+  const labels = {
+    medication: t('inventory.typeMedication'),
+    consumable: t('inventory.typeConsumable'),
+    reagent: t('inventory.typeReagent'),
+    equipment: t('inventory.typeEquipment'),
+    other: t('inventory.typeOther'),
+  };
+  return labels[normalizeStockType(value)] || value || '-';
+}
+
+function formatInventoryMovementDirection(value) {
+  return value === 'in' ? t('inventory.directionIn') : t('inventory.directionOut');
+}
+
+function formatInventoryMovementType(value) {
+  const labels = {
+    purchase: t('inventory.movementPurchase'),
+    consumption: t('inventory.movementConsumption'),
+    adjustment: t('inventory.movementAdjustment'),
+    manual_entry: t('inventory.movementManual'),
+  };
+  return labels[value] || value || '-';
+}
+
+function formatInventorySourceLabel(value) {
+  const labels = {
+    inventory: t('inventory.sourceInventory'),
+    purchase_order: t('inventory.sourcePurchase'),
+    billing: t('inventory.sourceBilling'),
+    doctor: t('inventory.sourceDoctor'),
+    nurse: t('inventory.sourceNurse'),
+    lab: t('inventory.sourceLab'),
+    radiology: t('inventory.sourceRadiology'),
+    pharmacy: t('inventory.sourcePharmacy'),
+    hospitalization: t('inventory.sourceHospitalization'),
+  };
+  return labels[value] || String(value || '-').replace(/_/g, ' ');
+}
+
+function getStockStatusMeta(item) {
+  const qty = parseNumber(item.qty);
+  const min = parseNumber(item.min);
+  const now = new Date();
+  const expiry = item.expiryDate ? new Date(item.expiryDate) : null;
+  const daysToExpiry = expiry ? Math.ceil((expiry.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)) : null;
+  if (expiry && expiry < now) {
+    return { label: t('inventory.statusExpired'), code: 'expired' };
+  }
+  if (daysToExpiry !== null && daysToExpiry <= 30) {
+    return { label: t('inventory.statusExpiring'), code: 'expiring' };
+  }
+  if (min && qty <= min) {
+    return { label: t('inventory.statusLow'), code: 'low' };
+  }
+  return { label: t('inventory.statusOk'), code: 'ok' };
+}
+
+function updateStockAlerts() {
+  const stock = loadStock();
+  const now = new Date();
+  const alerts = stock.filter((item) => {
+    const qty = parseNumber(item.qty);
+    const min = parseNumber(item.min);
+    const expiry = item.expiryDate ? new Date(item.expiryDate) : null;
+    const expiringSoon = expiry && expiry >= now && (expiry.getTime() - now.getTime()) / (1000 * 60 * 60 * 24) <= 30;
+    return (min && qty <= min) || (expiry && expiry < now) || expiringSoon;
+  });
+  if (pharmacyAlerts) pharmacyAlerts.textContent = alerts.length.toString();
+}
+
+function recordStockMovement(entry) {
+  const movements = loadStockMovements();
+  const normalized = normalizeStockMovementRecord(entry);
+  movements.push(normalized);
+  saveStockMovements(movements);
+  return normalized;
+}
+
+function findMatchingStockEntry(stock, payload) {
+  return stock.find((entry) => {
+    return (
+      normalizeLabel(entry.name) === normalizeLabel(payload.name) &&
+      normalizeStockType(entry.type) === normalizeStockType(payload.type) &&
+      normalizeLabel(entry.supplier || '') === normalizeLabel(payload.supplier || '') &&
+      String(entry.expiryDate || '') === String(payload.expiryDate || '')
+    );
+  });
+}
+
+function upsertStockReceipt(payload, meta = {}) {
+  const stock = loadStock();
+  const qtyToAdd = Math.max(0, parseNumber(payload.qty));
+  let item = payload.stockId ? stock.find((entry) => entry.id === payload.stockId) : null;
+  if (!item) {
+    item = findMatchingStockEntry(stock, payload);
+  }
+  if (item) {
+    item.name = payload.name || item.name;
+    item.type = normalizeStockType(payload.type || item.type);
+    item.supplier = payload.supplier || item.supplier;
+    item.unitPrice = parseNumber(payload.unitPrice || item.unitPrice);
+    item.min = parseNumber(payload.min ?? item.min);
+    item.entryDate = payload.entryDate || item.entryDate;
+    item.expiryDate = payload.expiryDate || item.expiryDate;
+    item.receiptName = payload.receiptName || item.receiptName;
+    item.notes = payload.notes || item.notes;
+    item.qty = parseNumber(item.qty) + qtyToAdd;
+    item.updatedAt = new Date().toISOString();
+  } else {
+    item = normalizeStockRecord({
+      id: `ST-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      name: payload.name,
+      type: payload.type,
+      supplier: payload.supplier,
+      unitPrice: payload.unitPrice,
+      qty: qtyToAdd,
+      min: payload.min,
+      entryDate: payload.entryDate,
+      expiryDate: payload.expiryDate,
+      receiptName: payload.receiptName,
+      notes: payload.notes,
+      updatedAt: new Date().toISOString(),
+    });
+    stock.push(item);
+  }
+  saveStock(stock);
+  if (qtyToAdd > 0) {
+    recordStockMovement({
+      stockId: item.id,
+      item: item.name,
+      itemType: item.type,
+      direction: 'in',
+      qty: qtyToAdd,
+      unitCost: item.unitPrice,
+      totalCost: qtyToAdd * parseNumber(item.unitPrice),
+      movementType: meta.movementType || 'manual_entry',
+      sourceModule: meta.sourceModule || 'inventory',
+      recordedBy: meta.recordedBy || currentEmployee?.name || currentEmployee?.code || '',
+      supplier: item.supplier,
+      note: meta.note || payload.notes || '',
+      createdAt: meta.createdAt || new Date().toISOString(),
+    });
+  }
+  return item;
+}
+
+function renderInventorySummary() {
+  const stock = loadStock();
+  const orders = loadPurchaseOrders();
+  const now = new Date();
+  const lowCount = stock.filter((item) => parseNumber(item.min) > 0 && parseNumber(item.qty) <= parseNumber(item.min)).length;
+  const expiringCount = stock.filter((item) => {
+    if (!item.expiryDate) return false;
+    const expiry = new Date(item.expiryDate);
+    if (Number.isNaN(expiry.getTime())) return false;
+    const delta = (expiry.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
+    return delta >= 0 && delta <= 30;
+  }).length;
+  const openOrders = orders.filter((order) => ['open', 'partial'].includes(order.status)).length;
+  if (inventoryTotalProducts) inventoryTotalProducts.textContent = stock.length.toString();
+  if (inventoryLowAlerts) inventoryLowAlerts.textContent = lowCount.toString();
+  if (inventoryExpiringAlerts) inventoryExpiringAlerts.textContent = expiringCount.toString();
+  if (inventoryOpenOrders) inventoryOpenOrders.textContent = openOrders.toString();
 }
 
 function renderStockTable() {
@@ -1249,33 +3256,28 @@ function renderStockTable() {
   const stock = loadStock();
   stockTableBody.innerHTML = '';
   if (!stock.length) {
-    const row = document.createElement('tr');
-    row.innerHTML = `<td colspan="9">${t('dashboard.noData')}</td>`;
-    stockTableBody.appendChild(row);
+    renderClinicalEmptyRow(stockTableBody, 11);
     return;
   }
-  const now = new Date();
+  stock.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
   stock.forEach((item) => {
-    const qty = parseNumber(item.qty);
-    const min = parseNumber(item.min);
-    const expiry = item.expiryDate ? new Date(item.expiryDate) : null;
-    let status = t('inventory.statusOk');
-    if (expiry && expiry < now) status = t('inventory.statusExpired');
-    else if (min && qty <= min) status = t('inventory.statusLow');
+    const status = getStockStatusMeta(item);
     const row = document.createElement('tr');
     row.dataset.id = item.id;
     row.innerHTML = `
-      <td>${item.name || '-'}</td>
-      <td><input class="stock-qty" type="number" min="0" step="1" value="${qty}" /></td>
-      <td><input class="stock-min" type="number" min="0" step="1" value="${min}" /></td>
+      <td>${escapeHtml(item.name || '-')}</td>
+      <td>${escapeHtml(getStockTypeLabel(item.type))}</td>
+      <td>${escapeHtml(item.supplier || '-')}</td>
+      <td><input class="stock-qty" type="number" min="0" step="1" value="${parseNumber(item.qty)}" /></td>
+      <td><input class="stock-min" type="number" min="0" step="1" value="${parseNumber(item.min)}" /></td>
       <td><input class="stock-price" type="number" min="0" step="1" value="${parseNumber(item.unitPrice)}" /></td>
-      <td>${item.entryDate || '-'}</td>
-      <td>${item.expiryDate || '-'}</td>
-      <td>${item.receiptName || '-'}</td>
-      <td>${status}</td>
+      <td>${escapeHtml(item.entryDate || '-')}</td>
+      <td>${escapeHtml(item.expiryDate || '-')}</td>
+      <td>${escapeHtml(item.receiptName || '-')}</td>
+      <td>${escapeHtml(status.label)}</td>
       <td>
-        <button type="button" class="stock-save ghost" data-id="${item.id}">${t('inventory.update')}</button>
-        <button type="button" class="remove-row" data-id="${item.id}">${t('inventory.remove')}</button>
+        <button type="button" class="stock-save ghost" data-id="${escapeHtml(item.id)}">${t('inventory.update')}</button>
+        <button type="button" class="remove-row" data-id="${escapeHtml(item.id)}">${t('inventory.remove')}</button>
       </td>
     `;
     stockTableBody.appendChild(row);
@@ -1288,64 +3290,133 @@ function renderPurchaseOrders() {
   const orders = loadPurchaseOrders();
   poTableBody.innerHTML = '';
   if (!orders.length) {
-    const row = document.createElement('tr');
-    row.innerHTML = `<td colspan="6">${t('dashboard.noData')}</td>`;
-    poTableBody.appendChild(row);
+    renderClinicalEmptyRow(poTableBody, 11);
     return;
   }
+  orders.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
   orders.forEach((order) => {
+    const remaining = Math.max(0, parseNumber(order.qtyOrdered) - parseNumber(order.qtyReceived));
+    const statusLabels = {
+      open: t('inventory.statusOpen'),
+      partial: t('inventory.statusPartial'),
+      received: t('inventory.statusReceived'),
+      cancelled: t('inventory.statusCancelled'),
+    };
     const row = document.createElement('tr');
     row.dataset.id = order.id;
     row.innerHTML = `
-      <td>${order.supplier || '-'}</td>
-      <td>${order.item || '-'}</td>
-      <td>${order.qty || '-'}</td>
-      <td>${order.date || '-'}</td>
+      <td>${escapeHtml(order.supplier || '-')}</td>
+      <td>${escapeHtml(order.itemName || '-')}</td>
+      <td>${escapeHtml(getStockTypeLabel(order.type))}</td>
+      <td>${escapeHtml(String(parseNumber(order.qtyOrdered)))}</td>
+      <td>${escapeHtml(String(parseNumber(order.qtyReceived)))}</td>
+      <td>${escapeHtml(formatCfl(order.unitCost || 0))}</td>
+      <td>${escapeHtml(formatCfl(parseNumber(order.qtyOrdered) * parseNumber(order.unitCost)))}</td>
+      <td>${escapeHtml(order.expectedDate || '-')}</td>
+      <td>${escapeHtml(order.receivedDate || '-')}</td>
+      <td>${escapeHtml(statusLabels[order.status] || order.status || '-')}</td>
       <td>
-        <select class="po-status">
-          <option value="open" ${order.status === 'open' ? 'selected' : ''}>${t(
-            'inventory.statusOpen'
-          )}</option>
-          <option value="received" ${order.status === 'received' ? 'selected' : ''}>${t(
-            'inventory.statusReceived'
-          )}</option>
-        </select>
+        <input class="po-receive-qty" type="number" min="1" max="${remaining || 1}" step="1" value="${remaining ? 1 : 0}" ${remaining ? '' : 'disabled'} />
+        <button type="button" class="po-receive ghost" data-id="${escapeHtml(order.id)}" ${remaining ? '' : 'disabled'}>${t('inventory.receiveAction')}</button>
+        <button type="button" class="remove-row" data-id="${escapeHtml(order.id)}">${t('inventory.remove')}</button>
       </td>
-      <td><button type="button" class="remove-row" data-id="${order.id}">${t('inventory.remove')}</button></td>
     `;
     poTableBody.appendChild(row);
   });
 }
 
-function updateStockAlerts() {
-  const stock = loadStock();
-  const now = new Date();
-  const alerts = stock.filter((item) => {
-    const qty = parseNumber(item.qty);
-    const min = parseNumber(item.min);
-    const expiry = item.expiryDate ? new Date(item.expiryDate) : null;
-    return (min && qty <= min) || (expiry && expiry < now);
+function renderStockMovementTable() {
+  if (!stockMovementTableBody) return;
+  const movements = loadStockMovements()
+    .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+  stockMovementTableBody.innerHTML = '';
+  if (!movements.length) {
+    renderClinicalEmptyRow(stockMovementTableBody, 8);
+    return;
+  }
+  movements.forEach((movement) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${escapeHtml(formatDate(movement.createdAt) || '-')}</td>
+      <td>${escapeHtml(movement.item || '-')}</td>
+      <td>${escapeHtml(getStockTypeLabel(movement.itemType))}</td>
+      <td>${escapeHtml(`${formatInventoryMovementDirection(movement.direction)} · ${formatInventoryMovementType(movement.movementType)}`)}</td>
+      <td>${escapeHtml(String(parseNumber(movement.qty)))}</td>
+      <td>${escapeHtml(formatInventorySourceLabel(movement.sourceModule))}</td>
+      <td>${escapeHtml(formatCfl(movement.totalCost || 0))}</td>
+      <td>${escapeHtml(movement.recordedBy || '-')}</td>
+    `;
+    stockMovementTableBody.appendChild(row);
   });
-  if (pharmacyAlerts) pharmacyAlerts.textContent = alerts.length.toString();
 }
 
-function applyStockDeductions(items) {
+function refreshInventorySelectors() {
+  populateDoctorStockOptions();
+  populateNurseStockOptions();
+  populateLabStockOptions();
+}
+
+function renderInventoryModule() {
+  renderInventorySummary();
+  renderStockTable();
+  renderPurchaseOrders();
+  renderStockMovementTable();
+  refreshInventorySelectors();
+}
+
+function refreshInventoryIfVisible() {
+  if (inventoryView && !inventoryView.classList.contains('hidden')) {
+    renderInventoryModule();
+  } else {
+    refreshInventorySelectors();
+    updateStockAlerts();
+  }
+}
+
+function findStockItemForUsage(stock, item) {
+  if (item.stockId) {
+    const exact = stock.find((entry) => entry.id === item.stockId);
+    if (exact) return exact;
+  }
+  const label = item.label || item.name || '';
+  if (!label) return null;
+  return stock.find((entry) => normalizeLabel(entry.name) === normalizeLabel(label));
+}
+
+function applyStockDeductions(items, meta = {}) {
   if (!items?.length) return;
   const stock = loadStock();
   let updated = false;
   items.forEach((item) => {
-    if (item.category !== 'pharmacy') return;
-    const match = stock.find(
-      (entry) => normalizeLabel(entry.name) === normalizeLabel(item.label)
-    );
+    const match = findStockItemForUsage(stock, item);
     if (!match) return;
-    const qty = parseNumber(match.qty);
-    match.qty = Math.max(0, qty - (item.qty || 0));
+    const qtyUsed = Math.abs(parseNumber(item.qty));
+    if (!qtyUsed) return;
+    const before = parseNumber(match.qty);
+    match.qty = Math.max(0, before - qtyUsed);
+    match.updatedAt = new Date().toISOString();
+    recordStockMovement({
+      stockId: match.id,
+      item: match.name,
+      itemType: match.type,
+      direction: 'out',
+      qty: qtyUsed,
+      unitCost: match.unitPrice,
+      totalCost: qtyUsed * parseNumber(match.unitPrice),
+      movementType: 'consumption',
+      sourceModule: meta.sourceRole || item.sourceRole || 'inventory',
+      recordedBy: meta.recordedBy || currentEmployee?.name || currentEmployee?.code || '',
+      patientId: meta.patientId || item.patientId || '',
+      encounterId: meta.encounterId || item.encounterId || '',
+      createdAt: meta.createdAt || new Date().toISOString(),
+      note: meta.note || item.note || '',
+    });
     updated = true;
   });
   if (updated) {
     saveStock(stock);
-    renderStockTable();
+    refreshInventoryIfVisible();
+    refreshDashboardIfVisible();
   }
 }
 
@@ -1371,35 +3442,13 @@ function getServiceCounts(receipts) {
 }
 
 function calculateDoctorPayslip(doctor) {
-  const receipts = loadReceipts();
-  const docKey = doctor.code || doctor.email || doctor.name;
-  const doctorReceipts = receipts.filter(
-    (rec) => rec.doctor === docKey || rec.doctorName === doctor.name
-  );
-  const serviceCount = doctorReceipts.reduce((sum, rec) => {
-    const relevantItems = (rec.items || []).filter(
-      (item) => !item.providerId || item.providerId === docKey || item.providerName === doctor.name
-    );
-    return sum + relevantItems.length;
-  }, 0);
-  const serviceFee = parseNumber(doctor.doctorProfile?.serviceFee);
-  const otrRate = parseNumber(doctor.doctorProfile?.otrRate);
-  const totalReceipts = doctorReceipts.reduce((sum, rec) => {
-    const relevantItems = (rec.items || []).filter(
-      (item) => !item.providerId || item.providerId === docKey || item.providerName === doctor.name
-    );
-    const subtotal = relevantItems.reduce((lineSum, item) => lineSum + (item.total || 0), 0);
-    return sum + subtotal;
-  }, 0);
-  let gross = 0;
-  if (doctor.payType === 'locum' && doctor.payRate) {
-    gross = totalReceipts * (doctor.payRate / 100);
-  } else if (serviceFee) {
-    gross = serviceCount * serviceFee;
-  }
-  const otr = otrRate ? gross * (otrRate / 100) : 0;
-  const net = Math.max(0, gross - otr);
-  return { gross, otr, net, serviceCount };
+  const payroll = calculateEmployeePayroll(doctor, getDefaultPayrollPeriod());
+  return {
+    gross: payroll.gross,
+    otr: payroll.taxWithholding,
+    net: payroll.netDue,
+    serviceCount: payroll.serviceCount,
+  };
 }
 
 function populateNurseEncounterOptions() {
@@ -1431,14 +3480,20 @@ function populateDoctorEncounterOptions() {
     option.textContent = `${encounter.patientName} · ${formatDate(encounter.createdAt)}`;
     doctorEncounterSelect.appendChild(option);
   });
-  doctorEncounterSelect.value = currentValue;
+  doctorEncounterSelect.value = pendingDashboardEncounterId || currentValue;
+  if (pendingDashboardEncounterId && doctorEncounterSelect.value === pendingDashboardEncounterId) {
+    pendingDashboardEncounterId = '';
+  }
+  if (doctorEncounterSelect.value) {
+    doctorEncounterSelect.dispatchEvent(new Event('change'));
+  }
 }
 
 function populateDoctorTestOptions() {
   if (!doctorTests) return;
   const selectedValues = new Set(Array.from(doctorTests.selectedOptions || []).map((option) => option.value));
   const catalog = loadServiceCatalog().filter((item) =>
-    ['lab', 'imaging', 'outpatient'].includes(normalizeServiceCategory(item.category))
+    ['lab', 'imaging', 'outpatient'].includes(getDashboardCategoryBucket(item.category))
   );
   doctorTests.innerHTML = '';
   catalog.forEach((service) => {
@@ -1458,7 +3513,7 @@ function populateDoctorStockOptions() {
   stock.forEach((item) => {
     const option = document.createElement('option');
     option.value = item.id;
-    option.textContent = `${item.name} (${item.qty || 0})`;
+    option.textContent = `${item.name} (${getStockTypeLabel(item.type)} · ${item.qty || 0})`;
     doctorStockItem.appendChild(option);
   });
   doctorStockItem.value = currentValue;
@@ -1472,10 +3527,26 @@ function populateNurseStockOptions() {
   stock.forEach((item) => {
     const option = document.createElement('option');
     option.value = item.id;
-    option.textContent = `${item.name} (${item.qty || 0})`;
+    option.textContent = `${item.name} (${getStockTypeLabel(item.type)} · ${item.qty || 0})`;
     nurseStockItem.appendChild(option);
   });
   nurseStockItem.value = currentValue;
+}
+
+function populateLabStockOptions() {
+  if (!labStockItem) return;
+  const currentValue = labStockItem.value;
+  const stock = loadStock();
+  const filtered = stock.filter((item) => ['reagent', 'consumable'].includes(normalizeStockType(item.type)));
+  const source = filtered.length ? filtered : stock;
+  labStockItem.innerHTML = `<option value="">${t('select.placeholder')}</option>`;
+  source.forEach((item) => {
+    const option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = `${item.name} (${getStockTypeLabel(item.type)} · ${item.qty || 0})`;
+    labStockItem.appendChild(option);
+  });
+  labStockItem.value = currentValue;
 }
 
 function renderDoctorMedicationList() {
@@ -1504,6 +3575,19 @@ function renderNurseSupplyList() {
   });
 }
 
+function renderLabSupplyList() {
+  if (!labSupplyList) return;
+  labSupplyList.innerHTML = '';
+  pendingLabSupplies.forEach((item) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'search-result';
+    button.dataset.stockId = item.stockId;
+    button.innerHTML = `<strong>${item.name}</strong><span>${item.qty}</span>`;
+    labSupplyList.appendChild(button);
+  });
+}
+
 function getEncounterById(id) {
   return loadEncounters().find((encounter) => encounter.id === id) || null;
 }
@@ -1527,6 +3611,882 @@ function setDoctorEncounterSummary(encounter) {
     );
   }
   doctorPatientSummary.textContent = details.filter(Boolean).join(' | ') || t('dashboard.placeholder');
+}
+
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function formatSexLabel(value) {
+  const labels = {
+    female: t('billing.sexFemale'),
+    male: t('billing.sexMale'),
+    other: t('billing.sexOther'),
+  };
+  return labels[value] || value || '-';
+}
+
+function formatPaymentMethodLabel(value) {
+  const labels = {
+    cash: t('billing.paymentCash'),
+    bank_transfer: t('billing.paymentBank'),
+    mobile_money: currentLang === 'fr' ? 'Mobile money' : 'Mobile money',
+    cheque: currentLang === 'fr' ? 'Chèque' : 'Cheque',
+    other: currentLang === 'fr' ? 'Autre' : 'Other',
+  };
+  return labels[value] || value || '-';
+}
+
+function formatPrescriptionTypeLabel(value) {
+  const labels = {
+    outpatient_care: t('dashboard.prescriptionOutpatientCare'),
+    day_hospitalization: t('dashboard.prescriptionDay'),
+    full_hospitalization: t('dashboard.prescriptionFull'),
+    outpatient_prescription: t('dashboard.prescriptionOutpatientRx'),
+  };
+  return labels[value] || value || t('records.none');
+}
+
+function formatCareModeLabel(value) {
+  const labels = {
+    outpatient: t('dashboard.modeOutpatient'),
+    day: t('dashboard.modeDay'),
+    full: t('dashboard.modeFull'),
+  };
+  return labels[value] || value || t('records.none');
+}
+
+function formatEncounterStatusLabel(value) {
+  const labels = {
+    registered: t('records.encounterRegistered'),
+    'nurse-completed': t('records.encounterNurseCompleted'),
+    'doctor-completed': t('records.encounterDoctorCompleted'),
+    'awaiting-results': t('records.encounterAwaitingResults'),
+    'results-validated': t('records.encounterResultsValidated'),
+    'pharmacy-dispensed': t('records.encounterPharmacyDispensed'),
+  };
+  return labels[value] || value || t('records.none');
+}
+
+function formatClinicalResultStatus(value) {
+  const labels = {
+    unpaid: t('records.unpaid'),
+    pending: t('records.statusPending'),
+    in_progress: t('records.statusInProgress'),
+    completed: t('records.statusCompleted'),
+    validated: t('records.statusValidated'),
+  };
+  return labels[value] || value || t('records.none');
+}
+
+function renderClinicalEmptyRow(tbody, colspan) {
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  const row = document.createElement('tr');
+  row.innerHTML = `<td colspan="${colspan}">${t('dashboard.noData')}</td>`;
+  tbody.appendChild(row);
+}
+
+function filterClinicalSectionsByRole() {
+  const sections = document.querySelectorAll('[data-record-roles]');
+  sections.forEach((section) => {
+    if (!currentEmployee?.role) {
+      section.classList.add('hidden');
+      return;
+    }
+    const allowed = (section.getAttribute('data-record-roles') || '')
+      .split(',')
+      .map((role) => role.trim())
+      .filter(Boolean);
+    section.classList.toggle('hidden', !allowed.includes(currentEmployee.role));
+  });
+}
+
+function getClinicalExamRequests(roleFilter = '', patientId = '') {
+  const encounters = loadEncounters();
+  const catalog = loadServiceCatalog();
+  const results = loadClinicalResults();
+  const serviceMap = new Map(catalog.map((service) => [service.id, service]));
+  return encounters
+    .filter((encounter) => !patientId || encounter.patientId === patientId)
+    .flatMap((encounter) => {
+      const consultation = encounter.doctorConsultation;
+      if (!consultation?.tests?.length) return [];
+      return consultation.tests
+        .map((serviceId) => {
+          const service = serviceMap.get(serviceId);
+          const bucket = getDashboardCategoryBucket(service?.category || '');
+          if (roleFilter === 'lab' && bucket !== 'lab') return null;
+          if (roleFilter === 'radiology' && bucket !== 'imaging') return null;
+          const result = results.find(
+            (entry) => entry.encounterId === encounter.id && entry.serviceId === serviceId
+          );
+          const paid = (encounter.services || []).some((item) => {
+            if (item.serviceId && item.serviceId === serviceId) return true;
+            if (service && normalizeLabel(item.label) === normalizeLabel(service.name)) return true;
+            if (service && normalizeLabel(item.code) === normalizeLabel(service.code || service.diseaseCode || '')) return true;
+            return false;
+          });
+          return {
+            id: `${encounter.id}::${serviceId}`,
+            patientId: encounter.patientId,
+            patientName: encounter.patientName,
+            encounterId: encounter.id,
+            serviceId,
+            serviceName: service?.name || serviceId,
+            category: service?.category || '',
+            categoryLabel: service ? getServiceCategoryLabel(service.category) : '-',
+            bucket,
+            prescribedAt: consultation.recordedAt || encounter.createdAt,
+            doctorName: encounter.doctorName || consultation.recordedBy || '-',
+            isPaid: paid,
+            status: result?.status || (paid ? 'pending' : 'unpaid'),
+            resultText: result?.resultText || '',
+            comment: result?.comment || '',
+            recordedBy: result?.recordedBy || '',
+            updatedAt: result?.updatedAt || result?.createdAt || '',
+            supplies: Array.isArray(result?.supplies) ? result.supplies : [],
+            stockAppliedAt: result?.stockAppliedAt || '',
+          };
+        })
+        .filter(Boolean);
+    })
+    .sort((a, b) => new Date(b.prescribedAt || 0) - new Date(a.prescribedAt || 0));
+}
+
+function getClinicalAccessiblePatients() {
+  const patients = loadPatients();
+  const role = currentEmployee?.role || '';
+  if (['admin', 'director', 'accountant', 'admission'].includes(role)) {
+    return [...patients].sort((a, b) => fullPatientName(a).localeCompare(fullPatientName(b)));
+  }
+  let ids = new Set();
+  if (role === 'doctor') {
+    loadEncounters().forEach((encounter) => {
+      if (matchesCurrentEmployeeProvider(encounter)) ids.add(encounter.patientId);
+    });
+  } else if (role === 'nurse') {
+    loadEncounters().forEach((encounter) => {
+      if (encounter.patientId) ids.add(encounter.patientId);
+    });
+  } else if (role === 'lab' || role === 'radiology') {
+    getClinicalExamRequests(role).forEach((request) => {
+      if ((request.isPaid || request.updatedAt) && request.patientId) ids.add(request.patientId);
+    });
+  } else if (role === 'pharmacy') {
+    loadEncounters().forEach((encounter) => {
+      if (hasEncounterPharmacyNeed(encounter) && encounter.patientId) ids.add(encounter.patientId);
+    });
+  } else {
+    return [...patients].sort((a, b) => fullPatientName(a).localeCompare(fullPatientName(b)));
+  }
+  return patients
+    .filter((patient) => ids.has(patient.id))
+    .sort((a, b) => fullPatientName(a).localeCompare(fullPatientName(b)));
+}
+
+function getClinicalPatientMatches(query = '') {
+  const accessible = getClinicalAccessiblePatients();
+  const normalizedQuery = normalizeLabel(query);
+  if (!normalizedQuery) return accessible.slice(0, 12);
+  return accessible.filter((patient) => {
+    return [
+      fullPatientName(patient),
+      patient.phone,
+      patient.whatsapp,
+      patient.identifier,
+    ]
+      .map((value) => normalizeLabel(value || ''))
+      .some((value) => value.includes(normalizedQuery));
+  });
+}
+
+function collectClinicalRecord(patientId) {
+  const patient = loadPatients().find((entry) => entry.id === patientId) || null;
+  const encounters = loadEncounters()
+    .filter((entry) => entry.patientId === patientId)
+    .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+  const receipts = loadReceipts()
+    .filter((entry) => entry.patientId === patientId)
+    .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+  const accounting = loadAccountingEntries()
+    .filter((entry) => entry.patientId === patientId)
+    .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+  const examRequests = getClinicalExamRequests('', patientId);
+  const results = loadClinicalResults()
+    .filter((entry) => entry.patientId === patientId)
+    .sort((a, b) => new Date(b.updatedAt || b.createdAt || 0) - new Date(a.updatedAt || a.createdAt || 0));
+  const catalog = new Map(loadServiceCatalog().map((service) => [service.id, service]));
+  const doctorRows = encounters
+    .filter((encounter) => !!encounter.doctorConsultation)
+    .map((encounter) => {
+      const consultation = encounter.doctorConsultation;
+      const tests = (consultation.tests || [])
+        .map((testId) => catalog.get(testId)?.name || testId)
+        .filter(Boolean)
+        .join(', ');
+      return {
+        encounterId: encounter.id,
+        date: consultation.recordedAt || encounter.createdAt,
+        complaint: [consultation.complaint, consultation.symptoms].filter(Boolean).join(' · ') || t('records.none'),
+        diagnoses: [
+          (consultation.diagnoses || []).join(' · '),
+          consultation.examSummary,
+          tests ? `Tests: ${tests}` : '',
+        ].filter(Boolean).join(' | ') || t('records.none'),
+        prescriptionType: [
+          formatPrescriptionTypeLabel(consultation.prescriptionType),
+          (consultation.medications || []).map((item) => `${item.name} x${item.qty}`).join(', '),
+          formatPharmacyQueueStatus(getEncounterPrescriptionStatus(encounter)),
+        ].filter(Boolean).join(' | '),
+        tests,
+        doctorName: encounter.doctorName || consultation.recordedBy || '-',
+      };
+    });
+  const nurseRows = encounters
+    .filter((encounter) => !!encounter.nurseAssessment)
+    .map((encounter) => {
+      const nurse = encounter.nurseAssessment;
+      return {
+        date: nurse.recordedAt || encounter.createdAt,
+        vitals: [
+          `T ${nurse.temperature || '-'}`,
+          `BP R ${nurse.bpRight || '-'}`,
+          `BP L ${nurse.bpLeft || '-'}`,
+          `W ${nurse.weight || '-'}`,
+          `H ${nurse.height || '-'}`,
+          `P ${nurse.pulse || '-'}`,
+        ].join(' | '),
+        mode: nurse.mode || 'outpatient',
+        care: [nurse.careNotes, nurse.roomNumber ? `Room ${nurse.roomNumber}` : '', nurse.bedNumber ? `Bed ${nurse.bedNumber}` : '']
+          .filter(Boolean)
+          .join(' · ') || t('records.none'),
+      };
+    });
+  const prescriptionRows = encounters
+    .filter((encounter) => !!encounter.doctorConsultation)
+    .map((encounter) => {
+      const consultation = encounter.doctorConsultation;
+      const meds = (consultation.medications || [])
+        .map((item) => `${item.name} x${item.qty}`)
+        .join(', ');
+      const tests = (consultation.tests || [])
+        .map((testId) => catalog.get(testId)?.name || testId)
+        .join(', ');
+      return {
+        date: consultation.recordedAt || encounter.createdAt,
+        type: formatPrescriptionTypeLabel(consultation.prescriptionType),
+        medications: meds || t('records.none'),
+        tests: tests || t('records.none'),
+        provider: encounter.doctorName || consultation.recordedBy || '-',
+      };
+    });
+  const billingRows = receipts.map((receipt) => {
+    const accountingEntry = accounting.find((entry) => entry.receiptId === receipt.id);
+    return {
+      receiptId: receipt.id,
+      date: receipt.createdAt,
+      total: receipt.total || 0,
+      insurance: accountingEntry?.insurerAmount ?? receipt.insuranceTotal ?? 0,
+      patient: (accountingEntry?.cashAmount || 0) + (accountingEntry?.bankAmount || 0) || receipt.patientTotal || 0,
+      paymentMethod: accountingEntry?.paymentMethod || receipt.paymentMethod || '',
+      cashier: accountingEntry?.admittedBy || receipt.admittedBy || '-',
+    };
+  });
+  return {
+    patient,
+    encounters,
+    receipts,
+    accounting,
+    examRequests,
+    results,
+    doctorRows,
+    nurseRows,
+    prescriptionRows,
+    stats: {
+      visits: encounters.length,
+      consultations: doctorRows.length,
+      hospitalizations: encounters.filter((encounter) => isHospitalizationEncounter(encounter)).length,
+      invoices: receipts.length,
+    },
+  };
+}
+
+function renderClinicalPatientResults(matches) {
+  if (!clinicalPatientResults) return;
+  clinicalPatientResults.innerHTML = '';
+  matches.forEach((patient) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'search-result';
+    button.dataset.patientId = patient.id;
+    button.innerHTML = `
+      <strong>${escapeHtml(fullPatientName(patient) || '-')}</strong>
+      <span>${escapeHtml(patient.identifier || patient.phone || '-')}</span>
+    `;
+    clinicalPatientResults.appendChild(button);
+  });
+}
+
+function renderClinicalRecordSummary(record) {
+  if (!clinicalSelectedPatientName || !clinicalSelectedPatientMeta || !clinicalSelectedPatientStats) return;
+  if (!record?.patient) {
+    clinicalSelectedPatientName.textContent = t('records.noPatientSelected');
+    clinicalSelectedPatientMeta.textContent = t('records.selectPatientHint');
+    clinicalSelectedPatientStats.innerHTML = '';
+    return;
+  }
+  const patient = record.patient;
+  clinicalSelectedPatientName.textContent = fullPatientName(patient) || t('records.noPatientSelected');
+  clinicalSelectedPatientMeta.textContent = [
+    patient.identifier || '-',
+    patient.phone || '-',
+    patient.insuranceType || t('records.uninsured'),
+  ].join(' · ');
+  clinicalSelectedPatientStats.innerHTML = `
+    <span class="pill"><strong>${record.stats.visits}</strong> ${t('records.labelVisits')}</span>
+    <span class="pill"><strong>${record.stats.consultations}</strong> ${t('records.labelConsultations')}</span>
+    <span class="pill"><strong>${record.stats.hospitalizations}</strong> ${t('records.labelHospitalizations')}</span>
+    <span class="pill"><strong>${record.stats.invoices}</strong> ${t('records.labelInvoices')}</span>
+  `;
+}
+
+function renderClinicalInfoGrid(container, entries) {
+  if (!container) return;
+  container.innerHTML = entries
+    .map(
+      (entry) => `
+        <div class="record-card">
+          <span>${escapeHtml(entry.label)}</span>
+          <strong>${escapeHtml(entry.value || '-')}</strong>
+        </div>
+      `
+    )
+    .join('');
+}
+
+function renderClinicalIdentity(record) {
+  const patient = record?.patient;
+  if (!patient) {
+    if (clinicalIdentityGrid) clinicalIdentityGrid.innerHTML = '';
+    if (clinicalSocioGrid) clinicalSocioGrid.innerHTML = '';
+    return;
+  }
+  renderClinicalInfoGrid(clinicalIdentityGrid, [
+    { label: t('records.labelIdentifier'), value: patient.identifier || '-' },
+    { label: t('records.labelSex'), value: formatSexLabel(patient.sex) },
+    { label: t('records.labelDob'), value: formatDate(patient.dob) || '-' },
+    { label: t('records.labelAge'), value: patient.age || calculateAgeFromDob(patient.dob) || '-' },
+    { label: t('records.labelPhone'), value: patient.phone || '-' },
+    { label: t('records.labelWhatsapp'), value: patient.whatsapp || '-' },
+  ]);
+  renderClinicalInfoGrid(clinicalSocioGrid, [
+    { label: t('records.labelAddress'), value: [patient.address?.country, patient.address?.city, patient.address?.district, patient.address?.postalCode].filter(Boolean).join(', ') || '-' },
+    { label: t('records.labelProfession'), value: patient.profession || '-' },
+    { label: t('records.labelEducation'), value: patient.education || '-' },
+    { label: t('records.labelInsurance'), value: patient.insuranceType || t('records.uninsured') },
+    { label: t('records.labelCoverage'), value: patient.coverage ? `${patient.coverage}%` : '-' },
+    { label: t('records.labelExpiry'), value: formatDate(patient.insuranceExpiry) || '-' },
+    { label: t('records.labelProvider'), value: patient.doctor || '-' },
+    { label: t('records.labelRegisteredAt'), value: formatDate(patient.createdAt) || '-' },
+    { label: t('records.labelUpdatedAt'), value: formatDate(patient.updatedAt) || '-' },
+  ]);
+}
+
+function renderClinicalHistory(record) {
+  if (!clinicalAntecedents || !clinicalNotes) return;
+  const history = record?.patient?.clinicalHistory || {};
+  clinicalAntecedents.value = history.antecedents || '';
+  clinicalNotes.value = history.notes || '';
+}
+
+function renderClinicalEncounterHistory(record) {
+  if (!clinicalEncounterTable) return;
+  const rows = record?.encounters || [];
+  if (!rows.length) {
+    renderClinicalEmptyRow(clinicalEncounterTable, 5);
+    return;
+  }
+  clinicalEncounterTable.innerHTML = rows
+    .map((encounter) => {
+      const services = (encounter.services || []).map((item) => item.label).slice(0, 3).join(', ');
+      return `
+        <tr>
+          <td>${escapeHtml(formatDate(encounter.createdAt) || '-')}</td>
+          <td>${escapeHtml(encounter.doctorName || '-')}</td>
+          <td>${escapeHtml(formatEncounterStatusLabel(encounter.workflowStatus || encounter.status || '-'))}</td>
+          <td>${escapeHtml(services || t('records.none'))}</td>
+          <td>${escapeHtml(formatPaymentMethodLabel(encounter.paymentMethod))}</td>
+        </tr>
+      `;
+    })
+    .join('');
+}
+
+function renderClinicalNurseAssessments(record) {
+  if (!clinicalNurseTable) return;
+  const rows = record?.nurseRows || [];
+  if (!rows.length) {
+    renderClinicalEmptyRow(clinicalNurseTable, 4);
+    return;
+  }
+  clinicalNurseTable.innerHTML = rows
+    .map((row) => `
+      <tr>
+        <td>${escapeHtml(formatDate(row.date) || '-')}</td>
+        <td>${escapeHtml(row.vitals)}</td>
+        <td>${escapeHtml(formatCareModeLabel(row.mode || '-'))}</td>
+        <td>${escapeHtml(row.care)}</td>
+      </tr>
+    `)
+    .join('');
+}
+
+function renderClinicalDoctorRecords(record) {
+  if (!clinicalDoctorTable) return;
+  const rows = record?.doctorRows || [];
+  if (!rows.length) {
+    renderClinicalEmptyRow(clinicalDoctorTable, 5);
+    return;
+  }
+  clinicalDoctorTable.innerHTML = rows
+    .map((row) => {
+      const canEdit = currentEmployee?.role === 'doctor';
+      const action = canEdit
+        ? `<button class="ghost" type="button" data-encounter-edit="${escapeHtml(row.encounterId)}">${escapeHtml(t('records.editEncounter'))}</button>`
+        : '-';
+      return `
+        <tr>
+          <td>${escapeHtml(formatDate(row.date) || '-')}</td>
+          <td>${escapeHtml(row.complaint)}</td>
+          <td>${escapeHtml(row.diagnoses)}</td>
+          <td>${escapeHtml(row.prescriptionType)}</td>
+          <td>${action}</td>
+        </tr>
+      `;
+    })
+    .join('');
+}
+
+function renderClinicalExamRequests(record) {
+  if (!clinicalExamRequestsTable) return;
+  let rows = record?.examRequests || [];
+  if (currentEmployee?.role === 'lab') {
+    rows = rows.filter((row) => row.bucket === 'lab');
+  } else if (currentEmployee?.role === 'radiology') {
+    rows = rows.filter((row) => row.bucket === 'imaging');
+  }
+  if (!rows.length) {
+    renderClinicalEmptyRow(clinicalExamRequestsTable, 6);
+    return;
+  }
+  clinicalExamRequestsTable.innerHTML = rows
+    .map((row) => `
+      <tr>
+        <td>${escapeHtml(formatDate(row.prescribedAt) || '-')}</td>
+        <td>${escapeHtml(row.serviceName)}</td>
+        <td>${escapeHtml(row.categoryLabel)}</td>
+        <td>${escapeHtml(row.isPaid ? t('records.paid') : t('records.unpaid'))}</td>
+        <td>${escapeHtml(formatClinicalResultStatus(row.status))}</td>
+        <td>${escapeHtml(row.doctorName)}</td>
+      </tr>
+    `)
+    .join('');
+}
+
+function populateClinicalExamRequestOptions(record) {
+  if (!clinicalExamRequestSelect) return;
+  const currentValue = clinicalExamRequestSelect.value;
+  const role = currentEmployee?.role;
+  let rows = record?.examRequests || [];
+  if (role === 'lab') {
+    rows = rows.filter((row) => row.bucket === 'lab' && row.isPaid);
+  } else if (role === 'radiology') {
+    rows = rows.filter((row) => row.bucket === 'imaging' && row.isPaid);
+  } else {
+    rows = [];
+  }
+  clinicalExamRequestSelect.innerHTML = `<option value="">${t('records.selectRequest')}</option>`;
+  rows.forEach((row) => {
+    const option = document.createElement('option');
+    option.value = row.id;
+    option.textContent = `${formatDate(row.prescribedAt)} · ${row.serviceName}`;
+    clinicalExamRequestSelect.appendChild(option);
+  });
+  clinicalExamRequestSelect.value = currentValue && rows.some((row) => row.id == currentValue) ? currentValue : '';
+  const selected = rows.find((row) => row.id === clinicalExamRequestSelect.value);
+  if (clinicalExamStatus) clinicalExamStatus.value = selected?.status && selected.status !== 'unpaid' ? selected.status : 'pending';
+  if (clinicalExamResult) clinicalExamResult.value = selected?.resultText || '';
+  if (clinicalExamComment) clinicalExamComment.value = selected?.comment || '';
+}
+
+function getLabModuleRoleFilter() {
+  return currentEmployee?.role === 'radiology' ? 'radiology' : 'lab';
+}
+
+function canProcessClinicalRequest(request) {
+  return !!request && (request.isPaid || ['in_progress', 'completed', 'validated'].includes(request.status));
+}
+
+function canEditLabResults() {
+  return ['lab', 'radiology'].includes(currentEmployee?.role || '');
+}
+
+function getClinicalRequestById(requestId, roleFilter = '') {
+  if (!requestId) return null;
+  const filter = roleFilter || getLabModuleRoleFilter();
+  return getClinicalExamRequests(filter).find((entry) => entry.id === requestId) || null;
+}
+
+function saveClinicalResultForRequest(request, options = {}) {
+  if (!request) return { ok: false, reason: 'missing' };
+  if (!canProcessClinicalRequest(request)) return { ok: false, reason: 'locked' };
+  const status = options.status || 'pending';
+  const resultText = options.resultText || '';
+  const comment = options.comment || '';
+  const [encounterId, serviceId] = request.id.split('::');
+  const results = loadClinicalResults();
+  const existingIndex = results.findIndex((entry) => entry.encounterId === encounterId && entry.serviceId === serviceId);
+  const previous = existingIndex >= 0 ? results[existingIndex] : null;
+  const payload = {
+    id: previous?.id || `RES-${Date.now()}`,
+    patientId: request.patientId,
+    encounterId,
+    serviceId,
+    serviceName: request.serviceName,
+    category: request.category,
+    categoryLabel: request.categoryLabel,
+    kind: request.bucket,
+    status,
+    resultText,
+    comment,
+    supplies: Array.isArray(options.supplies) ? options.supplies : (previous?.supplies || []),
+    stockAppliedAt: options.stockAppliedAt !== undefined ? options.stockAppliedAt : (previous?.stockAppliedAt || ''),
+    recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+    createdAt: previous?.createdAt || new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+  if (existingIndex >= 0) {
+    results[existingIndex] = payload;
+  } else {
+    results.push(payload);
+  }
+  saveClinicalResults(results);
+  refreshClinicalRecordsIfVisible();
+  refreshLabModuleIfVisible();
+  refreshDashboardIfVisible();
+  return { ok: true, payload };
+}
+
+function getLabModuleRequests() {
+  const roleFilter = getLabModuleRoleFilter();
+  const query = normalizeLabel(labRequestSearch?.value || '');
+  const statusFilter = labStatusFilter?.value || 'all';
+  let rows = getClinicalExamRequests(roleFilter);
+  if (query) {
+    rows = rows.filter((row) => [row.patientName, row.serviceName, row.categoryLabel, row.doctorName]
+      .map((value) => normalizeLabel(value || ''))
+      .some((value) => value.includes(query)));
+  }
+  if (statusFilter === 'eligible') {
+    rows = rows.filter((row) => canProcessClinicalRequest(row));
+  } else if (statusFilter === 'unpaid') {
+    rows = rows.filter((row) => !row.isPaid);
+  } else if (statusFilter !== 'all') {
+    rows = rows.filter((row) => row.status === statusFilter);
+  }
+  return rows;
+}
+
+function renderLabRequestSummary(request) {
+  if (!labRequestSummaryGrid) return;
+  if (!request) {
+    pendingLabSupplies = [];
+    renderClinicalInfoGrid(labRequestSummaryGrid, [{ label: t('labModule.requestSummaryTitle'), value: t('labModule.noRequestSelected') }]);
+    if (labResultStatus) labResultStatus.value = 'pending';
+    if (labResultText) labResultText.value = '';
+    if (labResultComment) labResultComment.value = '';
+    if (labStockItem) labStockItem.value = '';
+    if (labStockQty) labStockQty.value = '1';
+    renderLabSupplyList();
+    populateLabStockOptions();
+    if (openLabPatientRecordBtn) openLabPatientRecordBtn.disabled = true;
+    if (saveLabResultBtn) saveLabResultBtn.disabled = true;
+    if (validateLabResultBtn) validateLabResultBtn.disabled = true;
+    if (addLabSupplyBtn) addLabSupplyBtn.disabled = true;
+    if (labStockItem) labStockItem.disabled = true;
+    if (labStockQty) labStockQty.disabled = true;
+    return;
+  }
+  renderClinicalInfoGrid(labRequestSummaryGrid, [
+    { label: t('labModule.queuePatient'), value: request.patientName || '-' },
+    { label: t('records.requestService'), value: request.serviceName || '-' },
+    { label: t('records.requestCategory'), value: request.categoryLabel || '-' },
+    { label: t('records.requestPaid'), value: request.isPaid ? t('records.paid') : t('records.unpaid') },
+    { label: t('records.requestDate'), value: formatDate(request.prescribedAt) || '-' },
+    { label: t('records.requestProvider'), value: request.doctorName || '-' },
+  ]);
+  pendingLabSupplies = Array.isArray(request.supplies)
+    ? request.supplies.map((item) => ({ ...item }))
+    : [];
+  if (labResultStatus) labResultStatus.value = request.status && request.status !== 'unpaid' ? request.status : 'pending';
+  if (labResultText) labResultText.value = request.resultText || '';
+  if (labResultComment) labResultComment.value = request.comment || '';
+  if (labStockQty) labStockQty.value = '1';
+  renderLabSupplyList();
+  populateLabStockOptions();
+  if (openLabPatientRecordBtn) openLabPatientRecordBtn.disabled = !request.patientId;
+  const editable = canEditLabResults() && canProcessClinicalRequest(request);
+  if (saveLabResultBtn) saveLabResultBtn.disabled = !editable;
+  if (validateLabResultBtn) validateLabResultBtn.disabled = !editable;
+  if (addLabSupplyBtn) addLabSupplyBtn.disabled = !editable;
+  if (labStockItem) labStockItem.disabled = !editable;
+  if (labStockQty) labStockQty.disabled = !editable;
+}
+
+function renderLabRequestsTable(rows) {
+  if (!labRequestsTableBody) return;
+  if (!rows.length) {
+    renderClinicalEmptyRow(labRequestsTableBody, 8);
+    return;
+  }
+  labRequestsTableBody.innerHTML = rows.map((row) => {
+    const actionDisabled = canProcessClinicalRequest(row) ? '' : 'disabled';
+    return `
+      <tr>
+        <td>${escapeHtml(row.patientName || '-')}</td>
+        <td>${escapeHtml(row.serviceName || '-')}</td>
+        <td>${escapeHtml(row.categoryLabel || '-')}</td>
+        <td>${escapeHtml(row.isPaid ? t('records.paid') : t('records.unpaid'))}</td>
+        <td>${escapeHtml(formatClinicalResultStatus(row.status))}</td>
+        <td>${escapeHtml(formatDate(row.prescribedAt) || '-')}</td>
+        <td>${escapeHtml(row.doctorName || '-')}</td>
+        <td><button class="ghost" type="button" data-lab-request-id="${escapeHtml(row.id)}" ${actionDisabled}>${escapeHtml(t('labModule.openRequest'))}</button></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function renderLabHistoryTable(requests) {
+  if (!labHistoryTableBody) return;
+  const requestIds = new Set(requests.map((row) => row.id));
+  const patientMap = new Map(loadPatients().map((patient) => [patient.id, fullPatientName(patient)]));
+  const rows = loadClinicalResults()
+    .filter((entry) => {
+      const bucket = entry.kind || getDashboardCategoryBucket(entry.category || '');
+      if (getLabModuleRoleFilter() === 'radiology') return bucket === 'imaging';
+      return bucket === 'lab';
+    })
+    .filter((entry) => requestIds.size === 0 || requestIds.has(`${entry.encounterId}::${entry.serviceId}`))
+    .sort((a, b) => new Date(b.updatedAt || b.createdAt || 0) - new Date(a.updatedAt || a.createdAt || 0));
+  if (!rows.length) {
+    renderClinicalEmptyRow(labHistoryTableBody, 6);
+    return;
+  }
+  labHistoryTableBody.innerHTML = rows.map((row) => `
+    <tr>
+      <td>${escapeHtml(formatDate(row.updatedAt || row.createdAt) || '-')}</td>
+      <td>${escapeHtml(patientMap.get(row.patientId) || '-')}</td>
+      <td>${escapeHtml(row.serviceName || '-')}</td>
+      <td>${escapeHtml(formatClinicalResultStatus(row.status))}</td>
+      <td>${escapeHtml(row.resultText || t('records.none'))}</td>
+      <td>${escapeHtml(row.recordedBy || '-')}</td>
+    </tr>
+  `).join('');
+}
+
+function renderLabModule() {
+  if (!labModuleView) return;
+  const allRequests = getClinicalExamRequests(getLabModuleRoleFilter());
+  const filteredRequests = getLabModuleRequests();
+  if (labModuleRequested) labModuleRequested.textContent = allRequests.length.toString();
+  if (labModuleEligible) labModuleEligible.textContent = allRequests.filter((row) => canProcessClinicalRequest(row)).length.toString();
+  if (labModuleValidated) labModuleValidated.textContent = allRequests.filter((row) => row.status === 'validated').length.toString();
+  if (activeLabRequestId && !allRequests.some((row) => row.id === activeLabRequestId)) {
+    activeLabRequestId = '';
+  }
+  if (!activeLabRequestId && filteredRequests.length) {
+    activeLabRequestId = (filteredRequests.find((row) => canProcessClinicalRequest(row)) || filteredRequests[0]).id;
+  }
+  renderLabRequestsTable(filteredRequests);
+  const selectedRequest = allRequests.find((row) => row.id === activeLabRequestId) || null;
+  renderLabRequestSummary(selectedRequest);
+  renderLabHistoryTable(filteredRequests.length ? filteredRequests : allRequests);
+  if (labRequestMessage) {
+    if (!filteredRequests.length) {
+      labRequestMessage.textContent = t('labModule.noQueue');
+    } else if (selectedRequest && !canProcessClinicalRequest(selectedRequest)) {
+      labRequestMessage.textContent = t('labModule.lockedRequest');
+    } else if (!canEditLabResults()) {
+      labRequestMessage.textContent = t('labModule.readOnly');
+    } else {
+      labRequestMessage.textContent = '';
+    }
+  }
+  if (labResultMessage && (!selectedRequest || !labResultMessage.dataset.persist)) {
+    labResultMessage.textContent = '';
+    delete labResultMessage.dataset.persist;
+  }
+}
+
+function refreshLabModuleIfVisible() {
+  if (labModuleView && !labModuleView.classList.contains('hidden')) {
+    renderLabModule();
+  }
+}
+
+function renderDoctorExamResults() {
+  if (!doctorLabResultsTable) return;
+  const encounterIds = new Set(loadEncounters().filter((encounter) => matchesCurrentEmployeeProvider(encounter)).map((encounter) => encounter.id));
+  const patientMap = new Map(loadPatients().map((patient) => [patient.id, fullPatientName(patient)]));
+  const rows = loadClinicalResults()
+    .filter((entry) => encounterIds.has(entry.encounterId))
+    .sort((a, b) => new Date(b.updatedAt || b.createdAt || 0) - new Date(a.updatedAt || a.createdAt || 0))
+    .slice(0, 8);
+  if (!rows.length) {
+    renderClinicalEmptyRow(doctorLabResultsTable, 5);
+    return;
+  }
+  doctorLabResultsTable.innerHTML = rows.map((row) => `
+    <tr>
+      <td>${escapeHtml(formatDate(row.updatedAt || row.createdAt) || '-')}</td>
+      <td>${escapeHtml(patientMap.get(row.patientId) || '-')}</td>
+      <td>${escapeHtml(row.serviceName || '-')}</td>
+      <td>${escapeHtml(formatClinicalResultStatus(row.status))}</td>
+      <td>${escapeHtml(row.resultText || t('records.none'))}</td>
+    </tr>
+  `).join('');
+}
+
+function renderClinicalResultsTable(record) {
+  if (!clinicalResultsTable) return;
+  let rows = record?.results || [];
+  if (currentEmployee?.role === 'lab') {
+    rows = rows.filter((row) => row.kind === 'lab' || row.bucket === 'lab');
+  } else if (currentEmployee?.role === 'radiology') {
+    rows = rows.filter((row) => row.kind === 'imaging' || row.bucket === 'imaging');
+  }
+  if (!rows.length) {
+    renderClinicalEmptyRow(clinicalResultsTable, 7);
+    return;
+  }
+  clinicalResultsTable.innerHTML = rows
+    .map((row) => `
+      <tr>
+        <td>${escapeHtml(formatDate(row.updatedAt || row.createdAt) || '-')}</td>
+        <td>${escapeHtml(row.serviceName || '-')}</td>
+        <td>${escapeHtml(row.categoryLabel || getServiceCategoryLabel(row.category || ''))}</td>
+        <td>${escapeHtml(formatClinicalResultStatus(row.status))}</td>
+        <td>${escapeHtml(row.resultText || t('records.none'))}</td>
+        <td>${escapeHtml(row.comment || t('records.none'))}</td>
+        <td>${escapeHtml(row.recordedBy || '-')}</td>
+      </tr>
+    `)
+    .join('');
+}
+
+function renderClinicalPrescriptions(record) {
+  if (!clinicalPrescriptionTable) return;
+  const rows = record?.prescriptionRows || [];
+  if (!rows.length) {
+    renderClinicalEmptyRow(clinicalPrescriptionTable, 5);
+    return;
+  }
+  clinicalPrescriptionTable.innerHTML = rows
+    .map((row) => `
+      <tr>
+        <td>${escapeHtml(formatDate(row.date) || '-')}</td>
+        <td>${escapeHtml(row.type)}</td>
+        <td>${escapeHtml(row.medications)}</td>
+        <td>${escapeHtml(row.tests)}</td>
+        <td>${escapeHtml(row.provider)}</td>
+      </tr>
+    `)
+    .join('');
+}
+
+function renderClinicalBilling(record) {
+  if (!clinicalBillingTable) return;
+  const rows = record?.billingRows || [];
+  if (!rows.length) {
+    renderClinicalEmptyRow(clinicalBillingTable, 7);
+    return;
+  }
+  clinicalBillingTable.innerHTML = rows
+    .map((row) => `
+      <tr>
+        <td>${escapeHtml(row.receiptId || '-')}</td>
+        <td>${escapeHtml(formatDate(row.date) || '-')}</td>
+        <td>${escapeHtml(formatCfl(row.total || 0))}</td>
+        <td>${escapeHtml(formatCfl(row.insurance || 0))}</td>
+        <td>${escapeHtml(formatCfl(row.patient || 0))}</td>
+        <td>${escapeHtml(formatPaymentMethodLabel(row.paymentMethod))}</td>
+        <td>${escapeHtml(row.cashier || '-')}</td>
+      </tr>
+    `)
+    .join('');
+}
+
+function clearClinicalRecordPanels() {
+  renderClinicalRecordSummary(null);
+  if (clinicalIdentityGrid) clinicalIdentityGrid.innerHTML = '';
+  if (clinicalSocioGrid) clinicalSocioGrid.innerHTML = '';
+  if (clinicalAntecedents) clinicalAntecedents.value = '';
+  if (clinicalNotes) clinicalNotes.value = '';
+  renderClinicalEmptyRow(clinicalEncounterTable, 5);
+  renderClinicalEmptyRow(clinicalNurseTable, 4);
+  renderClinicalEmptyRow(clinicalDoctorTable, 5);
+  renderClinicalEmptyRow(clinicalExamRequestsTable, 6);
+  renderClinicalEmptyRow(clinicalResultsTable, 7);
+  renderClinicalEmptyRow(clinicalPrescriptionTable, 5);
+  renderClinicalEmptyRow(clinicalBillingTable, 7);
+  if (clinicalExamRequestSelect) clinicalExamRequestSelect.innerHTML = `<option value="">${t('records.selectRequest')}</option>`;
+  if (clinicalExamResult) clinicalExamResult.value = '';
+  if (clinicalExamComment) clinicalExamComment.value = '';
+}
+
+function renderClinicalRecord() {
+  if (!clinicalRecordsView) return;
+  filterClinicalSectionsByRole();
+  const matches = getClinicalPatientMatches(clinicalPatientSearch?.value || '');
+  renderClinicalPatientResults(matches);
+  if (clinicalPatientMessage) {
+    clinicalPatientMessage.textContent = matches.length ? '' : t('billing.patientNotFound');
+  }
+  if (activeClinicalPatientId && !matches.some((patient) => patient.id === activeClinicalPatientId)) {
+    activeClinicalPatientId = matches[0]?.id || null;
+  }
+  if (!activeClinicalPatientId && matches.length) {
+    activeClinicalPatientId = matches[0].id;
+  }
+  if (!activeClinicalPatientId) {
+    clearClinicalRecordPanels();
+    return;
+  }
+  const record = collectClinicalRecord(activeClinicalPatientId);
+  renderClinicalRecordSummary(record);
+  renderClinicalIdentity(record);
+  renderClinicalHistory(record);
+  renderClinicalEncounterHistory(record);
+  renderClinicalNurseAssessments(record);
+  renderClinicalDoctorRecords(record);
+  renderClinicalExamRequests(record);
+  populateClinicalExamRequestOptions(record);
+  renderClinicalResultsTable(record);
+  renderClinicalPrescriptions(record);
+  renderClinicalBilling(record);
+}
+
+function refreshClinicalRecordsIfVisible() {
+  if (clinicalRecordsView && !clinicalRecordsView.classList.contains('hidden')) {
+    renderClinicalRecord();
+  }
 }
 
 function renderReports() {
@@ -1585,6 +4545,9 @@ function renderReports() {
       });
     }
   }
+
+  renderInsuranceStatementsSection();
+  renderInsuranceReceivablesSection();
 }
 
 const translations = {
@@ -1673,7 +4636,7 @@ const translations = {
     serviceCatalog: {
       title: 'Service catalog',
       subtitle: 'Create services, insurer tariffs, and billing references by category.',
-      name: 'Service name',
+      name: 'Services / Procedure / Medication',
       category: 'Category',
       code: 'Service code',
       inamCode: 'INAM code',
@@ -1694,7 +4657,7 @@ const translations = {
       empty: 'No services yet. Add your first service.',
       delete: 'Remove',
       listCategory: 'Category',
-      listService: 'Service',
+      listService: 'Services / Procedure / Medication',
       listCode: 'Code',
       listInam: 'Code INAM',
       listUninsured: 'Uninsured price',
@@ -1729,7 +4692,51 @@ const translations = {
     dashboard: {
       title: 'Role dashboard',
       subtitle: 'Key indicators based on your responsibilities.',
+      overviewTitle: 'Operational overview',
+      overviewSubtitle: 'Daily and monthly indicators, activity mix, and trend analysis.',
+      trendMetric: 'Trend metric',
+      metricPatients: 'Patients',
+      metricRevenue: 'Revenue',
+      metricServices: 'Services billed',
+      metricHospitalizations: 'Hospitalizations',
+      metricLabImaging: 'Laboratory / imaging',
+      metricPrescriptions: 'Prescriptions',
+      metricStock: 'Stock consumption',
+      daySummary: 'Today',
+      monthSummary: 'This month',
+      activityByCategory: 'Activities by category',
+      activityByService: 'Activities by service',
+      tableCategory: 'Category',
+      tableToday: 'Today',
+      tableMonth: 'This month',
+      tableAmount: 'Amount',
+      tableService: 'Services / Procedure / Medication',
+      monthlyTrend: 'Monthly trend (current year)',
+      yearlyTrend: 'Multi-year comparison',
+      adminSectionTitle: 'Administrator overview',
+      directorTitle: 'Executive overview',
+      staffConfigured: 'Configured staff',
+      servicesConfigured: 'Configured services',
+      insurersConfigured: 'Insurance partners',
+      admissionsTodayCard: 'Admissions today',
+      staffMix: 'Staff distribution',
+      hrTitle: 'HR overview',
+      hrTotalStaff: 'Total staff',
+      hrPermanent: 'Permanent staff',
+      hrLocum: 'Locum staff',
+      hrPayrollEstimate: 'Estimated payroll due',
+      metricPatientsRegistered: 'Patients registered',
+      metricConsultationsCompleted: 'Consultations completed',
+      metricBilledServices: 'Billed services',
+      metricTotalBilled: 'Total billed',
+      metricCollected: 'Amount collected',
+      metricInsurancePart: 'Insurance share',
+      metricPatientPart: 'Patient share',
+      metricAdmissions: 'Admissions',
+      metricStockConsumption: 'Stock consumption',
       roleLabel: 'Role: {role}',
+      role: 'Role',
+      count: 'Count',
       admissionTitle: 'Admission staff overview',
       totalPatients: 'Total patients received',
       visitsToday: 'Visits today',
@@ -1804,8 +4811,15 @@ const translations = {
       radioScheduled: 'Exams scheduled',
       radioCompleted: 'Exams completed',
       pharmacyTitle: 'Pharmacy overview',
+      pharmacyPending: 'Prescriptions pending',
       pharmacyDispensed: 'Medications dispensed',
       pharmacyAlerts: 'Stock alerts',
+      pharmacyQueueTitle: 'Dispensing queue',
+      pharmacyQueuePrescription: 'Prescription',
+      pharmacyQueuePending: 'Pending dispense',
+      pharmacyQueueDispensed: 'Dispensed',
+      pharmacyDispenseAction: 'Mark dispensed',
+      action: 'Action',
       accountTitle: 'Finance overview',
       revenue: 'Total revenue',
       patientShare: 'Patient payments',
@@ -1818,10 +4832,244 @@ const translations = {
       staffProductivity: 'Staff productivity',
       doctorPayments: 'Doctor payments (locum)',
       amount: 'Amount',
+      patient: 'Patient',
+      doctorExamResults: 'Recent examination results',
       noData: 'No data yet.',
       unknownStaff: 'Unknown staff',
       otherTitle: 'General overview',
       otherSubtitle: 'Your dashboard will appear here once your role is configured.',
+    },
+    records: {
+      title: 'Clinical records',
+      subtitle: 'Consolidated patient history, clinical documentation, tests, prescriptions, and related billing.',
+      patientLookupTitle: 'Patient lookup',
+      patientSearch: 'Search patient',
+      patientSearchPlaceholder: 'Search by name, identifier, or phone',
+      noPatientSelected: 'No patient selected',
+      selectPatientHint: 'Select a patient to open the clinical record.',
+      identityTitle: 'Identity and administrative data',
+      socioTitle: 'Sociodemographic profile',
+      historyTitle: 'Medical history and antecedents',
+      antecedents: 'Antecedents',
+      clinicalNotes: 'Clinical notes',
+      saveHistory: 'Save history',
+      timelineTitle: 'Care pathway history',
+      timelineDate: 'Date',
+      timelineProvider: 'Provider',
+      timelineStatus: 'Status',
+      timelineServices: 'Services',
+      timelinePayment: 'Payment',
+      nurseTitle: 'Nursing assessments',
+      nurseDate: 'Date',
+      nurseVitals: 'Vitals',
+      nurseMode: 'Care mode',
+      nurseCare: 'Care provided',
+      doctorTitle: 'Doctor clinical record',
+      doctorDate: 'Date',
+      doctorComplaint: 'Complaint',
+      doctorDiagnoses: 'Diagnostic hypotheses',
+      doctorPrescription: 'Orientation / prescription',
+      doctorAction: 'Action',
+      requestedTestsTitle: 'Requested tests and investigations',
+      requestDate: 'Date',
+      requestService: 'Service',
+      requestCategory: 'Category',
+      requestPaid: 'Paid',
+      requestStatus: 'Status',
+      requestProvider: 'Prescriber',
+      resultEntryTitle: 'Record exam result',
+      resultRequest: 'Requested exam',
+      resultStatus: 'Result status',
+      resultText: 'Result',
+      resultComment: 'Comment',
+      saveResult: 'Save result',
+      resultsTitle: 'Laboratory and imaging results',
+      resultDate: 'Date',
+      resultService: 'Service',
+      resultCategory: 'Category',
+      resultValue: 'Result',
+      resultBy: 'Recorded by',
+      prescriptionTitle: 'Prescriptions and care plan',
+      prescriptionDate: 'Date',
+      prescriptionType: 'Type',
+      prescriptionMeds: 'Medications',
+      prescriptionTests: 'Tests',
+      billingTitle: 'Invoices and payments',
+      billingReceipt: 'Receipt',
+      billingDate: 'Date',
+      billingTotal: 'Total',
+      billingInsurance: 'Insurance share',
+      billingPatient: 'Patient share',
+      billingMethod: 'Payment method',
+      billingCashier: 'Recorded by',
+      labelIdentifier: 'Identifier',
+      labelSex: 'Sex',
+      labelDob: 'Date of birth',
+      labelAge: 'Age',
+      labelPhone: 'Phone',
+      labelWhatsapp: 'WhatsApp',
+      labelAddress: 'Address',
+      labelProfession: 'Profession',
+      labelEducation: 'Education level',
+      labelInsurance: 'Insurance',
+      labelCoverage: 'Coverage',
+      labelExpiry: 'Card expiry',
+      labelProvider: 'Assigned provider',
+      labelRegisteredAt: 'Registered on',
+      labelUpdatedAt: 'Updated on',
+      labelVisits: 'Visits',
+      labelConsultations: 'Consultations',
+      labelHospitalizations: 'Hospitalizations',
+      labelInvoices: 'Invoices',
+      historySaved: 'Clinical history updated.',
+      resultSaved: 'Exam result saved.',
+      selectRequest: 'Select a requested exam',
+      uninsured: 'Uninsured',
+      paid: 'Paid',
+      unpaid: 'Not paid',
+      encounterRegistered: 'Registered',
+      encounterNurseCompleted: 'Nurse completed',
+      encounterDoctorCompleted: 'Doctor completed',
+      encounterAwaitingResults: 'Awaiting results',
+      encounterResultsValidated: 'Results validated',
+      encounterPharmacyDispensed: 'Medication dispensed',
+      statusPending: 'Pending',
+      statusInProgress: 'In progress',
+      statusCompleted: 'Completed',
+      statusValidated: 'Validated',
+      editEncounter: 'Edit encounter',
+      none: 'None',
+    },
+    labModule: {
+      title: 'Laboratory module',
+      subtitle: 'Review prescribed analyses, confirm payment eligibility, record findings, and validate results.',
+      kpiRequested: 'Prescribed analyses',
+      kpiEligible: 'Paid / eligible',
+      kpiValidated: 'Validated results',
+      filtersTitle: 'Request filters',
+      search: 'Search',
+      searchPlaceholder: 'Search by patient, service, or prescriber',
+      statusFilter: 'Queue filter',
+      filterAll: 'All requests',
+      filterEligible: 'Paid / eligible only',
+      requestSummaryTitle: 'Selected request',
+      queueTitle: 'Prescribed analyses',
+      queuePatient: 'Patient',
+      queueAction: 'Action',
+      openRequest: 'Open',
+      openPatientRecord: 'Open patient record',
+      resultEntryTitle: 'Result entry and validation',
+      stockUsageTitle: 'Stock consumption',
+      stockItem: 'Reagent / consumable',
+      stockQty: 'Quantity',
+      addSupply: 'Add consumption',
+      stockUsageRequired: 'Select a reagent / consumable and a valid quantity.',
+      validateResult: 'Validate result',
+      historyTitle: 'Result history',
+      noQueue: 'No laboratory request matches the current filters.',
+      noRequestSelected: 'No request selected',
+      lockedRequest: 'Only paid or already validated requests can be processed.',
+      readOnly: 'This profile has read-only access to the laboratory queue.',
+      resultRequired: 'Enter a result before validating the request.',
+      resultValidated: 'Result validated and shared with the patient record.',
+    },
+    records: {
+      title: 'Dossiers cliniques',
+      subtitle: 'Historique consolidé du patient, documentation clinique, examens, prescriptions et facturation liée.',
+      patientLookupTitle: 'Recherche patient',
+      patientSearch: 'Rechercher un patient',
+      patientSearchPlaceholder: 'Rechercher par nom, identifiant ou téléphone',
+      noPatientSelected: 'Aucun patient sélectionné',
+      selectPatientHint: 'Sélectionnez un patient pour ouvrir le dossier clinique.',
+      identityTitle: 'Identité et données administratives',
+      socioTitle: 'Profil sociodémographique',
+      historyTitle: 'Antécédents et histoire clinique',
+      antecedents: 'Antécédents',
+      clinicalNotes: 'Notes cliniques',
+      saveHistory: 'Enregistrer l’historique',
+      timelineTitle: 'Historique du parcours de soins',
+      timelineDate: 'Date',
+      timelineProvider: 'Soignant',
+      timelineStatus: 'Statut',
+      timelineServices: 'Services',
+      timelinePayment: 'Paiement',
+      nurseTitle: 'Constantes et soins infirmiers',
+      nurseDate: 'Date',
+      nurseVitals: 'Constantes',
+      nurseMode: 'Mode de prise en charge',
+      nurseCare: 'Soins réalisés',
+      doctorTitle: 'Dossier clinique du médecin',
+      doctorDate: 'Date',
+      doctorComplaint: 'Motif / plainte',
+      doctorDiagnoses: 'Hypothèses diagnostiques',
+      doctorPrescription: 'Orientation / prescription',
+      doctorAction: 'Action',
+      requestedTestsTitle: 'Examens et investigations demandés',
+      requestDate: 'Date',
+      requestService: 'Service',
+      requestCategory: 'Catégorie',
+      requestPaid: 'Payé',
+      requestStatus: 'Statut',
+      requestProvider: 'Prescripteur',
+      resultEntryTitle: 'Saisir un résultat',
+      resultRequest: 'Examen demandé',
+      resultStatus: 'Statut du résultat',
+      resultText: 'Résultat',
+      resultComment: 'Commentaire',
+      saveResult: 'Enregistrer le résultat',
+      resultsTitle: 'Résultats de laboratoire et d’imagerie',
+      resultDate: 'Date',
+      resultService: 'Service',
+      resultCategory: 'Catégorie',
+      resultValue: 'Résultat',
+      resultBy: 'Saisi par',
+      prescriptionTitle: 'Prescriptions et plan de soins',
+      prescriptionDate: 'Date',
+      prescriptionType: 'Type',
+      prescriptionMeds: 'Médicaments',
+      prescriptionTests: 'Examens',
+      billingTitle: 'Factures et paiements',
+      billingReceipt: 'Reçu',
+      billingDate: 'Date',
+      billingTotal: 'Total',
+      billingInsurance: 'Part assurance',
+      billingPatient: 'Part patient',
+      billingMethod: 'Mode de paiement',
+      billingCashier: 'Saisi par',
+      labelIdentifier: 'Identifiant',
+      labelSex: 'Sexe',
+      labelDob: 'Date de naissance',
+      labelAge: 'Âge',
+      labelPhone: 'Téléphone',
+      labelWhatsapp: 'WhatsApp',
+      labelAddress: 'Adresse',
+      labelProfession: 'Profession',
+      labelEducation: 'Niveau d’instruction',
+      labelInsurance: 'Assurance',
+      labelCoverage: 'Couverture',
+      labelExpiry: 'Expiration carte',
+      labelProvider: 'Soignant référent',
+      labelRegisteredAt: 'Créé le',
+      labelUpdatedAt: 'Mis à jour le',
+      labelVisits: 'Visites',
+      labelConsultations: 'Consultations',
+      labelHospitalizations: 'Hospitalisations',
+      labelInvoices: 'Factures',
+      historySaved: 'Historique clinique mis à jour.',
+      resultSaved: 'Résultat enregistré.',
+      selectRequest: 'Sélectionnez un examen demandé',
+      uninsured: 'Non assuré',
+      paid: 'Payé',
+      unpaid: 'Non payé',
+      encounterRegistered: 'Enregistré',
+      encounterNurseCompleted: 'Évaluation infirmière terminée',
+      encounterDoctorCompleted: 'Consultation médecin terminée',
+      statusPending: 'En attente',
+      statusInProgress: 'En cours',
+      statusCompleted: 'Terminé',
+      statusValidated: 'Validé',
+      editEncounter: 'Modifier la consultation',
+      none: 'Aucun',
     },
     staff: {
       selectTitle: 'Who is connecting?',
@@ -1852,6 +5100,7 @@ const translations = {
       fullName: 'Full name',
       role: 'Role',
       roleAdmission: 'Admission / Medical secretary',
+      roleAdmin: 'Administrator',
       roleDirector: 'Director',
       roleAccountant: 'Accountant',
       roleDoctor: 'Doctor',
@@ -1859,11 +5108,27 @@ const translations = {
       roleNurse: 'Nurse',
       roleRadiology: 'Radiology staff',
       rolePharmacy: 'Pharmacy staff',
+      roleHr: 'Human resources',
       roleOther: 'Other',
       employmentType: 'Employment type',
       employmentPermanent: 'Permanent',
       employmentLocum: 'Locum (vacataire)',
       locumRate: 'Locum rate (%)',
+      position: 'Position / function',
+      staffStatus: 'Staff status',
+      statusActive: 'Active',
+      statusOnLeave: 'On leave',
+      statusSuspended: 'Suspended',
+      statusInactive: 'Inactive',
+      payMode: 'Pay mode',
+      paySalary: 'Contract salary',
+      payPercentage: 'Percentage on services',
+      contractSalary: 'Contract salary (CFL)',
+      employeeSocialRate: 'Employee social rate (%)',
+      employerSocialRate: 'Employer social rate (%)',
+      otherDeductions: 'Other deductions (CFL)',
+      socialId: 'Social / administrative reference',
+      notes: 'Administrative notes',
       email: 'Email',
       countryCode: 'Country code',
       phone: 'Phone',
@@ -1887,6 +5152,10 @@ const translations = {
       listTitle: 'Staff list',
       listName: 'Name',
       listRole: 'Role',
+      listPosition: 'Position',
+      listContract: 'Contract',
+      listPayMode: 'Pay mode',
+      listStatus: 'Status',
       listEmail: 'Email',
       listCode: 'Employee ID',
       listEmpty: 'No staff profiles yet.',
@@ -1899,7 +5168,50 @@ const translations = {
         created: 'Employee profile created.',
         staffRequired: 'Please complete required staff fields.',
         locumRateRequired: 'Please enter the locum rate percentage.',
+        salaryRequired: 'Please enter the contractual salary for permanent staff.',
       },
+    },
+    hrPayroll: {
+      title: 'HR & payroll',
+      subtitle: 'Review employee records, calculate payroll by period, record payments, and generate payroll statements.',
+      period: 'Payroll period',
+      filter: 'Filter',
+      filterAll: 'All employees',
+      filterPermanent: 'Permanent staff',
+      filterLocum: 'Locum staff',
+      filterOutstanding: 'Outstanding balances',
+      filterPaid: 'Fully paid',
+      totalEmployees: 'Employees in period',
+      totalDue: 'Net payroll due',
+      totalPaid: 'Paid in period',
+      totalOutstanding: 'Outstanding balance',
+      tableTitle: 'Payroll roster',
+      gross: 'Gross',
+      employeeSocial: 'Employee social',
+      employerSocial: 'Employer social',
+      netDue: 'Net due',
+      paid: 'Paid',
+      balance: 'Balance',
+      action: 'Action',
+      employeeSummary: 'Employee summary',
+      noEmployeeSelected: 'Select an employee to view payroll details.',
+      calculationBasis: 'Calculation basis',
+      basisAssignedServices: 'Assigned services',
+      basisConsultations: 'Consultations',
+      basisLab: 'Laboratory analyses',
+      basisImaging: 'Imaging examinations',
+      basisRevenue: 'Revenue base',
+      taxWithholding: 'Tax withholding',
+      paymentMethod: 'Payment method',
+      paymentAmount: 'Amount',
+      paymentNote: 'Note',
+      recordPayment: 'Record payment',
+      recordPaymentBtn: 'Save payment',
+      downloadStatement: 'Download statement',
+      historyTitle: 'Payment history',
+      openEmployee: 'Open',
+      invalidPaymentAmount: 'Enter a valid amount not exceeding the outstanding balance.',
+      paymentSaved: 'Payroll payment recorded.',
     },
     billing: {
       title: 'Billing & Patient Admission',
@@ -1997,7 +5309,11 @@ const translations = {
       labList: 'Laboratory tests',
       imagingList: 'Imaging services',
       billingTitle: 'Billing items',
-      item: 'Service / Medication',
+      item: 'Services / Procedure / Medication',
+      insurerColumn: 'Insurance',
+      calculatedShare: 'Calculated share',
+      servicePlaceholder: 'Select a service',
+      categoryPlaceholder: 'Select a category',
       itemPlaceholder: 'e.g., Consultation',
       code: 'Code',
       inamCode: 'Code INAM',
@@ -2013,6 +5329,7 @@ const translations = {
       patientShareShort: 'Calculated patient',
       actualPatientShare: 'Actual patient share',
       addLine: 'Add line',
+      removeLine: 'Remove last line',
       summaryTitle: 'Billing summary',
       totalCfl: 'Total (CFL)',
       insuranceShare: 'Insurance share',
@@ -2032,7 +5349,7 @@ const translations = {
       searchPlaceholder: 'Search by service name or code',
       tableSelect: 'Select',
       tableCategory: 'Category',
-      tableService: 'Service',
+      tableService: 'Services / Procedure / Medication',
       tableCode: 'Code',
       tableInam: 'Code INAM',
       tableUninsured: 'Uninsured price',
@@ -2069,8 +5386,12 @@ const translations = {
       listTitle: 'Upcoming appointments',
       status: 'Status',
       statusScheduled: 'Scheduled',
+      statusArrived: 'Arrived',
+      statusInCare: 'In care',
       statusCompleted: 'Completed',
       statusCancelled: 'Cancelled',
+      openAdmission: 'Open admission',
+      admissionLoaded: 'Appointment loaded into admission.',
       portalTitle: 'Online booking (patient portal)',
       portalDesc: 'Share a booking link with patients to capture appointment requests online.',
       portalLink: 'Booking link',
@@ -2080,36 +5401,80 @@ const translations = {
       copied: 'Booking link copied.',
     },
     inventory: {
-      title: 'Inventory & Stock',
-      subtitle: 'Track medications, expiry dates, and low-stock alerts.',
-      addTitle: 'Add medication',
-      name: 'Medication (Commercial / INN)',
-      unitPrice: 'Unit price (CFL)',
+      title: 'Purchasing, stock & orders',
+      subtitle: 'Track products, stock movements, purchase orders, receptions, and low-stock alerts.',
+      kpiProducts: 'Products in stock',
+      kpiLow: 'Low stock alerts',
+      kpiExpiring: 'Expiring soon',
+      kpiOrders: 'Open purchase orders',
+      addTitle: 'Register product',
+      name: 'Product / designation',
+      type: 'Product type',
+      typeMedication: 'Medication',
+      typeConsumable: 'Consumable',
+      typeReagent: 'Reagent',
+      typeEquipment: 'Equipment',
+      typeOther: 'Other',
+      supplier: 'Supplier',
+      unitPrice: 'Unit cost (CFL)',
+      unitCost: 'Unit purchase cost (CFL)',
+      totalCost: 'Total cost',
       quantity: 'Quantity',
       minLevel: 'Minimum level',
       entryDate: 'Stock entry date',
       expiryDate: 'Expiry date',
       receipt: 'Supplier receipt',
-      add: 'Add to stock',
+      notes: 'Notes',
+      add: 'Save product',
       listTitle: 'Stock list',
-      purchaseTitle: 'Purchase orders',
-      supplier: 'Supplier',
-      orderItem: 'Item',
-      orderQty: 'Quantity',
+      purchaseTitle: 'Purchasing & orders',
+      orderItem: 'Product / designation',
+      orderQty: 'Ordered quantity',
       orderDate: 'Expected date',
-      createOrder: 'Create order',
+      createOrder: 'Create purchase order',
+      receivedQty: 'Received quantity',
+      receivedDate: 'Received date',
+      receiveAction: 'Receive',
+      movementTitle: 'Stock movements',
+      movementDate: 'Date',
+      movementItem: 'Product',
+      movementDirection: 'Direction',
+      movementQty: 'Qty',
+      movementSource: 'Source',
+      movementCost: 'Cost',
+      movementRecordedBy: 'Recorded by',
+      directionIn: 'Inbound',
+      directionOut: 'Outbound',
+      movementPurchase: 'Purchase / reception',
+      movementConsumption: 'Consumption',
+      movementAdjustment: 'Adjustment',
+      movementManual: 'Manual entry',
+      sourceInventory: 'Inventory',
+      sourcePurchase: 'Purchase order',
+      sourceBilling: 'Billing / pharmacy',
+      sourceDoctor: 'Doctor',
+      sourceNurse: 'Nursing / hospitalization',
+      sourceLab: 'Laboratory',
+      sourceRadiology: 'Imaging',
+      sourcePharmacy: 'Pharmacy',
+      sourceHospitalization: 'Hospitalization',
       status: 'Status',
       statusOk: 'OK',
       statusLow: 'Low',
+      statusExpiring: 'Expiring soon',
       statusExpired: 'Expired',
       statusOpen: 'Open',
+      statusPartial: 'Partially received',
       statusReceived: 'Received',
+      statusCancelled: 'Cancelled',
       update: 'Update',
       remove: 'Remove',
-      required: 'Enter medication name.',
+      required: 'Enter the product designation.',
       saved: 'Stock item saved.',
-      poRequired: 'Complete supplier, item, and quantity.',
+      poRequired: 'Complete supplier, product, and quantity.',
       poSaved: 'Purchase order created.',
+      receiveRequired: 'Enter a valid received quantity that does not exceed the remaining balance.',
+      receiveSaved: 'Reception recorded and stock updated.',
     },
     reports: {
       title: 'Dashboards & Reports',
@@ -2131,6 +5496,135 @@ const translations = {
       otr: 'OTR',
       net: 'Net',
       download: 'Download',
+      insuranceClaimsTitle: 'Insurance claims statements',
+      insuranceClaimsSubtitle: 'Generate insurer-specific claims, export supporting files, record insurer payments, and track balances.',
+      insurerFilter: 'Insurer',
+      periodStart: 'Period start',
+      periodEnd: 'Period end',
+      generateStatement: 'Generate statement',
+      openEmailDraft: 'Open email draft',
+      exportBordereau: 'Export bordereau',
+      exportPdf: 'Export PDF',
+      exportExcel: 'Export Excel',
+      downloadLetter: 'Download transmittal letter',
+      claimLines: 'Claim lines',
+      coveredReceipts: 'Receipts',
+      coveredPatients: 'Patients',
+      statementBilled: 'Total billed',
+      statementDue: 'Insurer share due',
+      statementPatientShare: 'Patient share collected',
+      statementPaid: 'Insurer payments received',
+      statementBalance: 'Balance due',
+      statementStatus: 'Statement status',
+      statusSelect: 'Status update',
+      statusUpdateAction: 'Update status',
+      statementDate: 'Date',
+      statementReceipt: 'Receipt',
+      statementPatient: 'Patient',
+      statementService: 'Services / Act / Medication',
+      statementCode: 'Code',
+      statementInam: 'INAM code',
+      statementQty: 'Qty',
+      statementBase: 'Reimbursement base',
+      statementRate: 'Rate',
+      statementTotal: 'Total billed',
+      statementInsuranceShare: 'Insurer share',
+      statementPatientShareColumn: 'Patient share',
+      statementPrescriber: 'Prescriber',
+      bordereauTitle: 'Insurance claim bordereau',
+      bordereauLabel: 'Summary item',
+      bordereauValue: 'Value',
+      bordereauReady: 'Print window opened for the bordereau.',
+      bordereauPopupBlocked: 'The bordereau print window was blocked by the browser.',
+      attachmentsTitle: 'Attached documents checklist',
+      attachmentDocument: 'Document',
+      attachmentIncluded: 'Included',
+      attachmentStatement: 'Detailed claims statement',
+      attachmentBordereau: 'Claim bordereau',
+      attachmentExcel: 'Excel summary file',
+      attachmentLetter: 'Transmittal letter',
+      signaturePreparedBy: 'Prepared by',
+      signatureValidatedBy: 'Validated by',
+      printGeneratedAt: 'Generated on',
+      recordPaymentTitle: 'Record insurer payment',
+      recordPaymentSubtitle: 'Register each insurer settlement to update balances, accounting, and receivables tracking automatically.',
+      paymentAmount: 'Payment amount',
+      paymentDate: 'Payment date',
+      paymentMethod: 'Payment method',
+      paymentReference: 'Reference',
+      paymentNote: 'Payment note',
+      paymentRecordAction: 'Record payment',
+      paymentMethodMobileMoney: 'Mobile money',
+      paymentMethodCheque: 'Cheque',
+      paymentMethodOther: 'Other',
+      paymentHistoryTitle: 'Payment history',
+      paymentHistoryDate: 'Date',
+      paymentHistoryMethod: 'Method',
+      paymentHistoryReference: 'Reference',
+      paymentHistoryAmount: 'Amount',
+      paymentHistoryNote: 'Note',
+      paymentHistoryRecordedBy: 'Recorded by',
+      receivablesTitle: 'Insurance receivables follow-up',
+      receivablesSubtitle: 'Use this accounting view to monitor insurer balances, aging, and follow-up reminders.',
+      receivablesOpen: 'Open statements',
+      receivablesOutstanding: 'Outstanding balance',
+      receivablesOverdue: 'Overdue statements',
+      receivablesReminders: 'Reminders sent',
+      receivablesLastSent: 'Last sent',
+      receivablesLastReminder: 'Last reminder',
+      receivablesAging: 'Days outstanding',
+      sendReminder: 'Send reminder',
+      reminderSubject: 'Insurance payment reminder',
+      reminderIntro: 'This is a reminder regarding the insurer balance that remains due for services delivered by',
+      reminderLastTransmission: 'Last transmission',
+      reminderAttachmentNote: 'Please attach the updated statement, the bordereau, and the transmittal letter before sending this reminder.',
+      reminderDraftReady: 'Reminder email draft opened and the follow-up log was updated.',
+      reminderEmailMissing: 'This insurer does not have an email address configured for reminders.',
+      insuranceHistoryTitle: 'Insurance statement history',
+      historyInsurer: 'Insurer',
+      historyPeriod: 'Period',
+      historyClaims: 'Claim lines',
+      historyAmount: 'Amount due',
+      historyPaid: 'Paid',
+      historyBalance: 'Balance',
+      historyStatus: 'Status',
+      historyUpdated: 'Updated',
+      historyActions: 'Actions',
+      openStatement: 'Open',
+      noClaims: 'No insurer claim lines found for the selected period.',
+      statementRequired: 'Select an insurer and a valid period first.',
+      statementGenerated: 'Insurance statement generated.',
+      noStatementSelected: 'Generate or load an insurance statement first.',
+      insurerEmailMissing: 'This insurer does not have an email address configured yet.',
+      emailDraftReady: 'Email draft opened. Attach the detailed PDF, the bordereau, the Excel report, and the transmittal letter before sending.',
+      excelDownloaded: 'Insurance statement Excel file downloaded.',
+      letterDownloaded: 'Transmittal letter downloaded.',
+      pdfReady: 'Print window opened for the detailed PDF statement.',
+      pdfPopupBlocked: 'The PDF preview window was blocked by the browser.',
+      statusUpdated: 'Insurance statement status updated.',
+      paymentRecorded: 'Insurer payment recorded successfully.',
+      paymentAmountInvalid: 'Enter a valid insurer payment amount.',
+      paymentExceedsBalance: 'The insurer payment exceeds the remaining balance due.',
+      paymentDateRequired: 'Select the insurer payment date.',
+      statementLoaded: 'Insurance statement loaded.',
+      statusGenerated: 'Generated',
+      statusSent: 'Sent',
+      statusPartiallyPaid: 'Partially paid',
+      statusPaid: 'Paid',
+      statusRejected: 'Rejected',
+      statusDisputed: 'Disputed',
+      transmittalTitle: 'Transmittal letter for insurer claims',
+      transmittalIntro: 'Please find enclosed the detailed claims statement for the insured services delivered to your beneficiaries during the period below.',
+      transmittalBody: 'We kindly request settlement of the insurer share due according to the applicable reimbursement agreement.',
+      emailSubject: 'Insurance claims statement',
+      emailGreeting: 'Hello,',
+      emailIntro: 'Please find attached the detailed claims statement for insured services delivered by',
+      emailInsurer: 'Insurer',
+      emailPeriod: 'Period',
+      emailClaims: 'Claim lines',
+      emailAmountDue: 'Amount due',
+      emailAttachmentNote: 'Please attach the detailed PDF statement, the bordereau, the Excel export, and the transmittal letter generated from MediTrack before sending this email.',
+      emailClosing: 'Regards,',
     },
     receipt: {
       generate: 'Generate receipt',
@@ -2254,7 +5748,7 @@ const translations = {
     serviceCatalog: {
       title: 'Catalogue des services',
       subtitle: 'Créer les services, tarifs assureurs et références de facturation par catégorie.',
-      name: 'Nom du service',
+      name: 'Services / Acte / Médicament',
       category: 'Catégorie',
       code: 'Code du service',
       inamCode: 'Code INAM',
@@ -2275,7 +5769,7 @@ const translations = {
       empty: 'Aucun service pour le moment. Ajoutez-en un.',
       delete: 'Supprimer',
       listCategory: 'Catégorie',
-      listService: 'Service',
+      listService: 'Services / Acte / Médicament',
       listCode: 'Code',
       listInam: 'Code INAM',
       listUninsured: 'Prix non assuré',
@@ -2310,7 +5804,51 @@ const translations = {
     dashboard: {
       title: 'Tableau de bord',
       subtitle: 'Indicateurs clés selon votre rôle.',
+      overviewTitle: 'Vue opérationnelle',
+      overviewSubtitle: 'Indicateurs du jour et du mois, répartition de l’activité et tendances.',
+      trendMetric: 'Indicateur de tendance',
+      metricPatients: 'Patients',
+      metricRevenue: 'Recettes',
+      metricServices: 'Actes facturés',
+      metricHospitalizations: 'Hospitalisations',
+      metricLabImaging: 'Laboratoire / imagerie',
+      metricPrescriptions: 'Prescriptions',
+      metricStock: 'Consommation de stock',
+      daySummary: 'Aujourd’hui',
+      monthSummary: 'Ce mois',
+      activityByCategory: 'Activités par catégorie',
+      activityByService: 'Activités par service',
+      tableCategory: 'Catégorie',
+      tableToday: 'Aujourd’hui',
+      tableMonth: 'Ce mois',
+      tableAmount: 'Montant',
+      tableService: 'Services / Acte / Médicament',
+      monthlyTrend: 'Tendance mensuelle (année en cours)',
+      yearlyTrend: 'Comparaison pluriannuelle',
+      adminSectionTitle: 'Vue administrateur',
+      directorTitle: 'Vue direction générale',
+      staffConfigured: 'Personnel configuré',
+      servicesConfigured: 'Services configurés',
+      insurersConfigured: 'Assureurs partenaires',
+      admissionsTodayCard: 'Admissions du jour',
+      staffMix: 'Répartition du personnel',
+      hrTitle: 'Vue RH',
+      hrTotalStaff: 'Effectif total',
+      hrPermanent: 'Personnel permanent',
+      hrLocum: 'Personnel vacataire',
+      hrPayrollEstimate: 'Paie estimée à verser',
+      metricPatientsRegistered: 'Patients enregistrés',
+      metricConsultationsCompleted: 'Consultations réalisées',
+      metricBilledServices: 'Actes facturés',
+      metricTotalBilled: 'Montant total facturé',
+      metricCollected: 'Montant encaissé',
+      metricInsurancePart: 'Part assurance',
+      metricPatientPart: 'Part patient',
+      metricAdmissions: 'Admissions',
+      metricStockConsumption: 'Consommation de stock',
       roleLabel: 'Rôle : {role}',
+      role: 'Rôle',
+      count: 'Effectif',
       admissionTitle: "Vue d'ensemble admissions",
       totalPatients: 'Patients reçus',
       visitsToday: "Visites aujourd'hui",
@@ -2385,8 +5923,15 @@ const translations = {
       radioScheduled: 'Examens programmés',
       radioCompleted: 'Examens réalisés',
       pharmacyTitle: "Vue d'ensemble pharmacie",
+      pharmacyPending: 'Prescriptions en attente',
       pharmacyDispensed: 'Médicaments délivrés',
       pharmacyAlerts: 'Alertes de stock',
+      pharmacyQueueTitle: 'File de dispensation',
+      pharmacyQueuePrescription: 'Prescription',
+      pharmacyQueuePending: 'À délivrer',
+      pharmacyQueueDispensed: 'Délivrée',
+      pharmacyDispenseAction: 'Marquer délivrée',
+      action: 'Action',
       accountTitle: "Vue d'ensemble finances",
       revenue: 'Revenus totaux',
       patientShare: 'Paiements patients',
@@ -2399,10 +5944,46 @@ const translations = {
       staffProductivity: 'Productivité du personnel',
       doctorPayments: 'Paiements médecins (vacataires)',
       amount: 'Montant',
+      patient: 'Patient',
+      doctorExamResults: 'Résultats récents des examens',
       noData: 'Aucune donnée.',
       unknownStaff: 'Agent inconnu',
       otherTitle: 'Vue générale',
       otherSubtitle: 'Votre tableau de bord s’affichera une fois le rôle configuré.',
+    },
+
+    labModule: {
+      title: 'Module laboratoire',
+      subtitle: 'Consultez les analyses prescrites, vérifiez l’éligibilité au traitement, saisissez les résultats et validez-les.',
+      kpiRequested: 'Analyses prescrites',
+      kpiEligible: 'Payées / éligibles',
+      kpiValidated: 'Résultats validés',
+      filtersTitle: 'Filtres des demandes',
+      search: 'Recherche',
+      searchPlaceholder: 'Rechercher par patient, service ou prescripteur',
+      statusFilter: 'Filtre de file',
+      filterAll: 'Toutes les demandes',
+      filterEligible: 'Payées / éligibles uniquement',
+      requestSummaryTitle: 'Demande sélectionnée',
+      queueTitle: 'Analyses prescrites',
+      queuePatient: 'Patient',
+      queueAction: 'Action',
+      openRequest: 'Ouvrir',
+      openPatientRecord: 'Ouvrir le dossier patient',
+      resultEntryTitle: 'Saisie et validation des résultats',
+      stockUsageTitle: 'Consommation de stock',
+      stockItem: 'Réactif / consommable',
+      stockQty: 'Quantité',
+      addSupply: 'Ajouter la consommation',
+      stockUsageRequired: 'Sélectionnez un réactif / consommable et une quantité valide.',
+      validateResult: 'Valider le résultat',
+      historyTitle: 'Historique des résultats',
+      noQueue: 'Aucune demande de laboratoire ne correspond aux filtres actuels.',
+      noRequestSelected: 'Aucune demande sélectionnée',
+      lockedRequest: 'Seules les demandes payées ou déjà validées peuvent être traitées.',
+      readOnly: 'Ce profil dispose d’un accès en lecture seule à la file du laboratoire.',
+      resultRequired: 'Saisissez un résultat avant de valider la demande.',
+      resultValidated: 'Résultat validé et transmis au dossier patient.',
     },
     staff: {
       selectTitle: 'Qui se connecte ?',
@@ -2433,6 +6014,7 @@ const translations = {
       fullName: 'Nom complet',
       role: 'Rôle',
       roleAdmission: "Admission / Secrétariat médical",
+      roleAdmin: 'Administrateur',
       roleDirector: 'Directeur',
       roleAccountant: 'Comptable',
       roleDoctor: 'Médecin',
@@ -2440,11 +6022,27 @@ const translations = {
       roleNurse: 'Infirmier(ère)',
       roleRadiology: 'Imagerie médicale',
       rolePharmacy: 'Pharmacie',
+      roleHr: 'Ressources humaines',
       roleOther: 'Autre',
       employmentType: "Type d'emploi",
       employmentPermanent: 'Permanent',
       employmentLocum: 'Vacataire',
       locumRate: 'Taux vacataire (%)',
+      position: 'Poste / fonction',
+      staffStatus: 'Statut du personnel',
+      statusActive: 'Actif',
+      statusOnLeave: 'En congé',
+      statusSuspended: 'Suspendu',
+      statusInactive: 'Inactif',
+      payMode: 'Mode de rémunération',
+      paySalary: 'Salaire contractuel',
+      payPercentage: 'Pourcentage sur prestations',
+      contractSalary: 'Salaire contractuel (CFL)',
+      employeeSocialRate: 'Part sociale employé (%)',
+      employerSocialRate: 'Part sociale entreprise (%)',
+      otherDeductions: 'Autres retenues (CFL)',
+      socialId: 'Référence sociale / administrative',
+      notes: 'Notes administratives',
       email: 'Email',
       countryCode: 'Indicatif pays',
       phone: 'Téléphone',
@@ -2468,6 +6066,10 @@ const translations = {
       listTitle: 'Liste du personnel',
       listName: 'Nom',
       listRole: 'Rôle',
+      listPosition: 'Poste',
+      listContract: 'Contrat',
+      listPayMode: 'Rémunération',
+      listStatus: 'Statut',
       listEmail: 'Email',
       listCode: 'ID employé',
       listEmpty: 'Aucun profil pour le moment.',
@@ -2480,7 +6082,50 @@ const translations = {
         created: 'Profil employé créé.',
         staffRequired: 'Veuillez compléter les champs obligatoires.',
         locumRateRequired: 'Veuillez saisir le taux vacataire (%).',
+        salaryRequired: 'Veuillez saisir le salaire contractuel du personnel permanent.',
       },
+    },
+    hrPayroll: {
+      title: 'RH & paie',
+      subtitle: 'Consultez les fiches agents, calculez la paie par période, enregistrez les paiements et générez les états de paie.',
+      period: 'Période de paie',
+      filter: 'Filtre',
+      filterAll: 'Tous les agents',
+      filterPermanent: 'Personnel permanent',
+      filterLocum: 'Personnel vacataire',
+      filterOutstanding: 'Soldes à payer',
+      filterPaid: 'Entièrement payés',
+      totalEmployees: 'Agents sur la période',
+      totalDue: 'Net de paie dû',
+      totalPaid: 'Payé sur la période',
+      totalOutstanding: 'Solde restant',
+      tableTitle: 'Tableau de paie',
+      gross: 'Brut',
+      employeeSocial: 'Part sociale employé',
+      employerSocial: 'Part sociale entreprise',
+      netDue: 'Net à payer',
+      paid: 'Payé',
+      balance: 'Solde',
+      action: 'Action',
+      employeeSummary: 'Résumé agent',
+      noEmployeeSelected: 'Sélectionnez un agent pour afficher le détail de paie.',
+      calculationBasis: 'Éléments de calcul',
+      basisAssignedServices: 'Prestations attribuées',
+      basisConsultations: 'Consultations',
+      basisLab: 'Analyses de laboratoire',
+      basisImaging: 'Examens d’imagerie',
+      basisRevenue: 'Base de recettes',
+      taxWithholding: 'Retenue fiscale',
+      paymentMethod: 'Mode de paiement',
+      paymentAmount: 'Montant',
+      paymentNote: 'Note',
+      recordPayment: 'Enregistrer un paiement',
+      recordPaymentBtn: 'Sauvegarder le paiement',
+      downloadStatement: 'Télécharger l’état de paie',
+      historyTitle: 'Historique des paiements',
+      openEmployee: 'Ouvrir',
+      invalidPaymentAmount: 'Saisissez un montant valide, sans dépasser le solde restant.',
+      paymentSaved: 'Paiement de paie enregistré.',
     },
     billing: {
       title: 'Facturation & Admission du patient',
@@ -2579,7 +6224,11 @@ const translations = {
       labList: 'Analyses biologiques',
       imagingList: "Services d'imagerie",
       billingTitle: 'Actes facturés',
-      item: 'Acte / Médicament',
+      item: 'Services / Acte / Médicament',
+      insurerColumn: 'Assurance',
+      calculatedShare: 'Part calculée',
+      servicePlaceholder: 'Sélectionner un service',
+      categoryPlaceholder: 'Sélectionner une catégorie',
       itemPlaceholder: 'ex. Consultation',
       code: 'Code',
       inamCode: 'Code INAM',
@@ -2595,10 +6244,11 @@ const translations = {
       patientShareShort: 'Part calculée',
       actualPatientShare: 'Part patient réelle',
       addLine: 'Ajouter une ligne',
+      removeLine: 'Retirer la dernière ligne',
       summaryTitle: 'Résumé de facturation',
       totalCfl: 'Total (CFL)',
       insuranceShare: 'Part assurance',
-      patientShare: 'Part assuré',
+      patientShare: 'Part patient',
       notes: 'Notes de facturation',
       remove: 'Retirer',
     },
@@ -2614,7 +6264,7 @@ const translations = {
       searchPlaceholder: 'Rechercher par nom ou code',
       tableSelect: 'Choisir',
       tableCategory: 'Catégorie',
-      tableService: 'Service',
+      tableService: 'Services / Acte / Médicament',
       tableCode: 'Code',
       tableInam: 'Code INAM',
       tableUninsured: 'Prix non assuré',
@@ -2651,8 +6301,12 @@ const translations = {
       listTitle: 'Rendez-vous à venir',
       status: 'Statut',
       statusScheduled: 'Programmé',
+      statusArrived: 'Arrivé',
+      statusInCare: 'En soins',
       statusCompleted: 'Réalisé',
       statusCancelled: 'Annulé',
+      openAdmission: "Ouvrir l'admission",
+      admissionLoaded: "Le rendez-vous a été chargé dans l'admission.",
       portalTitle: 'Prise de rendez-vous en ligne',
       portalDesc: 'Partagez un lien de réservation avec les patients.',
       portalLink: 'Lien de réservation',
@@ -2662,36 +6316,80 @@ const translations = {
       copied: 'Lien de réservation copié.',
     },
     inventory: {
-      title: 'Inventaire & Stock',
-      subtitle: 'Suivez les médicaments, dates de péremption et alertes de stock.',
-      addTitle: 'Ajouter un médicament',
-      name: 'Médicament (Commercial / DCI)',
-      unitPrice: 'Prix unitaire (CFL)',
+      title: 'Achats, stock et commandes',
+      subtitle: 'Suivez les produits, mouvements de stock, bons de commande, réceptions et alertes de stock.',
+      kpiProducts: 'Produits en stock',
+      kpiLow: 'Alertes de stock faible',
+      kpiExpiring: 'Péremptions proches',
+      kpiOrders: 'Commandes ouvertes',
+      addTitle: 'Enregistrer un produit',
+      name: 'Produit / désignation',
+      type: 'Type de produit',
+      typeMedication: 'Médicament',
+      typeConsumable: 'Consommable',
+      typeReagent: 'Réactif',
+      typeEquipment: 'Matériel',
+      typeOther: 'Autre',
+      supplier: 'Fournisseur',
+      unitPrice: 'Coût unitaire (CFL)',
+      unitCost: 'Coût d’achat unitaire (CFL)',
+      totalCost: 'Coût total',
       quantity: 'Quantité',
       minLevel: 'Seuil minimum',
       entryDate: "Date d'entrée",
       expiryDate: 'Date de péremption',
       receipt: 'Reçu fournisseur',
-      add: 'Ajouter au stock',
+      notes: 'Notes',
+      add: 'Enregistrer le produit',
       listTitle: 'Liste de stock',
-      purchaseTitle: 'Bons de commande',
-      supplier: 'Fournisseur',
-      orderItem: 'Article',
-      orderQty: 'Quantité',
+      purchaseTitle: 'Achats et commandes',
+      orderItem: 'Produit / désignation',
+      orderQty: 'Quantité commandée',
       orderDate: 'Date prévue',
-      createOrder: 'Créer le bon',
+      createOrder: 'Créer la commande',
+      receivedQty: 'Quantité reçue',
+      receivedDate: 'Date de réception',
+      receiveAction: 'Réceptionner',
+      movementTitle: 'Mouvements de stock',
+      movementDate: 'Date',
+      movementItem: 'Produit',
+      movementDirection: 'Sens',
+      movementQty: 'Qté',
+      movementSource: 'Source',
+      movementCost: 'Coût',
+      movementRecordedBy: 'Enregistré par',
+      directionIn: 'Entrée',
+      directionOut: 'Sortie',
+      movementPurchase: 'Achat / réception',
+      movementConsumption: 'Consommation',
+      movementAdjustment: 'Ajustement',
+      movementManual: 'Entrée manuelle',
+      sourceInventory: 'Inventaire',
+      sourcePurchase: 'Bon de commande',
+      sourceBilling: 'Facturation / pharmacie',
+      sourceDoctor: 'Médecin',
+      sourceNurse: 'Infirmerie / hospitalisation',
+      sourceLab: 'Laboratoire',
+      sourceRadiology: 'Imagerie',
+      sourcePharmacy: 'Pharmacie',
+      sourceHospitalization: 'Hospitalisation',
       status: 'Statut',
       statusOk: 'OK',
       statusLow: 'Faible',
+      statusExpiring: 'Péremption proche',
       statusExpired: 'Expiré',
       statusOpen: 'Ouvert',
+      statusPartial: 'Partiellement reçu',
       statusReceived: 'Reçu',
+      statusCancelled: 'Annulé',
       update: 'Mettre à jour',
       remove: 'Retirer',
-      required: 'Veuillez saisir le nom du médicament.',
-      saved: 'Élément de stock enregistré.',
-      poRequired: "Veuillez renseigner le fournisseur, l’article et la quantité.",
-      poSaved: 'Bon de commande créé.',
+      required: 'Veuillez saisir la désignation du produit.',
+      saved: 'Produit enregistré dans le stock.',
+      poRequired: 'Veuillez renseigner le fournisseur, le produit et la quantité.',
+      poSaved: 'Commande créée.',
+      receiveRequired: 'Veuillez saisir une quantité reçue valide, sans dépasser le reliquat.',
+      receiveSaved: 'Réception enregistrée et stock mis à jour.',
     },
     reports: {
       title: 'Tableaux de bord & Rapports',
@@ -2713,6 +6411,135 @@ const translations = {
       otr: 'OTR',
       net: 'Net',
       download: 'Télécharger',
+      insuranceClaimsTitle: 'États de créances par assureur',
+      insuranceClaimsSubtitle: 'Générez les relevés par assurance, exportez les pièces justificatives, enregistrez les règlements et suivez les soldes restants.',
+      insurerFilter: 'Assureur',
+      periodStart: 'Début de période',
+      periodEnd: 'Fin de période',
+      generateStatement: 'Générer l’état',
+      openEmailDraft: 'Ouvrir le brouillon email',
+      exportBordereau: 'Exporter le bordereau',
+      exportPdf: 'Exporter en PDF',
+      exportExcel: 'Exporter en Excel',
+      downloadLetter: 'Télécharger la lettre de transmission',
+      claimLines: 'Lignes de créance',
+      coveredReceipts: 'Reçus',
+      coveredPatients: 'Patients',
+      statementBilled: 'Total facturé',
+      statementDue: 'Part assureur à recouvrer',
+      statementPatientShare: 'Part patient encaissée',
+      statementPaid: 'Règlements assureur reçus',
+      statementBalance: 'Solde restant dû',
+      statementStatus: 'Statut du relevé',
+      statusSelect: 'Mise à jour du statut',
+      statusUpdateAction: 'Mettre à jour le statut',
+      statementDate: 'Date',
+      statementReceipt: 'Reçu',
+      statementPatient: 'Patient',
+      statementService: 'Services / Acte / Médicament',
+      statementCode: 'Code',
+      statementInam: 'Code INAM',
+      statementQty: 'Qté',
+      statementBase: 'Base de remboursement',
+      statementRate: 'Taux',
+      statementTotal: 'Total facturé',
+      statementInsuranceShare: 'Part assureur',
+      statementPatientShareColumn: 'Part patient',
+      statementPrescriber: 'Prescripteur',
+      bordereauTitle: 'Bordereau de créances assurance',
+      bordereauLabel: 'Élément',
+      bordereauValue: 'Valeur',
+      bordereauReady: 'La fenêtre d’impression du bordereau a été ouverte.',
+      bordereauPopupBlocked: 'La fenêtre de prévisualisation du bordereau a été bloquée par le navigateur.',
+      attachmentsTitle: 'Checklist des pièces jointes',
+      attachmentDocument: 'Document',
+      attachmentIncluded: 'Joint',
+      attachmentStatement: 'Relevé détaillé des créances',
+      attachmentBordereau: 'Bordereau de créances',
+      attachmentExcel: 'Fichier Excel récapitulatif',
+      attachmentLetter: 'Lettre de transmission',
+      signaturePreparedBy: 'Préparé par',
+      signatureValidatedBy: 'Validé par',
+      printGeneratedAt: 'Généré le',
+      recordPaymentTitle: 'Enregistrer un paiement assureur',
+      recordPaymentSubtitle: 'Chaque règlement enregistré met à jour automatiquement le solde, la comptabilité et le suivi des créances.',
+      paymentAmount: 'Montant du paiement',
+      paymentDate: 'Date du paiement',
+      paymentMethod: 'Mode de paiement',
+      paymentReference: 'Référence',
+      paymentNote: 'Note',
+      paymentRecordAction: 'Enregistrer le paiement',
+      paymentMethodMobileMoney: 'Mobile money',
+      paymentMethodCheque: 'Chèque',
+      paymentMethodOther: 'Autre',
+      paymentHistoryTitle: 'Historique des paiements',
+      paymentHistoryDate: 'Date',
+      paymentHistoryMethod: 'Mode',
+      paymentHistoryReference: 'Référence',
+      paymentHistoryAmount: 'Montant',
+      paymentHistoryNote: 'Note',
+      paymentHistoryRecordedBy: 'Enregistré par',
+      receivablesTitle: 'Suivi comptable des créances assurance',
+      receivablesSubtitle: 'Vue dédiée au suivi des soldes assurance, des relances et de l’ancienneté des créances.',
+      receivablesOpen: 'États ouverts',
+      receivablesOutstanding: 'Solde global restant dû',
+      receivablesOverdue: 'États en retard',
+      receivablesReminders: 'Relances envoyées',
+      receivablesLastSent: 'Dernier envoi',
+      receivablesLastReminder: 'Dernière relance',
+      receivablesAging: 'Jours d’ancienneté',
+      sendReminder: 'Envoyer une relance',
+      reminderSubject: 'Relance de paiement assurance',
+      reminderIntro: 'Ceci est une relance concernant le solde assureur restant dû pour les prestations réalisées par',
+      reminderLastTransmission: 'Dernière transmission',
+      reminderAttachmentNote: 'Veuillez joindre à cette relance le relevé actualisé, le bordereau et la lettre de transmission.',
+      reminderDraftReady: 'Le brouillon de relance a été ouvert et le suivi a été mis à jour.',
+      reminderEmailMissing: 'Aucune adresse email n’est configurée pour les relances de cet assureur.',
+      insuranceHistoryTitle: 'Historique des états assureur',
+      historyInsurer: 'Assureur',
+      historyPeriod: 'Période',
+      historyClaims: 'Lignes',
+      historyAmount: 'Montant dû',
+      historyPaid: 'Payé',
+      historyBalance: 'Solde',
+      historyStatus: 'Statut',
+      historyUpdated: 'Mise à jour',
+      historyActions: 'Actions',
+      openStatement: 'Ouvrir',
+      noClaims: 'Aucune ligne de créance assurance sur la période sélectionnée.',
+      statementRequired: 'Sélectionnez d’abord un assureur et une période valide.',
+      statementGenerated: 'État assureur généré.',
+      noStatementSelected: 'Générez ou chargez d’abord un état assureur.',
+      insurerEmailMissing: 'Aucune adresse email n’est configurée pour cet assureur.',
+      emailDraftReady: 'Le brouillon email a été ouvert. Joignez le PDF détaillé, le bordereau, le fichier Excel et la lettre de transmission avant envoi.',
+      excelDownloaded: 'Le fichier Excel de l’état assureur a été téléchargé.',
+      letterDownloaded: 'La lettre de transmission a été téléchargée.',
+      pdfReady: 'La fenêtre d’impression du PDF détaillé a été ouverte.',
+      pdfPopupBlocked: 'La fenêtre de prévisualisation PDF a été bloquée par le navigateur.',
+      statusUpdated: 'Le statut de l’état assureur a été mis à jour.',
+      paymentRecorded: 'Le paiement assureur a été enregistré.',
+      paymentAmountInvalid: 'Saisissez un montant de paiement assureur valide.',
+      paymentExceedsBalance: 'Le paiement dépasse le solde restant dû.',
+      paymentDateRequired: 'Sélectionnez la date du paiement assureur.',
+      statementLoaded: 'État assureur chargé.',
+      statusGenerated: 'Généré',
+      statusSent: 'Transmis',
+      statusPartiallyPaid: 'Partiellement payé',
+      statusPaid: 'Payé',
+      statusRejected: 'Rejeté',
+      statusDisputed: 'En litige',
+      transmittalTitle: 'Lettre de transmission des créances assurance',
+      transmittalIntro: 'Veuillez trouver ci-joint le relevé détaillé des prestations assurées réalisées au bénéfice de vos assurés sur la période ci-dessous.',
+      transmittalBody: 'Nous vous remercions de bien vouloir procéder au règlement de la part assureur due conformément à la convention de remboursement applicable.',
+      emailSubject: 'État de créances assurance',
+      emailGreeting: 'Bonjour,',
+      emailIntro: 'Veuillez trouver ci-joint le relevé détaillé des prestations assurées réalisées par',
+      emailInsurer: 'Assureur',
+      emailPeriod: 'Période',
+      emailClaims: 'Lignes de créance',
+      emailAmountDue: 'Montant dû',
+      emailAttachmentNote: 'Veuillez joindre à cet email le relevé PDF détaillé, le bordereau, l’export Excel et la lettre de transmission générés depuis MediTrack avant de l’envoyer.',
+      emailClosing: 'Cordialement,',
     },
     receipt: {
       generate: 'Générer le reçu',
@@ -2790,10 +6617,11 @@ function applyTranslations() {
   populateAppointmentDoctors();
   renderServiceSelectionOptions();
   renderAppointmentsTable();
-  renderStockTable();
-  renderPurchaseOrders();
+  renderInventoryModule();
   renderReports();
   refreshDashboardIfVisible();
+  refreshLabModuleIfVisible();
+  refreshHrPayrollIfVisible();
 }
 
 function setAuthMode(mode) {
@@ -2839,6 +6667,9 @@ function showView(view) {
   staffAccessView.classList.add('hidden');
   roleDashboardView.classList.add('hidden');
   facilityProfileView?.classList.add('hidden');
+  clinicalRecordsView?.classList.add('hidden');
+  labModuleView?.classList.add('hidden');
+  hrPayrollView?.classList.add('hidden');
   if (view === 'modules') {
     modulesView.classList.remove('hidden');
     topBar.classList.remove('hidden');
@@ -2869,8 +6700,7 @@ function showView(view) {
   if (view === 'inventory') {
     inventoryView?.classList.remove('hidden');
     topBar.classList.remove('hidden');
-    renderStockTable();
-    renderPurchaseOrders();
+    renderInventoryModule();
     return;
   }
   if (view === 'analytics') {
@@ -2899,6 +6729,24 @@ function showView(view) {
     facilityProfileView?.classList.remove('hidden');
     topBar.classList.remove('hidden');
     populateFacilityProfileForm();
+    return;
+  }
+  if (view === 'records') {
+    clinicalRecordsView?.classList.remove('hidden');
+    topBar.classList.remove('hidden');
+    renderClinicalRecord();
+    return;
+  }
+  if (view === 'lab') {
+    labModuleView?.classList.remove('hidden');
+    topBar.classList.remove('hidden');
+    renderLabModule();
+    return;
+  }
+  if (view === 'hr') {
+    hrPayrollView?.classList.remove('hidden');
+    topBar.classList.remove('hidden');
+    renderHrPayrollModule();
     return;
   }
   if (view === 'staff') {
@@ -3006,6 +6854,7 @@ if (signOutBtn) {
   signOutBtn.addEventListener('click', () => {
     currentEmployee = null;
     staffAccessMode = null;
+    activeAppointmentId = '';
     applyRoleAccess();
     if (adminSignInForm) adminSignInForm.reset();
     if (employeeSignInForm) employeeSignInForm.reset();
@@ -3279,23 +7128,358 @@ function saveEmployees(list) {
   }
 }
 
+function getPayrollPaymentsKey() {
+  if (currentFacility) {
+    return `meditrack_payroll_payments_${currentFacility}`;
+  }
+  return 'meditrack_payroll_payments_default';
+}
+
+function loadPayrollPayments() {
+  try {
+    const raw = localStorage.getItem(getPayrollPaymentsKey());
+    const data = raw ? JSON.parse(raw) : [];
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function savePayrollPayments(list) {
+  try {
+    localStorage.setItem(getPayrollPaymentsKey(), JSON.stringify(list));
+  } catch (error) {
+    // ignore
+  }
+}
+
+function getEmployeeIdentity(employee) {
+  return employee?.id || employee?.code || employee?.email || employee?.name || '';
+}
+
+function getEmployeeRoleLabel(employee) {
+  const mapping = {
+    admission: 'staff.roleAdmission',
+    admin: 'staff.roleAdmin',
+    director: 'staff.roleDirector',
+    accountant: 'staff.roleAccountant',
+    doctor: 'staff.roleDoctor',
+    nurse: 'staff.roleNurse',
+    lab: 'staff.roleLab',
+    radiology: 'staff.roleRadiology',
+    pharmacy: 'staff.rolePharmacy',
+    hr: 'staff.roleHr',
+    other: 'staff.roleOther',
+  };
+  const key = mapping[employee?.role || ''];
+  return key ? t(key) : employee?.roleLabel || employee?.role || '-';
+}
+
+function formatEmploymentTypeLabel(value) {
+  return value === 'locum' ? t('staff.employmentLocum') : t('staff.employmentPermanent');
+}
+
+function formatPayModeLabel(value) {
+  const labels = {
+    contract_salary: t('staff.paySalary'),
+    service_percentage: t('staff.payPercentage'),
+  };
+  return labels[value] || value || '-';
+}
+
+function formatStaffStatusLabel(value) {
+  const labels = {
+    active: t('staff.statusActive'),
+    on_leave: t('staff.statusOnLeave'),
+    suspended: t('staff.statusSuspended'),
+    inactive: t('staff.statusInactive'),
+  };
+  return labels[value] || value || '-';
+}
+
+function getDefaultPayrollPeriod(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  return `${year}-${month}`;
+}
+
+function normalizePayrollPeriod(period) {
+  return /^\d{4}-\d{2}$/.test(String(period || '')) ? period : getDefaultPayrollPeriod();
+}
+
+function isDateInPayrollPeriod(value, period) {
+  const parsed = parseDateValue(value);
+  if (!parsed) return false;
+  const normalized = normalizePayrollPeriod(period);
+  const [year, month] = normalized.split('-').map((part) => Number.parseInt(part, 10));
+  const start = new Date(year, month - 1, 1);
+  const end = new Date(year, month, 1);
+  return parsed >= start && parsed < end;
+}
+
+function getEmployeeAssignedItems(employee, period) {
+  const employeeId = getEmployeeIdentity(employee);
+  const employeeName = employee?.name || '';
+  return loadReceipts()
+    .filter((receipt) => isDateInPayrollPeriod(receipt.createdAt, period))
+    .flatMap((receipt) =>
+      (receipt.items || [])
+        .filter((item) => {
+          return [item.providerId, receipt.doctor].includes(employeeId) || [item.providerName, receipt.doctorName].includes(employeeName);
+        })
+        .map((item) => ({
+          ...item,
+          receiptId: receipt.id,
+          createdAt: item.createdAt || receipt.createdAt,
+          patientId: receipt.patientId || item.patientId || '',
+          patientName: receipt.patientName || '',
+        }))
+    );
+}
+
+function getEmployeeAssignedEncounters(employee, period) {
+  const employeeId = getEmployeeIdentity(employee);
+  const employeeName = employee?.name || '';
+  return loadEncounters().filter((encounter) => {
+    if (!isDateInPayrollPeriod(encounter.createdAt, period)) return false;
+    return [encounter.doctor, encounter.providerId].includes(employeeId) || [encounter.doctorName, encounter.providerName].includes(employeeName);
+  });
+}
+
+function calculateEmployeePayroll(employee, period = getDefaultPayrollPeriod()) {
+  const normalizedPeriod = normalizePayrollPeriod(period);
+  const assignedItems = getEmployeeAssignedItems(employee, normalizedPeriod);
+  const assignedEncounters = getEmployeeAssignedEncounters(employee, normalizedPeriod);
+  const serviceCount = assignedItems.length;
+  const revenueBase = assignedItems.reduce((sum, item) => sum + parseNumber(item.total), 0);
+  const consultations = assignedItems.filter((item) => getDashboardCategoryBucket(item.category) === 'consultation').length;
+  const labExamCount = assignedItems.filter((item) => getDashboardCategoryBucket(item.category) === 'lab').length;
+  const imagingCount = assignedItems.filter((item) => getDashboardCategoryBucket(item.category) === 'imaging').length;
+  const payMode = employee?.payMode || (employee?.employmentType === 'locum' ? 'service_percentage' : 'contract_salary');
+  const contractualSalary = parseNumber(employee?.contractualSalary || employee?.salary || employee?.monthlySalary);
+  const employeeSocialRate = parseNumber(employee?.employeeSocialRate);
+  const employerSocialRate = parseNumber(employee?.employerSocialRate);
+  const otherDeductions = parseNumber(employee?.otherDeductions);
+  const locumRate = parseNumber(employee?.locumRate || employee?.payRate);
+  const otrRate = parseNumber(employee?.doctorProfile?.otrRate);
+  let gross = 0;
+  if (employee?.employmentType === 'locum' || payMode === 'service_percentage') {
+    gross = revenueBase * ((locumRate || 0) / 100);
+  } else {
+    gross = contractualSalary;
+  }
+  const employeeSocial = employee?.employmentType === 'locum' ? 0 : gross * (employeeSocialRate / 100);
+  const employerSocial = employee?.employmentType === 'locum' ? 0 : gross * (employerSocialRate / 100);
+  const taxWithholding = employee?.employmentType === 'locum' ? gross * (otrRate / 100) : 0;
+  const deductions = employeeSocial + otherDeductions + taxWithholding;
+  const netDue = Math.max(0, gross - deductions);
+  const payments = loadPayrollPayments().filter((entry) => entry.employeeId === getEmployeeIdentity(employee) && entry.period === normalizedPeriod);
+  const paidAmount = payments.reduce((sum, entry) => sum + parseNumber(entry.amount), 0);
+  const balance = Math.max(0, netDue - paidAmount);
+  return {
+    employeeId: getEmployeeIdentity(employee),
+    period: normalizedPeriod,
+    assignedItems,
+    assignedEncounters,
+    serviceCount,
+    consultationCount: consultations,
+    labExamCount,
+    imagingCount,
+    revenueBase,
+    gross,
+    employeeSocial,
+    employerSocial,
+    taxWithholding,
+    otherDeductions,
+    deductions,
+    netDue,
+    paidAmount,
+    balance,
+    payments,
+    basis: [
+      { label: t('hrPayroll.basisAssignedServices'), value: String(serviceCount) },
+      { label: t('hrPayroll.basisConsultations'), value: String(consultations) },
+      { label: t('hrPayroll.basisLab'), value: String(labExamCount) },
+      { label: t('hrPayroll.basisImaging'), value: String(imagingCount) },
+      { label: t('hrPayroll.basisRevenue'), value: formatCfl(revenueBase) },
+      { label: t('staff.locumRate'), value: `${locumRate || 0}%` },
+      { label: t('staff.contractSalary'), value: formatCfl(contractualSalary) },
+      { label: t('hrPayroll.employeeSocial'), value: formatCfl(employeeSocial) },
+      { label: t('hrPayroll.employerSocial'), value: formatCfl(employerSocial) },
+      { label: t('hrPayroll.taxWithholding'), value: formatCfl(taxWithholding) },
+      { label: t('staff.otherDeductions'), value: formatCfl(otherDeductions) },
+    ],
+  };
+}
+
+function downloadPayrollStatementFile(employee, period = getDefaultPayrollPeriod()) {
+  const payroll = calculateEmployeePayroll(employee, period);
+  const content = [
+    'MediTrack Payroll Statement',
+    `Employee: ${employee.name || getEmployeeIdentity(employee)}`,
+    `Role: ${getEmployeeRoleLabel(employee)}`,
+    `Position: ${employee.position || '-'}`,
+    `Period: ${payroll.period}`,
+    `Contract: ${formatEmploymentTypeLabel(employee.employmentType)}`,
+    `Status: ${formatStaffStatusLabel(employee.staffStatus)}`,
+    `Pay mode: ${formatPayModeLabel(employee.payMode)}`,
+    `Contract start: ${formatDate(employee.contractStart) || '-'}`,
+    `Date of birth: ${formatDate(employee.dob) || '-'}`,
+    `Social reference: ${employee.socialId || '-'}`,
+    `Gross: ${formatCfl(payroll.gross)}`,
+    `Employee social: ${formatCfl(payroll.employeeSocial)}`,
+    `Employer social: ${formatCfl(payroll.employerSocial)}`,
+    `Tax withholding: ${formatCfl(payroll.taxWithholding)}`,
+    `Other deductions: ${formatCfl(payroll.otherDeductions)}`,
+    `Net due: ${formatCfl(payroll.netDue)}`,
+    `Paid: ${formatCfl(payroll.paidAmount)}`,
+    `Balance: ${formatCfl(payroll.balance)}`,
+    `Assigned services: ${payroll.serviceCount}`,
+    `Consultations: ${payroll.consultationCount}`,
+    `Lab exams: ${payroll.labExamCount}`,
+    `Imaging exams: ${payroll.imagingCount}`,
+    `Revenue base: ${formatCfl(payroll.revenueBase)}`,
+  ].join('\n');
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = `payroll-${getEmployeeIdentity(employee) || 'employee'}-${payroll.period}.txt`;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+}
+
+function renderHrEmployeeDetail(employee, payroll = null) {
+  if (!hrEmployeeSummaryGrid || !hrPayrollBasisGrid) return;
+  if (!employee || !payroll) {
+    renderClinicalInfoGrid(hrEmployeeSummaryGrid, [{ label: t('hrPayroll.employeeSummary'), value: t('hrPayroll.noEmployeeSelected') }]);
+    renderClinicalInfoGrid(hrPayrollBasisGrid, []);
+    if (hrPaymentHistoryBody) renderClinicalEmptyRow(hrPaymentHistoryBody, 4);
+    if (recordPayrollPaymentBtn) recordPayrollPaymentBtn.disabled = true;
+    if (downloadPayrollStatementBtn) downloadPayrollStatementBtn.disabled = true;
+    if (hrPaymentAmount) hrPaymentAmount.value = '';
+    return;
+  }
+  renderClinicalInfoGrid(hrEmployeeSummaryGrid, [
+    { label: t('staff.firstName'), value: employee.firstName || '-' },
+    { label: t('staff.lastName'), value: employee.lastName || '-' },
+    { label: t('staff.listRole'), value: getEmployeeRoleLabel(employee) },
+    { label: t('staff.listPosition'), value: employee.position || '-' },
+    { label: t('staff.sex'), value: employee.sex ? formatSexLabel(employee.sex) : '-' },
+    { label: t('staff.dob'), value: formatDate(employee.dob) || '-' },
+    { label: t('staff.contractStart'), value: formatDate(employee.contractStart) || '-' },
+    { label: t('staff.listContract'), value: formatEmploymentTypeLabel(employee.employmentType) },
+    { label: t('staff.listPayMode'), value: formatPayModeLabel(employee.payMode) },
+    { label: t('staff.listStatus'), value: formatStaffStatusLabel(employee.staffStatus) },
+    { label: t('staff.contractSalary'), value: formatCfl(employee.contractualSalary) },
+    { label: t('staff.employeeSocialRate'), value: `${parseNumber(employee.employeeSocialRate)}%` },
+    { label: t('staff.employerSocialRate'), value: `${parseNumber(employee.employerSocialRate)}%` },
+    { label: t('staff.socialId'), value: employee.socialId || '-' },
+    { label: t('staff.phone'), value: employee.phone || '-' },
+    { label: t('staff.email'), value: employee.email || '-' },
+    { label: t('hrPayroll.gross'), value: formatCfl(payroll.gross) },
+    { label: t('hrPayroll.netDue'), value: formatCfl(payroll.netDue) },
+    { label: t('hrPayroll.paid'), value: formatCfl(payroll.paidAmount) },
+    { label: t('hrPayroll.balance'), value: formatCfl(payroll.balance) },
+  ]);
+  renderClinicalInfoGrid(hrPayrollBasisGrid, payroll.basis);
+  if (hrPaymentHistoryBody) {
+    hrPaymentHistoryBody.innerHTML = '';
+    if (!payroll.payments.length) {
+      renderClinicalEmptyRow(hrPaymentHistoryBody, 4);
+    } else {
+      payroll.payments
+        .sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
+        .forEach((entry) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${formatDate(entry.createdAt) || '-'}</td><td>${formatPaymentMethodLabel(entry.method)}</td><td>${formatCfl(entry.amount)}</td><td>${escapeHtml(entry.note || '-')}</td>`;
+          hrPaymentHistoryBody.appendChild(row);
+        });
+    }
+  }
+  if (recordPayrollPaymentBtn) recordPayrollPaymentBtn.disabled = payroll.balance <= 0;
+  if (downloadPayrollStatementBtn) downloadPayrollStatementBtn.disabled = false;
+  if (hrPaymentAmount) hrPaymentAmount.value = payroll.balance ? String(Math.round(payroll.balance)) : '';
+}
+
+function renderHrPayrollModule() {
+  if (!hrPayrollView) return;
+  const period = normalizePayrollPeriod(hrPayrollPeriod?.value || getDefaultPayrollPeriod());
+  if (hrPayrollPeriod && hrPayrollPeriod.value !== period) hrPayrollPeriod.value = period;
+  const filter = hrPayrollFilter?.value || 'all';
+  const employees = loadEmployees();
+  const rows = employees.map((employee) => ({ employee, payroll: calculateEmployeePayroll(employee, period) }));
+  const filtered = rows.filter(({ employee, payroll }) => {
+    if (filter === 'permanent') return employee.employmentType !== 'locum';
+    if (filter === 'locum') return employee.employmentType === 'locum';
+    if (filter === 'outstanding') return payroll.balance > 0;
+    if (filter === 'paid') return payroll.netDue > 0 && payroll.balance <= 0;
+    return true;
+  });
+  if (hrPayrollTotalEmployees) hrPayrollTotalEmployees.textContent = filtered.length.toString();
+  if (hrPayrollTotalDue) hrPayrollTotalDue.textContent = formatCfl(filtered.reduce((sum, row) => sum + row.payroll.netDue, 0));
+  if (hrPayrollTotalPaid) hrPayrollTotalPaid.textContent = formatCfl(filtered.reduce((sum, row) => sum + row.payroll.paidAmount, 0));
+  if (hrPayrollTotalOutstanding) hrPayrollTotalOutstanding.textContent = formatCfl(filtered.reduce((sum, row) => sum + row.payroll.balance, 0));
+  if (hrPayrollTableBody) {
+    hrPayrollTableBody.innerHTML = '';
+    if (!filtered.length) {
+      renderClinicalEmptyRow(hrPayrollTableBody, 12);
+    } else {
+      filtered.sort((a, b) => (a.employee.name || '').localeCompare(b.employee.name || ''));
+      filtered.forEach(({ employee, payroll }) => {
+        const employeeId = getEmployeeIdentity(employee);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${escapeHtml(employee.name || '-')}</td>
+          <td>${escapeHtml(getEmployeeRoleLabel(employee))}</td>
+          <td>${escapeHtml(employee.position || '-')}</td>
+          <td>${escapeHtml(formatEmploymentTypeLabel(employee.employmentType))}</td>
+          <td>${escapeHtml(formatPayModeLabel(employee.payMode))}</td>
+          <td>${escapeHtml(formatCfl(payroll.gross))}</td>
+          <td>${escapeHtml(formatCfl(payroll.employeeSocial))}</td>
+          <td>${escapeHtml(formatCfl(payroll.employerSocial))}</td>
+          <td>${escapeHtml(formatCfl(payroll.netDue))}</td>
+          <td>${escapeHtml(formatCfl(payroll.paidAmount))}</td>
+          <td>${escapeHtml(formatCfl(payroll.balance))}</td>
+          <td><button type="button" class="ghost" data-payroll-employee="${escapeHtml(employeeId)}">${escapeHtml(t('hrPayroll.openEmployee'))}</button></td>
+        `;
+        hrPayrollTableBody.appendChild(row);
+      });
+    }
+  }
+  const selected = filtered.find(({ employee }) => getEmployeeIdentity(employee) === activePayrollEmployeeId) || filtered[0] || null;
+  activePayrollEmployeeId = selected ? getEmployeeIdentity(selected.employee) : '';
+  renderHrEmployeeDetail(selected?.employee || null, selected?.payroll || null);
+}
+
+function refreshHrPayrollIfVisible() {
+  if (hrPayrollView && !hrPayrollView.classList.contains('hidden')) {
+    renderHrPayrollModule();
+  }
+}
+
 function renderStaffList() {
   if (!staffListBody) return;
   staffListBody.innerHTML = '';
   const employees = loadEmployees();
   if (!employees.length) {
     const row = document.createElement('tr');
-    row.innerHTML = `<td colspan="4">${t('staff.listEmpty')}</td>`;
+    row.innerHTML = `<td colspan="7">${t('staff.listEmpty')}</td>`;
     staffListBody.appendChild(row);
     return;
   }
   employees.forEach((emp) => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td>${emp.name || '-'}</td>
-      <td>${emp.roleLabel || emp.role || '-'}</td>
-      <td>${emp.email || '-'}</td>
-      <td>${emp.code || '-'}</td>
+      <td>${escapeHtml(emp.name || '-')}</td>
+      <td>${escapeHtml(getEmployeeRoleLabel(emp))}</td>
+      <td>${escapeHtml(emp.position || '-')}</td>
+      <td>${escapeHtml(formatEmploymentTypeLabel(emp.employmentType))}</td>
+      <td>${escapeHtml(formatPayModeLabel(emp.payMode))}</td>
+      <td>${escapeHtml(formatStaffStatusLabel(emp.staffStatus))}</td>
+      <td>${escapeHtml(emp.code || '-')}</td>
     `;
     staffListBody.appendChild(row);
   });
@@ -3398,29 +7582,548 @@ function renderDoctorPayments(target) {
   });
 }
 
+const DASHBOARD_CARD_CONFIG = {
+  default: {
+    daily: ['patientsRegistered', 'admissions', 'consultationsCompleted', 'billedServices', 'totalBilled', 'collected', 'insurancePart', 'patientPart', 'hospitalizations'],
+    monthly: ['patientsRegistered', 'billedServices', 'totalBilled', 'insurancePart', 'patientPart', 'admissions', 'stockConsumption', 'prescriptions'],
+  },
+  admin: {
+    daily: ['patientsRegistered', 'admissions', 'consultationsCompleted', 'billedServices', 'totalBilled', 'collected', 'insurancePart', 'patientPart', 'hospitalizations'],
+    monthly: ['patientsRegistered', 'billedServices', 'totalBilled', 'insurancePart', 'patientPart', 'admissions', 'stockConsumption', 'prescriptions'],
+  },
+  director: {
+    daily: ['patientsRegistered', 'admissions', 'consultationsCompleted', 'billedServices', 'totalBilled', 'collected', 'insurancePart', 'patientPart', 'hospitalizations', 'labImaging'],
+    monthly: ['patientsRegistered', 'billedServices', 'totalBilled', 'insurancePart', 'patientPart', 'admissions', 'stockConsumption', 'prescriptions'],
+  },
+  accountant: {
+    daily: ['totalBilled', 'collected', 'insurancePart', 'patientPart', 'billedServices'],
+    monthly: ['totalBilled', 'collected', 'insurancePart', 'patientPart', 'billedServices', 'stockConsumption'],
+  },
+  admission: {
+    daily: ['patientsRegistered', 'admissions', 'billedServices', 'totalBilled', 'collected', 'insurancePart', 'patientPart', 'hospitalizations'],
+    monthly: ['patientsRegistered', 'billedServices', 'totalBilled', 'insurancePart', 'patientPart', 'admissions'],
+  },
+  doctor: {
+    daily: ['patientsRegistered', 'consultationsCompleted', 'labImaging', 'prescriptions'],
+    monthly: ['patientsRegistered', 'consultationsCompleted', 'hospitalizations', 'prescriptions', 'totalBilled'],
+  },
+  nurse: {
+    daily: ['patientsRegistered', 'admissions', 'hospitalizations', 'stockConsumption'],
+    monthly: ['patientsRegistered', 'admissions', 'hospitalizations', 'stockConsumption'],
+  },
+  lab: {
+    daily: ['labImaging', 'billedServices'],
+    monthly: ['labImaging', 'billedServices', 'totalBilled'],
+  },
+  radiology: {
+    daily: ['labImaging', 'billedServices'],
+    monthly: ['labImaging', 'billedServices', 'totalBilled'],
+  },
+  pharmacy: {
+    daily: ['billedServices', 'patientPart', 'stockConsumption', 'prescriptions'],
+    monthly: ['billedServices', 'patientPart', 'stockConsumption', 'prescriptions'],
+  },
+};
+
+const DASHBOARD_CURRENCY_METRICS = new Set(['totalBilled', 'collected', 'insurancePart', 'patientPart']);
+const DASHBOARD_TREND_METRICS = {
+  default: ['patients', 'revenue', 'services', 'hospitalizations', 'labImaging', 'prescriptions', 'stock'],
+  admin: ['patients', 'revenue', 'services', 'hospitalizations', 'labImaging', 'prescriptions', 'stock'],
+  director: ['patients', 'revenue', 'services', 'hospitalizations', 'labImaging', 'prescriptions', 'stock'],
+  accountant: ['revenue', 'services', 'patients', 'stock'],
+  admission: ['patients', 'services', 'revenue', 'hospitalizations'],
+  doctor: ['patients', 'services', 'hospitalizations', 'labImaging', 'prescriptions', 'revenue'],
+  nurse: ['patients', 'hospitalizations', 'stock', 'prescriptions'],
+  lab: ['labImaging', 'services', 'revenue'],
+  radiology: ['labImaging', 'services', 'revenue'],
+  pharmacy: ['services', 'stock', 'prescriptions', 'revenue'],
+};
+
+function parseDateValue(value) {
+  if (!value) return null;
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function isSameCalendarDay(date, reference) {
+  return !!date && date.getFullYear() === reference.getFullYear() && date.getMonth() === reference.getMonth() && date.getDate() === reference.getDate();
+}
+
+function isSameCalendarMonth(date, reference) {
+  return !!date && date.getFullYear() === reference.getFullYear() && date.getMonth() === reference.getMonth();
+}
+
+function isWithinRange(date, start, end) {
+  return !!date && date >= start && date < end;
+}
+
+function getMonthLabels() {
+  const locale = currentLang === 'fr' ? 'fr-FR' : 'en-US';
+  const formatter = new Intl.DateTimeFormat(locale, { month: 'short' });
+  return Array.from({ length: 12 }, (_, index) => formatter.format(new Date(2026, index, 1)));
+}
+
+function getDashboardCategoryBucket(category) {
+  const normalized = normalizeServiceCategory(category);
+  const bucketMap = {
+    accouchement: 'hospitalization',
+    acte_gynecologique: 'surgery',
+    anatomie_pathologique: 'lab',
+    bacteriologie: 'lab',
+    biochimie: 'lab',
+    biologie_moleculaire: 'lab',
+    certificat_medical: 'consultation',
+    chirurgie: 'surgery',
+    consultation_bucco_dentaire: 'consultation',
+    consultation_mg: 'consultation',
+    consultation_sf: 'consultation',
+    consultation_specialiste: 'consultation',
+    consultation_visite: 'consultation',
+    echographie: 'imaging',
+    electrocardiogramme: 'imaging',
+    endoscopie: 'imaging',
+    expertise_dentaire: 'consultation',
+    hematologie: 'lab',
+    hospitalisation: 'hospitalization',
+    imagerie_interventionnelle: 'imaging',
+    immuno_serologie: 'lab',
+    irm: 'imaging',
+    location_bloc: 'surgery',
+    mycologie: 'lab',
+    orl: 'consultation',
+    parasitologie: 'lab',
+    pharmacie: 'pharmacy',
+    radiologie: 'imaging',
+    scanner: 'imaging',
+    soins_chirurgie_bucco_dentaire: 'surgery',
+    vaccination: 'outpatient',
+  };
+  return bucketMap[normalized] || normalized || 'other';
+}
+
+function hasEncounterPrescription(encounter) {
+  const consult = encounter?.doctorConsultation;
+  return !!(consult && (consult.prescriptionType || (consult.medications || []).length || (consult.tests || []).length));
+}
+
+function isHospitalizationEncounter(encounter) {
+  if (!encounter) return false;
+  if (['day', 'full'].includes(encounter.nurseAssessment?.mode || '')) return true;
+  if (['day_hospitalization', 'full_hospitalization'].includes(encounter.doctorConsultation?.prescriptionType || '')) return true;
+  return (encounter.services || []).some((item) => getDashboardCategoryBucket(item.category) === 'hospitalization');
+}
+
+function getCurrentEmployeeKey() {
+  return currentEmployee?.code || currentEmployee?.email || currentEmployee?.name || '';
+}
+
+function matchesCurrentEmployeeProvider(record) {
+  const key = getCurrentEmployeeKey();
+  const name = currentEmployee?.name || '';
+  return [record?.providerId, record?.doctor].includes(key) || [record?.providerName, record?.doctorName].includes(name);
+}
+
+function buildDashboardAnalytics() {
+  const synchronized = syncFacilityInterconnections();
+  const receipts = synchronized.receipts;
+  const encounters = synchronized.encounters;
+  const appointments = synchronized.appointments;
+  const items = receipts.flatMap((receipt) =>
+    (receipt.items || []).map((item, index) => ({
+      ...item,
+      id: `${receipt.id}-${index}`,
+      createdAt: item.createdAt || receipt.createdAt,
+      receiptId: receipt.id,
+      encounterId: item.encounterId || receipt.encounterId || '',
+      patientId: receipt.patientId || item.patientId || '',
+      patientName: receipt.patientName || '',
+      doctor: receipt.doctor || item.providerId || '',
+      doctorName: receipt.doctorName || item.providerName || '',
+      appointmentId: receipt.appointmentId || item.appointmentId || '',
+    }))
+  );
+  return {
+    now: new Date(),
+    patients: synchronized.patients,
+    employees: loadEmployees(),
+    services: loadServiceCatalog(),
+    insurers: seedInsurancePartnersIfEmpty(),
+    appointments,
+    receipts,
+    encounters,
+    accountingEntries: synchronized.accountingEntries,
+    stockMovements: loadStockMovements(),
+    items,
+  };
+}
+
+function scopeDashboardAnalytics(analytics, role) {
+  const scoped = {
+    ...analytics,
+    appointments: [...(analytics.appointments || [])],
+    receipts: [...analytics.receipts],
+    encounters: [...analytics.encounters],
+    accountingEntries: [...analytics.accountingEntries],
+    stockMovements: [...analytics.stockMovements],
+    items: [...analytics.items],
+  };
+  if (role === 'doctor') {
+    scoped.encounters = scoped.encounters.filter((encounter) => matchesCurrentEmployeeProvider(encounter));
+    const receiptIds = new Set(
+      scoped.receipts
+        .filter((receipt) => matchesCurrentEmployeeProvider(receipt))
+        .map((receipt) => receipt.id)
+    );
+    scoped.items = scoped.items.filter((item) => matchesCurrentEmployeeProvider(item) || receiptIds.has(item.receiptId));
+    scoped.receipts = scoped.receipts.filter((receipt) => receiptIds.has(receipt.id));
+    scoped.appointments = scoped.appointments.filter((appointment) => appointment.doctor === getCurrentEmployeeKey() || appointment.doctorName === currentEmployee?.name);
+    const scopedEncounterIds = new Set(scoped.encounters.map((encounter) => encounter.id));
+    scoped.accountingEntries = scoped.accountingEntries.filter(
+      (entry) => receiptIds.has(entry.receiptId) || scopedEncounterIds.has(entry.encounterId)
+    );
+    return scoped;
+  }
+  if (role === 'lab') {
+    scoped.items = scoped.items.filter((item) => getDashboardCategoryBucket(item.category) === 'lab');
+    scoped.encounters = scoped.encounters.filter((encounter) => getEncounterLabStatus(encounter) !== 'not_applicable');
+  } else if (role === 'radiology') {
+    scoped.items = scoped.items.filter((item) => getDashboardCategoryBucket(item.category) === 'imaging');
+    scoped.encounters = scoped.encounters.filter((encounter) => getEncounterLabRequestsForStatus(encounter).some((entry) => {
+      const service = loadServiceCatalog().find((item) => item.id === entry.serviceId);
+      return getDashboardCategoryBucket(service?.category || '') === 'imaging';
+    }));
+  } else if (role === 'pharmacy') {
+    scoped.items = scoped.items.filter((item) => getDashboardCategoryBucket(item.category) === 'pharmacy');
+    scoped.encounters = scoped.encounters.filter((encounter) => hasEncounterPharmacyNeed(encounter));
+    scoped.stockMovements = scoped.stockMovements.filter((movement) => movement.sourceModule === 'pharmacy' || normalizeStockType(movement.itemType) === 'medication');
+  } else if (role === 'nurse') {
+    scoped.encounters = scoped.encounters.filter((encounter) => !!encounter.nurseAssessment);
+    scoped.stockMovements = scoped.stockMovements.filter(
+      (movement) => movement.sourceModule === 'nurse' || movement.recordedBy === currentEmployee?.name || movement.recordedBy === currentEmployee?.code
+    );
+  }
+  if (['lab', 'radiology', 'pharmacy'].includes(role)) {
+    const receiptIds = new Set(scoped.items.map((item) => item.receiptId).filter(Boolean));
+    const encounterIds = new Set(scoped.encounters.map((encounter) => encounter.id));
+    scoped.receipts = scoped.receipts.filter((receipt) => receiptIds.has(receipt.id) || encounterIds.has(receipt.encounterId));
+    scoped.accountingEntries = scoped.accountingEntries.filter((entry) => receiptIds.has(entry.receiptId) || encounterIds.has(entry.encounterId));
+  }
+  return scoped;
+}
+
+function summarizeDashboardScope(scope, predicate) {
+  const encounters = scope.encounters.filter((encounter) => predicate(parseDateValue(encounter.createdAt)));
+  const items = scope.items.filter((item) => predicate(parseDateValue(item.createdAt)));
+  const accountingEntries = scope.accountingEntries.filter((entry) => predicate(parseDateValue(entry.createdAt)));
+  const stockMovements = scope.stockMovements.filter((movement) => predicate(parseDateValue(movement.createdAt)));
+  const patientIds = new Set([
+    ...encounters.map((encounter) => encounter.patientId),
+    ...items.map((item) => item.patientId),
+  ].filter(Boolean));
+  const totalBilled = items.reduce((sum, item) => sum + (item.total || 0), 0);
+  const accountingPatient = accountingEntries.reduce(
+    (sum, entry) => sum + (entry.cashAmount || 0) + (entry.bankAmount || 0),
+    0
+  );
+  const accountingInsurance = accountingEntries.reduce((sum, entry) => sum + (entry.insurerAmount || 0), 0);
+  const patientPart = items.reduce((sum, item) => sum + (item.patient || 0), 0);
+  const insurancePart = items.reduce((sum, item) => sum + (item.insurance || 0), 0);
+  return {
+    patientsRegistered: patientIds.size,
+    consultationsCompleted: encounters.filter((encounter) => encounter.status === 'doctor-completed' || encounter.doctorConsultation).length,
+    billedServices: items.length,
+    totalBilled,
+    collected: accountingPatient || patientPart,
+    insurancePart: accountingInsurance || insurancePart,
+    patientPart: patientPart || accountingPatient,
+    admissions: encounters.length,
+    hospitalizations: encounters.filter((encounter) => isHospitalizationEncounter(encounter)).length,
+    labImaging: items.filter((item) => {
+      const bucket = getDashboardCategoryBucket(item.category);
+      return bucket === 'lab' || bucket === 'imaging';
+    }).length,
+    prescriptions: encounters.filter((encounter) => hasEncounterPrescription(encounter)).length,
+    stockConsumption: stockMovements
+      .filter((movement) => movement.movementType === 'consumption')
+      .reduce((sum, movement) => sum + (movement.qty || 0), 0),
+  };
+}
+
+function getDashboardMetricValue(summary, metric) {
+  const mapping = {
+    patients: summary.patientsRegistered,
+    revenue: summary.totalBilled,
+    services: summary.billedServices,
+    hospitalizations: summary.hospitalizations,
+    labImaging: summary.labImaging,
+    prescriptions: summary.prescriptions,
+    stock: summary.stockConsumption,
+  };
+  return mapping[metric] || 0;
+}
+
+function formatDashboardMetricValue(metric, value) {
+  if (DASHBOARD_CURRENCY_METRICS.has(metric)) {
+    return formatCfl(value || 0);
+  }
+  return String(Math.round(value || 0));
+}
+
+function renderDashboardCards(container, metricKeys, summary) {
+  if (!container) return;
+  container.innerHTML = '';
+  metricKeys.forEach((metric) => {
+    const card = document.createElement('div');
+    card.className = 'dash-card';
+    card.innerHTML = `
+      <p>${t(`dashboard.metric${metric.charAt(0).toUpperCase()}${metric.slice(1)}`)}</p>
+      <strong>${formatDashboardMetricValue(metric, summary[metric] || 0)}</strong>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderDashboardTable(tbody, rows, firstColumnKey = 'label', secondColumnKey = 'today', thirdColumnKey = 'month', fourthColumnKey = 'amount') {
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  if (!rows.length) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td colspan="4">${t('dashboard.noData')}</td>`;
+    tbody.appendChild(row);
+    return;
+  }
+  rows.forEach((entry) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${entry[firstColumnKey]}</td>
+      <td>${entry[secondColumnKey]}</td>
+      <td>${entry[thirdColumnKey]}</td>
+      <td>${formatCfl(entry[fourthColumnKey] || 0)}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+function buildDashboardActivityRows(items, now) {
+  const categoryMap = new Map();
+  const serviceMap = new Map();
+  items.forEach((item) => {
+    const date = parseDateValue(item.createdAt);
+    if (!date) return;
+    const isToday = isSameCalendarDay(date, now);
+    const isMonth = isSameCalendarMonth(date, now);
+    if (!isMonth) return;
+    const categoryLabel = item.categoryLabel || getServiceCategoryLabel(item.category) || '-';
+    const serviceLabel = item.label || '-';
+    if (!categoryMap.has(categoryLabel)) {
+      categoryMap.set(categoryLabel, { label: categoryLabel, today: 0, month: 0, amount: 0 });
+    }
+    if (!serviceMap.has(serviceLabel)) {
+      serviceMap.set(serviceLabel, { label: serviceLabel, today: 0, month: 0, amount: 0 });
+    }
+    const categoryRow = categoryMap.get(categoryLabel);
+    const serviceRow = serviceMap.get(serviceLabel);
+    categoryRow.month += 1;
+    serviceRow.month += 1;
+    categoryRow.amount += item.total || 0;
+    serviceRow.amount += item.total || 0;
+    if (isToday) {
+      categoryRow.today += 1;
+      serviceRow.today += 1;
+    }
+  });
+  return {
+    categories: Array.from(categoryMap.values()).sort((a, b) => b.month - a.month || b.amount - a.amount).slice(0, 10),
+    services: Array.from(serviceMap.values()).sort((a, b) => b.month - a.month || b.amount - a.amount).slice(0, 10),
+  };
+}
+
+function renderTrendChart(container, labels, series) {
+  if (!container) return;
+  const values = series.flatMap((entry) => entry.values || []);
+  const maxValue = Math.max(0, ...values);
+  if (!maxValue) {
+    container.innerHTML = `<p class="muted">${t('dashboard.noData')}</p>`;
+    return;
+  }
+  const width = 640;
+  const height = 240;
+  const paddingX = 42;
+  const paddingY = 24;
+  const plotWidth = width - paddingX * 2;
+  const plotHeight = height - paddingY * 2;
+  const stepX = labels.length > 1 ? plotWidth / (labels.length - 1) : plotWidth;
+  const palette = ['#12355a', '#2d6a9f', '#4c9ad4', '#7bb8e8'];
+  const gridLines = Array.from({ length: 5 }, (_, index) => {
+    const y = paddingY + (plotHeight / 4) * index;
+    return `<line x1="${paddingX}" y1="${y}" x2="${width - paddingX}" y2="${y}" stroke="#d9e6ef" stroke-width="1" />`;
+  }).join('');
+  const xLabels = labels.map((label, index) => {
+    const x = paddingX + stepX * index;
+    return `<text x="${x}" y="${height - 6}" text-anchor="middle" font-size="11" fill="#5b7286">${label}</text>`;
+  }).join('');
+  const yMaxLabel = `<text x="10" y="${paddingY + 4}" font-size="11" fill="#5b7286">${Math.round(maxValue)}</text>`;
+  const yMinLabel = `<text x="16" y="${height - paddingY}" font-size="11" fill="#5b7286">0</text>`;
+  const chartSeries = series.map((entry, index) => {
+    const color = palette[index % palette.length];
+    const points = entry.values.map((value, pointIndex) => {
+      const x = paddingX + stepX * pointIndex;
+      const y = height - paddingY - (value / maxValue) * plotHeight;
+      return `${x},${y}`;
+    }).join(' ');
+    const circles = entry.values.map((value, pointIndex) => {
+      const x = paddingX + stepX * pointIndex;
+      const y = height - paddingY - (value / maxValue) * plotHeight;
+      return `<circle cx="${x}" cy="${y}" r="3.5" fill="${color}" />`;
+    }).join('');
+    return `<polyline points="${points}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />${circles}`;
+  }).join('');
+  const legend = series.map((entry, index) => {
+    const color = palette[index % palette.length];
+    return `<span class="trend-legend-item"><span class="trend-dot" style="background:${color}"></span>${entry.name}</span>`;
+  }).join('');
+  container.innerHTML = `
+    <svg class="trend-chart-svg" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">
+      ${gridLines}
+      <line x1="${paddingX}" y1="${height - paddingY}" x2="${width - paddingX}" y2="${height - paddingY}" stroke="#8ea4b7" stroke-width="1.2" />
+      <line x1="${paddingX}" y1="${paddingY}" x2="${paddingX}" y2="${height - paddingY}" stroke="#8ea4b7" stroke-width="1.2" />
+      ${chartSeries}
+      ${xLabels}
+      ${yMaxLabel}
+      ${yMinLabel}
+    </svg>
+    <div class="trend-legend">${legend}</div>
+  `;
+}
+
+function getDashboardYears(scope) {
+  const years = new Set();
+  [
+    ...scope.items.map((item) => parseDateValue(item.createdAt)),
+    ...scope.encounters.map((encounter) => parseDateValue(encounter.createdAt)),
+    ...scope.accountingEntries.map((entry) => parseDateValue(entry.createdAt)),
+    ...scope.stockMovements.map((movement) => parseDateValue(movement.createdAt)),
+  ].filter(Boolean).forEach((date) => years.add(date.getFullYear()));
+  if (!years.size) years.add(new Date().getFullYear());
+  return Array.from(years).sort((a, b) => a - b).slice(-3);
+}
+
+function buildDashboardTrendSeries(scope, metric) {
+  const now = scope.now;
+  const monthLabels = getMonthLabels();
+  const monthlySeries = {
+    name: t(`dashboard.metric${metric.charAt(0).toUpperCase()}${metric.slice(1)}`),
+    values: Array.from({ length: 12 }, (_, monthIndex) => {
+      const start = new Date(now.getFullYear(), monthIndex, 1);
+      const end = new Date(now.getFullYear(), monthIndex + 1, 1);
+      const summary = summarizeDashboardScope(scope, (date) => isWithinRange(date, start, end));
+      return getDashboardMetricValue(summary, metric);
+    }),
+  };
+  const yearlySeries = getDashboardYears(scope).map((year) => ({
+    name: String(year),
+    values: Array.from({ length: 12 }, (_, monthIndex) => {
+      const start = new Date(year, monthIndex, 1);
+      const end = new Date(year, monthIndex + 1, 1);
+      const summary = summarizeDashboardScope(scope, (date) => isWithinRange(date, start, end));
+      return getDashboardMetricValue(summary, metric);
+    }),
+  }));
+  return { labels: monthLabels, monthlySeries: [monthlySeries], yearlySeries };
+}
+
+function getDashboardCardConfig(role) {
+  return DASHBOARD_CARD_CONFIG[role] || DASHBOARD_CARD_CONFIG.default;
+}
+
+function getTrendMetricsForRole(role) {
+  return DASHBOARD_TREND_METRICS[role] || DASHBOARD_TREND_METRICS.default;
+}
+
+function renderDashboardTrendOptions(role) {
+  if (!dashboardTrendMetric) return;
+  const allowed = new Set(getTrendMetricsForRole(role));
+  const options = Array.from(dashboardTrendMetric.options);
+  options.forEach((option) => {
+    option.hidden = !allowed.has(option.value);
+  });
+  if (!allowed.has(dashboardTrendMetric.value)) {
+    dashboardTrendMetric.value = getTrendMetricsForRole(role)[0] || 'patients';
+  }
+}
+
+function renderStaffDistributionTable(target, employees, colSpan = 2) {
+  if (!target) return;
+  const counts = employees.reduce((acc, employee) => {
+    const label = getEmployeeRoleLabel(employee) || t('dashboard.noData');
+    acc[label] = (acc[label] || 0) + 1;
+    return acc;
+  }, {});
+  target.innerHTML = '';
+  const rows = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  if (!rows.length) {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td colspan="${colSpan}">${t('dashboard.noData')}</td>`;
+    target.appendChild(row);
+    return;
+  }
+  rows.forEach(([label, value]) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${label}</td><td>${value}</td>`;
+    target.appendChild(row);
+  });
+}
+
+function renderDashboardOverview(analytics, role) {
+  if (!dashboardOverviewSection) return;
+  const hideOverview = role === 'hr';
+  dashboardOverviewSection.classList.toggle('hidden', hideOverview);
+  if (hideOverview) return;
+  const scoped = scopeDashboardAnalytics(analytics, role);
+  const todaySummary = summarizeDashboardScope(scoped, (date) => isSameCalendarDay(date, analytics.now));
+  const monthSummary = summarizeDashboardScope(scoped, (date) => isSameCalendarMonth(date, analytics.now));
+  const config = getDashboardCardConfig(role);
+  renderDashboardCards(dashboardDailyCards, config.daily, todaySummary);
+  renderDashboardCards(dashboardMonthlyCards, config.monthly, monthSummary);
+  const rows = buildDashboardActivityRows(scoped.items, analytics.now);
+  renderDashboardTable(dashboardCategoryTable, rows.categories);
+  renderDashboardTable(dashboardServiceTable, rows.services);
+  renderDashboardTrendOptions(role);
+  const metric = dashboardTrendMetric?.value || getTrendMetricsForRole(role)[0] || 'patients';
+  const trend = buildDashboardTrendSeries(scoped, metric);
+  renderTrendChart(dashboardMonthlyTrendChart, trend.labels, trend.monthlySeries);
+  renderTrendChart(dashboardYearlyTrendChart, trend.labels, trend.yearlySeries);
+}
+
 function renderRoleDashboard() {
   if (!currentEmployee?.role) return;
   filterSectionByRole();
-  const patients = loadPatients();
-  const receipts = loadReceipts();
-  const encounters = loadEncounters();
-  const accountingEntries = loadAccountingEntries();
-  const accountingTotals = sumAccountingTotals(accountingEntries);
+  const analytics = buildDashboardAnalytics();
+  const role = currentEmployee.role;
+  const scope = scopeDashboardAnalytics(analytics, role);
+  const todaySummary = summarizeDashboardScope(scope, (date) => isSameCalendarDay(date, analytics.now));
+  const monthSummary = summarizeDashboardScope(scope, (date) => isSameCalendarMonth(date, analytics.now));
+  const lastSevenDaysAdmissions = analytics.encounters.filter((encounter) => {
+    const date = parseDateValue(encounter.createdAt);
+    return !!date && analytics.now.getTime() - date.getTime() <= 7 * 24 * 60 * 60 * 1000;
+  }).length;
 
   if (dashboardRoleLabel) {
     const roleLabel = currentEmployee.roleLabel || currentEmployee.role || '';
     dashboardRoleLabel.textContent = t('dashboard.roleLabel').replace('{role}', roleLabel);
   }
 
-  if (currentEmployee.role === 'admission') {
-    if (admTotalPatients) admTotalPatients.textContent = patients.length.toString();
-    if (admVisitsToday) admVisitsToday.textContent = countByDays(patients, 1).toString();
-    if (admVisitsWeek) admVisitsWeek.textContent = countByDays(patients, 7).toString();
-    if (admVisitsMonth) admVisitsMonth.textContent = countByDays(patients, 30).toString();
-    if (admPaidPatients) admPaidPatients.textContent = formatCfl(accountingTotals.patient);
-    if (admPaidInsurance) admPaidInsurance.textContent = formatCfl(accountingTotals.insurance);
+  renderDashboardOverview(analytics, role);
+
+  if (role === 'admission') {
+    if (admTotalPatients) admTotalPatients.textContent = analytics.patients.length.toString();
+    if (admVisitsToday) admVisitsToday.textContent = todaySummary.admissions.toString();
+    if (admVisitsWeek) admVisitsWeek.textContent = lastSevenDaysAdmissions.toString();
+    if (admVisitsMonth) admVisitsMonth.textContent = monthSummary.admissions.toString();
+    if (admPaidPatients) admPaidPatients.textContent = formatCfl(monthSummary.patientPart);
+    if (admPaidInsurance) admPaidInsurance.textContent = formatCfl(monthSummary.insurancePart);
     if (admStaffTable) {
-      const counts = patients.reduce((acc, rec) => {
+      const counts = analytics.encounters.reduce((acc, rec) => {
         const key = rec.admittedBy || t('dashboard.unknownStaff');
         acc[key] = (acc[key] || 0) + 1;
         return acc;
@@ -3431,20 +8134,32 @@ function renderRoleDashboard() {
         row.innerHTML = `<td>${staff}</td><td>${count}</td>`;
         admStaffTable.appendChild(row);
       });
+      if (!admStaffTable.children.length) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="2">${t('dashboard.noData')}</td>`;
+        admStaffTable.appendChild(row);
+      }
     }
   }
 
-  if (currentEmployee.role === 'doctor') {
+  if (role === 'admin') {
+    if (adminStaffCount) adminStaffCount.textContent = analytics.employees.length.toString();
+    if (adminServiceCatalogCount) adminServiceCatalogCount.textContent = analytics.services.length.toString();
+    if (adminInsurancePartnersCount) adminInsurancePartnersCount.textContent = analytics.insurers.length.toString();
+    if (adminTodayAdmissions) adminTodayAdmissions.textContent = todaySummary.admissions.toString();
+    renderStaffDistributionTable(adminRoleMixTable, analytics.employees);
+  }
+
+  if (role === 'doctor') {
     const docKey = currentEmployee.code || currentEmployee.email || currentEmployee.name;
-    const assigned = patients.filter((p) => p.doctor === docKey);
-    const assignedEncounters = encounters.filter(
+    const assigned = analytics.patients.filter((p) => p.doctor === docKey);
+    const assignedEncounters = scope.encounters.filter(
       (encounter) => encounter.doctor === docKey || encounter.doctorName === currentEmployee.name
     );
     if (docPatientsCount) docPatientsCount.textContent = assigned.length.toString();
     if (docUpcoming) {
-      const appointments = loadAppointments();
-      const upcoming = appointments.filter(
-        (appt) => appt.doctor === docKey && appt.status === 'scheduled'
+      const upcoming = scope.appointments.filter(
+        (appt) => appt.doctor === docKey && ['scheduled', 'arrived', 'in_care'].includes(appt.status)
       ).length;
       docUpcoming.textContent = upcoming.toString();
     }
@@ -3454,6 +8169,8 @@ function renderRoleDashboard() {
       ).length;
       docCompleted.textContent = completed.toString();
     }
+    const payslip = calculateDoctorPayslip(currentEmployee);
+    if (docRemuneration) docRemuneration.textContent = formatCfl(payslip.net);
     if (docPatientList) {
       docPatientList.innerHTML = '';
       assignedEncounters.slice(0, 6).forEach((p) => {
@@ -3462,69 +8179,89 @@ function renderRoleDashboard() {
         docPatientList.appendChild(li);
       });
     }
-    const payslip = calculateDoctorPayslip(currentEmployee);
-    if (docRemuneration) docRemuneration.textContent = formatCfl(payslip.net);
     if (docGross) docGross.textContent = formatCfl(payslip.gross);
     if (docOtr) docOtr.textContent = formatCfl(payslip.otr);
     if (docNet) docNet.textContent = formatCfl(payslip.net);
     populateDoctorEncounterOptions();
     populateDoctorTestOptions();
     populateDoctorStockOptions();
+    renderDoctorExamResults();
   }
 
-  if (currentEmployee.role === 'nurse') {
-    if (nursePatients) nursePatients.textContent = encounters.length.toString();
-    if (nurseTasks) {
-      const completed = encounters.filter((encounter) => encounter.nurseAssessment).length;
-      nurseTasks.textContent = completed.toString();
-    }
-    if (nurseMonthly) nurseMonthly.textContent = countByDays(patients, 30).toString();
+  if (role === 'nurse') {
+    if (nursePatients) nursePatients.textContent = monthSummary.patientsRegistered.toString();
+    if (nurseTasks) nurseTasks.textContent = analytics.encounters.filter((encounter) => {
+      const date = parseDateValue(encounter.nurseAssessment?.recordedAt);
+      return !!date && isSameCalendarDay(date, analytics.now);
+    }).length.toString();
+    if (nurseMonthly) nurseMonthly.textContent = analytics.encounters.filter((encounter) => !!encounter.nurseAssessment).length.toString();
     renderDoctorPayments(nurseDoctorPayments);
     populateNurseEncounterOptions();
     populateNurseStockOptions();
   }
 
-  if (currentEmployee.role === 'lab') {
-    const labItems = receipts.flatMap((r) => r.items || []).filter((i) => i.category === 'lab');
-    if (labPending) labPending.textContent = labItems.length.toString();
-    if (labInProgress) labInProgress.textContent = '0';
-    if (labCompleted) labCompleted.textContent = '0';
+  if (role === 'lab') {
+    if (labPending) labPending.textContent = todaySummary.labImaging.toString();
+    if (labInProgress) labInProgress.textContent = monthSummary.labImaging.toString();
+    if (labCompleted) labCompleted.textContent = analytics.items.filter((item) => getDashboardCategoryBucket(item.category) === 'lab').length.toString();
   }
 
-  if (currentEmployee.role === 'radiology') {
-    const imagingItems = receipts
-      .flatMap((r) => r.items || [])
-      .filter((i) => i.category === 'imaging');
-    if (radioScheduled) radioScheduled.textContent = imagingItems.length.toString();
-    if (radioCompleted) radioCompleted.textContent = '0';
+  if (role === 'radiology') {
+    const imagingItems = analytics.items.filter((item) => getDashboardCategoryBucket(item.category) === 'imaging');
+    if (radioScheduled) radioScheduled.textContent = todaySummary.labImaging.toString();
+    if (radioCompleted) radioCompleted.textContent = imagingItems.length.toString();
   }
 
-  if (currentEmployee.role === 'pharmacy') {
-    const pharmacyItems = receipts
-      .flatMap((r) => r.items || [])
-      .filter((i) => i.category === 'pharmacy');
-    if (pharmacyDispensed) pharmacyDispensed.textContent = pharmacyItems.length.toString();
+  if (role === 'pharmacy') {
+    const queue = getPharmacyQueueRecords();
+    if (pharmacyPending) pharmacyPending.textContent = queue.filter((entry) => entry.status !== 'dispensed').length.toString();
+    if (pharmacyDispensed) pharmacyDispensed.textContent = queue.filter((entry) => entry.status === 'dispensed').length.toString();
     updateStockAlerts();
+    renderPharmacyQueue();
   }
 
-  if (currentEmployee.role === 'accountant') {
-    if (accRevenue) accRevenue.textContent = formatCfl(accountingTotals.total);
-    if (accPatient) accPatient.textContent = formatCfl(accountingTotals.patient);
-    if (accInsurance) accInsurance.textContent = formatCfl(accountingTotals.insurance);
-    if (accOutstanding) accOutstanding.textContent = formatCfl(0);
-    if (accCashPayments) accCashPayments.textContent = formatCfl(accountingTotals.cash);
-    if (accBankPayments) accBankPayments.textContent = formatCfl(accountingTotals.bank);
+  if (role === 'accountant') {
+    const receivables = getInsuranceReceivablesSummary(analytics.now);
+    if (accRevenue) accRevenue.textContent = formatCfl(monthSummary.totalBilled);
+    if (accPatient) accPatient.textContent = formatCfl(monthSummary.patientPart);
+    if (accInsurance) accInsurance.textContent = formatCfl(receivables.insurerPayments);
+    if (accOutstanding) accOutstanding.textContent = formatCfl(receivables.outstanding);
+    if (accCashPayments) {
+      const cash = analytics.accountingEntries
+        .filter((entry) => isSameCalendarMonth(parseDateValue(entry.createdAt), analytics.now))
+        .reduce((sum, entry) => sum + (entry.cashAmount || 0), 0);
+      accCashPayments.textContent = formatCfl(cash);
+    }
+    if (accBankPayments) {
+      const bank = analytics.accountingEntries
+        .filter((entry) => isSameCalendarMonth(parseDateValue(entry.createdAt), analytics.now))
+        .reduce((sum, entry) => sum + (entry.bankAmount || 0), 0);
+      accBankPayments.textContent = formatCfl(bank);
+    }
     renderDoctorPayments(accDoctorPayments);
   }
 
-  if (currentEmployee.role === 'director') {
-    if (dirPatients) dirPatients.textContent = patients.length.toString();
-    if (dirServices) {
-      const serviceCount = receipts.flatMap((r) => r.items || []).length;
-      dirServices.textContent = serviceCount.toString();
+  if (role === 'director') {
+    if (dirPatients) dirPatients.textContent = monthSummary.patientsRegistered.toString();
+    if (dirServices) dirServices.textContent = monthSummary.billedServices.toString();
+    if (dirRevenue) dirRevenue.textContent = formatCfl(monthSummary.totalBilled);
+    if (dirStaffProductivity) {
+      const staffCount = analytics.employees.length || 1;
+      dirStaffProductivity.textContent = Math.round(monthSummary.billedServices / staffCount).toString();
     }
-    if (dirRevenue) dirRevenue.textContent = formatCfl(accountingTotals.total);
-    if (dirStaffProductivity) dirStaffProductivity.textContent = patients.length.toString();
+  }
+
+  if (role === 'hr') {
+    const staff = analytics.employees;
+    const period = getDefaultPayrollPeriod();
+    const permanent = staff.filter((employee) => employee.employmentType !== 'locum').length;
+    const locum = staff.filter((employee) => employee.employmentType === 'locum').length;
+    const payrollEstimate = staff.reduce((sum, employee) => sum + calculateEmployeePayroll(employee, period).netDue, 0);
+    if (hrStaffTotal) hrStaffTotal.textContent = staff.length.toString();
+    if (hrPermanentTotal) hrPermanentTotal.textContent = permanent.toString();
+    if (hrLocumTotal) hrLocumTotal.textContent = locum.toString();
+    if (hrPayrollEstimate) hrPayrollEstimate.textContent = formatCfl(payrollEstimate);
+    renderStaffDistributionTable(hrRoleMixTable, staff);
   }
 }
 
@@ -3562,8 +8299,10 @@ function updateBillingTotals() {
   let total = 0;
   let insuranceTotal = 0;
   let patientTotal = 0;
-  const coverage = parseNumber(coverageRate?.value);
-  const provider = normalizeProvider(insuranceProvider?.value);
+  const selectedProvider = normalizeProvider(insuranceProvider?.value);
+  const isInsured = patientInsuranceStatus?.value === 'yes' && !!selectedProvider;
+  const provider = isInsured ? selectedProvider : '';
+  const coverage = isInsured ? parseNumber(coverageRate?.value) : 0;
   const baseMultiplier = provider === 'INAM' || provider === 'AMU' ? 0.8 : 1;
   billingTableBody.querySelectorAll('tr').forEach((row) => {
     const qtyInput = row.querySelector('.billing-qty');
@@ -3571,15 +8310,17 @@ function updateBillingTotals() {
     const baseInput = row.querySelector('.billing-base');
     const actualInput = row.querySelector('.billing-actual');
     const totalCell = row.querySelector('.billing-total');
+    const providerCell = row.querySelector('.billing-provider');
     const insuranceCell = row.querySelector('.billing-insurance');
-    const patientCell = row.querySelector('.billing-patient');
     const rateCell = row.querySelector('.billing-rate');
     const qty = parseNumber(qtyInput?.value);
     const price = parseNumber(priceInput?.value);
-    const baseManual = baseInput?.dataset.manual === 'true';
+    const baseMode = baseInput?.dataset.manual || '';
+    const baseManual = baseMode === 'true';
+    const baseFromCatalog = baseMode === 'catalog';
     let baseUnit = parseNumber(baseInput?.value);
     const lineTotal = qty * price;
-    if (baseInput && !baseManual && price > 0) {
+    if (baseInput && !baseManual && !baseFromCatalog && price > 0) {
       baseUnit = Math.round(price * baseMultiplier);
       baseInput.value = baseUnit || '';
     }
@@ -3589,29 +8330,104 @@ function updateBillingTotals() {
     const baseTotalRaw = qty * baseUnit;
     const baseTotal = baseTotalRaw > 0 ? Math.min(baseTotalRaw, lineTotal) : lineTotal;
     const insurance = coverage ? baseTotal * (coverage / 100) : 0;
-    const calculatedPatient = Math.max(0, baseTotal - insurance);
-    const actualDefault = Math.max(0, calculatedPatient + Math.max(0, lineTotal - baseTotal));
-    let actualPatient = actualDefault;
+    const actualDefault = Math.max(0, lineTotal - insurance);
+    if (providerCell) {
+      providerCell.textContent = isInsured ? provider : '-';
+    }
     if (actualInput) {
-      const manual = actualInput.dataset.manual === 'true';
-      const manualValue = parseNumber(actualInput.value);
-      if (manual && manualValue > 0) {
-        actualPatient = manualValue;
-      } else {
-        actualInput.value = actualDefault ? Math.round(actualDefault) : '';
-        actualInput.dataset.manual = '';
-      }
+      actualInput.value = actualDefault ? Math.round(actualDefault) : '';
     }
     if (insuranceCell) insuranceCell.textContent = formatCfl(insurance);
-    if (patientCell) patientCell.textContent = formatCfl(calculatedPatient);
     if (rateCell) rateCell.textContent = coverage ? `${coverage}%` : '--';
     total += lineTotal;
     insuranceTotal += insurance;
-    patientTotal += actualPatient;
+    patientTotal += actualDefault;
   });
   if (billingTotal) billingTotal.textContent = formatCfl(total);
   if (insuranceShare) insuranceShare.textContent = formatCfl(insuranceTotal);
   if (patientShare) patientShare.textContent = formatCfl(patientTotal);
+}
+
+function getCatalogServicesByCategory(category) {
+  const normalizedCategory = normalizeServiceCategory(category);
+  return loadServiceCatalog().filter(
+    (item) => normalizeServiceCategory(item.category) === normalizedCategory
+  );
+}
+
+function populateBillingServiceOptions(row, preserveServiceId = '') {
+  const categorySelect = row.querySelector('.billing-category');
+  const serviceSelect = row.querySelector('.billing-service');
+  if (!categorySelect || !serviceSelect) return;
+  const category = categorySelect.value;
+  serviceSelect.innerHTML = `<option value="">${t('billing.servicePlaceholder')}</option>`;
+  serviceSelect.disabled = !category;
+  if (!category) return;
+  const services = getCatalogServicesByCategory(category).sort((a, b) =>
+    (a.name || '').localeCompare(b.name || '')
+  );
+  services.forEach((service) => {
+    const option = document.createElement('option');
+    option.value = service.id;
+    option.textContent = service.name || '-';
+    serviceSelect.appendChild(option);
+  });
+  serviceSelect.value = preserveServiceId || '';
+}
+
+function applyCatalogServiceToBillingRow(row) {
+  const categorySelect = row.querySelector('.billing-category');
+  const serviceSelect = row.querySelector('.billing-service');
+  const codeInput = row.querySelector('.billing-code');
+  const inamInput = row.querySelector('.billing-inam');
+  const priceInput = row.querySelector('.billing-price');
+  const baseInput = row.querySelector('.billing-base');
+  if (!categorySelect || !serviceSelect) return;
+  const category = categorySelect.value;
+  const serviceId = serviceSelect.value;
+  const service = loadServiceCatalog().find((item) => item.id === serviceId);
+  if (!service) {
+    if (codeInput) codeInput.value = '';
+    if (inamInput) inamInput.value = '';
+    if (priceInput) priceInput.value = '';
+    if (baseInput) {
+      baseInput.value = '';
+      baseInput.dataset.manual = '';
+    }
+    updateBillingTotals();
+    return;
+  }
+  const pricing = resolveServicePricing(
+    {
+      category: category || service.category,
+      label: service.name,
+      code: service.code || service.diseaseCode || '',
+      inam: service.inamCode || '',
+      price: service.uninsuredPrice || 0,
+    },
+    patientInsuranceStatus?.value === 'yes' ? normalizeProvider(insuranceProvider?.value) : ''
+  );
+  if (codeInput) codeInput.value = pricing.code || service.code || service.diseaseCode || '';
+  if (inamInput) inamInput.value = pricing.inamCode || service.inamCode || '';
+  if (priceInput) priceInput.value = pricing.price || 0;
+  if (baseInput) {
+    baseInput.value = pricing.base !== '' ? pricing.base : '';
+    baseInput.dataset.manual = pricing.base !== '' ? 'catalog' : '';
+  }
+  updateBillingTotals();
+}
+
+function refreshBillingRowsFromCatalog() {
+  if (!billingTableBody) return;
+  billingTableBody.querySelectorAll('tr').forEach((row) => {
+    const selectedService = row.querySelector('.billing-service')?.value || '';
+    populateBillingServiceOptions(row, selectedService);
+    if (selectedService) {
+      applyCatalogServiceToBillingRow(row);
+    } else {
+      updateBillingTotals();
+    }
+  });
 }
 
 function createBillingRow() {
@@ -3621,26 +8437,37 @@ function createBillingRow() {
     .map((cat) => `<option value="${cat.value}">${cat.label}</option>`)
     .join('');
   row.innerHTML = `
-    <td><input type="text" placeholder="${t('billing.itemPlaceholder')}" /></td>
-    <td><input class="billing-code" type="text" placeholder="${t('billing.codePlaceholder')}" /></td>
-    <td><input class="billing-inam" type="text" placeholder="${t('billing.inamPlaceholder')}" /></td>
     <td>
-      <select>
+      <select class="billing-category">
+        <option value="">${t('billing.categoryPlaceholder')}</option>
         ${categoryOptions}
       </select>
     </td>
+    <td>
+      <select class="billing-service" disabled>
+        <option value="">${t('billing.servicePlaceholder')}</option>
+      </select>
+    </td>
+    <td><input class="billing-code" type="text" placeholder="${t('billing.codePlaceholder')}" readonly /></td>
+    <td><input class="billing-inam" type="text" placeholder="${t('billing.inamPlaceholder')}" readonly /></td>
     <td><input class="billing-qty" type="number" min="1" value="1" /></td>
-    <td><input class="billing-price" type="number" min="0" step="1" value="0" /></td>
+    <td><input class="billing-price" type="number" min="0" step="1" value="0" readonly /></td>
     <td><input class="billing-base" type="number" min="0" step="1" value="0" /></td>
     <td class="billing-rate">--</td>
     <td class="billing-total">0 CFL</td>
+    <td class="billing-provider">-</td>
     <td class="billing-insurance">0 CFL</td>
-    <td class="billing-patient">0 CFL</td>
-    <td><input class="billing-actual" type="number" min="0" step="1" /></td>
-    <td><button type="button" class="remove-row" data-i18n="billing.remove">Remove</button></td>
+    <td><input class="billing-actual" type="number" min="0" step="1" readonly /></td>
   `;
   row.querySelectorAll('input, select').forEach((input) => {
     input.addEventListener('input', updateBillingTotals);
+  });
+  row.querySelector('.billing-category')?.addEventListener('change', () => {
+    populateBillingServiceOptions(row);
+    applyCatalogServiceToBillingRow(row);
+  });
+  row.querySelector('.billing-service')?.addEventListener('change', () => {
+    applyCatalogServiceToBillingRow(row);
   });
   const baseInput = row.querySelector('.billing-base');
   if (baseInput) {
@@ -3649,17 +8476,6 @@ function createBillingRow() {
       updateBillingTotals();
     });
   }
-  const actualInput = row.querySelector('.billing-actual');
-  if (actualInput) {
-    actualInput.addEventListener('input', () => {
-      actualInput.dataset.manual = actualInput.value ? 'true' : '';
-      updateBillingTotals();
-    });
-  }
-  row.querySelector('.remove-row')?.addEventListener('click', () => {
-    row.remove();
-    updateBillingTotals();
-  });
   return row;
 }
 
@@ -3667,9 +8483,25 @@ function refreshBillingRowsLanguage() {
   if (!billingTableBody) return;
   const categories = getServiceCategoryDefinitions();
   billingTableBody.querySelectorAll('tr').forEach((row) => {
-    const input = row.querySelector('input[type="text"]');
-    if (input) {
-      input.setAttribute('placeholder', t('billing.itemPlaceholder'));
+    const categorySelect = row.querySelector('.billing-category');
+    if (categorySelect) {
+      const currentValue = categorySelect.value;
+      categorySelect.innerHTML = `
+        <option value="">${t('billing.categoryPlaceholder')}</option>
+        ${categories.map((cat) => `<option value="${cat.value}">${cat.label}</option>`).join('')}
+      `;
+      categorySelect.value = currentValue || '';
+    }
+    const serviceSelect = row.querySelector('.billing-service');
+    if (serviceSelect) {
+      const currentServiceId = serviceSelect.value;
+      populateBillingServiceOptions(row, currentServiceId);
+      const placeholder = serviceSelect.querySelector('option[value=""]');
+      if (placeholder) placeholder.textContent = t('billing.servicePlaceholder');
+      serviceSelect.value = currentServiceId || '';
+      if (currentServiceId) {
+        applyCatalogServiceToBillingRow(row);
+      }
     }
     const codeInput = row.querySelector('.billing-code');
     if (codeInput) {
@@ -3679,19 +8511,8 @@ function refreshBillingRowsLanguage() {
     if (inamInput) {
       inamInput.setAttribute('placeholder', t('billing.inamPlaceholder'));
     }
-    const select = row.querySelector('select');
-    if (select) {
-      const currentValue = select.value;
-      select.innerHTML = categories
-        .map((cat) => `<option value="${cat.value}">${cat.label}</option>`)
-        .join('');
-      select.value = currentValue || categories[0]?.value || '';
-    }
-    const removeBtn = row.querySelector('.remove-row');
-    if (removeBtn) {
-      removeBtn.textContent = t('billing.remove');
-    }
   });
+  updateBillingTotals();
 }
 
 function refreshAppointmentServiceOptions() {
@@ -3710,24 +8531,34 @@ function refreshAppointmentServiceOptions() {
 function addServiceToBilling(service) {
   if (!billingTableBody) return;
   const row = createBillingRow();
-  const itemInput = row.querySelector('input[type="text"]');
-  if (itemInput) itemInput.value = service.label || '';
-  const codeInput = row.querySelector('.billing-code');
-  if (codeInput) codeInput.value = service.code || '';
-  const inamInput = row.querySelector('.billing-inam');
-  if (inamInput) inamInput.value = service.inam || '';
-  const categorySelect = row.querySelector('select');
-  if (categorySelect) categorySelect.value = service.category || 'consultation';
+  const categorySelect = row.querySelector('.billing-category');
+  const normalizedCategory = normalizeServiceCategory(service.category);
+  if (categorySelect) categorySelect.value = normalizedCategory;
+  const serviceRecord = findCatalogService(service.category, service.label, service.code);
+  populateBillingServiceOptions(row, serviceRecord?.id || '');
+  const serviceSelect = row.querySelector('.billing-service');
+  if (serviceSelect && serviceRecord) {
+    serviceSelect.value = serviceRecord.id;
+  }
   const qtyInput = row.querySelector('.billing-qty');
   if (qtyInput) qtyInput.value = service.qty || 1;
-  const priceInput = row.querySelector('.billing-price');
-  if (priceInput) priceInput.value = service.price || 0;
-  const baseInput = row.querySelector('.billing-base');
-  if (baseInput && service.base !== undefined && service.base !== null && service.base !== '') {
-    baseInput.value = service.base;
-    baseInput.dataset.manual = 'true';
-  }
   billingTableBody.appendChild(row);
+  if (serviceRecord) {
+    applyCatalogServiceToBillingRow(row);
+  } else {
+    const codeInput = row.querySelector('.billing-code');
+    if (codeInput) codeInput.value = service.code || '';
+    const inamInput = row.querySelector('.billing-inam');
+    if (inamInput) inamInput.value = service.inam || '';
+    const priceInput = row.querySelector('.billing-price');
+    if (priceInput) priceInput.value = service.price || 0;
+    const baseInput = row.querySelector('.billing-base');
+    if (baseInput && service.base !== undefined && service.base !== null && service.base !== '') {
+      baseInput.value = service.base;
+      baseInput.dataset.manual = 'catalog';
+    }
+    updateBillingTotals();
+  }
 }
 
 function collectSelectedServices() {
@@ -3811,7 +8642,7 @@ function clearServiceSelections() {
 function renderServiceSelectionTable() {
   if (!serviceSelectionTableBody) return;
   const catalog = loadServiceCatalog();
-  const provider = normalizeProvider(insuranceProvider?.value);
+  const provider = patientInsuranceStatus?.value === 'yes' ? normalizeProvider(insuranceProvider?.value) : '';
   const rawCategoryFilter = serviceSelectionCategoryFilter?.value || '';
   const categoryFilter = rawCategoryFilter ? normalizeServiceCategory(rawCategoryFilter) : '';
   const search = normalizeLabel(serviceSelectionSearch?.value || '');
@@ -3891,6 +8722,216 @@ function renderServiceSelectionOptions() {
   });
 }
 
+
+if (clinicalPatientSearch) {
+  clinicalPatientSearch.addEventListener('input', () => {
+    if (!clinicalPatientSearch.value.trim()) {
+      activeClinicalPatientId = null;
+    }
+    renderClinicalRecord();
+  });
+}
+
+if (clinicalPatientResults) {
+  clinicalPatientResults.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-patient-id]');
+    if (!button) return;
+    activeClinicalPatientId = button.getAttribute('data-patient-id');
+    renderClinicalRecord();
+  });
+}
+
+if (saveClinicalHistoryBtn) {
+  saveClinicalHistoryBtn.addEventListener('click', () => {
+    if (!activeClinicalPatientId) {
+      setMessage(clinicalHistoryMessage, t('records.selectPatientHint'));
+      return;
+    }
+    const patients = loadPatients();
+    const patient = patients.find((entry) => entry.id === activeClinicalPatientId);
+    if (!patient) return;
+    patient.clinicalHistory = {
+      antecedents: clinicalAntecedents?.value?.trim() || '',
+      notes: clinicalNotes?.value?.trim() || '',
+      updatedBy: currentEmployee?.name || currentEmployee?.code || '',
+      updatedAt: new Date().toISOString(),
+    };
+    patient.updatedAt = new Date().toISOString();
+    savePatients(patients);
+    setMessage(clinicalHistoryMessage, t('records.historySaved'));
+    refreshClinicalRecordsIfVisible();
+    refreshLabModuleIfVisible();
+  });
+}
+
+if (clinicalExamRequestSelect) {
+  clinicalExamRequestSelect.addEventListener('change', () => {
+    const record = activeClinicalPatientId ? collectClinicalRecord(activeClinicalPatientId) : null;
+    populateClinicalExamRequestOptions(record);
+  });
+}
+
+if (saveClinicalExamResultBtn) {
+  saveClinicalExamResultBtn.addEventListener('click', () => {
+    const requestId = clinicalExamRequestSelect?.value || '';
+    if (!requestId || !activeClinicalPatientId) {
+      setMessage(clinicalExamMessage, t('records.selectRequest'));
+      return;
+    }
+    const request = getClinicalExamRequests(currentEmployee?.role, activeClinicalPatientId).find((entry) => entry.id === requestId);
+    const saved = saveClinicalResultForRequest(request, {
+      status: clinicalExamStatus?.value || 'pending',
+      resultText: clinicalExamResult?.value?.trim() || '',
+      comment: clinicalExamComment?.value?.trim() || '',
+    });
+    if (!saved.ok) {
+      setMessage(clinicalExamMessage, saved.reason === 'locked' ? t('records.unpaid') : t('records.selectRequest'));
+      return;
+    }
+    setMessage(clinicalExamMessage, t('records.resultSaved'));
+  });
+}
+
+if (labRequestSearch) {
+  labRequestSearch.addEventListener('input', () => {
+    activeLabRequestId = '';
+    renderLabModule();
+  });
+}
+
+if (labStatusFilter) {
+  labStatusFilter.addEventListener('change', () => {
+    activeLabRequestId = '';
+    renderLabModule();
+  });
+}
+
+if (labRequestsTableBody) {
+  labRequestsTableBody.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-lab-request-id]');
+    if (!button) return;
+    activeLabRequestId = button.getAttribute('data-lab-request-id') || '';
+    if (labResultMessage) {
+      labResultMessage.textContent = '';
+      delete labResultMessage.dataset.persist;
+    }
+    renderLabModule();
+  });
+}
+
+if (openLabPatientRecordBtn) {
+  openLabPatientRecordBtn.addEventListener('click', () => {
+    const request = getClinicalRequestById(activeLabRequestId, getLabModuleRoleFilter());
+    if (!request?.patientId) return;
+    if (clinicalPatientSearch) clinicalPatientSearch.value = '';
+    activeClinicalPatientId = request.patientId;
+    showView('records');
+  });
+}
+
+function saveLabModuleResult(forceValidated = false) {
+  const request = getClinicalRequestById(activeLabRequestId, getLabModuleRoleFilter());
+  if (!request) {
+    setMessage(labResultMessage, t('labModule.noRequestSelected'));
+    return;
+  }
+  if (!canEditLabResults()) {
+    setMessage(labResultMessage, t('labModule.readOnly'));
+    return;
+  }
+  const resultText = labResultText?.value?.trim() || '';
+  const comment = labResultComment?.value?.trim() || '';
+  const nextStatus = forceValidated ? 'validated' : (labResultStatus?.value || 'pending');
+  if (forceValidated && !resultText) {
+    setMessage(labResultMessage, t('labModule.resultRequired'));
+    return;
+  }
+  const normalizedSupplies = pendingLabSupplies.map((item) => ({
+    stockId: item.stockId,
+    name: item.name,
+    label: item.name,
+    qty: parseNumber(item.qty),
+    category: 'lab',
+  })).filter((item) => item.stockId && item.qty > 0);
+  const shouldDeductStock = nextStatus === 'validated' && !request.stockAppliedAt && normalizedSupplies.length > 0;
+  const stockAppliedAt = shouldDeductStock ? new Date().toISOString() : (request.stockAppliedAt || '');
+  const saved = saveClinicalResultForRequest(request, {
+    status: nextStatus,
+    resultText,
+    comment,
+    supplies: normalizedSupplies.map((item) => ({ stockId: item.stockId, name: item.name, qty: item.qty })),
+    stockAppliedAt,
+  });
+  if (!saved.ok) {
+    setMessage(labResultMessage, saved.reason === 'locked' ? t('labModule.lockedRequest') : t('labModule.noRequestSelected'));
+    return;
+  }
+  if (shouldDeductStock) {
+    applyStockDeductions(normalizedSupplies, {
+      sourceRole: getLabModuleRoleFilter(),
+      recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+      patientId: request.patientId,
+      encounterId: request.encounterId,
+      createdAt: stockAppliedAt,
+    });
+  }
+  if (labResultMessage) {
+    labResultMessage.dataset.persist = '1';
+  }
+  setMessage(labResultMessage, forceValidated ? t('labModule.resultValidated') : t('records.resultSaved'));
+  activeLabRequestId = saved.payload ? `${saved.payload.encounterId}::${saved.payload.serviceId}` : activeLabRequestId;
+  renderLabModule();
+}
+
+if (addLabSupplyBtn) {
+  addLabSupplyBtn.addEventListener('click', () => {
+    const stockId = labStockItem?.value || '';
+    const qty = parseNumber(labStockQty?.value) || 0;
+    if (!stockId || qty <= 0) {
+      setMessage(labResultMessage, t('labModule.stockUsageRequired'));
+      return;
+    }
+    const stockItem = loadStock().find((item) => item.id === stockId);
+    if (!stockItem) return;
+    const existing = pendingLabSupplies.find((item) => item.stockId === stockId);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      pendingLabSupplies.push({ stockId, name: stockItem.name, qty });
+    }
+    if (labStockQty) labStockQty.value = '1';
+    setMessage(labResultMessage, '');
+    renderLabSupplyList();
+  });
+}
+
+if (labSupplyList) {
+  labSupplyList.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-stock-id]');
+    if (!button) return;
+    const stockId = button.getAttribute('data-stock-id');
+    pendingLabSupplies = pendingLabSupplies.filter((item) => item.stockId !== stockId);
+    renderLabSupplyList();
+  });
+}
+
+if (saveLabResultBtn) {
+  saveLabResultBtn.addEventListener('click', () => saveLabModuleResult(false));
+}
+
+if (validateLabResultBtn) {
+  validateLabResultBtn.addEventListener('click', () => saveLabModuleResult(true));
+}
+
+if (clinicalDoctorTable) {
+  clinicalDoctorTable.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-encounter-edit]');
+    if (!button) return;
+    pendingDashboardEncounterId = button.getAttribute('data-encounter-edit') || '';
+    showView('dashboard');
+  });
+}
+
 if (addBillingRow && billingTableBody) {
   addBillingRow.addEventListener('click', () => {
     billingTableBody.appendChild(createBillingRow());
@@ -3899,13 +8940,24 @@ if (addBillingRow && billingTableBody) {
   });
 }
 
+if (removeLastBillingRow && billingTableBody) {
+  removeLastBillingRow.addEventListener('click', () => {
+    const rows = billingTableBody.querySelectorAll('tr');
+    if (rows.length <= 1) return;
+    rows[rows.length - 1].remove();
+    updateBillingTotals();
+  });
+}
+
 if (coverageRate) {
-  coverageRate.addEventListener('change', updateBillingTotals);
+  coverageRate.addEventListener('change', () => {
+    updateBillingTotals();
+  });
 }
 
 if (insuranceProvider) {
   insuranceProvider.addEventListener('change', () => {
-    updateBillingTotals();
+    refreshBillingRowsFromCatalog();
     renderServiceSelectionTable();
   });
 }
@@ -3944,7 +8996,7 @@ if (addSelectedServices) {
       setMessage(serviceSelectionMessage, t('services.empty'));
       return;
     }
-    const provider = normalizeProvider(insuranceProvider?.value);
+    const provider = patientInsuranceStatus?.value === 'yes' ? normalizeProvider(insuranceProvider?.value) : '';
     selected.forEach((service) => {
       const pricing = resolveServicePricing(service, provider);
       addServiceToBilling({
@@ -3982,7 +9034,7 @@ if (moduleButtons && moduleButtons.length) {
       if (target === 'billing') {
         showView('billing');
       } else if (target === 'staff') {
-        if (currentEmployee?.role === 'director') {
+        if (['admin', 'director'].includes(currentEmployee?.role)) {
           openStaffAdminPanel();
         } else {
           showView('staff');
@@ -3997,6 +9049,12 @@ if (moduleButtons && moduleButtons.length) {
         showView('analytics');
       } else if (target === 'facility-profile') {
         showView('facility-profile');
+      } else if (target === 'records') {
+        showView('records');
+      } else if (target === 'lab') {
+        showView('lab');
+      } else if (target === 'hr') {
+        showView('hr');
       } else if (target === 'service-catalog') {
         showView('service-catalog');
       } else if (target === 'insurance-partners') {
@@ -4012,7 +9070,7 @@ if (backToModules) {
 
 if (backToWelcome) {
   backToWelcome.addEventListener('click', () => {
-    if (currentEmployee?.role === 'director') {
+    if (['admin', 'director'].includes(currentEmployee?.role)) {
       showView('modules');
     } else {
       showView('staff');
@@ -4070,12 +9128,28 @@ if (backToModulesFromFacility) {
   backToModulesFromFacility.addEventListener('click', () => showView('modules'));
 }
 
+if (backToModulesFromRecords) {
+  backToModulesFromRecords.addEventListener('click', () => showView('modules'));
+}
+
+if (backToModulesFromLab) {
+  backToModulesFromLab.addEventListener('click', () => showView('modules'));
+}
+
+if (backToModulesFromHr) {
+  backToModulesFromHr.addEventListener('click', () => showView('modules'));
+}
+
 if (goToModules) {
   goToModules.addEventListener('click', () => showView('modules'));
 }
 
 if (backToModulesFromDashboard) {
   backToModulesFromDashboard.addEventListener('click', () => showView('modules'));
+}
+
+if (dashboardTrendMetric) {
+  dashboardTrendMetric.addEventListener('change', refreshDashboardIfVisible);
 }
 
 if (adminSignInForm) {
@@ -4088,8 +9162,8 @@ if (adminSignInForm) {
     const adminCode = adminId.value.trim();
     currentEmployee = {
       name: adminCode,
-      role: 'director',
-      roleLabel: t('staff.roleDirector'),
+      role: 'admin',
+      roleLabel: t('staff.roleAdmin'),
       code: adminCode,
     };
     applyRoleAccess();
@@ -4113,7 +9187,16 @@ if (staffForm) {
     const tempPassword = staffTempPassword?.value?.trim();
     const employmentType = staffEmploymentType?.value || 'permanent';
     const locumRate = employmentType === 'locum' ? parseNumber(staffLocumRate?.value) : 100;
-    if (!firstName || !lastName || !role || !code || !tempPassword || !staffDob?.value || !staffSex?.value || !staffContractStart?.value) {
+    const position = staffPosition?.value?.trim();
+    const staffStatusValue = staffStatus?.value || 'active';
+    const payMode = employmentType === 'locum' ? 'service_percentage' : 'contract_salary';
+    const contractualSalary = employmentType === 'locum' ? 0 : parseNumber(staffContractSalary?.value);
+    const employeeSocialRate = employmentType === 'locum' ? 0 : parseNumber(staffEmployeeSocialRate?.value);
+    const employerSocialRate = employmentType === 'locum' ? 0 : parseNumber(staffEmployerSocialRate?.value);
+    const otherDeductions = parseNumber(staffOtherDeductions?.value);
+    const socialId = staffSocialId?.value?.trim() || '';
+    const notes = staffNotes?.value?.trim() || '';
+    if (!firstName || !lastName || !role || !code || !tempPassword || !staffDob?.value || !staffSex?.value || !staffContractStart?.value || !position) {
       setMessage(staffMessage, t('staff.messages.staffRequired'));
       return;
     }
@@ -4121,14 +9204,18 @@ if (staffForm) {
       setMessage(staffMessage, t('staff.messages.locumRateRequired'));
       return;
     }
+    if (employmentType !== 'locum' && contractualSalary <= 0) {
+      setMessage(staffMessage, t('staff.messages.salaryRequired'));
+      return;
+    }
     const roleLabel = staffRole.options[staffRole.selectedIndex]?.textContent || role;
     const payType = role === 'doctor' ? employmentType : null;
-    const payRate = role === 'doctor' && employmentType === 'locum' ? locumRate : 0;
+    const payRate = employmentType === 'locum' ? locumRate : 0;
     const doctorProfile =
       role === 'doctor'
         ? {
             sex: doctorSex?.value || '',
-            age: doctorAge?.value || '',
+            age: doctorAge?.value || calculateAgeFromDob(staffDob?.value || '') || '',
             registration: doctorReg?.value?.trim() || '',
             taxId: doctorTax?.value?.trim() || '',
             specialty: doctorSpecialty?.value?.trim() || '',
@@ -4138,6 +9225,7 @@ if (staffForm) {
         : null;
     const employees = loadEmployees();
     employees.push({
+      id: `EMP-${Date.now()}`,
       name,
       role,
       roleLabel,
@@ -4146,6 +9234,15 @@ if (staffForm) {
       dob: staffDob?.value || '',
       sex: staffSex?.value || '',
       contractStart: staffContractStart?.value || '',
+      position,
+      staffStatus: staffStatusValue,
+      payMode,
+      contractualSalary,
+      employeeSocialRate,
+      employerSocialRate,
+      otherDeductions,
+      socialId,
+      notes,
       email,
       phone,
       phoneCountryCode,
@@ -4161,9 +9258,11 @@ if (staffForm) {
     saveEmployees(employees);
     staffForm.reset();
     if (staffEmploymentType) staffEmploymentType.value = 'permanent';
+    if (staffStatus) staffStatus.value = 'active';
     if (staffPhoneCountry) staffPhoneCountry.value = '+228';
     setMessage(staffMessage, t('staff.messages.created'));
     renderStaffList();
+    refreshHrPayrollIfVisible();
     populateDoctorSelect();
     populateAppointmentDoctors();
     toggleDoctorFields();
@@ -4198,6 +9297,22 @@ function syncLocumRateField() {
   if (!isLocum) {
     staffLocumRate.value = '100';
   }
+  if (staffPayMode) {
+    staffPayMode.value = isLocum ? 'service_percentage' : 'contract_salary';
+    staffPayMode.disabled = true;
+  }
+  if (staffContractSalary) {
+    staffContractSalary.disabled = isLocum;
+    if (isLocum) staffContractSalary.value = '';
+  }
+  if (staffEmployeeSocialRate) {
+    staffEmployeeSocialRate.disabled = isLocum;
+    if (isLocum) staffEmployeeSocialRate.value = '0';
+  }
+  if (staffEmployerSocialRate) {
+    staffEmployerSocialRate.disabled = isLocum;
+    if (isLocum) staffEmployerSocialRate.value = '0';
+  }
 }
 
 if (staffEmploymentType) {
@@ -4207,6 +9322,75 @@ if (staffEmploymentType) {
 }
 
 syncLocumRateField();
+if (hrPayrollPeriod) {
+  hrPayrollPeriod.value = getDefaultPayrollPeriod();
+  hrPayrollPeriod.addEventListener('change', () => {
+    setMessage(hrPayrollMessage, '');
+    renderHrPayrollModule();
+  });
+}
+if (hrPayrollFilter) {
+  hrPayrollFilter.addEventListener('change', () => {
+    setMessage(hrPayrollMessage, '');
+    renderHrPayrollModule();
+  });
+}
+if (hrPayrollTableBody) {
+  hrPayrollTableBody.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-payroll-employee]');
+    if (!button) return;
+    activePayrollEmployeeId = button.getAttribute('data-payroll-employee') || '';
+    setMessage(hrPayrollMessage, '');
+    renderHrPayrollModule();
+  });
+}
+if (recordPayrollPaymentBtn) {
+  recordPayrollPaymentBtn.addEventListener('click', () => {
+    const employee = loadEmployees().find((entry) => getEmployeeIdentity(entry) === activePayrollEmployeeId);
+    if (!employee) {
+      setMessage(hrPayrollMessage, t('hrPayroll.noEmployeeSelected'));
+      return;
+    }
+    const period = normalizePayrollPeriod(hrPayrollPeriod?.value || getDefaultPayrollPeriod());
+    const payroll = calculateEmployeePayroll(employee, period);
+    const amount = parseNumber(hrPaymentAmount?.value);
+    if (!amount || amount <= 0 || amount > payroll.balance) {
+      setMessage(hrPayrollMessage, t('hrPayroll.invalidPaymentAmount'));
+      return;
+    }
+    const payments = loadPayrollPayments();
+    payments.push({
+      id: `PAY-${Date.now()}`,
+      employeeId: getEmployeeIdentity(employee),
+      employeeName: employee.name || '',
+      period,
+      method: hrPaymentMethod?.value || 'cash',
+      amount,
+      note: hrPaymentNote?.value?.trim() || '',
+      createdAt: new Date().toISOString(),
+      gross: payroll.gross,
+      netDue: payroll.netDue,
+      employerSocial: payroll.employerSocial,
+      employeeSocial: payroll.employeeSocial,
+      deductions: payroll.deductions,
+    });
+    savePayrollPayments(payments);
+    if (hrPaymentNote) hrPaymentNote.value = '';
+    setMessage(hrPayrollMessage, t('hrPayroll.paymentSaved'));
+    renderHrPayrollModule();
+    refreshDashboardIfVisible();
+  });
+}
+if (downloadPayrollStatementBtn) {
+  downloadPayrollStatementBtn.addEventListener('click', () => {
+    const employee = loadEmployees().find((entry) => getEmployeeIdentity(entry) === activePayrollEmployeeId);
+    if (!employee) {
+      setMessage(hrPayrollMessage, t('hrPayroll.noEmployeeSelected'));
+      return;
+    }
+    downloadPayrollStatementFile(employee, normalizePayrollPeriod(hrPayrollPeriod?.value || getDefaultPayrollPeriod()));
+  });
+}
 populateCountryCodeSelect(staffPhoneCountry);
 populateCountryCodeSelect(patientPhoneCountry);
 populateCountryCodeSelect(patientWhatsappCountry);
@@ -4330,10 +9514,21 @@ if (saveNurseAssessmentBtn) {
         label: item.name,
         qty: item.qty,
         category: 'pharmacy',
-      }))
+        patientId: encounter.patientId,
+        encounterId: encounter.id,
+      })),
+      {
+        sourceRole: 'nurse',
+        recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+        patientId: encounter.patientId,
+        encounterId: encounter.id,
+      }
     );
+    syncFacilityInterconnections(true);
     setMessage(nurseAssessmentMessage, t('dashboard.nurseSaved'));
     refreshDashboardIfVisible();
+    refreshClinicalRecordsIfVisible();
+    refreshAppointmentsIfVisible();
   });
 }
 
@@ -4423,10 +9618,22 @@ if (saveDoctorConsultationBtn) {
         label: item.name,
         qty: item.qty,
         category: 'pharmacy',
-      }))
+        patientId: encounter.patientId,
+        encounterId: encounter.id,
+      })),
+      {
+        sourceRole: 'doctor',
+        recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+        patientId: encounter.patientId,
+        encounterId: encounter.id,
+      }
     );
+    syncFacilityInterconnections(true);
     setMessage(doctorConsultationMessage, t('dashboard.doctorSaved'));
     refreshDashboardIfVisible();
+    refreshClinicalRecordsIfVisible();
+    refreshLabModuleIfVisible();
+    refreshAppointmentsIfVisible();
   });
 }
 
@@ -4508,15 +9715,23 @@ if (savePatientBtn) {
     const list = loadPatients();
     const index = list.findIndex((item) => item.id === record.id);
     if (index >= 0) {
-      list[index] = { ...list[index], ...record };
+      list[index] = {
+        ...list[index],
+        ...record,
+        createdAt: list[index].createdAt || record.createdAt,
+        updatedAt: new Date().toISOString(),
+      };
     } else {
       list.push(record);
     }
     savePatients(list);
+    syncFacilityInterconnections(true);
     activePatientId = record.id;
+    maybeLinkAppointmentToCurrentPatient(record, { silent: true });
     if (patientStatusLabel) patientStatusLabel.value = index >= 0 ? t('billing.returningPatient') : t('billing.newPatient');
     setMessage(patientMessage, t('billing.patientSaved'));
     refreshDashboardIfVisible();
+    refreshClinicalRecordsIfVisible();
   });
 }
 
@@ -4552,6 +9767,7 @@ if (patientSearchResults) {
 if (createNewPatientBtn) {
   createNewPatientBtn.addEventListener('click', () => {
     clearPatientForm();
+    activeAppointmentId = '';
     if (patientSearch) patientSearch.value = '';
     renderPatientSearchResults([]);
     setMessage(patientSearchMessage, '');
@@ -4560,7 +9776,11 @@ if (createNewPatientBtn) {
 }
 
 if (patientInsuranceStatus) {
-  patientInsuranceStatus.addEventListener('change', toggleInsuranceDetails);
+  patientInsuranceStatus.addEventListener('change', () => {
+    toggleInsuranceDetails();
+    refreshBillingRowsFromCatalog();
+    renderServiceSelectionTable();
+  });
 }
 
 if (patientDob) {
@@ -4617,6 +9837,7 @@ if (createAppointmentBtn) {
   createAppointmentBtn.addEventListener('click', () => {
     const patientName = appointmentPatient?.value?.trim();
     const phone = appointmentPhone?.value?.trim() || '';
+    const linkedPatient = findPatientForAppointment({ patientName, phone });
     const doctor = appointmentDoctor?.value || '';
     const doctorName = appointmentDoctor?.selectedOptions?.[0]?.textContent || '';
     const service = appointmentService?.value || '';
@@ -4641,6 +9862,7 @@ if (createAppointmentBtn) {
       time,
       notes,
       status: 'scheduled',
+      patientId: linkedPatient?.id || '',
       createdAt: new Date().toISOString(),
     });
     saveAppointments(appointments);
@@ -4652,6 +9874,7 @@ if (createAppointmentBtn) {
     if (appointmentTime) appointmentTime.value = '';
     if (appointmentNotes) appointmentNotes.value = '';
     setMessage(appointmentsMessage, t('appointments.saved'));
+    syncFacilityInterconnections(true);
     renderAppointmentsTable();
     refreshDashboardIfVisible();
   });
@@ -4670,19 +9893,37 @@ if (appointmentsTableBody) {
     if (match) {
       match.status = target.value;
       saveAppointments(appointments);
+      syncFacilityInterconnections(true);
       refreshDashboardIfVisible();
+      refreshAppointmentsIfVisible();
     }
   });
   appointmentsTableBody.addEventListener('click', (event) => {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
+    const openButton = target.closest('.appointment-open');
+    if (openButton instanceof HTMLElement) {
+      const id = openButton.dataset.id;
+      if (!id) return;
+      openAppointmentInBilling(id);
+      return;
+    }
     if (!target.classList.contains('remove-row')) return;
     const id = target.dataset.id;
     if (!id) return;
     const appointments = loadAppointments().filter((appt) => appt.id !== id);
     saveAppointments(appointments);
+    syncFacilityInterconnections(true);
     renderAppointmentsTable();
     refreshDashboardIfVisible();
+  });
+}
+
+if (pharmacyQueueTable) {
+  pharmacyQueueTable.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-encounter-id]');
+    if (!button) return;
+    markEncounterPrescriptionDispensed(button.getAttribute('data-encounter-id'));
   });
 }
 
@@ -4702,35 +9943,49 @@ if (copyPortalLink) {
 if (addStockBtn) {
   addStockBtn.addEventListener('click', () => {
     const name = stockName?.value?.trim();
+    const type = stockType?.value || 'medication';
+    const supplier = stockSupplier?.value?.trim() || '';
     const unitPrice = parseNumber(stockPrice?.value);
-    const qty = parseNumber(stockQty?.value);
-    const min = parseNumber(stockMin?.value);
+    const qty = Math.max(0, parseNumber(stockQty?.value));
+    const min = Math.max(0, parseNumber(stockMin?.value));
+    const entryDate = stockEntryDate?.value || '';
+    const expiryDate = stockExpiryDate?.value || '';
+    const receiptName = stockReceipt?.files?.[0]?.name || '';
+    const notes = stockNotes?.value?.trim() || '';
     if (!name) {
       setMessage(inventoryMessage, t('inventory.required'));
       return;
     }
-    const receiptName = stockReceipt?.files?.[0]?.name || '';
-    const stock = loadStock();
-    stock.push({
-      id: `ST-${Date.now()}`,
+    upsertStockReceipt({
       name,
+      type,
+      supplier,
       unitPrice,
       qty,
       min,
-      entryDate: stockEntryDate?.value || '',
-      expiryDate: stockExpiryDate?.value || '',
+      entryDate,
+      expiryDate,
       receiptName,
+      notes,
+    }, {
+      movementType: qty > 0 ? 'manual_entry' : '',
+      sourceModule: 'inventory',
+      recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+      note: notes,
     });
-    saveStock(stock);
     if (stockName) stockName.value = '';
+    if (stockType) stockType.value = 'medication';
+    if (stockSupplier) stockSupplier.value = '';
     if (stockPrice) stockPrice.value = '';
     if (stockQty) stockQty.value = '';
     if (stockMin) stockMin.value = '';
     if (stockEntryDate) stockEntryDate.value = '';
     if (stockExpiryDate) stockExpiryDate.value = '';
     if (stockReceipt) stockReceipt.value = '';
+    if (stockNotes) stockNotes.value = '';
     setMessage(inventoryMessage, t('inventory.saved'));
-    renderStockTable();
+    refreshInventoryIfVisible();
+    refreshDashboardIfVisible();
   });
 }
 
@@ -4741,21 +9996,56 @@ if (stockTableBody) {
     const row = target.closest('tr');
     const id = row?.dataset.id;
     if (!id) return;
+    const stock = loadStock();
+    const item = stock.find((entry) => entry.id === id);
+    if (!item) return;
     if (target.classList.contains('stock-save')) {
-      const stock = loadStock();
-      const item = stock.find((entry) => entry.id === id);
-      if (!item) return;
-      item.qty = parseNumber(row.querySelector('.stock-qty')?.value);
-      item.min = parseNumber(row.querySelector('.stock-min')?.value);
-      item.unitPrice = parseNumber(row.querySelector('.stock-price')?.value);
+      const previousQty = parseNumber(item.qty);
+      const nextQty = Math.max(0, parseNumber(row.querySelector('.stock-qty')?.value));
+      item.min = Math.max(0, parseNumber(row.querySelector('.stock-min')?.value));
+      item.unitPrice = Math.max(0, parseNumber(row.querySelector('.stock-price')?.value));
+      item.qty = nextQty;
+      item.updatedAt = new Date().toISOString();
       saveStock(stock);
-      renderStockTable();
+      if (nextQty !== previousQty) {
+        const diff = Math.abs(nextQty - previousQty);
+        recordStockMovement({
+          stockId: item.id,
+          item: item.name,
+          itemType: item.type,
+          direction: nextQty > previousQty ? 'in' : 'out',
+          qty: diff,
+          unitCost: item.unitPrice,
+          totalCost: diff * parseNumber(item.unitPrice),
+          movementType: 'adjustment',
+          sourceModule: 'inventory',
+          recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+          note: 'Manual stock adjustment',
+        });
+      }
+      refreshInventoryIfVisible();
+      refreshDashboardIfVisible();
       return;
     }
     if (target.classList.contains('remove-row')) {
-      const stock = loadStock().filter((entry) => entry.id !== id);
-      saveStock(stock);
-      renderStockTable();
+      if (parseNumber(item.qty) > 0) {
+        recordStockMovement({
+          stockId: item.id,
+          item: item.name,
+          itemType: item.type,
+          direction: 'out',
+          qty: parseNumber(item.qty),
+          unitCost: item.unitPrice,
+          totalCost: parseNumber(item.qty) * parseNumber(item.unitPrice),
+          movementType: 'adjustment',
+          sourceModule: 'inventory',
+          recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+          note: 'Stock item removed',
+        });
+      }
+      saveStock(stock.filter((entry) => entry.id !== id));
+      refreshInventoryIfVisible();
+      refreshDashboardIfVisible();
     }
   });
 }
@@ -4763,10 +10053,12 @@ if (stockTableBody) {
 if (addPurchaseOrderBtn) {
   addPurchaseOrderBtn.addEventListener('click', () => {
     const supplier = poSupplier?.value?.trim() || '';
-    const item = poItem?.value?.trim() || '';
-    const qty = parseNumber(poQty?.value);
-    const date = poDate?.value || '';
-    if (!supplier || !item || !qty) {
+    const itemName = poItem?.value?.trim() || '';
+    const type = poType?.value || 'medication';
+    const qtyOrdered = parseNumber(poQty?.value);
+    const unitCost = parseNumber(poUnitCost?.value);
+    const expectedDate = poDate?.value || '';
+    if (!supplier || !itemName || !qtyOrdered) {
       setMessage(poMessage, t('inventory.poRequired'));
       return;
     }
@@ -4774,45 +10066,79 @@ if (addPurchaseOrderBtn) {
     orders.push({
       id: `PO-${Date.now()}`,
       supplier,
-      item,
-      qty,
-      date,
+      itemName,
+      type,
+      qtyOrdered,
+      qtyReceived: 0,
+      unitCost,
+      expectedDate,
+      receivedDate: '',
       status: 'open',
+      createdAt: new Date().toISOString(),
     });
     savePurchaseOrders(orders);
     if (poSupplier) poSupplier.value = '';
     if (poItem) poItem.value = '';
+    if (poType) poType.value = 'medication';
     if (poQty) poQty.value = '';
+    if (poUnitCost) poUnitCost.value = '';
     if (poDate) poDate.value = '';
     setMessage(poMessage, t('inventory.poSaved'));
-    renderPurchaseOrders();
+    refreshInventoryIfVisible();
   });
 }
 
 if (poTableBody) {
-  poTableBody.addEventListener('change', (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLSelectElement)) return;
-    if (!target.classList.contains('po-status')) return;
-    const row = target.closest('tr');
-    const id = row?.dataset.id;
-    if (!id) return;
-    const orders = loadPurchaseOrders();
-    const match = orders.find((order) => order.id === id);
-    if (match) {
-      match.status = target.value;
-      savePurchaseOrders(orders);
-    }
-  });
   poTableBody.addEventListener('click', (event) => {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
-    if (!target.classList.contains('remove-row')) return;
-    const id = target.dataset.id;
+    const row = target.closest('tr');
+    const id = row?.dataset.id;
     if (!id) return;
-    const orders = loadPurchaseOrders().filter((order) => order.id !== id);
-    savePurchaseOrders(orders);
-    renderPurchaseOrders();
+    if (target.classList.contains('po-receive')) {
+      const receiveQty = Math.max(0, parseNumber(row.querySelector('.po-receive-qty')?.value));
+      if (!receiveQty) {
+        setMessage(poMessage, t('inventory.receiveRequired'));
+        return;
+      }
+      const orders = loadPurchaseOrders();
+      const order = orders.find((entry) => entry.id === id);
+      if (!order) return;
+      const remaining = Math.max(0, parseNumber(order.qtyOrdered) - parseNumber(order.qtyReceived));
+      if (!remaining || receiveQty > remaining) {
+        setMessage(poMessage, t('inventory.receiveRequired'));
+        return;
+      }
+      const item = upsertStockReceipt({
+        stockId: order.stockItemId || '',
+        name: order.itemName,
+        type: order.type,
+        supplier: order.supplier,
+        unitPrice: order.unitCost,
+        qty: receiveQty,
+        min: 0,
+        entryDate: new Date().toISOString().slice(0, 10),
+        notes: `Purchase order ${order.id}`,
+      }, {
+        movementType: 'purchase',
+        sourceModule: 'purchase_order',
+        recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+        note: `Purchase order ${order.id}`,
+      });
+      order.stockItemId = item.id;
+      order.qtyReceived = parseNumber(order.qtyReceived) + receiveQty;
+      order.receivedDate = new Date().toISOString().slice(0, 10);
+      order.status = order.qtyReceived >= order.qtyOrdered ? 'received' : 'partial';
+      savePurchaseOrders(orders);
+      setMessage(poMessage, t('inventory.receiveSaved'));
+      refreshInventoryIfVisible();
+      refreshDashboardIfVisible();
+      return;
+    }
+    if (target.classList.contains('remove-row')) {
+      savePurchaseOrders(loadPurchaseOrders().filter((order) => order.id !== id));
+      refreshInventoryIfVisible();
+    }
   });
 }
 
@@ -4860,7 +10186,192 @@ if (payslipTableBody) {
   });
 }
 
+if (insuranceReportGenerateBtn) {
+  insuranceReportGenerateBtn.addEventListener('click', () => {
+    const insurer = insuranceReportInsurer?.value || '';
+    const start = insuranceReportStart?.value || '';
+    const end = insuranceReportEnd?.value || '';
+    if (!insurer || !start || !end) {
+      setMessage(insuranceReportMessage, t('reports.statementRequired'));
+      return;
+    }
+    const existing = loadInsuranceStatements().find(
+      (statement) =>
+        normalizeProvider(statement.insurer) === normalizeProvider(insurer) &&
+        statement.periodStart === start &&
+        statement.periodEnd === end
+    );
+    const statement = buildInsuranceStatementSnapshot(insurer, start, end, existing || null);
+    if (!statement.rows.length) {
+      activeInsuranceStatementId = '';
+      renderInsuranceStatementsSection();
+      renderInsuranceReceivablesSection();
+      setMessage(insuranceReportMessage, t('reports.noClaims'));
+      return;
+    }
+    upsertInsuranceStatement(statement);
+    activeInsuranceStatementId = statement.id;
+    renderReports();
+    setMessage(insuranceReportMessage, t('reports.statementGenerated'));
+  });
+}
+
+if (insuranceReportEmailBtn) {
+  insuranceReportEmailBtn.addEventListener('click', () => {
+    const statement = getInsuranceStatementById(activeInsuranceStatementId);
+    if (!statement) {
+      setMessage(insuranceReportMessage, t('reports.noStatementSelected'));
+      return;
+    }
+    const opened = openInsuranceStatementEmailDraft(statement);
+    if (opened) {
+      setMessage(insuranceReportMessage, t('reports.emailDraftReady'));
+    }
+  });
+}
+
+if (insuranceReportBordereauBtn) {
+  insuranceReportBordereauBtn.addEventListener('click', () => {
+    const statement = getInsuranceStatementById(activeInsuranceStatementId);
+    if (!statement) {
+      setMessage(insuranceReportMessage, t('reports.noStatementSelected'));
+      return;
+    }
+    const opened = exportInsuranceStatementBordereau(statement);
+    setMessage(insuranceReportMessage, opened ? t('reports.bordereauReady') : t('reports.bordereauPopupBlocked'));
+  });
+}
+
+if (insuranceReportPdfBtn) {
+  insuranceReportPdfBtn.addEventListener('click', () => {
+    const statement = getInsuranceStatementById(activeInsuranceStatementId);
+    if (!statement) {
+      setMessage(insuranceReportMessage, t('reports.noStatementSelected'));
+      return;
+    }
+    const opened = exportInsuranceStatementPdf(statement);
+    setMessage(insuranceReportMessage, opened ? t('reports.pdfReady') : t('reports.pdfPopupBlocked'));
+  });
+}
+
+if (insuranceReportDownloadBtn) {
+  insuranceReportDownloadBtn.addEventListener('click', () => {
+    const statement = getInsuranceStatementById(activeInsuranceStatementId);
+    if (!statement) {
+      setMessage(insuranceReportMessage, t('reports.noStatementSelected'));
+      return;
+    }
+    downloadInsuranceStatementExcel(statement);
+    setMessage(insuranceReportMessage, t('reports.excelDownloaded'));
+  });
+}
+
+if (insuranceReportLetterBtn) {
+  insuranceReportLetterBtn.addEventListener('click', () => {
+    const statement = getInsuranceStatementById(activeInsuranceStatementId);
+    if (!statement) {
+      setMessage(insuranceReportMessage, t('reports.noStatementSelected'));
+      return;
+    }
+    downloadInsuranceTransmissionLetter(statement);
+    setMessage(insuranceReportMessage, t('reports.letterDownloaded'));
+  });
+}
+
+if (insuranceReportUpdateStatusBtn) {
+  insuranceReportUpdateStatusBtn.addEventListener('click', () => {
+    const nextStatus = insuranceReportStatusSelect?.value || 'generated';
+    const statement = updateInsuranceStatementStatus(activeInsuranceStatementId, nextStatus, 'manual');
+    if (!statement) {
+      setMessage(insuranceReportMessage, t('reports.noStatementSelected'));
+      return;
+    }
+    renderReports();
+    setMessage(insuranceReportMessage, t('reports.statusUpdated'));
+  });
+}
+
+if (insuranceReportRecordPaymentBtn) {
+  insuranceReportRecordPaymentBtn.addEventListener('click', () => {
+    const result = recordInsuranceStatementPayment(activeInsuranceStatementId, {
+      amount: insuranceReportPaymentAmount?.value || '',
+      paymentDate: insuranceReportPaymentDate?.value || '',
+      paymentMethod: insuranceReportPaymentMethod?.value || 'bank_transfer',
+      reference: insuranceReportPaymentReference?.value || '',
+      note: insuranceReportPaymentNote?.value || '',
+    });
+    if (result?.error === 'missing_statement') {
+      setMessage(insuranceReportMessage, t('reports.noStatementSelected'));
+      return;
+    }
+    if (result?.error === 'invalid_amount') {
+      setMessage(insuranceReportMessage, t('reports.paymentAmountInvalid'));
+      return;
+    }
+    if (result?.error === 'exceeds_balance') {
+      setMessage(insuranceReportMessage, t('reports.paymentExceedsBalance'));
+      return;
+    }
+    if (result?.error === 'missing_payment_date') {
+      setMessage(insuranceReportMessage, t('reports.paymentDateRequired'));
+      return;
+    }
+    resetInsuranceStatementPaymentForm();
+    renderReports();
+    refreshDashboardIfVisible();
+    setMessage(insuranceReportMessage, t('reports.paymentRecorded'));
+  });
+}
+
+if (insuranceReceivablesTableBody) {
+  insuranceReceivablesTableBody.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    const openButton = target.closest('.insurance-receivable-open');
+    const reminderButton = target.closest('.insurance-receivable-reminder');
+    const statementId = openButton?.getAttribute('data-statement-id') || reminderButton?.getAttribute('data-statement-id') || '';
+    if (!statementId) return;
+    const statement = getInsuranceStatementById(statementId);
+    if (!statement) return;
+    if (openButton) {
+      activeInsuranceStatementId = statement.id;
+      if (insuranceReportInsurer) insuranceReportInsurer.value = statement.insurer || '';
+      if (insuranceReportStart) insuranceReportStart.value = statement.periodStart || '';
+      if (insuranceReportEnd) insuranceReportEnd.value = statement.periodEnd || '';
+      renderReports();
+      setMessage(insuranceReportMessage, t('reports.statementLoaded'));
+      return;
+    }
+    if (reminderButton) {
+      const opened = openInsuranceReminderEmailDraft(statement);
+      if (!opened) return;
+      recordInsuranceStatementReminder(statement.id, { method: 'email', note: 'Reminder email draft opened.' });
+      renderReports();
+      refreshDashboardIfVisible();
+      setMessage(insuranceReportMessage, t('reports.reminderDraftReady'));
+    }
+  });
+}
+
+if (insuranceReportHistoryBody) {
+  insuranceReportHistoryBody.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    const button = target.closest('button[data-statement-id]');
+    if (!button) return;
+    const statement = getInsuranceStatementById(button.getAttribute('data-statement-id'));
+    if (!statement) return;
+    activeInsuranceStatementId = statement.id;
+    if (insuranceReportInsurer) insuranceReportInsurer.value = statement.insurer || '';
+    if (insuranceReportStart) insuranceReportStart.value = statement.periodStart || '';
+    if (insuranceReportEnd) insuranceReportEnd.value = statement.periodEnd || '';
+    renderReports();
+    setMessage(insuranceReportMessage, t('reports.statementLoaded'));
+  });
+}
+
 function formatDate(value) {
+
   if (!value) return '';
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
@@ -4925,40 +10436,40 @@ function fillReceipt() {
   let totalPatient = 0;
   const items = [];
   billingTableBody.querySelectorAll('tr').forEach((row) => {
-    const item = row.querySelector('input[type="text"]')?.value || '';
+    const category = row.querySelector('.billing-category')?.value || '';
+    const serviceSelect = row.querySelector('.billing-service');
+    const item = serviceSelect?.selectedOptions?.[0]?.textContent || '';
     const code = row.querySelector('.billing-code')?.value || '';
     const inam = row.querySelector('.billing-inam')?.value || '';
-    const category = row.querySelector('select')?.value || '';
     const qty = parseNumber(row.querySelector('.billing-qty')?.value);
     const price = parseNumber(row.querySelector('.billing-price')?.value);
     const baseUnit = parseNumber(row.querySelector('.billing-base')?.value);
     const actualInput = row.querySelector('.billing-actual');
+    const providerLabel = row.querySelector('.billing-provider')?.textContent || '';
     const lineTotal = qty * price;
     if (!item && !lineTotal) return;
     const baseTotalRaw = qty * baseUnit;
     const baseTotal = baseTotalRaw > 0 ? Math.min(baseTotalRaw, lineTotal) : lineTotal;
     const insurance = coverage ? baseTotal * (coverage / 100) : 0;
-    const calculatedPatient = Math.max(0, baseTotal - insurance);
-    const actualDefault = Math.max(0, calculatedPatient + Math.max(0, lineTotal - baseTotal));
-    let patient = actualDefault;
-    const actualValue = parseNumber(actualInput?.value);
-    if (actualInput && actualValue > 0) {
-      patient = actualValue;
-    }
+    const actualDefault = Math.max(0, lineTotal - insurance);
+    const patient = parseNumber(actualInput?.value) || actualDefault;
     totalInsurance += insurance;
     totalPatient += patient;
     items.push({
       label: item,
+      serviceId: serviceSelect?.value || '',
       category,
+      categoryLabel: getServiceCategoryLabel(category),
       qty,
       price,
       total: lineTotal,
       base: baseTotal,
+      rate: coverage,
       insurance,
       patient,
-      calculatedPatient,
       code,
       inam,
+      insurer: providerLabel,
       providerId: assignDoctor?.value || '',
       providerName: assignDoctor?.selectedOptions?.[0]?.textContent || '',
     });
@@ -4987,23 +10498,30 @@ function fillReceipt() {
   receiptPanel.classList.remove('hidden');
   if (printReceiptBtn) printReceiptBtn.disabled = false;
 
+  const linkedAppointment = getBillingAppointmentCandidate(patientRecord);
   const receipts = loadReceipts();
   const paymentType = paymentMethod?.value || 'cash';
   const encounterId = `ENC-${Date.now()}`;
+  const receiptItems = items.map((item) => ({ ...item, encounterId }));
   const receiptRecord = {
     id: receiptNumber.textContent,
     createdAt: now.toISOString(),
     total: totalInsurance + totalPatient,
     insuranceTotal: totalInsurance,
     patientTotal: totalPatient,
-    items,
+    items: receiptItems,
     doctor: assignDoctor?.value || '',
     doctorName: assignDoctor?.selectedOptions?.[0]?.textContent || '',
     patientId: patientRecord.id,
     patientName: name,
+    patientPhone: patientRecord.phone || '',
+    insuranceType: patientRecord.insuranceType || '',
+    insuranceCoverage: patientRecord.coverage || '',
+    insuranceId: patientRecord.insuranceId || '',
     paymentMethod: paymentType,
     admittedBy: currentEmployee?.name || currentEmployee?.code || '',
     encounterId,
+    appointmentId: linkedAppointment?.id || activeAppointmentId || '',
   };
   receipts.push({
     ...receiptRecord,
@@ -5012,7 +10530,12 @@ function fillReceipt() {
   const patients = loadPatients();
   const patientIndex = patients.findIndex((item) => item.id === patientRecord.id);
   if (patientIndex >= 0) {
-    patients[patientIndex] = { ...patients[patientIndex], ...patientRecord };
+    patients[patientIndex] = {
+      ...patients[patientIndex],
+      ...patientRecord,
+      createdAt: patients[patientIndex].createdAt || patientRecord.createdAt,
+      updatedAt: new Date().toISOString(),
+    };
   } else {
     patients.push(patientRecord);
   }
@@ -5027,9 +10550,11 @@ function fillReceipt() {
     doctorName: assignDoctor?.selectedOptions?.[0]?.textContent || '',
     receiptId: receiptRecord.id,
     paymentMethod: paymentType,
-    services: items,
+    services: receiptItems,
     insuranceType: patientRecord.insuranceType || '',
     insuranceCoverage: patientRecord.coverage || '',
+    appointmentId: linkedAppointment?.id || activeAppointmentId || '',
+    patientPhone: patientRecord.phone || '',
     status: 'registered',
     createdAt: now.toISOString(),
   });
@@ -5037,12 +10562,14 @@ function fillReceipt() {
   const accountingEntries = loadAccountingEntries();
   accountingEntries.push({
     id: `ACC-${Date.now()}`,
+    entryType: 'billing',
     receiptId: receiptRecord.id,
     encounterId,
     patientId: patientRecord.id,
     patientName: name,
     admittedBy: currentEmployee?.name || currentEmployee?.code || '',
     insurer: patientRecord.insuranceType || '',
+    appointmentId: linkedAppointment?.id || activeAppointmentId || '',
     paymentMethod: paymentType,
     cashAmount: paymentType === 'cash' ? totalPatient : 0,
     bankAmount: paymentType === 'bank_transfer' ? totalPatient : 0,
@@ -5051,9 +10578,20 @@ function fillReceipt() {
     createdAt: now.toISOString(),
   });
   saveAccountingEntries(accountingEntries);
-  applyStockDeductions(items);
+  applyStockDeductions(receiptItems, {
+    sourceRole: 'billing',
+    recordedBy: currentEmployee?.name || currentEmployee?.code || '',
+    patientId: patientRecord.id,
+    encounterId,
+    createdAt: now.toISOString(),
+  });
+  syncFacilityInterconnections(true);
   renderReports();
   refreshDashboardIfVisible();
+  refreshClinicalRecordsIfVisible();
+  refreshLabModuleIfVisible();
+  refreshHrPayrollIfVisible();
+  refreshAppointmentsIfVisible();
   populateNurseEncounterOptions();
   populateDoctorEncounterOptions();
 }
